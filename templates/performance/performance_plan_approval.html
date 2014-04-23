@@ -1,0 +1,137 @@
+<script language="JavaScript">
+function validate(form1)
+{
+
+reg_sp	= /\S/i;
+
+
+	for (i=1;i<(form1.length-2);i++)
+	{
+
+			var ele_name  = form1.elements[i].name;
+			var ele_value = form1.elements[ele_name].value;
+			
+				
+			if (((ele_value=="") || (!(reg_sp.test(ele_value)))))
+			{
+				
+				i++;
+				var ele_name  = form1.elements[i].name;
+				var ele_value = form1.elements[ele_name].value;
+				if(ele_value!="")
+				{
+					alert("enter action");
+					return(false);
+				}
+			
+				
+			}
+			
+			else if ((ele_value!=""))
+			{
+				
+				i++;
+				var ele_name  = form1.elements[i].name;
+				var ele_value = form1.elements[ele_name].value;
+				if(ele_value=="")
+				{
+					alert("enter date");
+					return(false);
+				}
+			
+				
+			}
+			else
+			{
+				i++;
+			}
+			
+		
+	}
+	form1.submit();
+return(true);
+
+}
+</script>
+<center>
+	<h1>
+	{{cApprovePerformanceImprovementplan}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_plan_approval.html');">
+	</h1>
+</center>
+<script src="../jscripts/calendar2.js"></script>
+<form action="performance_plan_approval.php" name='build' method=POST>
+<table width=100% align=center>
+<tr>
+	<td class=code>
+	<input type text=fName value={{username}} readonly><b>{{cPerformanceImprovementplan}}</b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cStep2}}
+	</td>
+</tr>
+
+<tr>
+	<td class=code>
+	{{username}}{{cMust}}
+	</td>
+</tr>
+<tr>
+<td class=code>
+{{requirement}}
+</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cBy}}{{date}}{{cWarning}}
+	</td>
+</tr>
+<tr>	
+	<td class=code>
+	{{consequences}}
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cTomeetreq}}
+	</td>
+</tr>
+<{row_loopstart}>
+<tr>
+	
+
+	
+	<td class=code>
+		<{i}>.<TEXTAREA WRAP=PHYSICAL NAME="fAction_<{i}>" ROWS=4 COLS=30><{text}></TEXTAREA>
+	</td>
+	<td class=code> 
+{{cBy}}
+<input type=text name="fDate_<{i}>" readonly size=10 readonly value=<{date}> >
+<a href="javascript:cal<{i}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>{{cWarning}} </td>
+
+<script language='javascript'>
+
+	var cal<{i}>= new calendar2(document.forms['build'].elements['fDate_<{i}>']);
+	 cal<{i}>.year_scroll	=  true;
+
+</script>
+</tr>
+<{row_loopend}>
+<tr>
+	<td class=code>
+	
+	<input type=submit name=fSave value={{cSave}}>
+	
+	</td>
+
+	<td class=code>
+	<input type=hidden name=plan_id value={{plan_id}}>
+	<input type=hidden name=employee_id value={{employee_id}}>
+	<input type=submit name=fApprove value={{cApprove}} onclick="return validate(document.build);">
+	</td>
+</tr>
+</table>
+</form>
+</body>

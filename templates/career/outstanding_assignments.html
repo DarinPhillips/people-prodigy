@@ -1,0 +1,36 @@
+<center><h1>
+{{cViewOutstanding}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/outstanding_assignments.html');">
+<h1><center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+
+		{{cReportsname}}
+	</td>
+	<td class=code>
+		{{cPosition}}
+	</td>
+	<td class=code>
+		{{cAddeddate}}
+	</td>
+</tr>
+<{user_loopstart}>
+<tr>
+	<td class=code>
+
+		<a href="mailto:<{email}>"><{name}></a>
+	</td>
+	<td class=code>
+		<{pos}>
+	</td>
+	<td class=code>
+		<{date}>
+	</td>
+</tr>
+<{user_loopend}>
+<tr>
+	<td class=code align=center colspan=2>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</table>

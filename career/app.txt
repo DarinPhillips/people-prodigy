@@ -1,0 +1,21 @@
+
+
+	select group_name from table
+	get_single_column
+
+	{
+
+		$group_var=$group_name[$i]; "grp_self"
+
+		$name=$group_var;
+
+		$$name=1;
+
+	
+	}
+		$grp_self=1
+
+		if($grp_self==1) // 
+		{
+
+		}

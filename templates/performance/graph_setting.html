@@ -1,0 +1,83 @@
+<center>
+<h1>
+{{cGraphsetting}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/graph_setting.html');">
+</h1>
+</center>
+<script language=JavaScript src="../jscripts/picker.js"></script>
+
+<form action="graph_setting.php" method=post name=setting>
+<table class=code align=center>
+
+	<tr>
+		<td>{{cCommitment}}</td><td><input type=text name=fCommitment value='{{vCommit}}' size=8 readonly></td>
+			<td bgcolor={{vCommit}}>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fCommitment'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+		
+	</tr>
+	<tr>
+		<td>{{cAccomplished}}</td><td><input type=text name=fAccomplish value='{{vAccomplish}}' size=8 readonly></td>
+		<td bgcolor={{vAccomplish}}>&nbsp;&nbsp;&nbsp;</td>
+			
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fAccomplish'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cAdmin}}</td><td><input type=text name=fAdmin value='{{vAdmin}}' size=8 readonly></td>
+		<td bgcolor={{vAdmin}}>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fAdmin'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cRater1}}</td><td><input type=text name=fRater1 value='{{vRater1}}' size=8 readonly></td>
+		<td bgcolor={{vRater1}}>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fRater1'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cRater2}}</td><td><input type=text name=fRater2 value='{{vRater2}}' size=8 readonly></td>
+		<td bgcolor={{vRater2}}>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fRater2'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cRater3}}</td><td><input type=text name=fRater3 value='{{vRater3}}' size=8 readonly></td>
+		<td bgcolor={{vRater3}}>&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fRater3'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cSelf}}</td><td><input type=text name=fSelf value='{{vSelf}}' size=8 ></td>
+		<td  bgcolor="{{vSelf}}" >&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fSelf'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>{{cOverall}}</td><td><input type=text name=fOverall value='{{vOverall}}' size=8 readonly></td>
+		<td  bgcolor="{{vOverall}}" >&nbsp;&nbsp;&nbsp;</td>
+		<td>
+			<a href="javascript:TCP.popup(document.forms['setting'].elements['fOverall'])">
+			<img src="../jscripts/img/sel.gif"></a>
+		</td>		
+
+	</tr>
+	
+
+</table>
+<center><input type=submit name=submit value='{{cSubmit}}'></center>
+</form>

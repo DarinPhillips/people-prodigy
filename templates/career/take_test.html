@@ -1,0 +1,60 @@
+
+
+<table border =1>
+<tr>
+<td class=code>
+{{cDisplay_testname}}  : {{fTestname}}
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cTaketestid}}: {{test_id}}
+</td>
+</tr>
+</table>
+<table align=center border = 1 class=table>
+<form action="display_marks.php" method=post>
+
+<input type=hidden name=test_id value="{{test_id}}">
+<input type=hidden name=test_type value="{{test_type}}" >
+<input type=hidden name=test_mode value="{{test_mode}}">
+<{quest_loopstart}>
+<tr>
+<td class=code>
+{{cTaketestquestion}}  <{No}>:
+</td>
+<td class=code>
+ <{question}>
+</td>
+</tr>
+<tr>
+<td class=code>
+
+{{cTaketestanswers}} :
+</td>
+<td class=code>
+<{ans_loopstart}>
+
+	<input type=radio name=fCheck<{q_id}> value=fCheck_<{q_id}>_<{ans_id}>>	 <{answer}>
+<br>
+<{ans_loopend}>
+</td>
+</tr>
+
+
+<{quest_loopend}>
+
+<tr>
+<td colspan = 2 align = center>
+
+<input type=submit name=fResult value="{{cTaketestvalidate}}">
+
+
+</td>
+</tr>
+
+
+</form>
+
+</table>
+</html>

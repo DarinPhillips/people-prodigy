@@ -1,0 +1,38 @@
+
+admin firstname 's Approved Appraisal
+
+
+karthik new obj
+
+Committment: 675  Accomplished: 170  Fulfilled: 27.62
+
+Priority :2
+
+Expectation Points: 0  Actual Rating: 0.85714285714286 Expectation Met: 0.00
+
+Comments Made During This Review Period
+----------------------------------------
+Boss's Comments
+----------------
+Leader2 Leader2 :
+
+Raters Comments
+----------------
+Leader1 Leader1 :0:
+Boss's Explanation for this Objective
+--------------------
+Out of a possible    points for this objective you earned   0   because
+:Administrator
+
+My Comment
+------------
+my final summary
+>
+Boss's Final Summary
+--------------------------
+
+Out of a possible    points for this objective you earned  1  because
+:
+My Final Summary
+-----------------------
+

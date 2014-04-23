@@ -1,0 +1,67 @@
+<form action="add_position_information.php" method="post">
+<center>
+<h1>
+{{cAddPosition}}
+<input type="button" name="fHelp" value={{cHelp}} onClick="window.open('../lang/{{default}}/core/add_employee.html');">
+</h1>
+</center>
+<h2>
+{{cPosstep2}}
+</h2>
+<table align=center>
+<th>
+{{cPosition}}
+</th>
+<tr>
+<td class=code>
+{{cLevel}}
+</td>
+<td class=code>
+
+<select name="fLevel">
+<option class=code value="">{{cSelect}}</option>
+<{level_loopstart}>
+
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+
+<{level_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cLocation}}
+</td>
+<td class=code>
+
+<select name="fLocation">
+<option class=code value="">{{cSelect}}</option>
+<{location_loopstart}>
+
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+
+<{location_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cFamilyname}}
+</td>
+<td class=code>
+
+<select name="fFamily">
+<option class=code value="">{{cSelect}}</option>
+<{family_loopstart}>
+<option  <{selected}> class=code value="<{family_id}>"><{family_name}></option>
+<{family_loopend}>
+</select>
+</td>
+</tr>
+</table>
+
+<center>
+<input type="hidden" name="position_id" value="{{pos_id}}">
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fSubmit" value="{{cSubmit}}">
+</form>

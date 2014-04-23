@@ -1,0 +1,42 @@
+<center>
+<h1>
+{{cRatingdiscre}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/rating_discrepencies_1.html');">
+</h1>
+</center>
+<script>
+function download()
+{
+	
+	frm = document.desc;
+	frm.action='download_discrepencies.php';
+	frm.submit();
+}
+function redirect()
+{
+	frm = document.desc;
+	frm.action='per_setting.php';
+	frm.submit();
+}
+</script>
+<form name='desc' action="rating_discrepencies_1.php" method=post>
+<table class=code align=center>
+<{user_loopstart}>
+<tr>
+	<td><{count}>.<input type=text name=fBoss value='<{bossname}>'>{{cRrated}}</td>
+	<td nowrap><input type=text name=fVal value='<{what_tx}>' size=5><input type=text name=fEmployee value='<{username}>'>
+	{{cPerform}}<input type=text name=fPerform size=5 value='<{performed}>'>%
+	<input type=text name=fHighlow value='<{high}>'>{{cThantherecommendation}}</td>
+</tr>
+<{user_loopend}>
+</table>
+<table class=code align=center>
+<tr>
+	<td><input type=button name=fBack value='{{cBack}}' onclick="history.back();"></td>
+	<td><input type=button name=fPrint value='{{cPrint}}' onclick="window.print();"></td>
+	<td><input type=button name=fSave value='{{cSave}}' onclick="download();"></td>
+	<td><input type=button name=fReturn value='{{cReturntodashboard}}' onclick="redirect();"></td>
+</tr>
+</table>
+</form>
+

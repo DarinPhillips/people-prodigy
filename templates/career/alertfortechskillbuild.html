@@ -1,0 +1,37 @@
+<script>
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=500,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=800,height=700,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=yes,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+</script>
+
+<form action="alertfortechskillbuild.php" method="post">
+<center>
+<h1>
+{{cAlertforSkillsbuilder}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="popup('alertfortechskillbuild.html','Manual Help');">
+</h1>
+</center>
+<table align=center>
+<{position_loopstart}>
+<tr>
+<td class=code>
+{{cAdminhasassignedyoutobuildskillsforthepos}}
+</td>
+<td class=code>
+<a href="skills_builder.php?fPosition=<{pos_id}>"><{position_name}></a>
+</td>
+<td class=code>
+{{cOn}}
+</td>
+<td class=code>
+<{date}>
+</td>
+</tr>
+<{position_loopend}>
+</table>
+</form>

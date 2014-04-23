@@ -1,0 +1,37 @@
+<h1>
+<center>
+{{cViewOutstanding}}{{cCAppraisal}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/outstanding_assignments_appraisal.html');">
+</h1></center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+	{{cEmployeeNamee}}
+	</td>
+	<td class=code>
+	AppraisalAssigned{{cAppraisalAssigned}}
+	</td>
+	<td class=code>
+	cTestOr360{{cTestOr360}}
+	</td>
+	<td class=code>
+	{{cDateAssigned}}
+	</td>
+</tr>
+<{row_loopstart}>
+<tr <{highlight}>>
+	<td class=code >
+	<a href="mailto:<{email}>"><{username}></a>
+	</td>
+	<td class=code>
+	<{skill_type}>
+	</td>
+	<td class=code >
+	<{test_mode}>
+	</td>
+	<td class=code >
+	<{date}>
+	</td>
+</tr>
+<{row_loopend}>
+</table>

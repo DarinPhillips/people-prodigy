@@ -1,0 +1,65 @@
+<form action="view_tests.php" method="post">
+<center>
+<h3>
+{{cExistingtest}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/view_tests.html');">
+</h3>
+</center>
+<table align=center border=1>
+<!--
+<th>
+{{cUsername}}
+</th>
+<th>
+{{cSkilltype}}
+</th>
+<th>
+{{cTestname}}
+</th>
+<th>
+{{cSkillname}}
+</th>
+-->
+<tr>
+<td class=code>
+{{cUsername}}
+</td>
+<td class=code>
+{{cSkilltype}}
+</td>
+<td class=code>
+{{cTestname}}
+</td>
+<td class=code>
+{{cSkillname}}
+</td>
+</tr>
+<{skill_loopstart}>
+<tr>
+<td>
+<{user_name}>
+</td>
+<td>
+<{test_type}>
+</td>
+<td class=code>
+<a href="view_test_questions.php?test_id=<{test_id}>"><{test_name}></a>
+</td>
+
+<td>
+<table>
+
+	<{skilltest_loopstart}>
+		<tr>
+		<td>
+			<{skill_name}>
+		</td>
+		</tr>
+	<{skilltest_loopend}>
+</table>
+</td>
+</tr>
+
+<{skill_loopend}>
+</table>
+</form>

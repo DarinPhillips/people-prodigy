@@ -1,0 +1,357 @@
+<form action="mail_options.php" method="post">
+
+<center>
+<h2>
+{{cMailSettings}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/mail_option.html');">
+</h2>
+<center>
+
+
+<b>{{cImportskillmailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fImport_subject" value="{{Import_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea rows=5 cols=40 name="fImport_message">{{Import_message}}</textarea>
+</td>
+</tr>
+</table>
+<b>{{cManualskillentrymailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fManual_subject" value="{{Manual_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea rows=5 cols=40 name="fManual_message">{{Manual_message}}</textarea>
+</td>
+</tr>
+</table>
+<b>{{cSkillbuilderentrymailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fBuilder_subject" value="{{Builder_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea rows=5 cols=40 name="fBuilder_message">{{Builder_message}}</textarea>
+</td>
+</tr>
+</table>
+<b>{{cTestbuildermailoption}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35  name="fTestBuilder_subject" value="{{TestBuilder_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea rows=5 cols=40 name="fTestBuilder_message">{{TestBuilder_message}}</textarea>
+</td>
+</tr>
+
+</table>
+<b>{{cTestappraisalmailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35  name="fTestAppraisal_subject" value="{{TestAppraisal_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fTestAppraisal_message">{{TestAppraisal_message}}</textarea>
+</td>
+</tr>
+
+</table>
+
+<b>{{cMultiraterappraisalmailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35  name="fMultiraterAppraisal_subject" value="{{MultiraterAppraisal_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fMultiraterAppraisal_message">{{MultiraterAppraisal_message}}</textarea>
+</td>
+</tr>
+
+</table>
+
+<b>{{cMultiraterappraisaltech_mailoptions}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fMultiraterAppraisaltech_subject" value="{{MultiraterAppraisaltech_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fMultiraterAppraisaltech_message">{{MultiraterAppraisaltech_message}}
+</textarea>
+</td>
+</tr>
+</table>
+
+
+<b>{{cTestBuildermailOption}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fTest_subject" value="{{test_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fTest_message">{{test_message}}
+</textarea>
+</td>
+</tr>
+</table>
+
+
+<b>{{cSkillBuildermailOption}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fSkill_subject" value="{{skill_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fSkill_message">{{skill_message}}
+</textarea>
+</td>
+</tr>
+</table>
+
+
+
+<b>{{cInformAdminaboutemployeedetailsupdation}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fAdmin_subject" value="{{admin_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fAdmin_message">{{admin_message}}
+</textarea>
+</td>
+</tr>
+</table>
+<b>{{cBossesmailtoadmin}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" size=35 name="fBoss_subject" value="{{boss_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fBoss_message">{{boss_message}}
+</textarea>
+</td>
+</tr>
+</table>
+
+	<b>{{cMailtoBossAndReport}}</b>
+	<br>
+<table>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type=text name=fMail_to_boss_subject value="{{mail_to_boss_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fMail_to_boss_message">{{mail_to_boss_message}}</textarea>
+</td>
+</tr>
+</table>
+
+
+<b>{{cAdminMailtoBoss}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type=text name=fFrom_admin_subject value="{{admin_to_boss_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name="fFrom_admin_message">{{admin_to_boss_message}}
+</textarea>
+</td>
+</tr>
+</table>
+
+
+<b>{{cMailtoadminabtsuccesssionplan}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type=text name=fSuccesssion_UpdationSubject value="{{succession_update_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name=fSuccesssion_UpdationMessage>{{succession_update_message}} 
+</textarea>
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+<b>{{cMailtoemployeestoimproveskills}}</b>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type=text name=fSuccesssion_SkillUpdationSubject value="{{succession_skillsupdate_subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+
+</td>
+<td class=code colspan=5>
+<textarea rows=5 cols=40 name=fSuccesssion_SkillUpdationMessage >{{succession_skillupdate_message}} 
+</textarea>
+</td>
+</tr>
+</table>
+
+
+
+<table align=center>
+<tr>
+<td><br>
+<!--<input type=button name=fBack value='  {{cBack}}  ' onClick="window.location.replace('front_panel.php')";>-->
+<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>
+<input type="submit" name="fUpdatemail" value="{{cUpdatemailoption}}">
+</td>
+</tr>
+</table>
+</form>

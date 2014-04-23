@@ -1,0 +1,10 @@
+									{{cDate}}:{{today}}
+
+					{{cRatingdiscre}}					
+					--------------------
+<{user_loopstart}>
+	<{count}>. <{bossname}> {{cRrated}} <{what_tx}> <{username}> {{cPerform}} <{performed}> % <{high}> {{cThantherecommendation}}
+
+<{user_loopend}>
+
+

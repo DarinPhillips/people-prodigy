@@ -1,0 +1,49 @@
+<table align=center border = 1 class=table>
+<form action="view_test_questions.php" method=post>
+<center>
+<h1>
+{{cQuestionandAnswers}}
+</h1>
+</center>
+<{question_loopstart}>
+<tr>
+<td>
+{{cTaketestquestion}}  <{No}>:
+</td>
+<td>
+ <{question_name}>
+</td>
+</tr>
+<tr>
+<td>
+
+{{cTaketestanswers}} : <{ans_n}>
+</td>
+<td>
+<{ans_loopstart}>
+
+<input type=radio <{checked}> name=fCheck<{q_id}> >	 <{answer_name}>
+<br>
+<{ans_loopend}>
+</td>
+</tr>
+<{question_loopend}>
+
+<tr>
+<td class=code>
+<input type="button" name="fBack" value={{cBack}} onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value={{cPrint}} onClick="window.print();">
+</td>
+<td class=code>
+<!--
+<input type="button" name="fSave" value={{cSave}} >
+-->
+</td>
+</tr>
+
+
+</form>
+
+</table>

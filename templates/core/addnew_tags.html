@@ -1,0 +1,58 @@
+<script>
+function check()
+{
+	reg=/\S/
+	with(document.frm)
+	{
+		if(!reg.test(fCategory.value))
+		{
+			alert('{{cEntervalidCat}}');
+			return false;
+		}
+		if(fTag.value=="")
+		{
+			alert('{{cEntervalidTag}}');
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+	<center>
+	<h1>
+	{{cOpp_status}}	
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/addnew_tags.html');">
+	</h1>
+	</center>	
+<form action="addnew_tags.php" name=frm method=post onSubmit="return check();">
+
+<table align=center>
+<th class=code>
+{{cCategory}}
+</th>
+<th class=code>
+{{cTagname}}
+</th>
+<tr>
+<td class=code>
+<input type="text" name="fCategory" value="{{category}}">
+</td>
+<td class=code>
+<input type="text" name="fTag" value="{{tag}}">
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="submit" name="fSubmit" value="{{cSubmit}}">
+</td>
+
+</tr>
+</table>
+<input type="hidden" name="cat_id" value="{{eeo_id}}">
+
+</form>

@@ -1,0 +1,23 @@
+
+				{{cLearningstatusreport}}
+
+
+
+<{main_loopstart}>
+
+<{skillname}>
+
+{{cOverall}} {{cCommitment}} : <{committed}> %
+
+{{cAccomplished}}: <{accomplished}> %
+
+<{direct_reports_start}>
+
+<{ratername}> {{cCommitment}} :<{committed}> %
+
+{{cAccomplished}} <{r_avg}> %
+
+<{direct_reports_end}>
+
+<{main_loopend}>
+

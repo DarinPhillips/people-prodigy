@@ -1,0 +1,45 @@
+<form action="rights_not_assigned.php" method=post>
+<center>
+<h1>
+{{cRightsnotassign}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/rights_not_assigned.html');">
+</h1>
+</center>
+<table align=center>
+<th>
+{{cAccessrights}}
+</th>
+<th>
+{{cAdded_by}}
+</th>
+<th>
+{{cDate_added}}
+</th>
+<{access_loopstart}>
+<tr>
+<td class=code>
+<a href="add_employee.php"><{access_rights}></a>
+</td>
+<td class=code>
+<{added_by}>
+</td>
+<td class=code>
+<{date_added}>
+</td>
+</tr>
+<{access_loopend}>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+</td>
+<td class=code>
+<input type="button" name="fSave" value="{{cSave}}">
+</td>
+</tr>
+</table>
+</form>

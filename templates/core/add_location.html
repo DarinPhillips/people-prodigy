@@ -1,0 +1,40 @@
+<script>
+function validate()
+{
+	with(document.addform)
+	{
+		if(fLocation_name.value=="")
+		{
+			alert('{{cValueforloc}}');
+			fLocation_name.focus();
+			return false;
+		}
+		
+		
+	}
+	return true;
+}
+</script>
+
+<form action="location_settings.php" name="addform" method="post" onSubmit="return validate('{{cAlert}}');">
+<input type=hidden name=fAdd value=add>
+<table class=table align=center>
+<tr>
+<td class=code>
+{{cEnterthelocationname}}:
+</td>
+<td class=code>
+<input type="text" name="fLocation_name">
+</td>
+</tr>
+<tr>
+<td class=code>
+</td>
+<td class=code>
+<input type="submit" name="add" value="{{cAddlocation}}">
+</td>
+</tr>
+</table>
+<input type="hidden" name="denotes" value="{{denotes}}">
+<input type="hidden" name="id" value="{{id}}">
+</form>

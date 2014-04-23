@@ -1,0 +1,236 @@
+<script language='Javascript'>
+function check_reports()
+{
+	with(document.frm1)
+	{
+
+		<{bosssel_loopstart}>
+
+		if(fdir_rep != '')
+		{
+			if(fdir_rep[0].checked == false && fdir_rep[1].checked == false)
+			{
+				alert('{{cSelectdirectreports}}');
+				fdir_rep[0].focus();
+				return false;
+			}
+		}
+		
+		<{bosssel_loopend}>
+		<{performance_rating_start}>
+		if(fDiff_per[0].checked == false && fDiff_per[1].checked == false)
+		{
+			alert('{{cEntervalforperformers}}');
+			return false;
+		}
+		if(fDiff_per[0].checked == true)
+		{
+			//alert(fTop_val.value);
+			if(fTop_val.value == '')
+			{
+				
+				alert('{{cEntervalidnum}}');
+				return false;
+			}
+		}
+		if(fDiff_per[1].checked == true)
+		{
+			//alert(fBottom_val.value);
+			if(fBottom_val.value == '')
+			{
+				
+				alert('{{cEntervalidnum}}');
+				return false;
+			}
+		}
+		<{performance_rating_end}>
+		<{learning_rating_start}>
+		if(fDiff_learn[0].checked == false && fDiff_learn[1].checked == false)
+		{
+			alert('{{cEntervalfordiff}}');
+			return false;
+			
+		}
+		if(fDiff_learn[0].checked == true)
+		{
+			//alert(fImp_val.value);
+			if(fImp_val.value == '')
+			{
+				alert('{{cEntervalidnum}}');
+				return false;
+			}
+		}
+		if(fDiff_learn[1].checked == true)
+		{
+			//alert(fWhatdone_val.value);
+			if(fWhatdone_val.value == '')
+			{
+				
+				alert('{{cEntervalidnum}}');
+				return false;
+			}
+		}
+		<{learning_rating_end}>
+		
+		
+	}
+}
+</script>
+
+<form name=frm1 action=position_model3.php method=post onSubmit = "return check_reports()";>
+<input type=hidden name=model_id value={{model_id}} >
+<input type=hidden name='all_boss' value="{{all_boss}}">
+<input type=hidden name='users_of_model' value="{{users_of_model}}">
+<input type=hidden name='interskills' value="{{interskills}}">
+<input type=hidden name='techskills' value="{{techskills}}">
+
+
+<table align=center border=1 cellspacing=0 cellpadding=0>
+	<tr>
+		<td class=code align=center colspan=3>
+			<h1>{{cBuildamodel}}
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/position_model2.html')";>
+			</h1>
+		</td>
+			
+	</tr>
+	<tr>
+		<td class=code colspan=3>
+		<b>{{cQualifycomponents}}</b>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td class=code colspan=3 align=center>
+			<!--<a href=graph_posmodel.php?users_of_model={{users_of_model}}>PosModel</a>  -->
+		<img src = graph_posmodel.php?users_of_model={{users_of_model}} >
+
+</img>
+		</td>
+	</tr>
+
+<{bosssel_loopstart}>
+	<tr>
+		<td class=code rowspan=2>
+		{{cForthebosses}}
+		</td>
+		<td class=code>
+		<input type=radio name=fdir_rep value='sel_direct' onClick="elements['fDir_reports[]'].disabled=false;"> {{cThesedirreponly}}
+		</td>
+		<td class=code>
+		<select name=fDir_reports[] multiple size=4 >
+			<option value='0'>{{cSelectdirrep}}</option>
+			<{dirrep_loopstart}>
+				<option value="<{user_id}>" selected > <{username}> </option>
+			<{dirrep_loopend}>
+		</select>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td class=code colspan=2>
+		<input type=radio name=fdir_rep value='all' onClick="elements['fDir_reports[]'].disabled=true;">{{cEveryoneunderboss}}
+		</td>
+
+	</tr>
+<{bosssel_loopend}>
+
+
+	
+<{performance_rating_start}>	
+
+
+	<tr>
+		<td class=code colspan=3>
+		<b>{{cForperformancerating}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3 > 
+		<input type=radio name=fDiff_per value='top' onClick = "fBottom_val.disabled=true;fBottom_val.value='';fTop_val.disabled=false";>{{cShowdifffortop}}
+		<input type=text name=fTop_val size=2 value="" maxlength=3>{{cPerformersinsys}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3>
+		<input type=radio name=fDiff_per value='bottom' onClick = "fTop_val.disabled=true;fTop_val.value='';fBottom_val.disabled=false";>{{cShowdiffforbottom}}
+		<input type=text name=fBottom_val size=2 value=""maxlength=3 >{{cPerformersinsys}}
+		</td>
+	</tr>
+
+<{performance_rating_end}>
+
+<{learning_rating_start}>
+
+	<tr>
+		<td class=code colspan=3>
+		<b>{{cForlearningplanrating}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3 > 
+			<input type=radio name=fDiff_learn value='top'>{{cIncludeemployeewith}}
+		<input type=text name=fImp_val size=2 value="" maxlength=3>{{cMoreimprovementrating}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3>
+		<input type=radio name=fDiff_learn value='bottom'>{{cIncludeemployeewith}}
+		<input type=text name=fWhatdone_val size=2 value="" maxlength=3>{{cMorewhatdonerating}}
+		</td>
+	</tr>
+
+<{learning_rating_end}>
+
+
+
+	<tr>
+		<td class=code colspan=3>
+		<b>{{cForinter_or_techskills}}</b>
+		</td>
+		
+	</tr>
+	<tr>
+	
+		<td class=code colspan=2> 
+		{{cInterskills_rated_as}}
+		</td>
+		<td class=code colspan=1>
+		{{cTechskills_rated_as}}
+		</td>
+
+	</tr>
+
+	<tr>
+	<td class=code colspan=2>
+<{skillratinglabels_loopstart}>
+			<input type=checkbox name='fLabel_i_<{label_id}>' > 	<{label_id}> <{label_name}>
+			<br>
+<{skillratinglabels_loopend}>
+		</td>
+
+
+		<td class=code>
+<{skillratingtech_loopstart}>
+			<input type=checkbox name='fLabel_t_<{label_id}>' >  	<{label_id}> <{label_name}>
+			<br>
+<{skillratingtech_loopend}>
+		</td>
+
+	<tr>
+		<td class=code colspan=3 align=center><br><br>
+
+ 
+		<input type=button name=fBack value='  {{cBack}}  ' onClick = "window.history.back()";>  &nbsp;&nbsp;&nbsp;
+		<input type=submit name=fNext value='  {{cNext}}  ' >
+ 
+
+		</td>
+	</tr>
+	
+</table>
+</form>
+ 

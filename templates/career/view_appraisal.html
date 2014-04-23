@@ -1,0 +1,340 @@
+<script language = JavaScript>
+function check_category()
+{
+	with(document.frm1)
+	{
+		
+		cat_arr = new Array('{{cat_full}}');
+		
+		grp_arr = new Array('{{grp_full1}}');
+		
+		
+		for(i=0;i<cat_arr.length;i++)
+		{
+			//Check if any category is selected...		
+			if(elements[cat_arr[i]].checked)
+			{
+				
+				
+				for(j=0;j<grp_arr.length;j++)
+					{
+						
+						//Check if any group is selected...
+						if(elements[grp_arr[j]].checked)
+						{
+						return true;
+						}
+				
+					}
+				alert('{{cJavaalert_viewappraisalgrp}}');
+				return false;
+				
+			}
+		}
+		
+		alert('{{cJavaalert_viewappraisalcat}}');
+		return false;
+		
+		
+		
+			
+		
+	}
+	
+}
+</script>
+
+
+
+<table align=right>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/view_appraisal.html');">
+</td>
+</tr>
+</table>
+
+
+
+
+
+<form name=frm1 action=appraisal_results.php method=post onSubmit="return check_category()">
+<input type=hidden name=fEmpl_id value={{fEmpl_id}} >
+<table align=center border=1>
+<tr>
+<td class=code align=center><b>
+{{cViewskillresultshead}}</b>
+</td>
+</tr>
+<tr>
+<td class=code><br>
+<b><i>{{cViewappr_showinterskillmess1}}</i></b>
+</td>
+</tr>
+
+<tr>
+<td class=code align=center>
+	
+	<{category_loopstart}>
+		
+			<input type=checkbox name=fCat_<{cat_id}> > <{cat_name}> 
+		
+	<{category_loopend}>
+	
+</td>
+</tr>
+<tr>
+<td class=code><br>
+<b><i>{{cViewappr_showintergroup}}</i></b>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+	<{group_loopstart}>
+		
+			<input type=checkbox name=grp_id_<{grp_id}> > <{group_name}> 
+		
+	<{group_loopend}>
+
+</td>
+</tr>
+<tr>
+<td class = code ><br>
+<b><i>{{cViewappr_showsummary}}</i></b>
+</td>
+</tr>
+
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_1 > {{cViewappr_skillsavg}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_2 > {{cViewappr_skilloverused}} 
+</td>
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_3 > {{cViewappr_skillkillers}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_4 > {{cViewappr_skilloverrated}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_5 > {{cViewappr_skillunderrated}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<input type=checkbox name=fAvg_rating_imp_1 > {{cViewappr_skillimprove}}
+
+		<select name=fImprove_1>
+		
+			<option value=0>{{cSelectafamily}}</option>
+			
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+			
+		</select>
+
+
+</td>
+</tr>
+<tr>
+
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_imp_2 > {{cViewappr_skillimprove}}
+			<select name=fImprove_2>
+
+				<option value=0>{{cSelectafamily}}</option>
+
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+
+			</select>
+</td>
+</tr>
+<tr>
+
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_imp_3 > {{cViewappr_skillimprove}}
+
+			<select name=fImprove_3>
+				<option value=0>{{cSelectafamily}}</option>
+
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+
+			</select>
+</td>
+
+</tr>
+
+<tr>
+<td class=code><br>
+<b><i>
+{{cViewappr_showtechmess1}}</i></b>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<input type=checkbox name='fTechTitle' > {{cViewappr_title}}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fTechDef> {{cViewappr_def}}
+</td>
+</tr>
+
+<tr>
+	<td class=code><br>
+		<b><i>{{cViewappr_showtechgroups}}</i></b>
+	</td>
+</tr>
+<tr>
+	<td class=code align=center>
+	<input type=checkbox name=fTechGrp_Self> {{cViewappr_self}} 
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<input type=checkbox name=fTechGrp_Boss> {{cViewappr_boss}}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	
+	<input type=checkbox name=fTechGrp_References> {{cViewappr_references}}
+	</td>
+
+
+</tr>
+
+<tr>
+<td class=code><br>
+<b><i>{{cViewappr_techmess2}}</i></b>
+</td>
+</tr>
+
+
+
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fTech_average > {{cViewappr_techavg}}
+</td>
+
+</tr>
+
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fTechrating_overrated > {{cViewappr_techoverrated}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fTechrating_underrated > {{cViewappr_techunderrated}}
+</td>
+
+</tr>
+<tr>
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_imptech_1 > {{cViewappr_skillimprove}}
+		<select name=fImprovetech_1>
+
+				<option value=0>{{cSelectafamily}}</option>
+
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+
+		</select>
+</td>
+</tr>
+<tr>
+
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_imptech_2 > {{cViewappr_skillimprove}}
+		<select name=fImprovetech_2>
+
+				<option value=0>{{cSelectafamily}}</option>
+
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+
+		</select>
+</td>
+</tr>
+<tr>
+
+<td class=code >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=checkbox name=fAvg_rating_imptech_3 > {{cViewappr_skillimprove}}
+		<select name=fImprovetech_3>
+			<option value=0>{{cSelectafamily}}</option>
+
+			<{family_loopstart}>
+				<option value=<{key}> > <{value}> </option>
+			<{family_loopend}>
+		</select>
+</td>
+
+</tr>
+<!--
+================================================
+================================================
+-->
+<tr>
+<td class=code align=center><br>
+
+<input type =button name=fBack value="   {{cBack}}   " onClick="window.history.back()";>
+
+
+<input type = submit name=fSubmit value="   {{cViewappr_next}}   ">
+
+
+</td>
+</tr>
+
+
+
+</table>
+</form>

@@ -1,0 +1,41 @@
+<body class=B1>
+<form action="skills_name.php" method="post">
+<table class=table align=left>
+<tr>
+<td>
+{{cObjective}}: <b>{{objective_name}}</b>
+</td>
+</tr>
+<tr>
+<td>
+{{cActivity}}: <b>{{activity_name}}</b>
+</td>
+</tr>
+</table>
+<br><br>
+
+<table border =0 class=table align=center>
+<{name_loopbegin}>
+<tr>
+<td class=code>
+{{cSkillname}}
+<{skill_id}></td><td><input type="text" name="fskillname_<{skill_id}>" value="<{skill_name}>">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cSkilldescription}}
+<{skill_id}></td><td>
+<textarea name="fskilldesc_<{skill_id}>"><{skill_desc}></textarea>
+</td>
+</tr>
+<{name_loopexit}>
+</table>
+<center><input type="submit" name="fNext" value="{{cNext}}"></center>
+<input type="hidden" name="fbuild_id" value="{{build_id}}">
+<input type="hidden" name="fObj_id" value="{{obj_id}}">
+<input type="hidden" name="fObjid_next" value="{{objnext_id}}">
+<input type="hidden" name="fAct_id" value="{{act_id}}">
+<input type="hidden" name="fActid_next" value="{{actid_next}}">
+</form>
+</html>

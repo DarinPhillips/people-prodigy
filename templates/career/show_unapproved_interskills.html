@@ -1,0 +1,100 @@
+
+<h4>{{cTestbuilder}}</h4> 
+
+{{cNameoftest}} : {{fTestname}}<br>
+{{cIdoftest}} : {{test_id}}
+
+
+
+
+
+<form name=form2 action="store_unapproved.php" method=post>
+
+<input type=hidden name=test_id value="{{test_id}}" >
+<input type=hidden name=test_mode value="{{test_mode}}" >
+<{quest_loopstart}>
+
+<table border=1 align = center>
+
+<tr>
+
+	<td align=top>
+		{{cQuestionno}}: <{fNo}>
+	</td>
+	<td align=top>
+		<input type=text name=fQuestion_<{fNo}> value="<{question}>" >
+	</td>
+	<td>
+		{{cMarks}}<input type=text name=fMarks_<{fNo}> value="<{score}>">
+	</td>
+
+</tr>
+
+<tr>
+	<td>
+		{{cAnswers}} {{cMarkcorrect}}: 
+	</td>
+
+	<td>
+	<{ans_loopstart}>
+
+		<input <{check}> type=checkbox name='fCheck_<{fNo}>_<{fNo1}>' value="r">
+
+ 		<input type=text name='fAns_<{fNo}>_<{fNo1}>' value="<{answer}>">
+
+ 		<br>
+
+	<{ans_loopend}>
+
+	</td>
+
+
+
+</tr>
+<tr>
+	<td>
+		{{cWhich_skill_tested}}
+	</td>
+	<td>
+
+		
+
+		<select name=fSkillname_<{fNo}> >
+<{skill_loopstart}>
+			<option value='<{key}>' <{sel}> > <{value}> </option>
+<{skill_loopend}>
+		</select>
+
+	
+
+	</td>
+<tr>
+	<td>
+	</td>
+</tr>
+</table >
+<{quest_loopend}>
+
+
+	<table align=center>
+	
+
+
+	<tr>
+		<td><br><br>
+			<input type=submit name='fSave_later' value="{{cSave_finishlater}}" >
+		</td>
+		<td><br><br>
+			<input type=button name=fBack value="{{cBack}}" onClick="window.history.back()">
+		</td>
+		<td><br><br>
+			<input type=submit name='fGo_next' value="{{cNext}}">
+		</td>
+
+	</tr>
+
+</form>
+
+</table>
+
+

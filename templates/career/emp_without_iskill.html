@@ -1,0 +1,39 @@
+<form action=emp_without_iskill.php method=post>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+	<tr>
+		<th class=code colspan=2>
+			{{cEmpwithoutIskills}}
+			<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/emp_without_iskill.html');">
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cEmpname}}
+		</td>
+	 
+		<td class=code>
+			{{cBossname}}
+		</td>
+	</tr>
+<{empwithoutskill_loopstart}>
+
+	<tr>
+		<td class=code>
+		<a href="mailto:<{email_user}>"> <{user_display}></a>&nbsp;		
+		</td>
+		<td class=code>
+		<a href="mailto:<{email_boss}>"><{boss_display}></a>&nbsp;		
+		</td>
+	</tr>	
+
+<{empwithoutskill_loopend}>
+<tr>
+	<td class=code colspan=3 align=center>
+		<input type=button name=fPrint value={{cPrint}} onClick="window.print();">
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+
+</table>
+</form>

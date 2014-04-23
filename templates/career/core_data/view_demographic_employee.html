@@ -1,0 +1,50 @@
+<form action="view_demographics.html" method=post>
+<center>
+<h1>
+{{cViewDemograophics}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/view_demographics.html');">
+</h1>
+</center>
+<h2>
+{{cDemoStep2}}
+</h2>
+{{cUchoosetoview}}
+<table align=center>
+<tr>
+<{Uselected_loopstart}>
+<!--
+<td class=code>
+<{category}>
+</td>
+-->
+<td class=code>
+[<{tag}>],
+</td>
+<{Uselected_loopend}>
+</tr>
+</table>
+<table align=center>
+<{employee_loopstart}>
+<tr>
+<td class=code>
+<a href="change_dashboard_to_admin?fuser_id=<{user_id}>"><{username}></a>
+</td>
+</tr>
+<{employee_loopend}>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();"> 
+</td>
+<td class=code>
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();"> 
+</td>
+<td class=code>
+<!--
+<input type="button" name="fSave" value="{{cSave}}">
+-->
+</td>
+</tr>
+</table>
+</form>

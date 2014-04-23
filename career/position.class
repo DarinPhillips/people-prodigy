@@ -1,0 +1,334 @@
+<?php
+class position
+{
+	function return_my_level($db_object,$common,$id_of_user)
+	{
+	
+	$models_percent_fit 	= $common->prefix_table('models_percent_fit');
+	$model_main 		= $common->prefix_table('model_name_table');
+	$models_view_1 		= $common->prefix_table('model_view_1');
+	$models_view_2 		= $common->prefix_table('model_view_2');
+	$user_table 		= $common->prefix_table('user_table');
+	$position 		= $common->prefix_table('position');	
+	$org_main 		= $common->prefix_table('org_main');
+	$position      		= $common->prefix_table('position');
+	$model_table		= $common->prefix_table('model_table');		
+	$family_position	= $common->prefix_table('family_position'); 
+	$model_factors_1	= $common->prefix_table('model_factors_1');       
+
+	
+	 $mysql = "select username from $user_table where user_id = '$id_of_user'";
+	 
+	 $username_mod_arr = $db_object->get_a_line($mysql);
+	 $username_mod = $username_mod_arr['username'];	
+	 $values['username_mod'] = $username_mod;
+	
+//CHECK WHICH WAY THE ORGANISATION HAS BUILT THE ORGANISATIONAL CHART 
+//IF HIGHERORDER=YES THEN 8-7-..1
+//ELSE 1-2-..8
+
+	$mysql = "select higher_order from $org_main";
+	$higherorder_arr = $db_object->get_a_line($mysql);	
+	$higherorder = $higherorder_arr['higher_order'];
+
+//DETERMINE WHAT ALL MODELS THIS PERSON IS CAPABLE OF VIEWING...
+//DETERMINE THE LEVEL OF THE CURRENT PERSON...
+
+
+	$mysql = "select level_no from $user_table,$position 
+			where $user_table.position = $position.pos_id
+			and $user_table.user_id = '$id_of_user'";
+	$lev_arr = $db_object->get_a_line($mysql);
+	$cur_level = $lev_arr['level_no'];
+
+//DETERMINE THE MODELS WHICH THE LEVEL OF THE PERSON IS CAPABLE OF VIEWING...
+	$mysql = "select model_id from $models_view_1 where levels_to_view = '$cur_level'";
+	$model_view1_arr = $db_object->get_single_column($mysql);
+	$models_viewable = @implode("','",$model_view1_arr);
+
+	$check_boss 	= $common->is_boss($db_object,$id_of_user);
+	$check_admin 	= $common->is_admin($db_object,$id_of_user);
+	
+//MODELS BOSSES CAN VIEW...	
+	if($check_boss == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where boss= 'yes'";
+
+			$model_viewboss_arr = $db_object->get_single_column($mysql);
+					
+		
+		}
+
+//MODELS ADMINS CAN VIEW...	
+	if($check_admin == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where admins = 'yes'";
+			$model_viewadmin_arr = $db_object->get_single_column($mysql);
+	
+		}
+
+//MODELS ALL CAN VIEW...	
+	$mysql = "select model_id from $models_view_2 where all1 = 'yes'";
+	$model_viewall_arr = $db_object->get_single_column($mysql);
+
+//MODELS SELF CAN ONLY VIEW...	
+	$mysql = "select model_id from $models_view_2 where me = 'yes'";
+	$checkwithself = $db_object->get_single_column($mysql);
+	$checkself = @implode("','",$checkwithself);
+	
+	$mysql = "select model_id from $model_table where model_id in ('$checkself') and user_id = '$id_of_user'";
+	$model_viewself_arr = $db_object->get_single_column($mysql);
+
+	
+//COMBINE ALL THE MODELS WHICH THE PERSON IS CAPABLE OF VIEWING...
+	$all_viewable_models_arr 	= $model_view1_arr; 
+	$all_models_one_can_view_arr_old= @array_merge($model_view1_arr,$model_viewboss_arr,$model_viewadmin_arr,$model_viewall_arr,$model_viewself_arr);
+	$all_models_one_can_view_arr	= @array_unique($all_models_one_can_view_arr_old);
+	$all_models_one_can_view	= @implode("','",$all_models_one_can_view_arr);
+
+//DETERMINE WHAT ALL MODELS ARE BUILT ON FAMILY BASIS 
+//ie(ONLY THE MODELS THAT WERE CREATED WITH FAMILIES AS ONE OF THE OPTION WILL BE CONSIDERED)...
+//DETERMINE THE MODELS THAT FALL UNDER THE PERSONS' LEVEL AND FAMILY
+//>>>>>>>>>>>MYLEVEL
+
+//DETERMINE THE FAMILY OF THE PERSON...
+	$mysql = "select position from $user_table where user_id = '$id_of_user'";
+	$pos_arr = $db_object->get_a_line($mysql);	
+	$position_of_user = $pos_arr['position'];
+	
+	$mysql = "select family_id from $family_position where position_id = '$position_of_user'";
+	$family_of_user_arr = $db_object->get_a_line($mysql);
+	$family_of_user = $family_of_user_arr['family_id'];
+	
+//CHECK IF THERE ARE ANY MODELS BUILT ON THESE FAMILIES, IF YES THEN SHOW THOSE MODELS	
+	$mysql = "select model_id from $model_factors_1 where family = '$family_of_user' and model_id in ('$all_models_one_can_view')";
+
+	$models_mylevel_junk_arr = $db_object->get_single_column($mysql);
+
+//ALL THE MODELS THAT WERE ASSIGNED FOR VIEWING TO ADMINS, BOSSES, ALL & SELF WILL ALSO BE SHOWN IN THE MYLEVEL MODELS...
+	
+	$models_mylevelall_arr 	= @array_merge($models_mylevel_junk_arr,$model_viewboss_arr,$model_viewadmin_arr,$model_viewall_arr,$model_viewself_arr);
+	
+	$models_mylevel_arr 	= @array_unique($models_mylevelall_arr);		
+	
+	//$models_mylevel 	= @implode("','",$models_mylevel_arr);	
+	
+	return($models_mylevel_arr); 
+	}
+//====================================================
+	
+	
+	function return_1higher_level($db_object,$common,$id_of_user)
+	{
+	
+			$models_percent_fit 	= $common->prefix_table('models_percent_fit');
+	$model_main 		= $common->prefix_table('model_name_table');
+	$models_view_1 		= $common->prefix_table('model_view_1');
+	$models_view_2 		= $common->prefix_table('model_view_2');
+	$user_table 		= $common->prefix_table('user_table');
+	$position 		= $common->prefix_table('position');	
+	$org_main 		= $common->prefix_table('org_main');
+	$position      		= $common->prefix_table('position');
+	$model_table		= $common->prefix_table('model_table');		
+	$family_position	= $common->prefix_table('family_position'); 
+	$model_factors_1	= $common->prefix_table('model_factors_1');       
+
+		
+	$mysql = "select higher_order from $org_main";
+	$higherorder_arr = $db_object->get_a_line($mysql);	
+	$higherorder = $higherorder_arr['higher_order'];
+
+//DETERMINE WHAT ALL MODELS THIS PERSON IS CAPABLE OF VIEWING...
+//DETERMINE THE LEVEL OF THE CURRENT PERSON...
+
+
+	$mysql = "select level_no from $user_table,$position 
+			where $user_table.position = $position.pos_id
+			and $user_table.user_id = '$id_of_user'";
+	$lev_arr = $db_object->get_a_line($mysql);
+	$cur_level = $lev_arr['level_no'];
+	
+	$one_level_up=$cur_level+1;
+	
+		$mysql = "select pos_id from $position where level_no = '$one_level_up'";
+	$positions_in_higherlevel_arr = $db_object->get_single_column($mysql);
+	
+	$positions_in_higherlevel = @implode("','",$positions_in_higherlevel_arr);
+	
+	//DETERMINE THE MODELS WHICH THE LEVEL OF THE PERSON IS CAPABLE OF VIEWING...
+	$mysql = "select model_id from $models_view_1 where levels_to_view = '$cur_level'";
+	$model_view1_arr = $db_object->get_single_column($mysql);
+	$models_viewable = @implode("','",$model_view1_arr);
+
+	$check_boss 	= $common->is_boss($db_object,$id_of_user);
+	$check_admin 	= $common->is_admin($db_object,$id_of_user);
+	
+//MODELS BOSSES CAN VIEW...	
+	if($check_boss == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where boss= 'yes'";
+
+			$model_viewboss_arr = $db_object->get_single_column($mysql);
+					
+		
+		}
+
+//MODELS ADMINS CAN VIEW...	
+	if($check_admin == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where admins = 'yes'";
+			$model_viewadmin_arr = $db_object->get_single_column($mysql);
+	
+		}
+
+//MODELS ALL CAN VIEW...	
+	$mysql = "select model_id from $models_view_2 where all1 = 'yes'";
+	$model_viewall_arr = $db_object->get_single_column($mysql);
+
+//MODELS SELF CAN ONLY VIEW...	
+	$mysql = "select model_id from $models_view_2 where me = 'yes'";
+	$checkwithself = $db_object->get_single_column($mysql);
+	$checkself = @implode("','",$checkwithself);
+	
+	$mysql = "select model_id from $model_table where model_id in ('$checkself') and user_id = '$id_of_user'";
+	$model_viewself_arr = $db_object->get_single_column($mysql);
+
+	
+//COMBINE ALL THE MODELS WHICH THE PERSON IS CAPABLE OF VIEWING...
+	$all_viewable_models_arr 	= $model_view1_arr; 
+	$all_models_one_can_view_arr_old= @array_merge($model_view1_arr,$model_viewboss_arr,$model_viewadmin_arr,$model_viewall_arr,$model_viewself_arr);
+	$all_models_one_can_view_arr	= @array_unique($all_models_one_can_view_arr_old);
+	$all_models_one_can_view	= @implode("','",$all_models_one_can_view_arr);
+		
+//DETERMINE ALL THE FAMILIES IN THE HIGHER LEVEL
+	$mysql = "select family_id from $family_position where position_id in ('$positions_in_higherlevel')";
+	$families_inhigherlevel_arr = $db_object->get_single_column($mysql);
+
+	$families_in_higher_level = @implode("','",$families_inhigherlevel_arr); 
+//SHOW ALL THE MODELS IN THIS HIGER ORDER LEVEL	
+	$mysql = "select model_id from $model_factors_1 where family in ('$families_in_higher_level') and model_id in ('$all_models_one_can_view')";
+	$models_in_higher_level_arr = $db_object->get_single_column($mysql);
+	
+return($models_in_higher_level_arr);
+	//$models_in_higher_level = @implode("','",$models_in_higher_level_arr);
+	}
+	
+	
+//=======================================================
+	
+	function return_2higher_level($db_object,$common,$id_of_user)
+	{
+		
+	$models_percent_fit 	= $common->prefix_table('models_percent_fit');
+	$model_main 		= $common->prefix_table('model_name_table');
+	$models_view_1 		= $common->prefix_table('model_view_1');
+	$models_view_2 		= $common->prefix_table('model_view_2');
+	$user_table 		= $common->prefix_table('user_table');
+	$position 		= $common->prefix_table('position');	
+	$org_main 		= $common->prefix_table('org_main');
+	$position      		= $common->prefix_table('position');
+	$model_table		= $common->prefix_table('model_table');		
+	$family_position	= $common->prefix_table('family_position'); 
+	$model_factors_1	= $common->prefix_table('model_factors_1');       
+
+	
+	$mysql = "select higher_order from $org_main";
+	$higherorder_arr = $db_object->get_a_line($mysql);	
+	$higherorder = $higherorder_arr['higher_order'];
+	
+	//DETERMINE WHAT ALL MODELS THIS PERSON IS CAPABLE OF VIEWING...
+//DETERMINE THE LEVEL OF THE CURRENT PERSON...
+
+
+	$mysql = "select level_no from $user_table,$position 
+			where $user_table.position = $position.pos_id
+			and $user_table.user_id = '$id_of_user'";
+	$lev_arr = $db_object->get_a_line($mysql);
+	$cur_level = $lev_arr['level_no'];
+	
+		$two_level_up=$cur_level+2;
+	
+		$mysql = "select pos_id from $position where level_no = '$two_level_up'";
+	$positions_in_higherlevel_arr = $db_object->get_single_column($mysql);
+	
+	$positions_in_higherlevel = @implode("','",$positions_in_higherlevel_arr);
+	
+	//DETERMINE THE MODELS WHICH THE LEVEL OF THE PERSON IS CAPABLE OF VIEWING...
+	$mysql = "select model_id from $models_view_1 where levels_to_view = '$cur_level'";
+	$model_view1_arr = $db_object->get_single_column($mysql);
+	$models_viewable = @implode("','",$model_view1_arr);
+
+	$check_boss 	= $common->is_boss($db_object,$id_of_user);
+	$check_admin 	= $common->is_admin($db_object,$id_of_user);
+	
+//MODELS BOSSES CAN VIEW...	
+	if($check_boss == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where boss= 'yes'";
+
+			$model_viewboss_arr = $db_object->get_single_column($mysql);
+					
+		
+		}
+
+//MODELS ADMINS CAN VIEW...	
+	if($check_admin == 1)
+		{
+			$mysql = "select model_id from $models_view_2 where admins = 'yes'";
+			$model_viewadmin_arr = $db_object->get_single_column($mysql);
+	
+		}
+
+//MODELS ALL CAN VIEW...	
+	$mysql = "select model_id from $models_view_2 where all1 = 'yes'";
+	$model_viewall_arr = $db_object->get_single_column($mysql);
+
+//MODELS SELF CAN ONLY VIEW...	
+	$mysql = "select model_id from $models_view_2 where me = 'yes'";
+	$checkwithself = $db_object->get_single_column($mysql);
+	$checkself = @implode("','",$checkwithself);
+	
+	$mysql = "select model_id from $model_table where model_id in ('$checkself') and user_id = '$id_of_user'";
+	$model_viewself_arr = $db_object->get_single_column($mysql);
+
+	
+//COMBINE ALL THE MODELS WHICH THE PERSON IS CAPABLE OF VIEWING...
+	$all_viewable_models_arr 	= $model_view1_arr; 
+	$all_models_one_can_view_arr_old= @array_merge($model_view1_arr,$model_viewboss_arr,$model_viewadmin_arr,$model_viewall_arr,$model_viewself_arr);
+	$all_models_one_can_view_arr	= @array_unique($all_models_one_can_view_arr_old);
+	$all_models_one_can_view	= @implode("','",$all_models_one_can_view_arr);
+
+//DETERMINE WHAT ALL MODELS THIS PERSON IS CAPABLE OF VIEWING...
+//DETERMINE THE LEVEL OF THE CURRENT PERSON...
+
+
+	$mysql = "select level_no from $user_table,$position 
+			where $user_table.position = $position.pos_id
+			and $user_table.user_id = '$id_of_user'";
+	$lev_arr = $db_object->get_a_line($mysql);
+	$cur_level = $lev_arr['level_no'];
+	
+	$two_level_up = $cur_level + 2;
+	$mysql = "select pos_id from $position where level_no = '$two_level_up'";
+	$positions_in_higherleveltwo_arr = $db_object->get_single_column($mysql);
+	
+	$positions_in_higherlevel_two = @implode("','",$positions_in_higherleveltwo_arr);
+		
+//DETERMINE ALL THE FAMILIES IN THE HIGHER +2 LEVEL
+	$mysql = "select family_id from $family_position where position_id in ('$positions_in_higherlevel_two')";
+	$families_inhigherleveltwo_arr = $db_object->get_single_column($mysql);
+	
+	$families_in_higher_level_two = @implode("','",$families_inhigherleveltwo_arr); 
+	
+//SHOW ALL THE MODELS IN THIS HIGER +2 ORDER LEVEL
+	$mysql = "select model_id from $model_factors_1 where family in ('$families_in_higher_level_two') and model_id in ('$all_models_one_can_view')";
+	$models_in_higher_level_two_arr = $db_object->get_single_column($mysql);
+	
+	return($models_in_higher_level_two_darr);
+	
+	
+	
+	}
+
+}
+

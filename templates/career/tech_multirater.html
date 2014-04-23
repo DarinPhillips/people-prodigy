@@ -1,0 +1,264 @@
+<script language=javascript>
+function check_email(email_id)
+{
+	var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+	var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+	
+	str	= email_id;
+	if (!reg1.test(str) && reg2.test(str))
+	{ 
+		// if syntax is valid
+	    return true;
+		}
+	else
+	{
+	 	return false;
+	}
+
+}
+
+function check_emailsel()
+{
+	with (document.frm1)
+	{
+		ele_name	= 'tech_skills_';
+		
+		
+		tot_skills	= count_skills.value;
+		
+		
+		countval = page_count.value;
+		email_cnt	= email_count.value;
+		
+		for (i=1;i<=countval;i++)
+		{
+			temp_ele	= ele_name+i;
+
+			if(elements[temp_ele].selectedIndex !=0)
+			{
+				for (j=1;j<=email_cnt;j++)
+				{
+					temp_email_name	= 'email_'+j+'_'+i;
+					
+					email_val	= elements[temp_email_name].value;
+
+					if (!check_email(email_val))
+					{
+						alert('{{cScript_techmulti_mess1}}'+j);
+						elements[temp_ele].focus();
+						return false;
+					}
+				}
+			}
+		}
+		
+	}
+}
+				
+function check_recursive(sel_name,sel_val)
+{
+	with (document.frm1)
+	{
+		ele_name	= 'tech_skills_';
+		
+		
+		tot_skills	= count_skills.value;
+		
+		
+		countval = page_count.value;
+		
+		for (i=1;i<=countval;i++)
+		{
+				
+			temp_ele	= ele_name+i;
+
+			if(elements[temp_ele].selectedIndex !=0)
+			{
+				if (temp_ele != sel_name)
+				{
+
+					temp_val	= elements[temp_ele].value;
+		
+					if (temp_val == sel_val)
+					{
+						alert('{{cScript_techmulti_mess2}}');
+						elements[sel_name].selectedIndex=0;
+						elements[sel_name].focus();
+						
+						return false;
+					}
+				}
+			}
+		}
+		
+		
+
+	}
+
+}
+
+function validate()
+{
+	with (document.frm1)
+	{
+		label_name = 'label_id_';
+		skill_name	= 'tech_skills_';
+		
+		
+		countval = page_count.value;
+
+
+		
+		
+		for(i=1;i<=countval;i++)
+		{
+			
+			
+			
+			label = label_name+i;
+			skill = skill_name+i;
+			
+			if(elements[skill].selectedIndex != 0)
+			{
+				if(elements[label].selectedIndex == 0)
+				{
+				alert('{{cScript_techmulti_mess3}}');
+				return false;
+				}
+			}
+		}
+		
+		
+		
+	
+		
+		
+	}
+}
+
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=300,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=500,height=400,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=no,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+</script>
+<form action=tech_multirater.php method=post name=frm1  onSubmit="return check_emailsel()">
+<input type=hidden name=count_skills value='{{count_skills}}' >
+<input type=hidden name=page_count value='{{page_count}}' >
+<input type=hidden name=total_count value='{{total_count}}' >
+<input type=hidden name=email_count value='{{email_count}}' >
+
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/tech_multirater.html');">
+</td>
+</tr>
+</table>
+
+<table align=center>
+<tr>
+<td class=code align=center>
+
+<b><u>{{cTechMultiraterhead}}<u> </b>
+</td>
+</tr>
+<tr>
+	<td class=code align=center>
+	<b>{{cTechMultirater_mess}}
+	</b><br><br><br>
+	</td>
+</tr>
+</table>
+	
+
+<{skillsperpage_loopstart}>
+<table border=1 align=center>
+	<tr>
+		<td class=code>
+			{{cTechMul_techskills}}
+		</td>
+		<td class=code>
+			{{cTechMul_selfrate}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			<select name=tech_skills_~{no}~ onChange="check_recursive(this.name,this.value)">
+				<option value=0 > {{cTechMul_selectskill}}</option>
+			
+				<{skill_loopstart}>
+					<option value=<{key}> <{sel}> > <{value}> </option>
+				<{skill_loopend}>
+			</select>
+		</td>
+		<td class=code>
+			<select name=label_id_~{no}~>
+				<option value=0 > {{cTechMul_selectlevel}}</option>
+		
+				<{label_loopstart}>
+					<option value=<{key}> <{sel}> > <{value}> </option>
+				<{label_loopend}>
+			</select>
+		</td>
+	
+</tr>
+	</table>
+
+		<{reference_loopstart}>
+		
+<table align=center border=1>
+			<tr>
+		
+				<td class=code>
+					{{cTechMul_comp_dir}}
+				</td>
+
+				<td class=code>
+					<input type=button name=comp_dir value="{{cTechMul_cdirsubmit}}" onClick="popup('company_employees.php?field2=email_<{ref_no}>_~{no}~','Technical Rater Help');">
+				</td>
+				<td class=code>
+					{{cTechMul_refemail}}
+				</td>
+
+				<td class=code>
+					<input type=text name='email_<{ref_no}>_~{no}~' value= '<{email}>{{cTechMul_enteremail}}' readonly>
+				</td>
+			</tr>
+			</table>
+		<{reference_loopend}>
+		<br><br>
+<{skillsperpage_loopend}>
+<br>
+<table align=center>
+<tr>
+<td class=code>
+
+			<input type=submit name=fAdd_skill value = "{{cTechMul_saveandadd}}" {{disable_add}} onClick="return validate()";>
+		<br>
+</td>
+</tr>
+</table>
+<table align=center>
+	<tr>
+		<td class=code>
+			<input type=button name=fView_window value = "{{cTechMul_viewskills}}" onClick="popup('selected_techrating_skills.php','Technical Rating Help');">
+		</td>
+		<td class=code>
+			<input type=button name=fBack value = "{{cTechMul_back}}" onClick="window.history.go(-1)";>
+		</td>
+
+		<td class=code>
+			<input type=submit name=fFinish_later value = "{{cTechMul_savelater}}" >
+		</td>
+
+		<td class=code>
+			<input type=submit name=fNext value = "{{cTechMul_next}}">
+		</td>
+		
+	</tr>
+</table>
+</form>

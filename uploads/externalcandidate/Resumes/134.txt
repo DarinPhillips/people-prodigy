@@ -1,0 +1,17 @@
+CREATE TABLE learning_feedback_results (
+  f_id int(11) NOT NULL auto_increment,
+  rater_id int(11) default NULL,
+  rated_id int(11) default NULL,
+  skill_id int(11) default NULL,
+  value int(11) default NULL,
+  rated_date datetime default NULL,
+  feedback_text text,
+  status varchar(255) default NULL,
+  PRIMARY KEY  (f_id)
+) TYPE=MyISAM;
+
+INSERT INTO learning_feedback_results VALUES("1", "4", "2", "3", "2", "2003-11-27 14:58:10", "sample text1", "1");
+INSERT INTO learning_feedback_results VALUES("2", "4", "2", "5", "1", "2003-11-27 14:58:10", "sample text2", "1");
+INSERT INTO learning_feedback_results VALUES("3", "4", "2", "6", "0", "2003-11-27 14:58:10", "sample text3", "1");
+INSERT INTO learning_feedback_results VALUES("4", "4", "2", "7", "0", "2003-11-27 14:58:10", "sample text4", "1");
+INSERT INTO learning_feedback_results VALUES("5", "4", "2", "10", "1", "2003-11-27 14:58:10", "sample text5", "1");

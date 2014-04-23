@@ -1,0 +1,241 @@
+<script>
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=500,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=800,height=700,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=yes,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+function validate()
+{
+	with (document.emp_frm1)
+	{
+		var frm_len = elements.length;
+
+		var reg_user = /username#;#/i;
+		var reg_email = /email#;#/i;
+		var reg_emp	= /fEmployment#;#/i;
+		var checkarr	= Array();
+		var checkarremail	= Array();
+		var checkarrpos	= Array();
+
+		var chk	= 0; // This is the overall check var
+		var outchk	= 0;
+		
+		var i = 0;
+		for (i=0;i<frm_len;i++)
+		{
+			var ele_name = elements[i].name;
+// alert(ele_name);
+			if (reg_user.test(ele_name))
+			{
+				ele_val	= elements[i].value;
+				var index = ele_name.split("#;#");
+				index	= index[1];
+				if (ele_val == '')
+				{
+					temp = 'email#;#'+index;
+					email_val =  elements[temp].value;
+					t_emp = 'fEmployment#;#' + index;
+					emp_val= elements[t_emp].value;
+					t_access='fAccess_rights#;#' + index;
+					access_val=elements[t_access].value;
+					t_pos='fPosition#;#'+index;
+					pos_val=elements[t_pos].value;
+
+
+					if (outchk == 1)
+					{
+						alert('{{cEnterMand}}');
+						elements[ele_name].focus();
+						return false;
+					}
+
+					if (email_val!='')
+					{
+						alert('{{cEnterusr}}');
+						elements[ele_name].focus();
+						return false;
+					}
+					if (emp_val!='')
+					{
+						alert('{{cEnterusr}}');
+						elements[ele_name].focus();
+						return false;
+					}
+					if(access_val!='')
+					{
+						alert('{{cEnterusr}}');
+						elements[ele_name].focus();
+						return false;
+					}
+					if(pos_val!='')
+					{
+						alert('{{cEnterusr}}');
+						elements[ele_name].focus();
+						return false;
+					}
+						
+					
+				}
+				else
+				{
+					temp = 'email#;#'+index;
+					email_val = elements[temp].value;
+					t_emp = 'fEmployment#;#' + index;
+					emp_val= elements[t_emp].value;
+					t_access='fAccess_rights#;#' + index;
+					access_val=elements[t_access].value;
+					t_pos='fPosition#;#'+index;
+					pos_val=elements[t_pos].value;
+
+
+					len=checkarr.length;
+					for (j=0;j<len;j++)
+					{
+						if (checkarr[j] == ele_val)
+						{
+							alert('{{cChosedifvals}}');
+							return false;
+						}
+					}
+					checkarr[i] = ele_val;
+
+
+					lenemail=checkarremail.length;
+
+					for (k=0;k<lenemail;k++)
+					{
+						if (checkarremail[k] == email_val)
+						{
+							alert('{{cChosedifvals}}');
+							return false;
+						}
+					}
+					checkarremail[k] = email_val;
+
+					
+					lenpos=checkarrpos.length;
+
+					for (z=0;z<lenpos;z++)
+					{
+						if (checkarrpos[z] == pos_val)
+						{
+							alert('{{cChosedifvals}}');
+							return false;
+						}
+					}
+					checkarrpos[z] = pos_val;
+									
+					if (email_val=='')
+					{
+						alert('{{cEnteremail}}');
+						elements[temp].focus();
+						return false;
+					}
+					else
+					{
+
+						var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+								var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+								var reg3 = /[a-zA-Z]/;//--- should have atleast a single alphabet
+								str = email_val;
+
+				
+						if ((str.length>0))
+						{
+							if ((!reg1.test(str)) && reg2.test(str) && (reg3.test(str))) // if syntax is valid
+							{
+			
+							   //return true;
+							}
+							else
+							{
+		
+								alert("{{cEntervalidemail}}");
+								elements[temp].focus();
+								return false;
+							}
+						}
+					
+					}
+					if (emp_val=='')
+					{
+						alert('{{cSelempt}}');
+						elements[t_emp].focus();
+						return false;
+					}
+					if (access_val=='')
+					{
+						alert('{{cSelacc}}');
+						elements[t_access].focus();
+						return false;
+					}
+					chk = 1;
+				}
+//alert(index);
+				i+=4;
+				outchk = 0;
+			}
+			else
+			{
+				ele_val	= elements[ele_name].value;
+				if ((ele_val != '') && (outchk == 0) && (ele_name!='fHelp'))
+				{
+					outchk = 1;
+				}			
+			}
+		
+		}
+
+		if (chk == 0)
+		{
+			alert('{{cSelrow}}');
+			return false;
+		}
+		
+			
+	}
+	return true;
+}
+</script>
+<form action="add_newemp.php" name="emp_frm1" method="post" onSubmit="return validate()">
+<center><h1>{{cAddnewemply}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/add_newemp.html');"></h1></center>
+<table class="table" align=center border=1>
+	<tr>
+	<{field_namestart}>
+		<td class=code>
+		{{field_name}}
+		</td>
+	<{field_nameend}>
+	</tr>
+
+	<tr>
+	<{values_namestart}>
+		<td class=code>
+				<input type="text" name="{{field_name}}" value="">
+		</td><{tobe_replaced}>
+		<td class=code>
+			<select name="{{column_name}}#;#{{id}}">
+				<option class=code value="">{{cSelect}}</option>
+				<{inner_loopstart}>
+				<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+				<{inner_loopend}>
+			</select>
+		</td><{tobe_replaced}>
+	<{values_nameend}>
+	</tr>
+
+</table>
+<!--
+DO NOT SEARCH FOR THE  FIELDS IT HAS BEEN ADDED DYNAMICALLY THROUGH THE ARRAYS IN GLOBALS
+-->
+
+
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+<input type="submit" name="fSave" value="{{cSave}}">
+</center>
+</form>

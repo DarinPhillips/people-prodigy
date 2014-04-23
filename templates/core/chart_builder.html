@@ -1,0 +1,98 @@
+<form action="chart_builder.php" method="post">
+
+
+<table align=center >
+	<tr>
+		<td class=code>
+		<font face="Comic Sans MS">
+		<strong>
+			<h1><b>{{cOrganisationchartbuilder}}</b></h1>
+		</strong>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td class=code>
+	{{cStep1}}
+	</td>
+	</tr>
+	<tr>
+	<td class=code>
+{{cChartmessage}}
+	</td>
+	</tr>
+
+</table>
+
+<table align=center>
+
+<{outer_loopstart}>
+	<tr>
+		<td class=code>
+			{{cHowmanylevels}}
+		</td>
+		<td class=code>
+			<input type="text" name="fLevelCount" value="{{level_no}}">
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cDoesthehigherlevel}} 
+		</td>
+		<td class=code>
+			<input type="radio" {{yeschecked}} name="fYesorNo" value="yes">Yes
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+			<input type="radio" {{nochecked}} name="fYesorNo" value="no">No
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cWhatistitle}} 
+		</td>
+		<td class=code>
+			<input type="text" name="fTitle" value="{{chief_name}}">
+			<input type="hidden" name="fChief_id" value="{{chief_id}}">
+		</td>
+		<td class=code>
+			<input type="hidden" name="fDummyid" value="{{dummyid}}">
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cWhatarenames}} 
+		</td>
+		<td class=code>
+		</td>
+		<td class=code>
+		</td>
+	</tr>
+<{outer_loopend}>
+
+<{position_loop_start}>
+
+<tr>
+	<td class=code>
+		{{cPosition}} {{i}}
+	</td>
+	<td class=code>
+		<input type="text" name="position_name_{{id}}" value="{{position_name}}"><br>
+	</td>
+</tr>
+
+<{position_loop_end}>
+
+</table>
+
+<table align=center>
+<tr>
+	<td class=code><br>
+		<input type="submit" name="fConfirm" value="{{cConfirm}}">
+		<input type="submit" name="fReturn" value="{{cReturn}}">
+	</td>
+</tr>
+</table>
+</form>

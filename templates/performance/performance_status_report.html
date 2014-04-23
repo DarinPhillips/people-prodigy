@@ -1,0 +1,93 @@
+<script language='Javascript'>
+function download()
+{
+	frm = document.status;
+	frm.action='download_status_report.php';
+	frm.submit();
+}
+
+</script>
+<center>
+<h1>
+{{cPerformancestatusreport}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_status_report.html');">
+</h1>
+</center>
+<table class=code >
+<tr>
+	<td><input type=text name=fSelf value='{{selfname}}' readonly ></td>
+	<td>{{cSobjective}}</td>
+</tr>
+</table>
+<form name=status action="performance_status_report.php" method=post>
+<{main_loopstart}>
+<table border=1>
+<tr>
+<td>
+<!--main-->
+<font class=code> <{sno}>.</font>
+<table class=code>
+<tr>
+	<td><textarea name=fObjective_<{sl_id}> readonly cols=30><{objective}></textarea></td>
+</tr>
+</table>
+<table class=code>
+<tr>
+	<td>{{cCommitment}}<input type=text name=fCommit_<{sl_id}> value='<{committed}>' readonly size=5>
+	<td>{{cAccomplished}}<input type=text name=fAccomplish_<{sl_id}> value='<{accomplish}>' readonly size=5>
+	<td>{{cPercentageyrtodate}}<input type=text name=fPercentage_<{sl_id}> value='<{fulfilled}>' readonly size=5>
+</tr>
+</table>
+<table class=code>
+<tr>
+	<td><input type=text name=fSelf value='{{selfname}}' readonly>{{cDirectreportsaccom}}</td>
+</table>
+<{show_ifgraph_start}>
+<table class=code>
+<tr>
+		<td><img src="status_report.php?fromdate=<{fromdate}>&todate=<{todate}>&fulfilled_array=<{mg_fulfill}>&date_array=<{mg_date}>&ratername=<{rname}>&avgval=<{avg_rater}>"></td>
+		<!--<td><a href="status_report1.php?fromdate=<{fromdate}>&todate=<{todate}>&fulfilled_array=<{mg_fulfill}>&date_array=<{mg_date}>&ratername=<{rname}>&avgval=<{avg_rater}>">check</a></td>-->
+</tr>
+</table>
+<{show_ifgraph_end}>
+
+<table class=code>
+<{alluser_loopstart}>
+<tr>
+	<td><a href="performance_summary1.php?uid=<{uid}>"><{username}></a></td><td>{{cCommitment}}<input type=text name=fDcommit_<{sl_id}> value='<{rcommitted}>' readonly size=5>
+		<a href="performance_summary1.php?uid=<{uid}>">{{cAccomplished}}</a><input type=text name=fDAccomplish_<{sl_id}> value='<{raccomplish}>' readonly size=5>
+				{{cPercentageyrtodate}}<input type=text name=fDpercentage_<{sl_id}> value='<{rfulfilled}>' readonly size=5>
+	</td>
+</tr>
+<{alluser_loopend}>	
+</table>	
+	
+<table class=code>
+<{show_ifnotgraph_start}>
+<tr>
+<td>
+	<input type=checkbox name=fGraph_<{sl_id}> onclick="document.status.action='performance_status_report.php';document.status.submit();">{{cViewstatusgraph}}
+</td>
+</tr>
+<{show_ifnotgraph_end}>
+<{show_ifgraph_start}>
+<tr>
+<td>
+<input type=checkbox name=fGraphnr_<{sl_id}> onclick="document.status.action='performance_status_report.php';document.status.submit();">{{cNormalview}}
+</td>
+</tr>
+<{show_ifgraph_end}>
+</table>
+<!--main-->
+<tr>
+<td>
+</table>
+<br>
+<{main_loopend}>
+
+<table class=code align=center>
+<tr>
+	<td><input type=button name=save value='{{cSave}}' onclick="download();" ></td>
+</tr>
+</table>
+</form>

@@ -1,0 +1,13 @@
+<form action="addrating.php" method=post>
+<table align=center>
+<{rating_loopstart}>
+<tr>
+	<td>{{cRating}}(<{langname}>)</td><td><textarea name=fRating_<{lid}> cols=25></textarea></td>
+</tr>
+<{rating_loopend}>
+<tr>
+	<td>{{cRatingval}}</td><td><input type=text name=fRatingval size=5></td>
+</tr>
+</table>
+<center><input type=submit name=add value='{{cAddrate}}'></center>
+</form>

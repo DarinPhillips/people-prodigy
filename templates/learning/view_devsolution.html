@@ -1,0 +1,120 @@
+<script language="javascript">
+
+function validateform1(sorry)
+{
+
+	with (document.learning)
+	{
+		len = elements.length;
+//alert(len);
+			var title_reg = /title_/i;
+			var desc_reg  = /description_/i;
+			var url_reg   = /url_/i;
+
+		var i=0
+
+k=1;
+			for (j=1;j<=3;j++)
+			{
+			temp = 'hidenib_'
+				temp += j;
+//alert(temp);
+				inloop = elements[temp].value*3*text_num.value;
+//alert(inloop);
+				chk = 1;
+				for (;k<=inloop;)
+				{
+					
+				ele_nam	= elements[i].name;
+//alert(ele_nam);
+				if ((title_reg.test(ele_nam)) ||(desc_reg.test(ele_nam))||(url_reg.test(ele_nam)))
+				{
+//alert('in');
+					if (elements[ele_nam].value=='')
+					{
+						chk = 0;
+					}
+					k++;
+				}
+				i++;
+				}
+				if (chk == 1)
+				{
+					//alert('Correct');
+					submit_form(window.document.learning);
+//alert(elements.length);
+//submit();
+
+					return false;
+				}
+
+			}
+			alert(sorry);
+			return false;
+			
+	}
+
+document.learning.submit();
+
+}
+
+function submit_form(form1)
+{
+	
+	form1.action=form1.action+'?submit1=1';
+	//alert(form1.value);
+	form1.submit();
+
+}
+</script>
+<center><h1><input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/dev_solution.html');"></h1></center>
+
+<input type=hidden name=text_num value="{{nooftext}}">
+
+<br>
+<br>
+
+<!--{{cAdd}}
+<br>{{cSelectSolution}}<br>-->
+
+<{solution_loopstart}>
+
+<{sol_names}> {{cIn}} <b><{skill_name}></b>
+
+	<{ways1_loopstart}>
+
+	<br><{types}>
+
+
+	
+			<table>
+			<tr>
+			<td>{{cTitle}}</td>
+			<td>{{cDescription}}</td>
+
+			<td> <{Display}> </td>
+
+			</tr>
+
+	<{text_loopstart}>
+
+			<tr>
+			
+			<td><input name="title_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{title}>" readonly></td>
+			<td> <textarea name="description_<{basic_id}>_<{interbasic_id}>_<{text}>" wrap="VIRTUAL" class="dropdown" readonly><{desc}></textarea> </td>
+			<td><input name="url_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{url}>" readonly></td>
+
+			</tr>
+		
+		<{text_loopend}>
+
+		</table>
+	<{ways1_loopend}>
+
+<input type=hidden  name=hidenib_<{basic_id}> value="<{hidib_id}>" >
+
+<{solution_loopend}>
+
+
+
+

@@ -1,0 +1,37 @@
+<form action="edit_settings.php" method="post">
+
+<center>
+<h1>
+{{cEditsettings}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/edit_settings.html');">
+</h1>
+<center>
+<table class=table align=center border=0>
+<tr>
+<td class=code>
+{{cNoofflds}}
+</td>
+<td class=code>
+<input type="text" name="fCount" value="{{count}}">
+</td>
+</tr>
+
+
+
+<tr>
+<td class=code>{{cMaxtime}}</td>
+<td><input type=text name=fMaxtime value="{{time}}"></td>
+</tr>
+
+
+<tr>
+<td class=code colspan=2 align=center><input type="submit" name="fUpdate" value="{{cUpdate}}">
+</td>
+</tr>
+<tr>
+<td class=code colspan=2 align=center><br><br>
+<a href="mail_options.php"><b>{{cMailoptions}}</b></a>
+</td>
+</tr>
+</table>
+</form>

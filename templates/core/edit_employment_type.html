@@ -1,0 +1,52 @@
+	<center>
+		<h1>
+			{{cEditemployment}}
+			<input type=button name=fHelp value="{{cHelp}}" onclick="window.open('../lang/{{default}}/core/edit_employment_type.html');">
+		</h1>
+	</center>
+<table border=0 align = center>
+<form action=edit_employment_type.php action=post>
+	<tr>
+		<td class=code>
+			{{cShowfields}}
+		</td>
+	<tr>
+
+
+	<{type_loopstart}>
+<tr>
+		<td >
+		<b>	~{language}~ </b>
+		</td>
+</tr>
+
+	
+
+	<{fields_loopstart}>
+<tr>
+		<td class=code>
+			{{cField}} <{key1}> :<input type=text name="type_<{key}>_~{tid}~" value="<{value}>">
+		</td>
+</tr>
+	<{fields_loopend}>
+
+	<{type_loopend}>
+
+</table>
+<table align = center>
+<tr>
+<td>
+<input type=submit name=fEdit_type value="{{cUpdatechanges}}">
+</td>
+</tr>
+
+</table>
+<table align=center>
+<td class=code>
+<a href = "employment_type.php">{{cShowemptypestatus}}</a>
+</td>
+</table>
+</form>
+
+
+</table>

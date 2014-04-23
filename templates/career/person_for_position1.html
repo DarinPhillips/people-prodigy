@@ -1,0 +1,83 @@
+
+
+<table align=center border=1>
+	<tr>
+	<th class=code>
+	
+	{{cFindCandidateForPosition}}
+
+	</th>
+	</tr>
+</table>
+<{gapsataglance_loopstart}>
+
+	<table align=center border=1 width = 50% height=40% cellspacing=0 cellpadding=3>
+		<tr>
+			<td class=code rowspan=2 width=50>
+				<{username}>
+			</td>
+			<td class=code height=20>
+				{{cHas}}	
+			</td>
+			<td class=code height=20>
+				{{cNeeds}}
+			</td>
+			<td class=code height=20>
+				{{cExtras}}
+			</td>
+		</tr>
+
+		<tr>
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillshas_loopstart}>
+				<font color="red"><{skills_has}></font> <br>	
+	<{gapsskillshas_loopend}>
+				{{cTech}}<br>
+	<{gapsskillshastech_loopstart}>	
+		<font color="red"><{skills_has_tech}></font> <br>	
+	<{gapsskillshastech_loopend}>	
+				</td>
+
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillsneeds_loopstart}>
+				<font color="green"><{skills_needs}></font> <br>
+	<{gapsskillsneeds_loopend}>
+				{{cTech}}<br>
+	<{gapsskillsneedstech_loopstart}>	
+				<font color="green"> <{skills_needs_tech}></font>  <br>	
+	<{gapsskillsneedstech_loopend}>
+				</td>
+
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillsextras_loopstart}>
+				<font color="yellow"><{skills_extras}></font> <br>
+	<{gapsskillsextras_loopend}>
+				{{cTech}}<br>
+	<{gapsskillstechextras_loopstart}>	
+				<font color="yellow"><{skills_extra_tech}></font> <br>
+	<{gapsskillstechextras_loopend}>	
+				</td>
+
+
+		</tr>
+
+
+	</table><br>
+
+<{gapsataglance_loopend}>
+<table align=center cellspacing=0>
+	<tr>
+		<td class=code>
+			<input type=button name=fBack value=" {{cBack}} " onClick="window.history.back()";>
+	
+			<input type=button name=fReturn value="{{cApprres_returnback}}" onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+</table>
+</form>

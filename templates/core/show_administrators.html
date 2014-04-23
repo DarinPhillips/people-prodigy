@@ -1,0 +1,108 @@
+<form action="show_administrators.php" action=post>
+<center>
+<h1>
+{{cAssignadmin}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/show_administrators.html');">
+</h1>
+</center>
+<table>
+
+
+<th>
+{{cAdministrator}}
+</th>
+<th>
+{{cLevel}}
+</th>
+<th>
+{{cLocation}}
+</th>
+<th>
+{{cPosition}}
+</th>
+<th>
+{{cFamilyname}}
+</th>
+<th>
+{{cBoss}}
+</th>
+<th>
+{{cEmploymenttype}}
+</th>
+{{user_loopstart}}
+
+<tr>
+<td class=code>
+<{username}>
+</td>
+
+
+
+<td class=code>
+<select name="fLevel" multiple size=1>
+
+<{level_loopstart}>
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+<{level_loopend}>
+</select>
+</td>
+<td class=code>
+<select name="fLocation" multiple size=1>
+
+<{location_loopstart}>
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+<{location_loopend}>
+</select>
+</td>
+
+
+<td class=code>
+<select name="fPosition" multiple size=1 >
+
+<{position_loopstart}>
+<option <{selected}> class=code value="<{pos_id}>"><{position_name}></option>
+<{position_loopend}>
+</select>
+</td>
+
+
+<td class=code>
+<select name="fFamily" multiple size=1>
+
+<{family_loopstart}>
+<option <{selected}> class=code value="<{family_id}>"><{family_name}></option>
+<{family_loopend}>
+</select>
+</td>
+
+<td class=code>
+<select name="fBoss" multiple size=1>
+
+<{boss_loopstart}>
+<option <{selected}> class=code value="<{user_id}>"><{username}></option>
+<{boss_loopend}>
+</select>
+</td>
+
+<td class=code>
+<select name="fEmployment" multiple size=1>
+
+<{employment_loopstart}>
+<option <{selected}> class=code value="<{id}>"><{type}></option>
+<{employment_loopend}>
+</select>
+</td>
+<td class=code>
+<a href="set_admins.php?user_id=<{user_id}> ">{{cEdit}}</a>
+</td>
+<td class=code>
+<a href="set_admins.php?user_id=<{user_id}> ">{{cDelete}}</a>
+</td>
+</tr>
+{{user_loopend}}
+</table>
+<center>
+<input type="button" naem="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fAddnewAdminsitrator" value="{{cAddNewAdministrator}}">
+</center>
+</form>

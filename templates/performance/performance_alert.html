@@ -1,0 +1,78 @@
+<center>
+<h1>
+{{cAlert}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_alert.html');">
+</h1>
+<center>
+<{edit_settings_start}>
+<!--planapproval_start-->
+<table border=1 align=center>
+
+	<tr>
+		<td class=code><b>{{cPlanApproval}}</td>
+	</tr>
+	<{record_loopstart}>
+	<tr> 
+	<td class =code><a href="approveplan.php?u_id=<{userid}>"><{uname}></a> {{cPeralertmessage}}</td>
+	</tr>
+	<{record_loopend}>
+</table>
+<!--planapproval_end-->
+<{edit_settings_end}>
+
+
+<!--rejectplan_start-->
+<br>
+<table border=1 align=center>
+	<tr>
+		<td class=code><b>{{cPlanReject}}</td>
+	</tr>
+	<{rejected_loopstart}>
+	<td class=code><a href="plan1_input.php?user_id=<{uid}>"><{uname}></a> {{cRejectyourplan}}</td>
+	<{rejected_loopend}>
+</table>
+<!--rejectplan_end-->
+
+<!--objectiveapproval_start-->
+<br>
+<table border=1 align=center>
+	<tr>
+		<td class=code><b>{{cPlanobjective}}</td>
+	</tr>
+	<{objective_loopstart}>
+	<tr>
+	<td class=code><a href="approve_objective.php?uid=<{userid}>"><{uname}></a> {{cPerobjApproval}}</td>
+	</tr>
+	<{objective_loopend}>
+</table>
+<!--objectiveapproval_end-->
+<!--performance_verificationstart-->
+<br>
+<table border=1 align=center>
+	<tr>
+		<td class=code><b>{{cPerformanceverification}}</td>
+	</tr>
+<!--verification_start-->
+<{verification_loopstart}>
+	<tr>
+		<td class=code><a href="performance_verification.php?uid=<{uid}>"><{vname}></a> {{PerverApproval}}</td>
+	</tr>
+<{verification_loopend}>
+<!--verification_end-->
+</table>
+<!--performance_verificationend-->
+
+<!--rejected_objective_start-->
+<br>
+<table border=1 align=center>
+	<tr>
+		<td class=code><b>{{cRejectedobjective}}</td>
+	</tr>
+
+	<tr>
+	<td class=code><a href="userplan2_input.php?emp_id={{rej_userid}}">{{rej_uname}}</a>{{rej_mess}}</td>
+	</tr>
+
+</table>
+<!--rejected_objective_end-->
+

@@ -1,0 +1,95 @@
+	<script language="JavaScript">
+
+		function validate(form1)
+			{
+
+				if(form1.fPassword.value=="")
+				{
+					alert("{{cEnterpass}}");
+					form1.fPassword.focus();
+					return false;
+				}
+
+
+				if(form1.fEmail.value=="")
+				{
+				alert ("{{cEnteremail}}");
+				return false;
+				}
+
+				var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+				var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+				var reg3 = /[a-zA-Z]/;//--- should have atleast a single alphabet
+				str = form1.fEmail.value;
+
+				
+		if ((str.length>0))
+		{
+		if ((!reg1.test(str)) && reg2.test(str) && (reg3.test(str))) // if syntax is valid
+		{
+			
+		   //return true;
+		}
+		else
+		{
+		
+			alert("{{cEntervalidemail}}");
+			form1.fEmail.focus();
+			return false;
+		}
+		}
+			
+			
+			return true;
+			}
+		
+		
+	</script>
+
+<form action="account_settings.php" name="frm2" method="post" onSubmit="return validate(frm2);">
+<table class=table align=center>
+<tr>
+<td class=code>
+{{cFirstname}}</td>
+<td class=code>
+<input type="text" name="fFirstname" value="{{first_name}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cLastname}}</td>
+<td class=code>
+<input type="text" name="fLastname" value="{{last_name}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cUsername}}</td>
+<td class=code>
+{{username}}
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cPassword}}</td>
+<td class=code>
+<input type="password" name="fPassword" value="{{password}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cSetadmin_email}}</td>
+<td class=code>
+<input type="text" name="fEmail" value="{{email}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+
+</td>
+<td class=code>
+<input type="submit" name="fUpdate" value="{{cUpdate}}">
+</td>
+</tr>
+</table>
+</form>

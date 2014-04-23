@@ -1,0 +1,202 @@
+<form action="personal_info.php" method="post">
+<table class=table align=center>
+<{changeable_textstart}>
+<tr>
+<td class=code>
+{{nametodis}}
+</td>
+<td class=code>
+<input type="text" readonly name="{{field}}" value="{{value}}">
+</td>
+<td class=code>
+<input type="text" name="{{field}}#;#change" value="{{value}}">
+</td>
+</tr>
+<{changeable_textend}>
+<tr>
+<td class=code>
+Level
+</td>
+<td class=code>
+<input type="text" readonly name="fLevel" value="{{level}}">
+</td>
+<td class=code>
+<!--
+<select name=fLevelchange>
+<option class=code value="">{{cSelect}}</option>
+<{level_loopstart}>
+ <option class=code value="<{value}>"><{value}></option>
+ <{level_loopend}>
+</select>
+-->
+
+</td>
+</tr>
+<tr>
+<td class=code>
+Location
+</td>
+<td class=code>
+<input type="fLocation"  readonly value="{{location}}">
+</td>
+<td class=code>
+<select name=fLocationchange>
+	<option class=code value="">{{cSelect}}</option>
+	<{Location_loopstart}>
+	<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+	<{Location_loopend}>
+	</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+Position
+</td>
+<td class=code>
+<input type="text"  readonly name="fPosition" value="{{position}}">
+</td>
+<td class=code>
+<!--
+<input type="text" name="fPositionchange">
+-->
+<select name="fPositionchange">
+<option value="">{{cSelect}}</option>
+<{position_loopstart}>	
+<option <{selected}> value="<{key}>"><{value}></option>
+<{position_loopend}>
+</select>
+
+</td>
+</tr>
+<tr>
+<td class=code>
+Boss
+</td>
+<td class=code>
+<input type="text"  readonly name="fBoss" value="{{bossname}}">
+</td>
+<td class=code>
+<!--
+<input type="text" name="fBosschange">
+-->
+</td>
+</tr>
+<tr>
+<td class=code>
+Employment Status
+</td>
+<td class=code>
+<input type="text"  readonly name="fEmployment" value="{{employment}}">
+</td>
+<td class=code>
+<select name="fEmploymentchange">
+<option class=code value="">{{cSelect}}</option>
+<{employement_loopstart}>
+<option <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{employment_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+EEO Status
+</td>
+<td class=code>
+<select readonly multiple name="fEEOStatus[]">
+<{eeo_loopstart}>
+<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{eeo_loopend}>
+</select>
+</td>
+<td>
+<select  multiple name="fEEOStatuschange[]">
+<{alleeo_loopstart}>
+<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{alleeo_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+Office Phone
+</td>
+<td class=code>
+<input type="text"  readonly name="fOffPhone" value="{{Offphone}}">
+</td>
+<td class=code>
+<input type="text" name="fOffPhonechange">
+</td>
+</tr>
+<tr>
+<td class=code>
+Cell Phone
+</td>
+<td class=code>
+<input type="text"  readonly name="fCellPhone" value="{{cellphone}}">
+</td>
+<td class=code>
+<input type="text" name="fCellPhonechange">
+</td>
+</tr>
+<tr>
+<td class=code>
+Pager
+</td>
+<td>
+<input type="text"  readonly name="fPager" value="{{pager}}">
+</td>
+<td class=code>
+<input type="text" name="fPagerchange">
+</td>
+</tr>
+<tr>
+<td class=code>
+Fax
+</td>
+<td class=code>
+<input type="text"  readonly name="fFax" value="{{fax}}">
+</td>
+<td class=code>
+<input type="text" name="fFaxchange">
+</td>
+</tr>
+<tr>
+<td class=code>
+Office Mailing Address
+</td>
+<td>
+<textarea  readonly name="fMailAddress">{{mailaddress}}</textarea>
+</td>
+<td class=code>
+<textarea name="fMailAddresschange"></textarea>
+</td>
+</tr>
+<tr>
+<td class=code>
+Office Physical Address
+</td>
+<td>
+<textarea  readonly name="fPhysicalAddress">{{physicaladdress}}</textarea>
+</td>
+<td>
+<textarea name="fPhisicalAddresschange"></textarea>
+</td>
+</tr>
+<tr>
+<td class=code>
+Password
+</td>
+<td>
+<input type="text"  readonly name="fPassword" value="{{password}}">
+</td>
+<td class=code>
+<input type="text" name="fPasswordchange">
+</td>
+</tr>
+</table>
+
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+<input type="submit" name="fSubmit" value="{{cSubmitRequest}}">
+</center>
+</form>

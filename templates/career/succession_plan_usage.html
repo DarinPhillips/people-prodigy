@@ -1,0 +1,45 @@
+<center><h1>
+{{cSuccessionPlanUsage}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/succession_plan_usage.html');">
+<h1><center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+	<b>{{cBossName}}</b>
+	</td>
+	<td class=code>
+	<b>{{cFirstDate}}</b>
+	</td>
+	<td class=code>
+	<b>{{cLastDate}}</b>
+	</td>
+	<td class=code>
+	<b>{{cBothIandIIdesignees}}</b>
+	</td>
+	
+	
+</tr>
+<{boss_loopstart}>
+<tr>
+	<td class=code>
+
+	<{boss_name}>
+	</td>
+	<td class=code>
+		<{date1}>&nbsp;
+	</td>
+	<td class=code>
+		<{date2}>&nbsp;
+	</td>
+	<td class=code>
+	<{per}>&nbsp;
+	</td>
+</tr>
+<{boss_loopend}>
+<tr>
+	<td class=code align=center colspan=4>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+
+</table>

@@ -1,0 +1,193 @@
+<script language=Javascript>
+function validateform()
+{
+	with (document.form1)
+	{
+		
+		spc_reg	= /\S/;
+		
+		if(!spc_reg.test(fTestname.value) || (fTestname.value == ''))
+		{
+			alert('{{cEntervalidtestname}}');
+			return false;
+		}
+		if(fTesttype.value == '')
+		{
+			alert('{{cEntertesttype}}');
+			return false;
+		}
+		
+		reg = /\d/;
+		
+		if ((fQuestion.value == '') || (!reg.test(fQuestion.value)))
+		{
+			alert('{{cEntervalidnum}}');
+			return false;
+		}
+	}
+}
+function checkmode(nam)
+{
+	//alert(nam);
+	
+	with (document.form1)
+	{
+		if(mode.value == 'alert')
+		{
+			if (!nam)
+			{
+			alert('{{cYouarenotallowed}}'); 
+			return false;
+			}
+		}
+		//fQuestion.focus;
+		//return false;
+	}
+	
+}
+
+</script>
+
+<table align=right border=0>
+<input type=hidden name=mode value={{mode}} >
+<tr>
+<td class=code align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/test_builder.html');">
+</td>
+</tr>
+</table>
+<br>	
+	<br><br>
+
+
+<{ismodealert_start}>
+
+<table class=table align=center >
+
+<form name=form3 action="test_builder_edit.php" method=post>
+<tr>
+	<td class=code>
+		{{cExistingtest}}:
+	</td>
+	<td class=code>
+		<select name=test_id>
+			<option value='0' > {{cSelecttest}}</option>
+		<{unapproved_loopstart}>
+			<option value='<{key}>'> <{value}> </option>
+		<{unapproved_loopend}>
+	</td>    </select>
+<td class=code>
+<input type=submit name=fChoose_unapptest value = "{{cEdittest}}">
+</td>
+<td class=code>
+</td>
+</tr>
+</form>
+</table><br><br>
+<hr></hr>
+
+
+<table class=table align=center >
+  <form name=form2 action="test_builder_edit.php" method=post>
+
+
+
+<br>
+<table class=table align=center >
+<tr>
+	<td class=code>
+		{{cIncompletetests}}:
+	</td>
+	<td class=code>
+		<select name=test_id >
+				<option value='0' > {{cSelecttest}} </option>
+	<{test_loopstart}>
+			<option value='<{key}>'<{sel}> > <{value}> </option>
+	<{test_loopend}>
+	
+	</td>	</select>
+</tr>
+<tr>
+<td colspan=2><br>
+</td>
+</tr>
+<tr>
+<td class=code>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type=submit name=fChoose_test value = "{{cChoosetest}}">
+</td>
+<td class=code>
+<input type=submit name=fDelete_test value = "{{cDeletetest}}">
+</td>
+
+</tr>
+</form>
+
+
+
+</table>
+ 
+<br><br>
+<hr></hr>
+<{ismodealert_end}>
+
+
+<{checkmode_loopstart}>
+
+
+
+
+
+
+	<table class=table align=center >
+		<tr>
+			<td colspan=2 class=code align=center><b>{{cAddnewtest}}<br><br></b>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan=2  align=center class=code>	{{cWhichtest_to_do}}<br><br>
+			</td>
+		</tr>
+
+	<form name=form1 action="test_builder.php" method=post onSubmit = "return validateform()";>	
+	<tr>
+	<td class=code>
+	{{cTestname}}: 
+	</td>
+	<td class=code>
+		<input type=text name=fTestname value="{{fTestname}}"></td>
+	</tr>
+	<tr>
+	<td align=top class=code>
+	{{cThistestfor}}
+	</td>
+	<td class=code>
+		<input type=radio {{tchecked}} name="fTesttype" value="t" onFocusin = "if (!checkmode(this.checked)) this.blur();"> {{cTechnicalskills}}
+	<br>	<input type=radio {{ichecked}} name="fTesttype" value="i" onFocusin = "if (!checkmode(this.checked)) this.blur();"> {{cInterskills}}
+
+	</td>
+	</tr>
+	<tr>
+	<td class=code>
+	{{cTot_questions}}
+	</td>
+	<td >
+	<input type=text name=fQuestion value="{{fQuestion}}">
+	</td>
+	</tr>
+
+	<tr>
+	<td align=center colspan=3><br>
+
+	<input type=submit name=fNext value={{cNext}}>
+	</td>
+	</tr>
+	</table>
+	<input type="hidden" name="group_id" value="{{group_id}}">
+	<input type=hidden name='test_skill_id' value="{{test_skill_id}}">
+	</form>
+
+<{checkmode_loopend}>
+
+</body>

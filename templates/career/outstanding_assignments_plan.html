@@ -1,0 +1,31 @@
+<h1>
+<center>
+{{cViewOutstanding}}{{cCSuccessionPlan}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/outstanding_assignments_plan.html');">
+</h1></center>
+<table aign=center border=1 align=center>
+<tr>
+	<td class=code>
+	<b>{{cEmployeeNamee}}</b>
+	</td>
+	<td class=code>
+	<b>{{cPositionAssigned}}</b>
+	</td>
+	<td class=code>
+	<b>{{cDateSkillPositionAssigned}}</b>
+	</td>
+</tr>
+<{row_loopstart}>
+<tr <{highlight}>>
+	<td class=code >
+	<a href="mailto:<{email}>"><{username}></a>
+	</td>
+	<td class=code>
+	<{position_name}>
+	</td>
+	<td class=code >
+	<{date}>
+	</td>
+</tr>
+<{row_loopend}>
+</table>

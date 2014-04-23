@@ -1,0 +1,37 @@
+<form name=fam_withoutmodel_frm action=fam_without_model.php method=post>
+<table align=center border=1 cellspacing=0 cellpadding=4>
+<tr>
+	<th class=code>
+		{{cFam_withouthighperformmodel}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/pos_without_model.html');">	
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		<b>{{cFamilies}} :</b>
+	</td>
+</tr>
+<{showfamilies_start}>
+<{displayfamnames_loopstart}>
+<tr>
+	<td class=code>
+		<a href=position_model.php?f_id=<{fam_id}> > <{fam_name}></a>
+	</td>
+</tr>
+<{displayfamnames_loopend}>
+<{showfamilies_end}>
+<{shownull_start}>
+<tr>
+	<td class=code>
+		{{cNofamwithoutmodels}}
+	</td>
+</tr>
+<{shownull_end}>
+<tr>
+	<td class=code align=center>
+		<input type=button name=fBack value={{cBack}} onClick = "window.history.back();">
+		<input type=button name=fPrint value={{cPrint}} onClick = "window.print();">
+	</td>
+</tr>
+</table>
+</form>

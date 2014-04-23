@@ -1,0 +1,25 @@
+<form action="qualification.php" method=post>
+<center>
+<h1>
+{{cQualification}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/qualification.html');">
+</h1>
+<center>
+<br>
+<center><a href="addqualification.php">{{cAddQualification}}</a></center>
+<br>
+<table align=center border=1 class=code>
+<tr>
+	<td><b>{{cQualification}}</td>
+	<td><b>{{cEdit}}</td>
+	<td><b>{{cDelete}}</td>
+</tr>
+<{qualification_loopstart}>
+<tr>
+	<td><{fQualification}></td>
+	<td><a href="editqualification.php?qid=<{qid}>">{{cEdit}}</a></td>
+	<td><a href="qualification.php?qid=<{qid}>" onClick="return (confirm('{{cReally}}'))">{{cDelete}}</a></td>
+</tr>
+<{qualification_loopend}>
+</table>
+</form>	

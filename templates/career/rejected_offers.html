@@ -1,0 +1,47 @@
+<table align=center border=1>
+<tr>
+<td class=code align=center>
+<b>{{cRejectedoffer_inter}}</b>
+</td>
+</tr>
+
+
+<{interpersonalrej_loopstart}>
+	<tr>
+		<td class=code>
+			<{alertrejected_start}>
+
+				<a href="replace_rejectedappraisal.php?rejected_userid=<{rejected_userid}>&rater_id_toreplace=<{rater_id}>&was_in_group=<{was_in_group}>">{{cAlertrejectedenter}}</a> {{cAlertrejected_newperson}} <b><{username}></b>{{cAlertrejected_rejmessage}}<br><br>
+			
+			<{alertrejected_end}>
+		</td>
+	</tr>
+<{interpersonalrej_loopend}>
+
+
+<tr>
+<td class=code align=center>
+<b>{{cRejectedoffer_tech}}</b>
+</td>
+</tr>
+<{technicalrej_loopstart}>
+	<tr>
+		<td class=code>
+			<{alertrejectedtech_start}>
+
+				<a href="replace_rej_tech.php?rejected_userid=<{rejected_userid}>">{{cAlertrejectedenter}} </a> {{cAlertrejected_newperson}} <b><{username}></b> {{cAlertrejected_rejmessage}}<br><br>
+			
+			<{alertrejectedtech_end}>
+		</td>
+	</tr>
+<{technicalrej_loopend}>
+
+</table>
+<table align=left>
+<tr>
+
+<td align=right>
+<input type=button name=fBack value='{{cRejectedoffer_back}}' onClick="window.history.back()";>
+</tr>
+</table>
+<br><br><br>

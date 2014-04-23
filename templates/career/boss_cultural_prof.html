@@ -1,0 +1,30 @@
+<center>
+<h3>{{cViewCulturalProfile}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/cultural_profile.html');">
+</h3>
+</center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+	{{cInterpersonalskills}}
+	</td>
+	<td class=code>
+	{{cPerReports}}
+	</td>
+</tr>
+<{skill_loopstart}>
+<tr>
+	<td class=code>
+	<{skill_name}>
+	</td>
+	<td class=code>
+	<{percent}>
+	</td>
+</tr>
+<{skill_loopend}>
+<tr>
+	<td class=code colspan=2 align=center>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</table>

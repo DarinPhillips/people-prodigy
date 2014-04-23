@@ -1,0 +1,39 @@
+<script language='javascript'>
+function check_null(message)
+{
+	flag=0;
+	tot = frmname.length;
+	for(i=0;i<tot;i++)
+	{
+		if(frmname.elements[i].value=="")
+		{
+			flag=1;
+		}
+	}
+	if(flag==1)
+	{
+		alert(message);
+		return false;
+	}
+	return true;
+}
+</script>
+<form name=frmname action="add_priority.php" method=post onsubmit="return check_null('{{cQualmessage}}');">
+<center>
+<h1>
+{{cAddpriority}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/add_priority.html');">
+</h1>
+<center>
+<table align=center class=code>
+<{priority_loopstart}>
+<tr>
+	<td>{{cPriority}}(<{langname}>)</td><td><textarea name=fPriority_<{lid}> cols=25></textarea></td>
+</tr>
+<{priority_loopend}>
+<tr>
+<td>{{cPriorityval}}</td>
+<td><input type=text name=fPval size=5></td>
+</table>
+<center><input type=submit name=add value='{{cAddrate}}'></center>
+</fo

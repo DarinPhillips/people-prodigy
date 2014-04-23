@@ -1,0 +1,242 @@
+<script src="../jscripts/calendar2.js"></script>
+<html>
+<center><h1>{{cLearningPlan}}<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/1/learning/learning_plan.html');"></h1></center>
+
+<script language="JavaScript">
+
+function validate(plan)
+{
+	with (plan)
+	{
+		var len=elements.length;
+		var i;
+		for(i=0;i<len;i++)
+		{
+			var ele_name  = elements[i].name;
+			var ele_value = elements[ele_name].value;
+		
+			var act_reg = /fActstart/i;
+			var name_reg = /fName/i;
+			var email_reg = /fEmail/i;
+			var freq_reg = /Ffrequency/i;
+			var feed_reg = /fFeedstart/i;
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+			var reg3 = /[a-zA-Z]/;//--- should have atleast a single alphabet
+		
+		
+			if (act_reg.test(ele_name) && (ele_value == "" ))
+			{
+				alert("Please select the date");
+				elements[ele_name].focus();
+				return false;
+			}
+			if (name_reg.test(ele_name) && (ele_value == "" ))
+			{
+				alert("Please enter the name");
+				elements[ele_name].focus();
+				return false;	
+			}
+			if (email_reg.test(ele_name))
+			{
+				if(ele_value == "" )
+				{
+					alert("Please enter the email");
+					elements[ele_name].focus();
+					return false;
+				}
+				else
+				{
+					if ((!reg1.test(ele_value)) && reg2.test(ele_value) && (reg3.test(ele_value))) // if syntax is valid
+					{
+						// do nothing		 
+					}
+					else
+					{
+						alert("Please enter valid Email ID" );
+						elements[ele_name].focus();
+						return false;
+					}
+
+				}		
+			}
+	
+			if (freq_reg.test(ele_name) && (ele_value == "" ))
+			{
+				alert("Please select the frequency");
+				elements[ele_name].focus();
+				return false;		
+			}
+			if (feed_reg.test(ele_name) && (ele_value == "" ))
+			{
+				alert("Please select the feedback date");
+				elements[ele_name].focus();
+				return false;		
+			}
+		}
+
+
+
+		plan.action="plan_approval.php";
+
+		plan.method="post";
+
+		plan.submit();
+
+		//window.location.replace('plan_approval.php');
+	}
+}
+
+
+</script>
+
+
+<form action="learning_plan.php" method=POST name='learning'>
+<table>
+
+
+<tr><td class=code><b>{{cSelectDates}}</b></td><tr>
+
+</table>
+
+
+<{skills_loopstart}>
+<table>
+<tr><td class=code><b>{{cSkills}}:<{skills_name}></b></td><tr>
+
+<tr><td class=code><b>{{cLearnactivities}}</b></td><td class=code><b>{{cBy}}</b></td><td class=code><b>{{cDatePicker}}</b></td></tr>
+		
+	
+<{activities_loopstart}>
+
+			<{subact_loopstart}>
+			
+<{title_loopstart}>
+	
+		
+			<tr><td class=code><{title}>	</td>
+
+<td class=code>
+<input type=text name="fActstart_<{skills}>_<{text}>" readonly size=10 value="<{act_date}>" readonly></td>
+		
+<td class=code>
+<a href="javascript:cal1_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal1_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fActstart_<{skills}>_<{text}>']);
+	 cal1_<{skills}>_<{text}>.year_scroll	=  true;
+
+</script>
+</td>
+</tr>
+			
+			<{title_loopend}>
+	
+			<{subact_loopend}>
+
+	<{activities_loopend}>	
+	</td>
+		</select>
+	
+
+		
+
+<tr><b><td class=code><b>{{cApplication}}</td></tr>
+
+<{application_loopstart}>
+			
+		<{apptitle_loopstart}>
+		
+	<tr><td class=code>	<{title}>
+		
+	
+
+</td>		
+</select>
+<td class=code>
+<input type=text name="fActstart_<{skills}>_<{text}>" size=10 readonly value="<{app_sdate}>" ></td>
+		
+<td class=code>
+
+<a href="javascript:cal2_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+	
+<script language='javascript'>
+
+	var cal2_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fActstart_<{skills}>_<{text}>']);
+	cal2_<{skills}>_<{text}>.year_scroll	=  true;
+
+</script>
+
+	</tr> <{apptitle_loopend}> 
+<{application_loopend}>
+<tr>
+<td class=code><a href="feedback.php?skill_id=<{skills}>"target="_blank">{{cBrowsefeedback}}</a></td>
+</tr>	
+<tr>
+<td class=code><b>{{cFeedback}}<b></td></tr>
+<tr>
+<td class=code><b>{{cName}}</b></td>
+<td class= code><b>{{cEmailfield}}</b></td>
+<td class=code><b>{{cUntill}}</b></td>
+<td class=code><b>{{cDatePicker}}</b></td>
+<td class=code><b>{{cFrequency}}</b></td>
+</tr>
+
+
+<{text_loopstart}>
+<tr>
+<td class=code><input type=text readonly name="fName_<{skills}>_<{text}>" value="<{title}>">
+<td class=code><input type=text readonly name="fEmail_<{skills}>_<{text}>" value="<{email}>"></td>
+
+
+<td class=code>
+<input type=text name="fFeedstart_<{skills}>_<{text}>" readonly size=10 value="<{sdate}>" ></td>
+		
+<td class=code>
+<a href="javascript:cal_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fFeedstart_<{skills}>_<{text}>']);
+	cal_<{skills}>_<{text}>.year_scroll	=  true;
+
+</script>
+
+</td>
+	
+<td class=code>
+
+	<select name=Ffrequency_<{skills}>_<{text}>>
+		<{freq_loopstart}>
+		<option value="<{index}>" <{freqselected}> ><{freq}></option>
+		<{freq_loopend}>
+	</td>		
+</select>
+
+</td>
+<{text_loopend}>
+</tr>
+
+
+
+
+<{skills_loopend}>
+<tr>
+<td class=code><input type=button  name=back value="{{cBack}}" onclick="window.location.replace('front_panel.php');" ></td>
+
+<td class=code><input type=submit name=save  value="{{cSave}}"></td>
+
+<td class=code><input type=button name=next value={{cNext}} onclick="return validate(document.learning);">
+
+
+
+
+
+</td>
+
+</tr>
+</table>
+</table>
+</form>
+<html>

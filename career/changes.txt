@@ -1,0 +1,13 @@
+nov 24th:
+
+1.fields added in assign_solution_builder:
+
+	status
+
+	type
+
+	pstatus
+
+	plan approved date
+
+	plan updated date

@@ -1,0 +1,245 @@
+<script language="javascript">
+
+function download()
+{
+	
+	frm = document.learning;
+	frm.action='download_progress_summary.php';
+	frm.submit();
+	frm.action='learning_status_report.php';
+}
+
+</script>
+<left>
+	<h4>
+		<input align='left' readonly  type='text' name='username' value='{{username}}'>{{cS}}   {{cLearningProgressSummary}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/feedback_request_form.html');">
+	</h4>
+</left>
+
+<form action="learning_status_report.php" name='learning' method=post>
+<input type=hidden name=dr_id value='{{dr_id}}'>
+<table align=center>
+	
+	<{skill_loopstart}>
+	<table width='100%' >
+	<tr><td>
+	<table  width='100%'>
+	<tr>
+		<td class=code >
+		
+		<{skill_name}>
+	
+		</td>
+	</tr>
+<{comment_start}>
+	<tr>
+		<td class=code>
+			<table border=1  width='100%'><tr><td>
+			<table>
+			<tr>
+				<td class=code colspan=2><b>{{cRaterComments}}</b></td>				
+			</tr>
+			<{comment_loopstart}>
+			<tr>
+				<td class=code><{rater_name}> :</td>
+				<td class=code><textarea readonly cols=60 rows=3 name='fFeed_<{skills}>'><{feedback_text}></textarea><!--<input type='text' readonly name='fFeed_<{skills}>' value='<{feedback_text}>'>--></td>				
+			</tr>
+			<{comment_loopend}>
+			</table>
+			</td></tr></table>
+		</td>
+	</tr>
+<{comment_end}>
+<{nongraph_loopstart}>
+<{result_start}>
+<tr>
+	<td class=code>
+		<table border=1 width=100%>
+		<tr><td>
+		<table>
+			<tr>
+				<td class=code ><b>{{cRatersresults}}</b></td>
+			</tr>
+
+			<tr>
+				<td class=code>{{cAverage}} <input type=text name=avg_<{skill}> value='<{avg_round}>'size=5 readonly></td>
+			</tr>
+			<tr>
+			<table class=code >
+				<tr>
+					<td><b>{{cRaterName}}</b></td>
+					<td><b>{{cDate}}</b></td>
+					<td><b>{{cValue}}</b></td>
+				</tr>
+				<{ratings_loopstart}>
+				<tr>
+					<td><{rater_name}></td>
+					<td  align=center><{rated_date}></td>
+					<td  align=center><{value}></td>
+				</tr>
+				<{ratings_loopend}>
+			</table>
+			</tr>
+		</table>
+		</td></tr>
+		</table>	
+	</td>
+</tr>
+<{result_end}>
+
+<{nongraph_loopend}>
+<{graph_loopstart}>
+<{result_start}>
+	<tr>
+		<td class=code>
+			<table border=1   width='100%'><tr><td>
+			<table>
+			<tr>
+				<td class=code colspan=2><b>{{cResultsForThisSkill}}</b></td>				
+			</tr>
+			<tr>
+				<td class=code><img src = "graph_results.php?to_date=<{to_date}>&from_date=<{from_date}>&avg=<{avg_round}>"></img></td>				
+				<td class=code><img src = "graph_results1.php?last_date=<{last_date}>&from_date=<{from_date}>&usrid=<{user_id}>&skillid=<{skills}>"></img></td>
+			</tr>
+			</table>
+			</tD></tr></table>
+		</td>
+	</tr>
+<{result_end}>
+
+<{ratingsby_start}>
+	<tr>
+		<td class=code>
+			<table border=1  width='100%'><tr><td>
+			<table width='100%'>
+			<tr>
+				<td class=code colspan=2><b>{{cRatingsBy}}</b></td>				
+			</tr>
+			<tr>
+				<td class=code colspan='2' align='center'>
+					<img src = "graph_ratingsby.php?last_date=<{rated_date}>&from_date=<{approved_date}>&rater_id=<{raterid}>&skillid=<{skills}>"></img>
+				</td>
+			</tr>
+			</table>
+			</tD></tr></table>
+		</td>
+	</tr>
+<{ratingsby_end}>
+<{graph_loopend}>
+<{display_view_rating_start}>
+<tr>
+	<td class=code>
+	<table border=1 width=100%>
+	<tr><td>
+	<table class=code>
+		<tr>
+			<td><b>{{cRatings}}</td>
+		</tr>
+
+		<tr>
+		<table class=code>
+			<tr>
+				<td><b>{{cRaterName}}</b></td>
+				<td><b>{{cDate}}</b></td>
+				<td><b>{{cValue}}</b></td>
+			</tr>
+		<{user_loopstart}>
+			<tr>
+				<td><{rater_name}></td>
+				<td  align=center><{dates}></td>
+				<td  align=center><{value}></td>
+			</tr>
+		<{user_loopend}>
+		</table>	
+		</tr>
+
+	</table>		
+	</td></tr>
+	</table>
+
+</tr>
+<{display_view_rating_end}>
+<{graph_loopstart}>
+<{rating_compare_start}>
+<tr>
+	<td class=code>
+		<table border=1  width='100%'><tr><td>
+		<table width='100%'>
+		<tr>
+			<td class=code colspan=2><b>{{cRatingComparegh}}</b></td>				
+		</tr>
+		<tr>
+			<td class=code colspan='2' align='center'>
+				<img src = "rating_com_graph.php?last_date=<{rated_date1}>&from_date=<{approved_date1}>&rater_id=<{raterid1}>&skillid=<{skills}>"></img>
+			</td>
+			
+		</tr>
+		</table>
+		</td></tr></table>
+		</td>
+</tr>
+<{rating_compare_end}>
+<{graph_loopend}>
+<{compare_display_start}>
+<tr>
+	<td class=code>
+	<table border=1 width=100%>
+	<tr><td>
+	<table class=code>
+		<tr>
+			<td><b>{{cRatingsCompare}}</td>
+		</tr>
+
+		<tr>
+		<table class=code>
+			<tr>
+				<td><b>{{cRaterName}}</b></td>
+				<td><b>{{cDate}}</b></td>
+				<td><b>{{cValue}}</b></td>
+			</tr>
+		<{user_loopstart1}>
+			<tr>
+				<td><{rater_name1}></td>
+				<td  align=center><{dates1}></td>
+				<td  align=center><{value1}></td>
+			</tr>
+		<{user_loopend1}>
+		</table><br><center><b class=code>{{cVs}}</b></center><br>
+		<table class=code>
+			<tr>
+				<td><b>{{cRaterName}}</b></td>
+				<td><b>{{cDate}}</b></td>
+				<td><b>{{cValue}}</b></td>
+			</tr>
+		<{user_loopstart2}>
+			<tr>
+				<td><{rater_name2}></td>
+				<td  align=center><{dates2}></td>
+				<td  align=center><{value2}></td>
+			</tr>
+		<{user_loopend2}>
+		</table>		
+		</tr>
+	</table>		
+	</td></tr>
+	</table>
+</tr>
+<{compare_display_end}>
+
+	<tr><td></td></tr>
+	</table>
+	</td></tr>
+	</table>
+	<tr><td><br></td></tr>		
+	<{skill_loopend}>
+		<tr>
+			<td class=code align='center'>
+				<input type=button name=save value="{{cSave}}" onclick="download();">
+				<input type=submit name='next' value='{{cNext}}'>	
+			</td>
+		</tr>
+	
+</table>
+</form>

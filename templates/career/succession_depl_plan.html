@@ -1,0 +1,193 @@
+<script language=Javascript>
+function validateall()
+{
+
+	with (document.frm1)
+	{
+		reg = /\d/;
+		
+		if ((fMatch_per_pos.value == '') || (fMatch_per_pos.value == 0) || (!reg.test(fMatch_per_pos.value)))
+		{
+			alert('{{cSelectNoOfModelsToMatch}}');
+			fMatch_per_pos.focus();
+			return false;
+		}
+
+
+		if(levelhigher1.checked==false && levelsame.checked==false && levellower1.checked==false && levellower2.checked==false)
+		{
+			alert('{{cPleaseSelectLevelsOfEmployees}}');
+			levelhigher1.focus();
+			return false;
+		}
+
+		if(interest_lot.checked==false && interest_some.checked==false && interest_no.checked==false && interest_learnplan.checked==false)
+		{
+			alert('{{cPleaseIncludeEmpWithInterest}}');
+			interest_lot.focus();
+			return false;
+		}
+		
+		
+		if(empltype_1.checked==false && empltype_2.checked==false && empltype_3.checked==false && empltype_4.checked==false && empltype_5.checked==false)
+		{
+			alert('{{cPleaseEnterEmpType}}');
+			empltype_1.focus();
+			return false;
+		}
+		
+
+	}
+}
+</script>
+
+<form action=chainofcommandmodel.php method=post name=frm1 onSubmit="return validateall();">
+<table align=center cellspacing=0 border=1> 
+	<tr>
+		<td class=code align=center>
+			<B> {{cSuccessionDeploymentPlan}}</B>
+			<input type=button name=fHelp value='  {{cHelp}}  ' onClick="window.open('../lang/{{default}}/career/succession_depl_plan.html')";>	
+				
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cStep1SelectVar}} </b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cSuccessionMessage}} 
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cHowmanymatchesperpostosee}}</b>
+		<input type=text name=fMatch_per_pos size=3 value=''>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td class=code>
+		<b>{{cWhichLeveltoInclude}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=levelhigher1 >
+			{{cEmployees1levelhighertopos}} 
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=levelsame >
+			{{cEmployeessameleveltopos}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=levellower1 >
+			{{cEmployees1levellowertopos}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=levellower2 >
+			{{cEmployees2levellowertopos}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cIncludeemplwho}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=interest_lot >
+			{{cExpressedlotofinterest}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=interest_some >
+			{{cExpressedsomeinterest}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=interest_no >
+			{{cExpressednoInterest}}
+		</td>
+	</tr>
+
+
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+	<tr>
+		<td class=code>	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=interest_learnplan >
+			{{cHasposinLearning}}
+		</td>
+	</tr>
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>		
+
+
+
+	<tr>
+		<td class=code>
+		<b>{{cHighlightempwitheeo}}</b>
+		</td>
+	</tr>
+	<tr>
+		
+		<td class=code>
+			
+		<{maincategory_loopstart}>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{categoryname}>
+			<br>
+			<{subcategory_loopstart}>
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type=checkbox name=eeosubcat_<{subcat_id}> >
+				<{subcat_name}>
+			<{subcategory_loopend}>
+		<br>
+		<{maincategory_loopend}>
+		</td>
+		
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cDisplay}}:</b>
+		</td>
+		
+	</tr>
+	<tr>
+		<td class=code>
+	<{empltypes_loopstart}>
+		
+		<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=checkbox name=empltype_<{id}> > <{empltypename}>
+	<{empltypes_loopend}>
+		</td>
+		
+	</tr>
+	<tr>
+		<td class=code align=center>
+		
+		<input type=button name=fBack value = '  {{cBack}}  ' onClick="window.history.back()";>
+		<input type=submit name=fNext value = '  {{cNext}}  '>
+	
+		</td>
+	</tr>
+</table>
+</form>

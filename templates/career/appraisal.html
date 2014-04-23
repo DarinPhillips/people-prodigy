@@ -1,0 +1,320 @@
+
+<script language='javascript'>
+
+function populate_selectbox1_i(cat)
+{
+	//with (document.appr)
+	//{
+
+	mytestnamearray = new Array();
+	mytestidarray = new Array();
+
+	my360namearray = new Array();
+	my360idarray = new Array();
+
+
+	
+		<{loopstart}>
+		<{arr}>
+		<{loopend}>
+
+		<{360loopstart}>
+		<{360arr}>
+		<{360loopend}>
+
+		
+		
+		if(document.appr.test_mode_i[0].checked == true)
+		{
+			//alert('the test of inter is checked');
+			
+			mytestnamearray.length = 0;
+		
+			mytestidarray = itestid;
+			mytestnamearray = itestname;
+
+		i=0;	
+		if(mytestnamearray != '')
+		{	
+			
+			for (i = 0; i <mytestnamearray.length; i++)
+			{
+				if (mytestnamearray[i] != "")
+					cat.options[i] = new Option(mytestnamearray[i],mytestidarray[i]);
+		
+			}
+		}
+		
+		cat.options[i] = new Option('Select a Skill','');	
+		cat.length=i+1;
+
+		}
+		if(document.appr.test_mode_i[1].checked == true)
+		{
+			//alert('the 360 of inter is checked');
+			my360namearray.length = 0;
+			
+			my360idarray = itestid360;
+			my360namearray = itestname360;
+
+			
+		i=0;	
+		if(my360namearray != '')
+		{
+
+			for (i = 0; i <my360namearray.length; i++)
+			{	
+			if (my360namearray[i] != "")
+				cat.options[i] = new Option(my360namearray[i],my360idarray[i]);
+		
+			}
+		}
+//cat.options[i] = new Option('Select','');
+			cat.options[i] = new Option('Select a Skill','');
+		cat.length=i+1;
+			
+		}
+
+}
+function populate_selectbox1_t(cat)
+{
+
+	mytesttnamearray = new Array();
+	mytesttidarray = new Array();
+	
+	my360tnamearray = new Array();
+	my360tidarray = new Array();
+
+	
+		<{techtloopstart}>
+		<{arrttest}>
+		<{techtloopend}>
+
+		<{tech360loopstart}>
+		<{arrt360}>
+		<{tech360loopend}>
+
+		if(document.appr.test_mode_t[0].checked == true)
+		{
+			//alert('the test of tech is checked');
+			mytesttnamearray.length = 0;
+			
+			mytesttidarray = ttestid;
+			mytesttnamearray = ttestname;
+			
+			
+		i=0;	
+		if(mytesttnamearray != '')
+		{	
+
+			for (i = 0; i <mytesttnamearray.length; i++)
+			{
+				if (mytesttnamearray[i] != "")
+					{
+						//alert(mytesttnamearray[i]);
+					cat.options[i] = new Option(mytesttnamearray[i],mytesttidarray[i]);
+					}
+		
+			}
+		}
+			cat.options[i] = new Option('Select a Skill','');
+		cat.length=i+1;
+		
+		}	
+
+		if(document.appr.test_mode_t[1].checked == true)
+		{
+			//alert('the 360 of tech is checked');
+
+			//my360tnamearray.length = 0;
+			
+			my360tidarray = ttestid360;
+			my360tnamearray = ttestname360;
+		i=0;	
+		if(my360tnamearray != '')
+		{
+		
+			for (i = 0; i <my360tnamearray.length; i++)
+			{	
+			if (my360tnamearray[i] != "")
+				{
+					//alert(my360tnamearray[i]);
+				cat.options[i] = new Option(my360tnamearray[i],my360tidarray[i]);
+				}
+		
+			}
+		}
+			cat.options[i] = new Option('Select a Skill','');
+		cat.length=i+1;
+		
+			
+		}
+}
+
+
+
+function check_frm()
+{
+	with (document.appr)
+	{
+		
+		if(elements['user_id_all[]'].value == "0" || elements['user_id_all[]'].value == '')
+		{
+			if(bossid.value == "0")
+			{
+			alert ('{{cJavascriptnamealert}}');
+			return false;
+			}
+		}
+		if(elements['user_id_all[]'].value == "0" && bossid.value == "0") 
+		{
+			alert ('{{cJavascriptnamealert}}');
+			return false;
+		}
+		
+		reg = /\d/;
+				
+
+		if(test_mode_i[0].checked == false && test_mode_i[1].checked == false  && test_mode_t[0].checked == false && test_mode_t[1].checked == false)
+			{
+			alert ('{{cJavascripttestmode}}'); 
+			return false;
+			}
+		if(test_mode_i[0].checked == false && test_mode_i[1].checked == true)
+		{
+			if(!reg.test(raters_i.value) || (raters_i.value == ""))
+			{
+				alert('{{cJavascriptraters}}');
+				return false;
+			}
+		}
+ 
+		if(test_mode_t[0].checked == false && test_mode_t[1].checked == true)
+		{
+			if(!reg.test(raters_t.value) || (raters_t.value == ""))
+			{
+				alert('{{cJavascriptraters}}');
+				return false;
+			}
+			
+		}
+
+
+		if(elements['skills_i[]'].value == '')
+		{
+			
+			
+			alert ('{{cSelectsomeskills}}');
+			return false;
+			
+		}
+
+		if(elements['skills_t[]'].value == '')
+		{
+			
+			
+			alert ('{{cSelectsomeskills}}');
+			return false;
+			
+		}
+	
+	}
+}
+
+</script>
+
+<form action = confirm_appraisal.php method=post name=appr onSubmit="return check_frm()">
+
+<table align=center border=1 cellspacing=0 cellpadding=0>
+<tr>
+	<td class = code colspan=2 align=center>
+		<h1><b>{{cUserappraisal}}
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/appraisal.html');">
+			</b></h1>
+	</td>
+	
+
+</tr>
+<tr>
+	<td class = code>
+		{{cAppraisal_username}}
+	</td>
+	<td class=code>
+		<select name=user_id_all[] multiple >
+			<option value=0 selected>{{cAppraisal_selectuser}}</option>
+		<{user_loopstart}>
+			<option value=<{user_id}> > <{username}> </option>
+		<{user_loopend}>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td class = code>
+		{{cAppraisal_bossname}}
+	</td>
+	<td class=code>
+		<select name=bossid>
+			<option value=0 selected>{{cAppraisal_selectboss}}</option>
+		<{boss_loopstart}>
+			<option value=<{boss_id}> > <{username}> </option>
+		<{boss_loopend}>
+		</select>
+	</td>
+</tr>
+
+<tr>
+<{skilltype_loopstart}>
+
+	<td class=code>
+	<b>	 <{skill_name}> {{cAppraisal_assess}}</b>
+	</td>
+</tr>
+<tr>
+	<td class = code>
+
+		<input type=radio name="test_mode_<{type}>" value="t" onclick="document.appr.raters_<{type}>.disabled=true;raters_<{type}>.value=''; onClick=populate_selectbox1_<{type}>(document.appr.elements['skills_<{type}>[]'])"; > {{cAppraisal_test}}
+		<input type=radio name="test_mode_<{type}>" value="n" onclick="document.appr.raters_<{type}>.disabled=false; onClick=populate_selectbox1_<{type}>(document.appr.elements['skills_<{type}>[]'])";> {{cAppraisal_360}}
+	
+	</td>
+
+	<td class=code>
+		{{cAppraisal_raters}}
+
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<input type=text size=2 name='raters_<{type}>' value="" >
+	</td>
+</tr>
+<tr>
+	<td class=code >
+	{{cChooseskillstorate}}
+	</td>
+	<td class=code>
+			<select name=skills_<{type}>[] multiple>
+			<option value='0' selected> Select <{skill_name}> Test type...</option>
+
+<!--
+			<{showskills_loopstart}>
+				<option value=<{skill_id}> > <{skill_name}> </option>
+			<{showskills_loopend}>
+-->			
+		</select>	
+<br><br><br>
+	</td>
+</tr>
+
+<{skilltype_loopend}>
+
+
+<tr>
+	<td align = center colspan=2>
+
+		<input type=button class=sub name=fBack value='  {{cBack}}  ' onClick="window.location.replace('front_panel.php')";>
+	
+		<input type=submit class=sub name=fSubmit value="  {{cSubmit}}  ">
+	</td>
+</tr>
+
+</table>
+</form>

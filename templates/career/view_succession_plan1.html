@@ -1,0 +1,263 @@
+<script language="JavaScript">
+function download()
+{
+	
+	frm = window.document.download;
+	frm.action='download_succession_plan.php';
+	frm.submit();
+}
+</script>
+<form action="download_succession_plan.php" method=POST name=download>
+<input type=hidden name=fPosid value={{pid}} >
+<input type=hidden name=model_id value={{model}}>
+<table align=center border=0 cellspacing=0>
+	<tr>
+		<th class=code>
+			{{cSuccessionDeploymentPlan}}
+			<input type=button name=fHelp value='  {{cHelp}}  ' onClick = "window.open('../lang/{{default}}/career/view_succession_plan1.html');">
+		</th>
+	</tr>
+	<tr>
+		<th class=code>
+			{{cStep3DocumentActions}}
+		</th>
+	</tr>
+</table>
+
+
+<table align=center border=0 cellspacing=0>
+	<tr>
+		<th class=code>
+			{{cPosition}} : {{position_name}}
+		</th>
+		
+	</tr>
+</TABLE>
+
+<{firstdesignee_employee_start}>
+
+<table align=center border=0 cellspacing=0>
+	<tr>
+		<td class=code>
+				<b>{{firstdesignee_username}}</b> {{cIsfirstdesignee}}<b>{{position_name}}</b>.  {{cHeNeedstoimprSkills}}
+		</td>
+		
+	</tr>
+	<tr>
+		<th class=code>
+		{{cLargestGaps}}
+		</th>
+		
+	</tr>
+
+	<tr>
+		<td class=code>
+		{{notselected}}
+		<{largestgaps_loopstart}>
+					<input type=checkbox name=skills_designee1_<{largestgaps_id}> <{checkboxsel}> readonly >
+					<{largestgap_skillname}><br>
+		<{largestgaps_loopend}>
+		<{largestgapstech_loopstart}>
+					<input type=checkbox name=skills_designee1_<{largestgapstech_id}> <{checkboxsel}> >
+					<{largestgaptech_skillname}><br>
+		<{largestgapstech_loopend}>
+		</td>
+		
+	</tr>
+	<tr>
+		<th class=code>
+		{{cOtherGaps}}
+		</th>
+		
+	</tr>
+	<tr>
+		<td class=code>
+		{{notselected1}}
+		<{othergaps_loopstart}>
+			<input type=checkbox name=skills_designee1_<{othergap_skillid}> <{checkboxsel}> >
+			<{othergap_skillname}> <br>
+		<{othergaps_loopend}>
+	
+		<{othergapstech_loopstart}>
+			<input type=checkbox name=skills_designee1_<{othergaptech_skillid}> <{checkboxsel}> >
+			<{othergaptech_skillname}> <br>
+		<{othergapstech_loopend}>	
+		</td>
+		
+	</tr>
+
+	
+
+</table>
+
+<{firstdesignee_employee_end}>
+
+
+
+<br><br>
+
+<{seconddesignee_employee_start}>
+
+<table align=center border=0 cellspacing=0>
+	<tr>
+		<td class=code>
+				<b>{{seconddesignee_username}}</b> {{cIsseconddesignee}}<b>{{position_name}}</b>.  
+				{{cHeNeedstoimprSkills}}
+		</td>
+		
+	</tr>
+	<tr>
+		<th class=code>
+			{{cLargestGaps}}
+		</th>
+	</tr>
+
+	<tr>
+		<td class=code>
+		{{notselected2}}
+		<{largestgaps2_loopstart}>
+					<input type=checkbox name=skills_designee2_<{largestgaps2_id}> <{checkboxsel}> >
+					<{largestgap2_skillname}><br>
+		<{largestgaps2_loopend}>
+		<{largestgapstech2_loopstart}>
+					<input type=checkbox name=skills_designee2_<{largestgapstech2_id}> <{checkboxsel}> >
+					<{largestgaptech2_skillname}><br>
+		<{largestgapstech2_loopend}>
+		</td>
+	</tr>
+	<tr>
+		<th class=code>
+			{{cOtherGaps}}
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+		{{notselected3}}
+		<{othergaps2_loopstart}>
+			<input type=checkbox name=skills_designee2_<{othergap2_skillid}> <{checkboxsel}> >
+			<{othergap2_skillname}> <br>
+		<{othergaps2_loopend}>
+	
+		<{othergapstech2_loopstart}>
+			<input type=checkbox name=skills_designee2_<{othergaptech2_skillid}> <{checkboxsel}> >
+			<{othergaptech2_skillname}> <br>
+		<{othergapstech2_loopend}>	
+		</td>
+	</tr>					
+</table>
+<{seconddesignee_employee_end}>
+
+
+
+<br><br>
+<{firstdesignee_external_start}>
+
+<table align=center border=0 cellspacing=0>
+	 
+	<tr>
+		<td class=code>
+		{{cNoCurrentCandidatewasFirstDes}}<b>{{position_name}}</b>
+		{{cTolocate&attractexCandidate}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code align=center>
+		<textarea rows=5 cols=90 name=actionplan_designee1></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th class=code>
+		<b>{{cHighPerformerModelIskills}}</b>	
+		</th>
+	</tr>
+		<tr>
+		<td class=code>
+		<{highperformerskills1_loopstart}>
+	
+			<input type=checkbox name=skills_designee1_<{skill_id}> >
+			<{skill_name}><br>
+		
+		<{highperformerskills1_loopend}>
+		</td>
+	</tr>
+	<tr>
+		<th class=code>
+		<b>{{cHighPerformerModelTskills}}</b>	
+		</th>
+	</tr>
+		<tr>
+		<td class=code>
+		<{highperformerskills1tech_loopstart}>
+	
+			<input type=checkbox name=skills_designee1_<{skill_id}> >
+			<{skill_name}><br>
+		
+		<{highperformerskills1tech_loopend}>
+		</td>
+	</tr>
+
+</table>
+<{firstdesignee_external_end}>
+
+<br><br>
+<{seconddesignee_external_start}>
+
+<table align=center border=0 cellspacing=0>
+	 
+	<tr>
+		<td class=code>
+		{{cNoCandidateWasSecondDesignee}} {{position_name}}. {{cTolocateOthercandidates_dothis}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code align=center>
+		<textarea rows=5 cols=90 name=actionplan_designee2></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th class=code>
+		{{cHighPerformerModelIskills}}
+		</th>
+	</tr>
+		<tr>
+		<td class=code>
+		<{highperformerskills2_loopstart}>
+	
+			<input type=checkbox name=skills_designee2_<{skill_id}> >
+
+			<{skill_name}><br>
+		
+		<{highperformerskills2_loopend}>
+		</td>
+	</tr>
+	<tr>
+		<th class=code>
+		{{cHighPerformerModelTskills}}
+		</th>
+	</tr>
+		<tr>
+		<td class=code>
+		<{highperformerskills2tech_loopstart}>
+	
+			<input type=checkbox name=skills_designee2_<{skill_id}> >
+
+			<{skill_name}> <br>
+		
+		<{highperformerskills2tech_loopend}>
+		</td>
+	</tr>
+
+</table>
+<{seconddesignee_external_end}>
+
+<table align=center border=0 cellspacing=0>
+	<tr>
+		<td class=code>
+			<input type=button name=fPrint value={{cPrint}} onClick="window.print()";>
+			<input type=submit name=fSave value={{cSave}} >
+			<input type=button name=fBack value={{cBack}} onClick="window.history.back()";>
+			<input type=button name=fReturn value='{{cApprres_returnback}}' onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+</table>
+</form>

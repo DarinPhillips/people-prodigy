@@ -1,0 +1,63 @@
+<center>
+<h1>
+{{cLearningsolutionusage}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/solution_usage.html');">
+</h1>
+</center>
+
+<form action="solution_usage.php" method=post>
+<b>{{cSkillwithoutsolution}}:</b>
+<table class=code align=center>
+<tr><td>
+	<table class=code border=1>
+	<tr>
+		<td><b>{{cTechnicalskills}}</td>
+	</tr>	
+	<{tech_loopstart}>
+	<tr>
+		<td><{tech_name}></td>
+	</tr>
+	<{tech_loopend}>
+	</table>
+</td>
+<td valign=top>
+<table class=code border=1>
+	<tr>
+		<td><b>{{cInterskills}}</td>
+	</tr>	
+	<{inter_loopstart}>
+	<tr>
+		<td><{inter_name}></td>
+	</tr>
+	<{inter_loopend}>
+	</table>
+</td></tr>
+</table>
+<br>
+<b>{{cSolutionsinlearingplan}}:</b>
+<table align=center class=code border=1>
+<tr>
+	<td><b>{{cSolutionName}}</td><td><b>{{cTotalnoofplans}}</td>
+</tr>
+<{solution_loopstart}>
+<tr>
+	<td><{sol_name}></td><td><{total}></td>
+</tr>
+<{solution_loopend}>
+</table>
+<br>
+<b>{{cUnuseddevelopment}}:</b>
+<table align=center class=code border=1>
+<tr>
+<td><b>{{cSolutionName}}</td>
+</tr>
+<{unused_loopstart}>
+<tr>
+	<td><{solution}></td>
+</tr>
+<{unused_loopend}>
+</table>
+<br>
+<center><input type=button name=back value='{{cBack}}' onclick="history.back();"></center>
+</form>
+

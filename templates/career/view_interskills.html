@@ -1,0 +1,50 @@
+<form action="view_interskills.php" method="post">
+
+<table align=center >
+<tr>
+<td>
+{{cSkillname}}
+</td>
+<td>
+{{cSkilldescription}}
+</td>
+<td>
+{{cUnskilldescription}}
+</td>
+<td>
+{{cSkilltype}}
+</td>
+</tr>
+<{skill_loopstart}>
+<tr>
+<td class=code>
+<input type="text" readonly value="{{skill_name}}">
+</td>
+<td class=code>
+<textarea readonly rows=2 cols=25>
+{{skill_description}}
+</textarea>
+</td>
+<td class=code>
+<textarea readonly  rows=2 cols=25>
+{{unskilled_desc}}
+</textarea>
+</td>
+<td class=code>
+<b>
+{{skill_type}}
+</b>
+</td>
+</tr>
+
+<{skill_loopend}>
+
+
+</table>
+<center>
+<input type=button name=fBack value="{{cBack}}" onClick="window.history.back()">
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+
+</center>
+
+</form>

@@ -1,0 +1,213 @@
+<script language="JavaScript">
+
+
+function validate(form1)
+{
+
+reg_sp	= /\S/i;
+
+
+	for (i=1;i<(form1.length-2);i++)
+	{
+
+			var ele_name  = form1.elements[i].name;
+			var ele_value = form1.elements[ele_name].value;
+			
+				
+			if (((ele_value=="") || (!(reg_sp.test(ele_value)))))
+			{
+				
+				i++;
+				var ele_name  = form1.elements[i].name;
+				var ele_value = form1.elements[ele_name].value;
+				if(ele_value!="")
+				{
+					alert("{{cEnterAction}}");
+					return(false);
+				}
+			
+				
+			}
+			
+			else if ((ele_value!=""))
+			{
+				
+				i++;
+				var ele_name  = form1.elements[i].name;
+				var ele_value = form1.elements[ele_name].value;
+				if(ele_value=="")
+				{
+					alert("{{cEnterDate}}");
+					return(false);
+				}
+				var todate	= new Date();
+				today	= todate.getDate();
+				month	= todate.getMonth();
+				year		= todate.getYear();
+	
+				todate	= new Date(year,month,today);
+
+				//end_dt_arr	= document.form.dCollection.split('/');
+				
+				end_dt_arr	= ele_value.split('/');
+				
+				end_day	= end_dt_arr[1];
+				end_mon	= end_dt_arr[0]-1;
+				end_year	= end_dt_arr[2];
+				
+				from_js_date	= new Date(end_year,end_mon,end_day);
+				
+				if (todate >= from_js_date)
+				{
+				alert("{{cCompletionDate}} ");
+				return false;	   
+				}
+				
+			}
+			else
+			{
+				i++;
+			}
+			
+		
+	}
+	
+return(true);
+
+}
+
+function download()
+{
+	
+	frm = document.build;
+	frm.action='download_performance_plan.php';
+	frm.submit();
+}
+
+
+function date_check(form)
+{
+	
+}
+
+
+function validate_old(form)
+{
+	var1="fDate";
+		
+	var2="fAction";
+		
+	for(i=1;i<=10;i++)
+	{
+		
+		var3="form."+var1+"_"+i+".value";
+		
+		//var3=form.var3.value;
+		
+		alert(var3);
+
+		
+		var4=var2+"_"+i;
+		
+		alert(var4);
+		
+		return("false");
+	}
+
+return false;
+
+}
+	
+</script>
+
+<center>
+	<h1>
+	{{cPerformanceImprovementPlan}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/build_performance_plan.html');">
+	</h1>
+</center>
+<script src="../jscripts/calendar2.js"></script>
+<form action="build_performance_plan.php" name='build' method=POST>
+<table width=100% align=center border=0>
+<tr>
+	<td class=code>
+	<input type text=fName value={{username}} readonly><b>{{cPerformanceImprovementplan}}</b>
+	</td>
+</tr>
+
+<tr>
+	<td class=code>
+	{{username}}{{cMust}}
+	</td>
+</tr>
+<tr>
+<td class=code>
+{{requirement}}
+</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cBy}} {{date1}} {{cWarning}}
+	</td>
+</tr>
+<tr>	
+	<td class=code>
+	{{consequences}}
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cTomeetreq}}
+	</td>
+</tr>
+<{row_loopstart}>
+<tr>
+	
+
+	
+	<td class=code>
+		<{i}>.<TEXTAREA WRAP=PHYSICAL NAME="fAction_<{i}>" ROWS=4 COLS=30><{text}></TEXTAREA>
+	</td>
+	<td class=code> 
+{{cBy}}
+<input type=text name="fDate_<{i}>" readonly size=10 readonly value=<{date}> >
+<a href="javascript:cal<{i}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>{{cWarning}} </td>
+
+<script language='javascript'>
+
+	var cal<{i}>= new calendar2(document.forms['build'].elements['fDate_<{i}>']);
+	 cal<{i}>.year_scroll	=  true;
+
+</script>
+</tr>
+<{row_loopend}>
+<tr>
+	<td class=code>
+	
+	<input type=submit name=fSave value="{{cSaveandFinish}}">
+	
+	</td>
+
+	<td class=code>
+	<input type=hidden name=plan_id value={{plan_id}}>
+	<input type=hidden name=employee_id value={{employee_id}}>
+	<input type=submit name=fSubmit value="{{cSubmitForApproval}}" onclick="return validate(document.build);">
+	</td>
+	<{if_loopstart}>
+	
+	<td class=code>
+	
+	<input type=submit name=fDownload value={{cSave}} onclick="download();">
+	
+	</td>
+	
+	<td class=code>
+	
+	<input type=submit name=fPrint value={{cPrint}} onclick="javascript:window.print()">
+	
+	</td></tr>
+	<{if_loopend}>
+
+</table>
+</form>
+</body>

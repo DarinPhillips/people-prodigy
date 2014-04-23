@@ -1,0 +1,78 @@
+
+http://fantasyracers.com/demo/html/
+----------------------------------
+
+
+
+correct me if I'm worng
+
+	League : 
+
+		Refers to 2 or 3 different teams.
+
+		Managing of Leagues?
+		
+			Will admin create leagues and 
+			add teams to it?
+			Please explain about this?
+		
+
+
+
+Clarification:
+=============
+		
+	Members Panel:
+	==============
+
+	Driver Changes Left: 9998
+
+	I can't access "Driver Changes Left" to see its 
+	functionality.what's this about?
+
+
+
+	Regarding Race summary:
+
+		Will admin be entering 
+		"Race Name and points Scored by each driver
+		 in this race"?
+
+
+	Leagues:
+	========
+
+
+      	The leagues would be hosted on my server for a flat rate fee 
+	per season.
+
+	How will this amount be charged??
+
+
+	
+	Regarding the control of user and admin.
+	========================================
+
+	Admin will have full control over races and users.
+
+	Given:
+	======
+
+	For instance they would be able to select from a list of 	
+	drivers that they would like to use. 
+
+	They can determine how many driver changes would be allowed in 	a season.
+
+	
+	Question:
+	=========
+
+		Can users change drivers after sign up??
+
+		I Am not clear about this.Can you send me more 	
+	clarification on this?
+
+
+
+	Estimated Time : 11 days.[excluding driver changes]
+

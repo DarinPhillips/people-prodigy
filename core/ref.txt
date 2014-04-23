@@ -1,0 +1,55 @@
+function list_category($db_object,$common,$catid,$app,$match_arr)
+{
+static $twodarr;
+static $twodcnt = 0;
+static $category_array;
+static $return_string;
+
+static $no=0;
+
+$category_table=$this->prefix_table("location");
+$catrelate_table=$this->prefix_table("location_relate");
+
+$app=$app."&nbsp;--";
+
+if($catid==null)
+	{
+$catid=0;
+$app="";
+	}
+/*$mysql="select sub_catid from $catrelate_table where main_catid='$catid'";
+$below = $db_postnuke->get_single_column($mysql);*/
+
+$mysql="select sub_id,loc_name from loc_relate,location where loc_relate.loc_id='$catid'
+and loc_relate.sub_id=location.loc_id order by loc_name";
+$below = $db_object->get_rsltset($mysql);
+if (count($below) > 0)
+    {
+for($i=0;$i<count($below);$i++)
+       {
+$value=$below[$i][0];
+$category=$below[$i][1];
+if(@in_array($value,$match_arr))
+	{
+$category="<option selected value=\"$value\">$app$category</option>";
+	}
+else
+	{
+$category="<option value=\"$value\">$app$category</option>";
+	}
+//echo $s;
+$return_string.=$category;
+$category_array[$catid][$value]=$category;
+$this->list_category($db_object,$common,$value,$app,$match_arr);
+
+$str=<<<EOD
+
+EOD;
+echo $str;
+       }
+    }
+//   return $category_array;
+
+   return $return_string;
+
+  }//function ends

@@ -1,0 +1,80 @@
+<script>
+function check()
+{
+	with(document.frm1)
+	{
+		if(fSubmit.value=="Submit")
+		{
+			if(allboss.checked==false)
+			{
+				temp	= elements['fUser[]'];
+				te	= temp.value;
+
+				if(te=="")
+				{
+					alert('{{cSelectanyUserForApproval}}');
+					return false;
+				}
+			}
+		
+		}
+	
+	}
+	return true;
+}
+	
+</script>
+<form action="assign_appraisal.php" name=frm1 method="post" onSubmit="return check();">
+<center>
+<h1>{{cAssignAppraisals}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/assign_appraisal.html');">
+</h1>
+</center>
+<table class=table align=center>
+<tr>
+<td class=code>
+<select name="fBoss" onChange="document.frm1.submit();">
+<!--
+<option class=code value="">{{cSelect}}</option>
+-->
+<{boss_loopstart}>
+<option class=code <{selected}> value="<{user_id}>"><{username}></option>
+<{boss_loopend}>
+</select>
+</td>
+<td class=code>
+{{cMustAssign}}
+</td>
+<td class=code>
+<select name="fUser[]" multiple >
+<{user_loopstart}>
+<option <{selected}> class=code value="<{user_id}>"><{username}></option>
+<{user_loopend}>
+</select>
+</td>
+
+</tr>
+</table>
+
+
+<table align=center>
+<tr>
+<td class=code>
+<input type="checkbox" name="allboss" value="yes">
+</td>
+<td class=code>
+{{cAllBossesmustappraisealloftheirdirectreports}}
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="submit" name="fSubmit" value="{{cSubmit}}">
+</td>
+</tr>
+</table>
+</form>

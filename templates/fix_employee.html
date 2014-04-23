@@ -1,0 +1,476 @@
+<script>
+
+
+function reset_form()
+{
+	
+	with (document.emp_frm)
+	{
+		len	= elements.length;
+		same_chk= Array();
+		many_chk= 0;
+		j=0;
+
+		for (i=0;i<len;i++)
+		{
+			ele_name = elements[i].name;
+
+			radio_reg = /##;##radio/i
+			if (radio_reg.test(ele_name))
+			{
+				elements[i].checked=false;
+			
+			}
+		}
+	}
+	return true;
+}
+function chk_frm()
+{
+	with (document.emp_frm)
+	{
+		len	= elements.length;
+		same_chk= Array();
+		many_chk= 0;
+		j=0;
+
+		for (i=0;i<len;i++)
+		{
+			ele_name = elements[i].name;
+			radio_reg = /##;##radio/i
+			if (radio_reg.test(ele_name))
+			{
+				if (elements[i].checked)
+				{
+					same_chk[j++] = elements[i].value;
+					many_chk++;
+
+					if (many_chk>3)
+					{
+						alert('{{cChoseval}}');
+						reset_form();
+						return false;
+					}
+				}
+			}
+				
+		}
+
+		if (many_chk<3)
+		{			
+			alert('{{cChoseatval}}');
+			reset_form();
+			return false;
+		}
+
+		if ((same_chk[0] == same_chk[1]) || (same_chk[0] == same_chk[2]) || (same_chk[1] == same_chk[2]))
+		{
+			alert('{{cDiffPref}}');
+			reset_form();
+			return false;
+		}
+		Sort.value="Sort";
+
+		submit();
+	}
+}
+					
+
+
+
+</script>
+
+
+<form action="fix_employee.php" method="post" name='emp_frm'  onSubmit="reset_form();">
+<center><h1>{{cFixemp}}</h1></center>
+<!--parent table start-->
+<{link_loopstart}>
+
+<{link_loopend}>
+<{parent_table_loopstart}>
+<table align=center>
+<tr>
+<td class=code>
+ <a href="approve_personal_info.php?emp_id={{id}}" >Employee Data changed</a>
+</td>
+</tr>
+</table>
+<p align=right class=code>
+	    		<a href="mailto:{{email}}">{{email}}</a>
+</p>
+<table class=table align=center>
+  <tr>
+     <td class=code>
+     <!--dyn table start-->
+        <table>
+          <{dynamic_fields_start}>
+          <tr>
+             <td class=code>
+		<{field_name_dis}>
+		<input type="text" name="<{field_name}>#;#{{id}}" value="<{field_value}>">
+	     </td>
+         </tr>
+         <{dynamic_fields_end}>
+       </table>
+       <!--dyn table end-->
+    </td>
+    <td class=code>
+     <!--option table start<{straight_loopstart}>-->
+     
+        <table>
+        <tr>
+          <td class=code>
+          {{cLevel}}
+	          <select name="fLevel_{{id}}">
+	          <option value="">{{cSelect}}</option>
+	          <{level_loopstart}>
+	          <option <{selected}> class=code value="<{level_no}>"><{level_no}></option>
+	          <{level_loopend}>
+	          </select>
+	          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class=code>
+          {{cLocation}}
+	          <select name="fLocation_{{id}}">
+	          <option value="">{{cSelect}}</option>
+	          <{location_loopstart}>
+		          <option <{selected}> class=code value=<{location_id}> ><{location_name}></option>
+	          <{location_loopend}>
+	          </select>	          
+          </td>
+        </tr>
+       
+        <tr>
+          <td class=code>
+          {{cPosition}}
+	          <select name="fPosition_{{id}}">
+       	          <option value="">{{cSelect}}</option>
+	          <{position_loopstart}>
+	          <option <{selected}> class=code value="<{pos_id}>"><{position_name}></option>
+	          <{position_loopend}>
+	          </select>
+	          
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td class=code>
+          {{cFamilyname}}
+	          <select name="fFamily_{{id}}">
+	          <option value="">{{cSelect}}</option>
+	          <{family_loopstart}>
+	          <option <{selected}> class=code value="<{family_id}>"><{family_name}></option>
+	          <{family_loopend}>
+	          </select>	      
+          </td>
+        </tr>
+
+        <tr>
+          <td class=code>
+          {{cSetadmin_boss}}
+          
+	          <select name="fBoss_{{id}}">
+	          <option value="">{{cSelect}}</option>
+	          <{boss_loopstart}>
+	          <option <{selected}> class=code value="<{boss_no}>"><{bossname}></option>
+	          <{boss_loopend}>
+	          </select>
+	          
+          </td>
+        </tr>
+        
+       </table>
+       
+      <!--option table ends<{straight_loopend}>-->  
+    </td>
+    <td class=code>
+       <table>
+         <tr>
+             <td class=code>
+             {{cEmp_type}}
+               <select name="fEmployeestatus_{{id}}">
+                 <option class=code value="">{{cSelect}}</option>
+                  <{empstatus_loopstart}>
+                   <option <{selected}> class=code value="<{emptype_id}>"><{emp_type}></option>
+          	  <{empstatus_loopend}>
+          	  </select>
+             </td>
+         </tr>
+         <tr>
+             <td class=code>
+             	{{cAccessrights}}
+                  <select name="fAccessrights_{{id}}">
+                  <option class=code value="">{{cSelect}}</option>
+                  <{access_loopstart}>
+                    <option <{selected}> class=code value="<{access_id}>"><{access_type}></option>
+                    <{access_loopend}>
+                  </select>
+             </td>
+         </tr>
+         <tr>
+             <td class=code>
+             {{cEEOstatus}}
+                  <select multiple name="fEEOtags_{{id}}[]">
+                    <{eeo_loopstart}>
+                    <option <{selected}> class=code value="<{tag_id}>"><{tag_name}></option>
+                    <{eeo_loopend}>                    
+                  </select>
+             </td>
+         </tr>
+        </table>
+    </td>
+    
+    <td class=code>
+	    <table>
+	    <tr>
+	    		<td class=code>
+		    {{cLoginname}}
+		    <input type="text" name="fLogin_{{id}}" value="{{username}}">
+		    </td>
+		    
+		</tr>
+		    	 	
+		    
+	    <tr>
+		    <td class=code>
+		    {{cPassword}}
+		    <input type="text" name="fPassword_{{id}}" value="{{password}}">
+		    </td>
+	    </tr>
+	    <tr>
+		    <td class=code>
+		    {{cOff_phone}}
+		    <input type="text" name="fOffno_{{id}}" value="{{offno}}">
+		    </td>
+	    </tr>
+	    <tr>
+		    <td class=code>
+		    {{cCell}}
+		    <input type="text" name="fCellno_{{id}}" value="{{cellno}}">
+		    </td>    
+	    </tr>
+	    <tr>
+		    <td class=code>
+		    {{cPager}}
+		    <input type="text" name="fPager_{{id}}" value="{{pager}}">
+		    </td>
+	    </tr>
+	    </table>
+    </td>
+    
+    <td class=code>
+	
+    		
+    	    <table>
+	    
+	    
+	    <tr>
+		    <td class=code>
+		    {{cFax}}
+		    <input type="text" name="fFax_{{id}}" value="{{faxno}}">
+		    </td>
+	    </tr>
+	    <tr>
+		    <td class=code>
+		    {{cOffAddr}}
+			<textarea name="fMailaddrs_{{id}}">{{mailaddrs}}</textarea>
+		    </td>
+	    </tr>
+	    <tr>
+		    <td class=code>
+		    {{cOffPhyAddr}}
+		        <textarea name="fPhyaddrs_{{id}}">{{physicaladdr}}</textarea>
+		    </td>
+	    </tr>
+	    </table>
+	  
+    </td>
+  </tr>
+  <tr>
+    <td class=code>
+      <input type="radio" name="fCheck_{{id}}" value="delete" onClick="if (!confirm('{{cAlert_empdel}}')) this.checked=false;">
+      {{cDelete}}
+    </td>
+    <td class=code>
+    <input type="radio" name="fCheck_{{id}}" value="update">
+    {{cUpdate}}
+    </td>
+  </tr>
+</table>
+</td>
+<{parent_table_loopend}>
+<!--parent table ends-->
+
+<{page_by_loopstart}>
+<{Front}>
+<a href="fix_employee.php?fPage={{pageprev}}&check1={{check1}}&check2={{check2}}&check3={{check3}}"><<--</a>Front Page
+<{Front}>
+
+
+<{page_loopstart}>
+<a href="<{link}>&check1={{check1}}&check2={{check2}}&check3={{check3}}"><{page}></a>
+<{page_loopend}>
+
+
+Next Page<a href="fix_employee.php?fPage={{pagenext}}&check1={{check1}}&check2={{check2}}&check3={{check3}}">-->></a>
+<{page_by_loopend}>
+
+<br>
+
+
+{{cSortby}}
+<table class=table border=1 align=center>
+
+<tr>
+<th class=code>
+1st
+</th>
+<th class=code>
+2nd
+</th>
+<th class=code>
+3rd
+</th>
+<th class=code>
+Column Name
+</th>
+</tr>
+<{dyna_loopstart}>
+	<tr>
+		<td class=code>
+			<input type="radio" name="<{field_name}>##;##radio" value="1">
+		</td>
+		<td class=code>
+			<input type="radio" name="<{field_name}>##;##radio" value="2">
+		</td>
+		<td class=code>
+			<input type="radio" name="<{field_name}>##;##radio" value="3">
+		</td>
+		<td class=code>
+			<input type="text" value="<{field_name_dis}>">
+		</td>
+		
+	</tr>
+	<{dyna_loopend}>
+<tr>
+	<td class=code>
+		<input type="radio" name="level##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="level##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="level##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cLevel}}">
+	</td>
+	
+</tr>
+
+<tr>
+	<td class=code>
+		<input type="radio" name="location##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="location##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="location##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cLocation}}">
+	</td>
+</tr>
+
+<tr>
+	<td class=code>
+		<input type="radio" name="position##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="position##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="position##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cPosition}}">
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<input type="radio" name="family##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="family##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="family##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cFamilyname}}">
+	</td>
+</tr>
+
+<tr>
+	<td class=code>
+		<input type="radio" name="boss##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="boss##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="boss##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cSetadmin_boss}}">
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<input type="radio" name="employment_type##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="employment_type##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="employment_type##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cEmploymenttype}}"> 
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<input type="radio" name="access_rights##;##radio" value="1">
+	</td>
+	<td class=code>
+		<input type="radio" name="access_rights##;##radio" value="2">
+	</td>
+	<td class=code>
+		<input type="radio" name="access_rights##;##radio" value="3">
+	</td>
+	<td class=code>
+		<input type="text" value="{{cAccessrights}}">
+	</td>
+</tr>
+
+</table>
+
+
+
+<center>
+
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+<input type="hidden" name="Sort">
+<input type="button" name="fSort" value="{{cSort}}" onClick="chk_frm()">
+<input type="submit" name="fSave" value="{{cSave}}" >
+<!--
+<input type="button" name="fCheck" value="{{cResetRadioBox}}" onClick="reset_form()">
+-->
+</center>
+</form>

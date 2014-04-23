@@ -1,0 +1,26 @@
+<center><h1>
+	{{cSearchReports}}
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/search_reports_skill.html');">
+
+</center></h1>
+<br><br>
+<form action="../outer.php" method=post>
+<table align=center border=0>
+	<{user_loopstart}>
+	<tr>
+		<td class=code colspan=2 align=center>
+		<a href="change_dashboard.php?fEmployee_id=<{user_id}>"><{username}></a>
+		</td>
+	</tr>
+	<{user_loopend}>
+	
+	<tr>
+		<td class=code>
+		<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();"></td>
+		<td class=code>
+		<input type=submit name=fReturn value='{{cReturntoDash}}'>
+
+		</td>
+	</tr>
+</table>
+</form>

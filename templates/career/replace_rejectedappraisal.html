@@ -1,0 +1,67 @@
+<script language=javascript>
+
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=300,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=500,height=400,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=no,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+
+
+</script>
+<body>
+
+<form action = replace_rejectedappraisal.php name=frm1 >
+<input type=hidden name=rejected_userid value={{rejected_userid}} >
+<input type=hidden name=rater_id_toreplace value=<{rater_id_toreplace}> >
+<input type=hidden name=was_in_group value={{was_in_group}} >
+<table align=center border= 0>
+	<tr>
+		<td class=code align=center colspan=4>
+			<b>{{cReplacerejected_inter}}</b><br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code align=center>
+			{{cReplacerejected_teammate}}
+		</td>
+
+		<td align=center class=code >
+			{{cReplacerejected_comdir}}
+		</td>
+		<td align=center class=code >
+			{{cReplacerejected_email}}
+		</td>
+	</tr>
+
+
+
+	<tr>
+
+		<td><br><br>
+			<input type=text name='teammates_<{i}>' readonly value="<{username}>">
+		</td>
+		<td><br><br>
+			<input type=button name='fCompanydir' value="{{cReplacerejected_companydir}}" onClick="popup('company_employees.php?field1=teammates_<{i}>&field2=email_<{i}>&mode=<{mode}>','Appraisal Help');" >
+		</td>
+		<td><br><br>
+			<input type=text name='email_<{i}>' readonly value="<{email}>">
+
+		</td>
+	</tr>
+
+
+<tr>
+	<td class=code align=center colspan=3><br>
+		<input type=submit name=fProceed value="   {{cReplacerejected_proceed}}   ">
+	</td>
+</tr>
+<tr>
+	<td class=code align=center colspan=3><br>
+		<input type=button name=fBack	value="{{cBack}}" onClick="window.location.replace('alert_assessment_type.php')";>
+</tr>
+</table>
+</form>

@@ -1,0 +1,100 @@
+<script language="JavaScript">
+function validate(form)
+{		
+		
+		str1=form.fSkill_id_t.value;
+		
+		str2=form.fSkill_id_i.value;
+		
+		if((str1=="") && (str2==""))
+		{
+			alert("{{cSelectAtleastOneSkill}}");
+			
+			return(false);
+		}
+		if((str1!="") && (str2!=""))
+		{
+			alert("{{cOnlyOneSkill}}");
+			
+			return(false);
+		}
+		return(true);
+}
+		
+		
+</script>
+<center><h1>
+	{{cSearchReports}}
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/search_reports_skill.html');">
+
+</center></h1>
+
+<br><br>
+ <form action="search_reports_skills.php" name='search' method=POST> 
+<table align=center border=0>
+
+	<tr>
+		<td class=code>
+			{{cTechskills}}
+			
+				<select name=fSkill_id_t>
+					<option class=code value="">{{cSelectSkill}}</option>
+
+				<{skill_loopstart}>
+					<option class=code value="<{skill_id}>"><{skill_name}></option>
+				<{skill_loopend}>
+
+				</select>
+		</td>
+		<td class=code>
+			{{cLevelofCompetence}}
+				<select name=fComp_id_t>
+					<option class=code value="">{{cAll}}</option>
+
+				<{comp_loopstart}>
+					<option class=code value="<{rater_labelno}>"><{rater_level}></option>
+				<{comp_loopend}>
+
+				</select>
+		<br><br></td>
+	</tr>
+	
+	<tr>
+		<td class=code>
+		{{cOr}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cInterskills}}
+			
+				<select name="fSkill_id_i">
+					<option class=code value="">{{cSelectSkill}}</option>
+
+				<{skill1_loopstart}>
+					<option class=code value=<{skill_id}>><{skill_name}></option>
+				<{skill1_loopend}>
+
+				</select>
+		</td>
+		<td class=code>
+			{{cLevelofCompetence}}
+				<select name="fComp_id_i">
+					<option class=code value="">{{cAll}}</option>
+
+				<{comp1_loopstart}>
+					<option class=code value="<{rater_labelno}>"><{rater_level}></option>
+				<{comp1_loopend}>
+
+				</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code align=center>
+		<input type=submit name=fSubmit value="{{cSubmit}}" onclick="return validate(document.search);">
+		</td>
+	</tr>
+</table>
+</form>
+

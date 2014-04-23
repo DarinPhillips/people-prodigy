@@ -1,0 +1,50 @@
+<form action="skills_without_test.php" method=post>
+<center>
+<h1>
+{{cSkillswithouttests}}
+<input type="button" name="fHelp" value={{cHelp}} onClick="window.open('../lang/{{default}}/career/skills_without_test.html');">
+</h1>
+</center>
+<table align=center border=1>
+<tr>
+<td class=code>
+{{cSkillname}}
+</td>
+<td class=code>
+{{cDate_added}}
+</td>
+<td class=code>
+{{cAdded_by}}
+</td>
+</tr>
+<{skill_loopstart}>
+<tr>
+<td class=code>
+<{skill_name}>&nbsp;
+</td>
+<td class=code>
+<{date_added}>&nbsp;
+</td>
+<td class=code>
+<a href=mailto:<{email}>><{added_by}></a>&nbsp;
+</td>
+</tr>
+<{skill_loopend}>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value={{cBack}} onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value={{cPrint}} onClick="window.print();">
+</td>
+<td class=code>
+<!--
+<input type="button" name="fSave" value={{cSave}} >
+-->
+</td>
+</tr>
+</table>
+
+</form>

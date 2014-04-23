@@ -1,0 +1,37 @@
+<script language='javascript'>
+function check_null(message)
+{
+	flag=0;
+	tot = qual.length;
+	for(i=0;i<tot;i++)
+	{
+		if(qual.elements[i].value=="")
+		{
+			flag=1;
+		}
+	}
+	if(flag==1)
+	{
+		alert(message);
+		return false;
+	}
+	return true;
+}
+</script>
+<form name=qual action="addqualification.php" method=post onsubmit="return check_null('{{cQualmessage}}');">
+<center>
+<h1>
+{{cAddQualification}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/addqualification.html');">
+</h1>
+<center>
+<table align=center class=code>
+<{qualification_loopstart}>
+<tr>
+	<td>{{cEnterQualification}}(<{langname}>)</td>
+	<td><input type=text name=fQualification_<{lid}>></td>
+</tr>
+<{qualification_loopend}>
+</table>
+<center><input type=submit name=save value='{{cSave}}'></center>
+</form>

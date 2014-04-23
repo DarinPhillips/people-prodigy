@@ -1,0 +1,61 @@
+<script language="Javascript">
+function validate_all()
+{
+	with(document.frm1)
+	{
+		
+		if(empl.value == 0 )
+		{
+			alert('Enter Username');
+			return false;
+		}
+		 if(model_sel.value == 0 )
+		{
+			alert('Enter Job Family Model');
+			return false;
+		}
+	}
+}
+
+	function do_action(form)
+	{
+		form.action="select_posmodels.php";
+		form.method="post";
+		form.submit();
+	}
+</script>
+
+<form action=person_position.php method=post name=frm1 onSubmit="return validate_all()";>
+
+<table align=center cellspacing=0 cellpadding=0 border=1>
+	<tr>
+		<td class=code>
+			Employee
+			<select name=empl onchange="do_action(document.frm1);">
+				<option value='0'> Select an Employee </option>
+				<{employee_loopstart}>
+				<option value='<{user_id}>' <{selected}> > <{username}> </option>
+				<{employee_loopend}>
+			</select>
+		</td>
+		<td class=code>
+			Job family Model
+			<select name=model_sel>
+				<option value='0'> Select a Job Family Model </option>
+				<{model_loopstart}>
+				<option value='<{model_id}>'> <{model_name}> </option>
+				<{model_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=2 align=center>
+			
+			<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>&nbsp;&nbsp;&nbsp;
+			<input type=submit name=fShowModel value=' {{cSubmit}} '>
+		
+		
+		</td>
+	</tr>
+</table>
+</form>

@@ -1,0 +1,100 @@
+<form action="view_skills.php" method="post">
+<table align=center cellspacing=0 border=1 cellpadding=3>
+<tr>
+<td class=code>
+<b> {{cViewSkills}} </b>
+<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/view_skills.html')";>
+</td>
+</tr>
+</table>
+
+<table align=center cellspacing=0 border=1 cellpadding=3>
+<tr>
+<td class=code colspan=6 align=center>
+<b>{{cInterpersonalskills}}</b>
+</td>
+</tr>
+	<tr>
+		<td class=code>
+			<b>{{cSkills}}</b>
+		</td>
+		<td class=code>
+			<b>{{cSkilleddef}}</b>
+		</td>
+		<td class=code>
+			<b>{{cUnskilleddef}}</b>
+		</td>
+		<td class=code>
+			<b>{{cOverused}}</b>
+		</td>
+		<td class=code>
+			<b>{{cCareerkiller}}</b>
+		</td>
+		<td class=code>
+			<b>{{cCompensator}}</b>
+		</td>
+	</tr>
+<{skilldisplay_loopstart}>
+	<tr>
+
+		<td class=code>
+			&nbsp;<{skill_name}>
+		</td>
+		<td class=code>
+			&nbsp;<{skill_description}>
+		</td>
+		<td class=code>
+			&nbsp;<{unskilled_desc}>	
+		</td>
+		<td class=code>
+			&nbsp;<{over_used}>
+		</td>
+		<td class=code>
+			&nbsp;<{career_killer}>
+		</td>
+		<td class=code>
+			&nbsp;<{compensator}>
+		</td>
+
+	</tr>
+<{skilldisplay_loopend}>
+</table>
+<table align=center cellspacing=0 border=1 cellpadding=3>
+<tr>
+<td class=code colspan=6 align=center>
+<b>{{cTechselect}}</b>
+</td>
+</tr>
+	<tr>
+		<td class=code>
+			<b>{{cSkills}}</b>
+		</td>
+		<td class=code>
+			<b>{{cSkilleddef}}</b>
+		</td>
+		
+	</tr>
+<{skilldisplaytech_loopstart}>
+	<tr>
+
+		<td class=code>
+			&nbsp;<{skill_name}>
+		</td>
+		<td class=code>
+			&nbsp;<{skill_description}>
+		</td>
+		 
+		 
+
+	</tr>
+<{skilldisplaytech_loopend}>
+</table>
+<table align=center>
+	<tr>
+		<td class=code>	
+			<input type=button name=fBack value={{cBack}} onClick="window.history.back()";>
+			<input type=button name=fPrint value={{cPrint}} onClick="window.print()";>
+		</td>
+	</tr>
+</table>
+</form>

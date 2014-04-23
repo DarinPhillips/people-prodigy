@@ -1,0 +1,20 @@
+<center>
+<h1>
+{{cRaterslist}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/raters_list.html');">
+</h1>
+</center>
+<{ifnoloop_start}>
+<table align=center class=code border=1>
+<tr>
+	<td><b>{{cEmpname}}</td><td><b>{{cDate}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td><{u_name}></td><td><{date}></td>
+</tr>
+<{record_loopend}>
+</table>
+<{ifnoloop_end}>
+<br>
+<center><input type=button name=back value='{{cBack}}' onclick="history.back();"></center>

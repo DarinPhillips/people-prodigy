@@ -1,0 +1,48 @@
+<center><h1>
+{{cReportsComplianceOthers}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/reports_compliance_others.html');">
+<h1><center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+
+		{{cReportsname}}
+	</td>
+	
+	<td class=code>
+		{{cAssigneddate}}
+	</td>
+	<td class=code>
+		{{cRatingRequested}}
+	</td>
+	<td class=code>
+		{{cRequestedBy}}
+	</td>
+	
+	
+</tr>
+<{user_loopstart}>
+<tr>
+	<td class=code>
+
+		<a href="mailto:<{email}>"><{name}></a>
+	</td>
+	
+	<td class=code>
+		<{date}>
+	</td>
+	<td class=code>
+		<{rating}>
+	</td>
+	<td class=code>
+		<{reqby}>
+	</td>
+</tr>
+<{user_loopend}>
+<tr>
+	<td class=code align=center colspan=4>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+
+</table>

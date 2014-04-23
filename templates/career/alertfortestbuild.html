@@ -1,0 +1,67 @@
+<script>
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=500,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=800,height=700,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=yes,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+</script>
+<form action="alertfortestbuild.php" method="post">
+<center>
+<h1>
+{{cAlertforTestbuilder}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="popup('manual_skill_entry.html','Manual Help');">
+</h1>
+</center>
+<table align=center border=1>
+<{skill_loopdisplay}>
+
+<tr>
+<td class=code>
+{{cAdminhasassignedyoutobuildtestforskill}}
+</td>
+<td><a href="test_builder.php?fTest_type=<{test_type}>&test_skill_id=<{test_skill_id}>&mode=alert">
+<{skill_name}>
+</a>
+</td>
+<td class=code>
+{{cOn}}
+</td>
+<td class=code>
+<{date}>
+</td>
+</tr>
+<{skill_loopdisplay}>
+<{interpersonal_loopstart}>
+<tr>
+<td class=code>
+{{cAdminhasassignedyoutobuildtestforskill}}
+</td>
+
+<td>
+<table class=table align=center>
+<{skillname_loopstart}>
+
+<tr>
+<td>
+<a href="test_builder.php?fTest_type=<{test_type}>&group_id=<{grp_id}>&mode=alert">
+<{skill_name}>
+</a>
+</td>
+</tr>
+
+<{skillname_loopend}>
+</table>
+</td>
+<td class=code>
+{{cOn}}
+</td>
+<td class=code>
+<{date}>
+</td>
+</tr>
+<{interpersonal_loopend}>
+</table>
+</form>

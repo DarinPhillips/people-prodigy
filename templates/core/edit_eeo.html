@@ -1,0 +1,43 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.fEeo_name.value=='')
+	{
+		alert('{{cJavascriptnamealert}}');
+		document.frm.fEeo_name.focus();
+		return false;
+	}
+}
+</script>
+<table border=1 align = center>
+<form action ="edit_eeo.php" method=post name='frm' onSubmit="return validate()">
+<input type=hidden name=eeo_id value="<{eeo_id}>">
+<tr>
+<td class=code>
+{{cEditeeo}}
+</td>
+
+
+<td class=code>
+<input type=text name=fEeo_name value="<{eeo_name}>">
+</td>
+<td class=code>
+<input type=submit name=fEdit_eeo value="{{cEditeeo}}";
+</td>
+</tr>
+
+</form>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<a href="eeo_status.php">{{cShowall}}</a> 
+</td>
+</tr>
+</table>
+</body>

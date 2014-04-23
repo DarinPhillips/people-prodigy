@@ -1,0 +1,76 @@
+<script language = Javascript>
+function validate_all()
+{
+	with(document.frm1)
+	{
+		if(key_1.value == '' || key_2.value == '' || key_3.value == '' || key_4.value == '' || key_5.value == '')
+		{
+			alert('{{cEntervalidnum}}');
+			return false;
+		}
+	}	
+}
+</script>
+<form action=posmodelcolors.php method=post name=frm1 onSubmit = "return validate_all()";>
+<table align=center border=1>
+	<tr>
+		<td class=code colspan=2 align=center>
+			<b>{{cJobfammodelcolors}}</b>
+			<input type=button name=fHelp value=' {{cHelp}} ' onClick="window.open('../lang/{{default}}/career/posmodelcolors.html')";>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code>
+			{{cKey}} 1
+		</td>
+
+		<td class=code>
+			# <input type=text size=6 maxlength=6 name='key_1' value='{{key_1}}' >
+		</td>
+	</tr>
+<tr>
+		<td class=code>
+			{{cKey}} 2
+		</td>
+
+		<td class=code>
+			# <input type=text size=6 maxlength=6 name='key_2' value='{{key_2}}' >
+		</td>
+	</tr>
+<tr>
+		<td class=code>
+			{{cKey}} 3
+		</td>
+
+		<td class=code>
+			# <input type=text size=6 maxlength=6 name='key_3' value='{{key_3}}' >
+		</td>
+	</tr>
+<tr>
+		<td class=code>
+			{{cKey}} 4 
+		</td>
+
+		<td class=code>
+			# <input type=text size=6 maxlength=6 name='key_4' value='{{key_4}}' >
+		</td>
+	</tr>
+<tr>
+		<td class=code>
+			{{cKey}} 5 
+		</td>
+
+		<td class=code>
+			# <input type=text size=6 maxlength=6 name='key_5' value='{{key_5}}' >
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=2 align=center>
+			<!--<input type=button name=fBack value="{{cBack}}" onClick=window.location.replace('front_panel.php');>-->
+			<input type=button name=fBack value="{{cBack}}" onClick=window.history.back();>
+			<input type=submit name=fUpdate value='{{cUpdatethesettings}}'>
+		</td>
+	</tr>
+</table>
+</form>

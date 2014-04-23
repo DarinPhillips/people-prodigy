@@ -1,0 +1,196 @@
+<script src="../jscripts/calendar2.js"></script>
+<script language="javascript">
+function check_checked(mess,ch1,ch2,ch3,ch4)
+{
+	frm = document.summ;
+	chk1	= frm.elements[ch1].checked;	
+	chk2	= frm.elements[ch2].checked;
+	chk3	= frm.elements[ch3].checked;
+
+	if ((chk1)||(chk2)||(chk3))
+	{		
+		frm.elements[ch4].checked=false;
+		alert(mess);				
+	}	
+}
+
+function download()
+{
+	
+	frm = document.summ;
+	frm.action="download_performance_summary.php?uid='{{uid}}'";
+	frm.submit();
+}
+
+function development()
+{	
+	frm = document.summ;
+	frm.action="performance_improvement_plan.php";
+	frm.submit();
+}
+
+</script>
+
+<table align=right class=code>
+<tr>
+	<td>
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_summary1.html');">
+	</td>
+</tr>
+</table>
+<input type=text name=fName value='{{uname}}' readonly><b class=code><u>{{cperformancesummarys}}</u></b>
+<center><b>{{norecord}}</b></center>
+<form name=summ action="performance_summary2.php" method=post>
+<input type=hidden name=uid value='{{uid}}'>
+<{objective_loopstart}>
+
+<table border = 1>
+<tr>
+<td>
+<table class=code>
+<tr>
+	<td><{count}>. <{objective}></td>
+</tr>
+<tr>
+	<td>{{cCommittment}}</td><td><input type=text name=fCommit_<{sl_id}>_<{o_id}> value='<{committed}>'size=5 readonly></td>
+	<td>{{cAccomplishment}}</td><td><input type=text name=fAccomplish_<{sl_id}> value='<{accomplish}>'size=5 readonly></td>
+	<td>{{cFullfilled}}</td><td><input type=text name=fFullfilled_<{sl_id}> value='<{fulfilled}>'size=5></td>	
+</tr>
+<tr>
+	<td>{{cMetexpectationpoint}}</td><td><input type=text name=fExpectation_<{sl_id}> value='<{metexpectation}>' readonly size=5></td>
+	<td>{{cActualrating}}</td><td><input type=text name=fActualrating_<{sl_id}> value='<{actual}>' size=5 readonly></td>
+	<td>{{cExpectationmettodate}}</td><td><input type=text name=fExyrtodate_<{sl_id}> value='<{expected}>' size=5 readonly></td>
+</tr>
+</table>
+
+<table class=code>
+<tr>
+	<td><u><b>{{cOptions}}</b></u></td>
+</tr>
+<tr>
+	<td nowrap>{{cRaterscomment}}</td><td nowrap>{{cViewresult}}</td>
+</tr>
+<tr>
+	<td><input type=checkbox name=check_comment_lastrating_<{sl_id}>_<{o_id}> onclick="check_checked('{{cSmessage}}','check_since_date_<{sl_id}>','check_from_date_<{sl_id}>','fYeartodate_comments_<{sl_id}>','check_comment_lastrating_<{sl_id}>_<{o_id}>');">{{cCommentslastrating}}</td>
+	<td><input type=checkbox name=check_result_lastrating_<{sl_id}>_<{o_id}> onclick="check_checked('{{cSmessage}}','check_result_date_<{sl_id}>','check_Rfrom_date_<{sl_id}>','fYeartodate_result_<{sl_id}>','check_result_lastrating_<{sl_id}>_<{o_id}>');">{{cResultlastrating}}</td>
+</tr>
+
+<tr>
+	<td><input type=checkbox name='check_since_date_<{sl_id}>' onclick="check_checked('{{cSmessage}}','check_comment_lastrating_<{sl_id}>_<{o_id}>','check_from_date_<{sl_id}>','fYeartodate_comments_<{sl_id}>','check_since_date_<{sl_id}>');">{{cSincedate}}<input type=text name=fSince_date_<{sl_id}> size=10>
+		<a href="javascript:cal_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal_<{sl_id}>= new calendar2(document.forms['summ'].elements['fSince_date_<{sl_id}>']);
+			 cal_<{sl_id}>.year_scroll	=  true;
+		</script>
+	</td>
+	<td><input type=checkbox name=check_result_date_<{sl_id}> onclick="check_checked('{{cSmessage}}','check_result_lastrating_<{sl_id}>_<{o_id}>','check_Rfrom_date_<{sl_id}>','fYeartodate_result_<{sl_id}>','check_result_date_<{sl_id}>');" >{{cResultdate}}<input type=text name=fResult_date_<{sl_id}> size=10>
+		<a href="javascript:cal1_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal1_<{sl_id}>= new calendar2(document.forms['summ'].elements['fResult_date_<{sl_id}>']);
+			 cal1_<{sl_id}>.year_scroll	=  true;
+		</script>
+	</td>
+</tr>
+<tr>
+	<td nowrap><input type=checkbox name=check_from_date_<{sl_id}> onclick="check_checked('{{cSmessage}}','check_comment_lastrating_<{sl_id}>_<{o_id}>','check_since_date_<{sl_id}>','fYeartodate_comments_<{sl_id}>','check_from_date_<{sl_id}>');">{{cCommentfrom}}<input type=text name=fComment_from_<{sl_id}> size=10>
+	<a href="javascript:cal2_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal2_<{sl_id}>= new calendar2(document.forms['summ'].elements['fComment_from_<{sl_id}>']);
+			 cal2_<{sl_id}>.year_scroll	=  true;
+		</script>
+	{{cTo}}<input type=text name=fComment_to_<{sl_id}> size=10>
+		<a href="javascript:cal3_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal3_<{sl_id}>= new calendar2(document.forms['summ'].elements['fComment_to_<{sl_id}>']);
+			 cal3_<{sl_id}>.year_scroll	=  true;
+		</script>
+	</td>
+		<td nowrap><input type=checkbox name=check_Rfrom_date_<{sl_id}> onclick="check_checked('{{cSmessage}}','check_result_date_<{sl_id}>','fYeartodate_result_<{sl_id}>','check_result_lastrating_<{sl_id}>_<{o_id}>','check_Rfrom_date_<{sl_id}>');" >{{cResultfrom}}<input type=text name=fResult_from_<{sl_id}> size=10>
+	<a href="javascript:cal4_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal4_<{sl_id}>= new calendar2(document.forms['summ'].elements['fResult_from_<{sl_id}>']);
+			 cal4_<{sl_id}>.year_scroll	=  true;
+		</script>
+	{{cTo}}<input type=text name=fResult_to_<{sl_id}> size=10>
+		<a href="javascript:cal5_<{sl_id}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+		<script language='javascript'>
+			var cal5_<{sl_id}>= new calendar2(document.forms['summ'].elements['fResult_to_<{sl_id}>']);
+			 cal5_<{sl_id}>.year_scroll	=  true;
+		</script>
+	</td>		
+</tr>
+
+<tr>
+	<td><input type=checkbox name=fYeartodate_comments_<{sl_id}> onclick="check_checked('{{cSmessage}}','check_since_date_<{sl_id}>','check_from_date_<{sl_id}>','check_comment_lastrating_<{sl_id}>_<{o_id}>','fYeartodate_comments_<{sl_id}>');">{{cYeartodate}}</td>
+	<td><input type=checkbox name=fYeartodate_result_<{sl_id}> onclick="check_checked('{{cSmessage}}','check_result_date_<{sl_id}>','check_Rfrom_date_<{sl_id}>','check_result_lastrating_<{sl_id}>_<{o_id}>','fYeartodate_result_<{sl_id}>');">{{cYeartodateresult}}</td>
+</tr>
+
+<tr>
+	<td>{{cViewby}}</td><td>{{cComparebetween}}</td>
+</tr>
+
+<tr>
+	<td><input type=checkbox name=fBoss1_<{bossid}>_<{sl_id}>>{{cBosss}} [{{bossname}}]</td>
+	<td><input type=checkbox name=fBoss2_<{bossid}>_<{sl_id}>>{{cBosss}}</td>
+	<td><input type=checkbox name=fBoss3_<{bossid}>_<{sl_id}>>{{cBosss}}</td>
+</tr>
+<{rater_loopstart}>
+<tr>
+	<td><input type=checkbox name=fRater1_<{rater_id}>_<{sl_id}>>{{cRater}}<{cnt}> [<{ratername}>]</td>
+	<td><input type=checkbox name=fRater2_<{rater_id}>_<{sl_id}>>{{cRater}}<{cnt}></td>
+	<td><input type=checkbox name=fRater3_<{rater_id}>_<{sl_id}>>{{cRater}}<{cnt}></td>
+</tr>
+<{rater_loopend}>
+<tr>
+	<td><input type=checkbox name=fSelf1_<{sl_id}>>{{cSelf}}[{{username}}]</td>
+	<td><input type=checkbox name=fSelf2_<{sl_id}>>{{cSelf}}</td>
+	<td><input type=checkbox name=fSelf3_<{sl_id}>>{{cSelf}}</td>
+</tr>
+<tr>
+	<td><input type=checkbox name=fOverall1_<{sl_id}>>{{cOverallavg}}</td>
+	<td><input type=checkbox name=fOverall2_<{sl_id}>>{{cOverallavg}}</td>
+	<td nowrap><input type=checkbox name=fOverall3_<{sl_id}>>{{cOverallavg}}</td>
+</tr>
+</table>
+<br>
+<table class=code>
+<tr>
+	<td><input type=checkbox name=fGraph_<{sl_id}>>{{cViewgraph}}</td>
+</table>
+<td>
+</tr>	
+</table>
+<br>
+<{objective_loopend}>
+
+<!--ifrecord_loopstart-->
+<table class=code align=center>
+<tr>
+<td>
+	<input type =button name=print value="{{cPrint}}" onclick="javascript:window.print()">
+</td>
+<td>
+	<input type=button name=save value="{{cSave}}" onclick="download();">
+</td>
+<!--ifself_loopstart-->
+<td>
+	<input type=button name=develop value="{{cDevelop}}" onclick = "development();">
+</td>
+
+<td>
+	<input type=button name=email value="{{cEmailthis}}" onclick="window.open('mailto:{{email}}');">
+</td> 
+<!--ifself_loopend-->
+<td>
+	<input type=button name=back value="{{cBack}}" onclick="window.history.back();">
+</td>
+<td>
+	<input type=submit name=next value="{{cNext}}">
+</td>
+</tr>
+</table>
+<!--ifrecord_loopend-->
+
+</form>
+
+

@@ -1,0 +1,70 @@
+<center>
+<h1>
+{{cRatingdiscre}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/rating_discrepencies.html');">
+</h1>
+</center>
+<script>
+function checknull(mess1,mess2,mess3)
+{
+	frm = document.desc;
+	fwhat1 = frm.elements[0].checked;
+	fwhat2 = frm.elements[1].checked;
+	fvalue1 = frm.elements[3].checked;
+	fvalue2 = frm.elements[4].checked;
+	if((fwhat1==false)&&(fwhat2==false))
+	{	
+		alert(mess1);		
+		return false;
+	}
+	if(frm.fPercent.value=="")
+	{
+		alert(mess3);
+		return false;
+	}
+	if((fvalue1==false)&&(fvalue2==false))
+	{		
+		alert(mess2);	
+		return false;
+	}	
+	return true;
+}
+
+</script>
+<table class=code align=center>
+<tr>
+	<td>{{cShowallboss}}</td>
+</tr>
+</table>
+<form name='desc' action="rating_discrepencies_1.php" method=post onsubmit="return checknull('{{cWhatmessage}}','{{cValuemessage}}','{{cPercentmessage}}');">
+<table class=code align=center>
+<tr>
+	<td><input type=radio name='fWhat' value='W'></td>
+	<td>{{cWhatwasdone}}</td>
+</tr>
+<tr>
+	<td><input type=radio name='fWhat' value='H'></td>
+	<td>{{cHowitwasdone}}</td>
+</tr>
+<tr>
+	<td>{{cThatis}}</td><td><input type=text name='fPercent' size=5></td>
+</tr>
+<tr>
+	<td><input type=radio name='fValue' value='H'></td>
+	<td>{{cHigher}}</td>
+</tr>
+<tr>
+	<td><input type=radio name='fValue' value='L'></td>
+	<td>{{cLower}}</td><td></td>
+</tr>
+</table>
+<table class=code align=center>
+<tr>
+	<td>{{cThescorerecommended}}</td>
+</tr>
+<tr>
+	<td><input type=button name=save value='{{cBack}}' onclick='history.back()'></td>
+	<td><input type=submit name=next value='{{cNext}}'></td>
+</tr>
+</table>
+</form>

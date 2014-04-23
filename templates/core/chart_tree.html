@@ -1,0 +1,49 @@
+<script>
+function check()
+{
+	var test;
+	test=confirm('Do You Want to Delete The Whole Organisational Tree');
+//	alert(test);
+	if(!test)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+</script>
+
+
+	
+			<center>
+			<h1>{{cChartbuilder}}	
+		
+		<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/chart_tree.html');">
+			</h1>
+			</center>
+
+<form action="chart_tree.php" method="post" onSubmit="return check();">
+<table class=code>
+
+<tr>
+<td class=code>
+{{cStep2}}
+</td>
+</tr>
+</table>
+
+<ul>
+<{position_loop}>
+
+    <a href="position_populate.php?pos_id={{pos_id}}">{{position_name}}</a>
+
+<br>
+<{position_loop}>
+
+</ul>
+<center>
+<input type="submit" name="fDelete" value="{{cDelete}}" >
+</center>
+</form>

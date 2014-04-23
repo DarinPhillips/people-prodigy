@@ -1,0 +1,325 @@
+<?php
+    class piechart {
+   
+    var $im;
+    var $width, $height;
+    var $data;
+    var $colors;
+    var $angles;
+
+    var $left=5;
+    var $right=70;
+    var $top=50;
+    var $bottom=20;
+
+    var $head_top=10;
+    var $head_space=5;
+    var $legend_left=5;
+    var $center_x;
+    var $center_y;
+    var $diameter;
+ 
+/*    var $left=20;
+    var $right=200;
+    var $top=100;
+    var $bottom=10;*/
+			   
+    var $sum;
+			   
+    var $fx, $fy;
+    var $legend_num = "";
+			   
+    var $PI = 3.1415926535897931; 
+			   
+    function roundoff ($v) {
+    if ( $v - floor($v) >= 0.5) {
+    return(ceil($v));
+    } else {
+    return(floor($v));
+    }
+    }
+	   
+    function deg2rad ($degrees) {
+    return (($this->PI * $degrees) / doubleval(180));
+    }
+    
+    function get_xy_factors ($degrees) {
+    $x = cos($this->deg2rad($degrees));
+    $y = sin($this->deg2rad($degrees));
+    return (array($x, $y));
+    }
+   
+    function init ($w, $h, $d) {
+
+    $this->im= ImageCreate($w, $h);
+    //$this->background_color = ImageColorAllocate ($this->im,100,100,100);
+    $this->width = $w;
+    $this->height = $h;
+    $this->data = $d;
+    $this->da_width = ($this->width - $this->left - $this->right);
+    $this->da_height = ($this->height - $this->top - $this->bottom);
+    //DETERMINES THE CENTER POINT
+    $this->center_x = intval($this->left + ($this->da_width / 2));
+    $this->center_y = intval($this->top + ($this->da_height / 2));
+    
+	$this->fx = array(0, 5,6,7,8,9);
+	$this->fy = array(0, 7,8,10,14,11);
+	   
+    if ($this->da_height > $this->da_width) {
+    $this->diameter = $this->da_width;
+    } else {
+    $this->diameter = $this->da_height;
+    }
+    $this->white = ImageColorAllocate($this->im, 255, 255, 255);
+    $this->black = ImageColorAllocate($this->im,0,0,0);
+    $n = count($this->data);
+    for ($i = 0; $i < $n; $i++) {
+    $this->colors[$i] = ImageColorAllocate($this->im, $this->data[$i][2],
+    $this->data[$i][3],
+    $this->data[$i][4]);
+    $this->sum += $this->data[$i][0];
+    }
+
+    $from = 0;$to = 0;
+    for ($i = 0; $i < $n; $i++) {
+    $this->angles[$i] = $this->roundoff(($this->data[$i][0] * 360)
+      / doubleval($this->sum));
+      
+      
+      
+    $to = $from + $this->angles[$i];
+
+    $col = $this->colors[$i];
+    
+    $foo = $this->angles[$i];
+
+	$this->draw_slice($this->center_x, 
+    $this->center_y, 
+    $from, 
+    $to, 
+    $this->colors[$i]);
+    $from += $this->angles[$i];
+    }
+    }
+    
+    function set_legend_percent () {
+
+    $this->legend_num = "p";
+    }
+    
+    function set_legend_value () {
+    $this->legend_num = "v";
+    }
+    
+    function draw_point($x, $y) {
+    ImageLine($this->im, $x-4, $y-4, $x+4, $y+4, $this->black);
+    ImageLine($this->im, $x-4, $y+4, $x+4, $y-4, $this->black);
+    }
+   
+    function draw_margins () {
+    ImageLine($this->im, 0, $this->top, $this->width, 
+    $this->top, 
+    $this->black);
+    ImageLine($this->im, 0, $this->height - $this->bottom, 
+    $this->width, $this->height - $this->bottom, 
+    $this->black);
+    ImageLine($this->im, $this->left, 0, $this->left, 
+    $this->height, $this->black);
+    ImageLine($this->im, $this->width - $this->right, 
+    0, $this->width - $this->right, 
+    $this->height, $this->black);
+    }
+    
+    function draw_legends ($fontsize) {
+    	
+    $n = count($this->data);
+
+    $x1 = $this->width - $this->right + $this->legend_left;
+    
+    $x2 = $x1 + $this->fy[$fontsize];;
+    
+    for ($i = 0; $i < $n; $i++) {
+    if(($n-$i)!=1)
+    {
+    $y1 = ($i * $this->fy[$fontsize] * 1.5) + $this->top;
+    
+    $y2 = $y1 + $this->fy[$fontsize];
+    
+    ImageFilledRectangle($this->im, $x1, $y1, $x2, $y2, $this->colors[$i]);
+    
+    ImageRectangle($this->im, $x1, $y1, $x2, $y2, $this->black);
+    
+    $legend = $this->data[$i][1];
+
+    switch ($this->legend_num) {
+    case "v":
+    $legend .= sprintf(" (%.2f)", $this->data[$i][0]);
+    break;
+    case "p":
+    $legend .= sprintf(" (%.2f%%)", 
+    ($this->data[$i][0] 
+    * 100 / doubleval($this->sum)));
+    break;
+    }
+    ImageString($this->im, $fontsize, $x2 + 5, $y1, 
+    $legend, $this->black);
+    }//end of if
+    }//end of for
+    }//end of function
+   
+    function draw_heading($head_data) {
+    $n = count($head_data);
+    $y = $this->head_top;
+    for ($i = 0; $i < $n; $i++) {
+    
+    switch($head_data[$i][2]) {
+    case "c":
+    $x = ($this->width - $this->fx[$head_data[$i][1]] 
+    * strlen($head_data[$i][0])) / 2;
+    break;
+    case "r": 
+    $x = $this->width - $this->left -
+    ($this->fx[$head_data[$i][1]] * strlen($head_data[$i][0]));
+    break;
+    default:
+    $x = $this->left;
+    break;
+    }
+    ImageString($this->im, $head_data[$i][1], $x, $y, $head_data[$i][0],
+    $this->black);
+    $y += ($this->fy[$head_data[$i][1]] + $this->head_space); 
+    }
+    }
+   
+    function draw_slice ($x, $y, $from, $to, $color) {
+    # Awful Kludge!!!
+    if ($to > 360) {
+    $to = 360;
+    }
+    ImageArc($this->im, $this->center_x, $this->center_y,
+    $this->diameter, $this->diameter, $from, $to, $color);
+    /* First line */
+
+    $axy2 = $this->get_xy_factors($from);
+    
+    $ax2 = floor($this->center_x + ($axy2[0] * ($this->diameter /2)));//radius+cos(theta)*radius.
+    $ay2 = floor($this->center_y + ($axy2[1] * ($this->diameter /2)));
+    ImageLine($this->im, $this->center_x, $this->center_y, $ax2, $ay2, $color);
+
+
+    /* Second line */
+    $bxy2 = $this->get_xy_factors($to);
+    $bx2 = ceil($this->center_x + ($bxy2[0] * ($this->diameter /2)));
+    $by2 = ceil($this->center_y + ($bxy2[1] * ($this->diameter /2)));
+    ImageLine($this->im, $this->center_x, $this->center_y, $bx2, $by2, $color);
+    
+    /* decide where to start filling, then fill */
+    
+   
+    $xy2 = $this->get_xy_factors((($to - $from) / 2) + $from);
+    $x2 = floor($this->center_x + ($xy2[0] * ($this->diameter /3)));
+    $y2 = floor($this->center_y + ($xy2[1] * ($this->diameter /3)));
+    ImageFillToBorder($this->im, $x2, $y2, $color, $color);
+  
+    
+    }
+   function init_only ($w, $h) {
+
+    $this->im= ImageCreate($w, $h);
+
+    
+   }
+   
+    function display($filename) {
+    $this->draw_legends(2);//ARGUMENT IS THE FONT SIZE
+    
+	ImagePng($this->im);
+    /*#$this->draw_margins();
+    ImagePng($this->im, "d:/work/tmp/pie.gif");
+   // Header("Content-type: image/png");
+    $img=ImagePng($this->im,$filename);//FILENAME CAN BE GIVEN AS THE SECOND ARGUMENT SO THAT THE IMAGE IS STORED INA FILE
+*/
+    }
+   function return_Array($array)
+    {
+    	$r_array=array();
+    	
+    	for($i=0;$i<count($array);$i++)
+    	{
+    		$percent=$array[$i];
+    		
+    		$x=rand(0,255);
+    		
+    		$y=rand(0,255);
+    		
+    		$z=rand(0,255);
+   		
+    		$x1=dechex($x);
+    		$y1=dechex($y);
+    		$z1=dechex($z);
+    		
+    		$ar=$x1.$y1.$z1;
+    	    		
+		$color=$this->find_if_repeat($ar,$arr,$x,$y,$z);		
+				
+    		$arr[$i]=$color[0];
+    		
+    		$x_array[$i]=array($percent,"",$color[1],$color[2],$color[3]);
+    		
+    	
+    		
+    	}
+    	
+    	
+    	return($x_array);
+    }
+    
+    function find_if_repeat($ar,$arr,$x,$y,$z)
+    {
+    		   		    		
+    		
+    		if(@in_array($ar,$arr))
+    		{
+    		
+    		$x=rand(0,255);
+    		
+    		$y=rand(0,255);
+    		
+    		$z=rand(0,255);
+    		
+    		$x1=dechex($x);
+    		$y1=dechex($y);
+    		$z1=dechex($z);
+    		
+    		$ar=$x1.$y1.$z1;
+    		
+    		
+    		$this->find_if_repeat($ar,$arr);
+    		}
+ $r_array=array($ar,$x,$y,$z);
+    		return($r_array);
+    }
+    
+    }
+
+// $pie = new piechart;
+ 
+// $array=array("50","100","50","34");
+ 
+		//$vals=$pie->return_Array($array);
+ 
+
+   $heads = array(
+    array("First line (centered)", 4, "c"),  //FIRST:THE TEXT TO BE WRITTEN,SECOND:FONT SIZE,THIRD:POSITION.
+    array("Second line (left justified)", 4, "l"),
+    array("Third line (right justified)", 4, "r")
+    );
+    
+   
+   /* $pie->init(350,200, $vals);//CREATES AN IMAGE
+    //$pie->draw_heading($heads);//FOR HEADING
+  	$pie->set_legend_percent();//TO SHOW THE PERCENTAGE IN THE RIGHT HAND SIDE
+    // $pie->set_legend_value();//TO SHOW THE REAL VALUES IN THE RHS
+
+    $pie->display($filename);*/
+   ?>

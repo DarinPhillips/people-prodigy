@@ -1,0 +1,29 @@
+<center><h1>
+{{cHaveRatersAssigned}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/have_raters_assigned.html');">
+<h1><center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+	<b>{{cEmployee}}</b>
+	</td>
+	<td class=code>
+	<b>{{cNoofAppObjWithoutRaters}}</b>
+	</td>
+</tr>
+<{user_loopstart}>
+<tr>
+	<td class=code>
+	<{username}>
+	</td>
+	<td class=code align=center>
+	<{count1}>
+	</td>
+</tr>
+<{user_loopend}>
+<tr>
+	<td class=code align=center colspan=2>
+	<input type=button value={{cBack}} onclick="window.history.back()";>
+	</td>
+</tr>
+</table>

@@ -1,0 +1,79 @@
+<html>
+<script language="JavaScript">
+function validate(form)
+{		
+		
+		str1=form.subcategorybox1.value;
+		if(str1=="")
+		{
+	
+			
+		alert("select a skill");
+		return false;
+		exit;
+		}
+		
+	return true;			
+		
+}
+</script>
+<head>
+<SCRIPT language=JavaScript>
+
+function changeCategory_all(mainfield,level,subfield) {  
+	
+  categorybox = mainfield;
+   selected = categorybox.options[categorybox.selectedIndex];
+ 
+
+if(level==1)
+     {
+  subids = subcatids[selected.value];
+   subnames = subcatnames[selected.value];
+     }
+ 
+  if ((subids != null) && (subnames != null)) {
+    subcategorybox = subfield;
+ 
+    displayed = 0;
+
+    for (i = 0; i < subids.length; i++)
+	if ((subids[i] > -1) && (subnames[i] != ""))
+	subcategorybox.options[displayed++] = new Option(subnames[i], subids[i]);
+ 
+    subcategorybox.options[displayed++] = new Option("---------------------------------------------");
+    subcategorybox.length = displayed;
+    subcategorybox.selectedIndex = 0;
+  }
+
+
+}
+
+
+{{replace}}
+{{catid_list}}
+{{catname_list}}
+
+</SCRIPT>
+</head>
+<h1><center>{{cAssignPlanBuilder}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/assign_plan_builder.html');">
+</h1></center>
+<body>
+
+
+<FORM action="assign_plan_builder.php" method=post name=mainform>
+  
+   <SELECT name=categorybox 
+onchange=changeCategory_all(document.mainform.categorybox,1,document.mainform.subcategorybox1); onclick=changeCategory_all(document.mainform.categorybox,1,document.mainform.subcategorybox1);> 
+<{user_loopstart}><OPTION value=<{user_id}>><{user_name}></OPTION><{user_loopend}></SELECT>
+<TD align=middle vAlign=top width="42%">
+<SELECT name=subcategorybox1 > 
+<OPTION>---------------------------------------------</OPTION></SELECT></TD>
+<input type=hidden name=action value=update>
+<input type=hidden name=admin_id value={{admin_id}}>
+<tr><td align=center>
+<input type=submit name=fSubmit value={{cAssign}} onclick="return validate(document.mainform);"></td></tr>
+</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+	<center>
+		<h1>
+	{{cChoosefields}}
+	
+	<input type=button name=fHelp value="{{cHelp}}" onclick="window.open('../lang/{{default}}/core/contacts.html');">
+
+		</h1>
+	</center>
+
+<table align=center>
+<form action = "edit_contacts.php" method=post>
+
+<tr>
+<td>
+<input type=submit name=fEdit value="{{cEditcontactfields}}">
+</td>
+</tr>
+</form>
+</table>
+<form action=contacts.php method=post>
+<table class=table align = center>
+<tr>
+	<td class=code>
+	<b></b>
+	</td>
+
+	<tr>
+		<td>
+		
+		</td>
+	
+
+</tr>
+</table>
+<table align=center>
+<tr>
+		<td>
+		{{cYes}}
+		</td>
+		<td>
+		{{cNo}}
+		</td>
+</tr>
+<{contacts_loopstart}>
+<tr>
+		<td class=code>
+			<input type=radio name=contact_mode_<{contact_id}> value="status_<{contact_id}>" <{yeschecked}> >
+		</td>
+		<td class=code>
+			<input type=radio name=contact_mode_<{contact_id}> value="" <{nochecked}> >
+		</td>
+		<td class=code>
+			<{contact_display}>
+		</td>
+		
+		
+</td>
+</tr>
+
+<{contacts_loopend}>
+
+
+	<tr>
+<td class=code colspan=3 align=center>
+<input type=submit name=fContact_submit value="{{cUpdate_contact}}">
+</td>
+</tr>
+</table>
+
+</form>

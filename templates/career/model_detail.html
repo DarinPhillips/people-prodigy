@@ -1,0 +1,65 @@
+<form action=model_detail.php method=post>
+
+<table align=center cellspacing=0 cellpadding=4 border=1>
+	<tr>
+		<th class=code colspan=4>
+			{{cModelname}} : {{model_name}}
+			<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/model_detail.html');">
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cInterpersonalskills}}</b>
+		</td>
+		<td class=code>
+		<b>{{cLevel}}</b>
+		</td>
+		
+	</tr>
+	{{interreplace}}
+<{interskills_loopstart}>
+	<tr>
+		<td class=code>
+		<{model_skillname}>
+		</td>
+		<td class=code>
+		<{model_level}>
+		</td>
+		
+	</tr>
+<{interskills_loopend}>
+</table>
+
+
+<table align=center cellspacing=0 cellpadding=4 border=1>
+<tr>
+		<td class=code>
+		<b>{{cTechnicalskills}}</b>		
+		</td>
+		<td class=code>
+		<b>{{cLevel}}</b>
+		</td>
+</tr>
+{{techreplace}}
+<{techskills_loopstart}>
+	<tr>
+		<td class=code>
+		<{model_tskillname}>
+		</td>
+		<td class=code>
+		<{model_tlevel}>
+		</td>
+		
+	</tr>
+<{techskills_loopend}>
+<tr>
+	<td class=code colspan=3 align=center>
+		<input type=button name=fPrint value={{cPrint}} onClick="window.print();">
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</TABLE>
+
+</form>
+

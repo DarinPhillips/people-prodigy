@@ -1,0 +1,714 @@
+<?php
+/*---------------------------------------------------------------------
+-----------------------------------------------------------------------
+CLASS :learning
+AUTHOR:info@chrisrajana.com
+UPDATED:Sep 10 2003
+
+DESCRIPTION:
+This class handles all the common routines of learning module
+
+METHODS:
+
+-----------------------------------------------------------------------
+----------------------------------------------------------------------*/
+
+class learning extends database
+{
+function learning() // constructor
+{}
+
+//----------------------------------
+
+function changedate_display($date)
+{
+list($year,$month,$date)=explode("-",$date);
+
+	//$newdate="";
+
+	$newdate=$month.'.'.$date.'.'.$year;
+
+	return ($newdate);
+
+}
+
+//----------------------------------
+
+function changedate_timestamp($date)
+{
+	list($yy,$mm,$dt)=@split("-",$date);
+	list($dd,$tt)=@split(" ",$dt);
+	list($hr,$mn,$sc)=@split(":",$tt);
+
+	$time=mktime($hr,$mn,$sc,$mm,$dd,$yy);
+
+	return ($time);
+
+}
+
+//----------------------------------
+
+function date_display($date)
+{
+list($year,$month,$date)=explode("-",$date);
+
+	//$newdate="";
+
+	$newdate=$month.'.'.$date.'.'.$year;
+
+
+	return ($newdate);
+
+}
+
+
+function date_display_slash($date)
+{
+list($month,$date,$year)=explode("/",$date);
+
+	//$newdate="";
+
+	$newdate=$month.'.'.$date.'.'.$year;
+
+
+	return ($newdate);
+
+}
+
+
+//--------------------------------------
+
+function changedate_database($date)
+{
+
+	list($month,$date,$year)=explode(".",$date);
+
+	$newdate="";
+
+	$newdate=$year.'-'.$month.'-'.$date;
+
+
+	return ($newdate);
+
+}
+
+function change_date($date)
+{
+
+	list($month,$date,$year)=explode("/",$date);
+
+	$newdate="";
+
+	$newdate=$year.'-'.$month.'-'.$date;
+
+	return ($newdate);
+
+}
+//-------------------------------------------
+
+function changedate_datetime($date)
+{
+	list($yy,$mm,$dt)=@split("-",$date);
+	list($dd,$tt)=@split(" ",$dt);
+
+	$newdate=$mm.'/'.$dd.'/'.$yy;
+	return ($newdate);
+
+}
+
+//----------------------------------
+
+function Save_finishlater($db_object,$common,$default,$user_id,$post_var,$gbl_freq_array)
+{
+	$skills_table	=$common->prefix_table("skills");
+	$config		=$common->prefix_table("config");
+	$feedback	=$common->prefix_table("feedback");
+	$user_table	=$common->prefix_table("user_table");
+	$dev_basic	=$common->prefix_table("dev_basic");
+	$position_table	=$common->prefix_table("position");
+	$temp_planbuilder=$common->prefix_table("temp_planbuilder");
+	$approved_devbuilder=$common->prefix_table("approved_devbuilder");
+	$assign_solution_builder=$common->prefix_table("assign_solution_builder");
+
+	while(list($key,$value)=each($post_var))
+	{
+		$$key=$value;
+
+		if(ereg("^Ffrequency",$key))
+		{
+			list($Ffrequency,$skill_id,$t_id)=split("_",$key);
+
+			$frequency_array[$skill_id][$t_id]=$value;
+
+				
+
+		}	
+						
+
+		if(ereg("^fFeedstart",$key))
+		{
+			list($fFeedstart,$skill_id,$t_id)=split("_",$key);
+
+			$feed_array[$skill_id][$t_id]=$value;	
+			
+			//print_r($fFeedstart);
+		}
+
+		if(ereg("^fName",$key))
+		{
+			list($fName,$skill_id,$t_id)=split("_",$key);
+
+			$name_array[$skill_id][$t_id]=$value;	
+
+		}
+
+		if(ereg("^fEmail",$key))
+		{
+			list($fEmail,$skill_id,$t_id)=split("_",$key);
+
+			$email_array[$skill_id][$t_id]=$value;	
+		}
+
+
+		if(ereg("^fActstart",$key))
+		{
+			list($fActstart,$skill_id,$t_id)=split("_",$key);
+
+			$datestart_array[$skill_id][$t_id]=$value;	
+		}
+
+	}
+
+	$res=$post_var;
+	
+	$array_keys=array_keys($res);
+	$k=0;
+	for($i=0;$i<(count($res)-1);$i++)
+	{
+		$key=$array_keys[$i];
+		$value=$res[$key];
+
+	//check the date format
+		if(ereg("\.",$value))
+		{
+			
+			$cdate = $this->changedate_database($value);
+		}
+		else if(ereg("/",$value))
+		{
+			$cdate = $this->change_date($value);
+		}
+
+		$explode_key=explode("_",$key);
+		$build_id=$explode_key[2];
+		if($explode_key[0]=="fActstart")
+		{
+			//$cdate=$this->change_date($value);
+			$update_sql="update $approved_devbuilder set cdate='$cdate' where build_id='$build_id' and (pstatus='u' or pstatus='r')";
+		}
+		else
+		{
+			$explode_key=explode("_",$key);
+			$build_id=$explode_key[2];
+			$k=0;
+			for($j=$i;$j<($i+4);$j++)
+			{
+				
+				$key=$array_keys[$j];	
+				$value=$res[$key];
+				$arr[$k]=$value;
+				$k++;
+				
+			}
+	//		$inter_sql="select interbasic_id from $approved_devbuilder where build_id='$build_id' and pstatus='u'";
+			$inter_sql="select interbasic_id from $approved_devbuilder where build_id='$build_id' and ( pstatus='u' or pstatus='r')";
+			$inter_res=$db_object->get_a_line($inter_sql);
+			$inter=$inter_res[interbasic_id];
+			if($inter == 14)
+			{
+			$url_sql="select user_id from $user_table where email='$arr[1]'";
+			$url_result=$db_object->get_a_line($url_sql);
+			$url=$url_result[user_id];
+			}
+			else
+			{
+				$url=$arr[1];
+			}
+			
+			
+			//$cdate=$this->change_date($arr[2]);
+	//		$update_sql="update $approved_devbuilder set title='$arr[0]',url='$url',cdate='$cdate',frequency='$arr[3]' where build_id='$build_id' and pstatus='u'";
+			$update_sql="update $approved_devbuilder set title='$arr[0]',url='$url',cdate='$cdate',frequency='$arr[3]' where build_id='$build_id' and (pstatus='u' or pstatus='r')";			
+			$i=$j-1;
+				
+		}
+//echo "updatesql=$update_sql<bR>";
+
+		$db_object->insert($update_sql);
+	}
+		
+		$mysql="update $assign_solution_builder set plan_updated_date=curdate() where user_id='$user_id' and skill_id='$skill_id'";
+		$db_object->insert($mysql);
+}
+
+//-------------------------------------------------------------------------------------------
+
+function show_aftersave($db_object,$common,$default,$user_id,$gbl_freq_array)
+{
+
+	$path=$common->path;
+
+	$xFile=$path."/templates/learning/learning_plan_form.html";
+
+	$returncontent=$common->return_file_content($db_object,$xFile);
+
+
+	$returncontent=$common->direct_replace($db_object,$returncontent,$array);		
+
+
+	echo $returncontent;
+
+}
+
+//--------------------------------------------------------------------------------------------
+
+function send_feedback($db_object,$common,$user_id,$skill_id,$admin_id)
+{
+	$skills_table		=$common->prefix_table("skills");
+	$config			=$common->prefix_table("config");
+	$user_table		=$common->prefix_table("user_table");
+	$position_table		=$common->prefix_table("position");
+	$approved_devbuilder	=$common->prefix_table("approved_devbuilder");
+	$assign_solution_builder=$common->prefix_table("assign_solution_builder");
+	$feedback_table		=$common->prefix_table("learning_feedback_results");
+
+	$mysql	= "select email from $user_table where user_id='$admin_id'";
+	$dAdmin	= $db_object->get_a_line($mysql);
+	$from = $dAdmin['email'];
+
+	$mysql	= "select email,username from $user_table where user_id='$user_id'";
+	$dUser 	= $db_object->get_a_line($mysql);
+	$username= $dUser['username'];
+	$email[]= $dUser['email'];
+
+	$boss_id= $common->immediate_boss($db_object,$user_id);
+	$mysql	= "select email from $user_table where user_id='$boss_id'";
+	$dBoss 	= $db_object->get_a_line($mysql);
+	$email[]= $dBoss['email'];
+
+	$mysql	= "select frequency,url from $approved_devbuilder where user_id='$user_id' and skill_id='$skill_id' and interbasic_id='13' and pstatus='a'";
+	$dGeneric= $db_object->get_rsltset($mysql);
+	for($i=0;$i<count($dGeneric);$i++)
+	{
+		$email[] =$dGeneric[$i]['url'];
+	}
+
+
+	$mysql	= "select frequency,url from $approved_devbuilder where user_id='$user_id' and skill_id='$skill_id' and interbasic_id='14' and pstatus='a'";
+	$dInternal= $db_object->get_rsltset($mysql);
+
+	for($i=0;$i<count($dInternal);$i++)
+	{
+		$id	=$dInternal[$i]['url'];
+
+		$mysql	= "select email from $user_table where user_id='$id'";
+		$dIntExperts= $db_object->get_a_line($mysql);
+		$email[]= $dIntExperts['email'];
+	
+	}
+	
+	$mysql	= "select lplan_feedback_subject,lplan_feedback_message from $config where id='1'";
+	$dConfig= $db_object->get_a_line($mysql);
+
+	$subject = $dConfig['lplan_feedback_subject'];
+	$message = $dConfig['lplan_feedback_message'];
+	$message = preg_replace("/{{(.*?)}}/e","$$1",$message);
+	for($j=0;$j<count($email);$j++)
+	{
+		$to=$email[$j];
+//echo "from=$from<br>to=$to<br>msg=$message<bR>sub=$subject<br><br>";
+		$common->send_mail($to,$subject,$message,$from);
+	}
+
+
+}
+//------------------------------
+
+
+
+
+	function persons_to_be_rated($db_object,$common,$rater_id)
+	{
+
+	$plan_table=$common->prefix_table("approved_devbuilder");
+	$feedback_table=$common->prefix_table("learning_feedback_results");
+	$assign_solution_builder=$common->prefix_table("assign_solution_builder");
+
+	$rated_array=array();
+
+
+	$dateclause = "	and ( ( to_days(curdate()) - to_days(rated_date)>=frequency )
+			and $feedback_table.status <> '1' ) ";
+	
+	$joinclause="left join 	$feedback_table on $plan_table.user_id=$feedback_table.rated_id";
+
+
+	/* LET ME KNOW IF I AM THE INTERNAL EXPERT */
+
+	$mysql="select  distinct(user_id),$plan_table.skill_id  
+		from $plan_table $joinclause $dateclause
+			 where pstatus='a' 
+		and url = '$rater_id'   group by $plan_table.skill_id , user_id ";
+
+	$ar_intern=$db_object->get_rsltset($mysql);
+		
+
+//echo "internal sql=$mysql<br><br>";
+
+	/* SELF */
+	
+
+		for($i=0;$i<count($ar_intern);$i++)
+			{
+
+				$user_id=$ar_intern[$i]["user_id"];
+		
+				$skill_id=$ar_intern[$i]["skill_id"];
+
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+
+				if($dFeed['0']=='' || $dFeed['status'] != '1')
+				{
+					$rated_array["internal"][$user_id]=1;
+				}
+				
+
+			}
+
+
+
+	$mysql="select  distinct(user_id),$plan_table.skill_id  from $plan_table $joinclause 
+			$dateclause where pstatus='a' and user_id ='$rater_id'
+			group by $plan_table.skill_id , user_id ";
+
+	$ar_self=$db_object->get_rsltset($mysql);
+	
+//echo "self sql=$mysql<br><br>";
+
+
+	for($i=0;$i<count($ar_self);$i++)
+			{
+
+				$user_id=$ar_self[$i]["user_id"];
+		
+				$skill_id=$ar_self[$i]["skill_id"];
+
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+				if($dFeed['0']==''  || $dFeed['status'] != '1')
+				{
+
+					$rated_array["self"][$user_id]=1;
+				}
+			
+			}
+
+
+
+
+
+		// people under me
+
+	$a_reports=$common->return_direct_reports($db_object,$rater_id);
+
+	if(count($a_reports) > 0)
+
+		{
+
+			$report_string=implode(",",$a_reports);
+
+
+			$mysql="select  distinct(user_id),$plan_table.skill_id  from $plan_table
+				$joinclause $dateclause where pstatus='a' and user_id in ($report_string) 
+				group by $plan_table.skill_id , user_id ";
+			$ar_direct=$db_object->get_rsltset($mysql);
+		
+//echo "direct sql=$mysql<br><br>";
+			for($i=0;$i<count($ar_direct);$i++)
+			{
+
+				$user_id=$ar_direct[$i]["user_id"];
+		
+				$skill_id=$ar_direct[$i]["skill_id"];
+				
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+
+				if($dFeed['0']==''  || $dFeed['status'] != '1')
+				{
+					$rated_array["direct"][$user_id]=1;
+				}
+			
+			}
+
+			
+			
+			
+
+		}
+
+	return $rated_array;
+
+	}
+
+
+//-----------------------------------------------------------------------------------
+
+	function skills_to_be_rated($db_object,$common,$rater_id,$rated_id,$mode)
+	{
+
+
+
+	$plan_table=$common->prefix_table("approved_devbuilder");
+	$feedback_table=$common->prefix_table("learning_feedback_results");
+	$assign_solution_builder=$common->prefix_table("assign_solution_builder");
+	$skill_table=$common->prefix_table("skills");
+
+	$skill_array=array();
+
+
+	$dateclause = " 
+	
+	and ( ( to_days(curdate()) - to_days(rated_date)>=frequency )
+
+		and $feedback_table.status <> '1' )";
+	
+	$joinclause="left join 
+
+	$feedback_table on $plan_table.user_id=$feedback_table.rated_id";
+
+
+	$skillclause=",$skill_table where $skill_table.skill_id=$plan_table.skill_id and ";
+
+	/* LET ME KNOW IF I AM THE INTERNAL EXPERT */
+
+	$mysql="select  distinct(user_id),$plan_table.skill_id,skill_name  from $plan_table $joinclause $dateclause
+
+	 $skillclause pstatus='a' 
+
+	and url = '$rater_id'   
+
+	group by $plan_table.skill_id , user_id ";
+
+	$ar_intern=$db_object->get_rsltset($mysql);
+
+
+//echo "internal sql=$mysql<br><br>";
+	/* SELF */
+	
+
+		for($i=0;$i<count($ar_intern);$i++)
+			{
+
+				$user_id=$ar_intern[$i]["user_id"];
+		
+				$skill_id=$ar_intern[$i]["skill_id"];
+				$skill_name=$ar_intern[$i]["skill_name"];
+
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+
+				if( ( $mode=='internal' ) && ($dFeed['0']==''  || $dFeed['status'] != '1'))
+				{
+					$skill_array[]=array(skill_id=>$skill_id,skill_name=>$skill_name);	
+				}
+
+			}
+
+
+
+	$mysql="select  distinct(user_id),$plan_table.skill_id,skill_name  from $plan_table $joinclause $dateclause
+		$skillclause pstatus='a' 
+
+	and user_id='$rater_id'   
+
+	group by $plan_table.skill_id , user_id ";
+
+	$ar_self=$db_object->get_rsltset($mysql);
+
+
+	for($i=0;$i<count($ar_self);$i++)
+			{
+
+				$user_id=$ar_self[$i]["user_id"];
+		
+				$skill_id=$ar_self[$i]["skill_id"];
+
+				$skill_name=$ar_self[$i]["skill_name"];
+			
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+
+				if( ( $mode=='self' ) && ($dFeed['0']==''  || $dFeed['status'] != '1'))
+				{
+					$skill_array[]=array(skill_id=>$skill_id,skill_name=>$skill_name);
+				}
+		
+			}
+
+
+
+		// people under me
+
+	$a_reports=$common->return_direct_reports($db_object,$rater_id);
+
+	if(count($a_reports) > 0)
+
+		{
+
+			$report_string=implode(",",$a_reports);
+
+
+			$mysql="select  distinct(user_id),$plan_table.skill_id,skill_name  from $plan_table
+
+			$joinclause $dateclause
+
+
+			 $skillclause pstatus='a' 
+
+			and user_id in ($report_string) 
+
+			
+
+			group by $plan_table.skill_id , user_id ";
+
+			$ar_direct=$db_object->get_rsltset($mysql);
+	
+//echo "direct sql=$mysql<br><br>";
+			for($i=0;$i<count($ar_direct);$i++)
+			{
+
+				$user_id=$ar_direct[$i]["user_id"];
+		
+				$skill_id=$ar_direct[$i]["skill_id"];
+
+				$skill_name=$ar_direct[$i]["skill_name"];
+
+				$mysql="select status from $feedback_table
+					where rater_id='$rater_id' and skill_id='$skill_id' and 
+					rated_id='$user_id'";
+
+				$dFeed=$db_object->get_a_line($mysql);
+
+				if( ( $mode=='direct' ) && ($dFeed['0']==''  || $dFeed['status'] != '1'))
+				{
+					$skill_array[]=array(skill_id=>$skill_id,skill_name=>$skill_name);
+				}
+			
+			}
+
+			
+			
+			
+
+		}
+
+	return $skill_array;
+	
+	}
+
+
+//------------------------------------------------------------------------
+
+function return_qry($db_object,$common,$id,$user_id)
+	{
+		switch($id)
+		{
+			case 1:
+				$rater_id=$common->immediate_boss($db_object,$user_id);
+				$extraqry=" and rater_id ='$rater_id'";
+				break;
+			case 2:
+				$rater_id=$common->immediate_boss($db_object,$user_id);
+				$extraqry=" and ((rater_id <> '$rater_id') and (rater_id <> $user_id) ) ";
+				break;
+			case 3:
+				$extraqry=" and  rater_id ='$user_id'";
+				break;
+			case 4:
+				$extraqry="";
+				break;				
+		}
+
+		return $extraqry;
+	}
+
+
+function accomplished_average($db_object,$common,$user_id,$skill_id,$dateqry)
+{
+	$skill_table 		=$common->prefix_table("skills");
+	$plan_table		=$common->prefix_table("approved_devbuilder");
+	$feedback_table	=$common->prefix_table("learning_feedback_results");
+	$user_table = $common->prefix_table("user_table");
+	$solution_table	=$common->prefix_table("assign_solution_builder");
+	
+	//get Avg
+	$mysql 	= "select cdate,completed_date,plan_approved_date,
+	(((to_days(cdate) - to_days(plan_approved_date))/(to_days(completed_date) - to_days(plan_approved_date)))*100) as per
+	from $plan_table,$solution_table,$feedback_table where 
+	$plan_table.user_id=$solution_table.user_id and $plan_table.skill_id=$solution_table.skill_id
+	and $plan_table.user_id=$feedback_table.rated_id and $plan_table.skill_id=$feedback_table.skill_id
+	and $plan_table.pstatus='a' and $plan_table.user_id='$user_id' and $plan_table.skill_id='$skill_id'
+	and $feedback_table.status='1' $dateqry";	
+	$dResult  =$db_object->get_rsltset($mysql);
+
+	$cntresult = count($dResult);
+	
+
+	$count = '0';
+	$totalper='0';
+	$cnt=count($dResult);
+	$totalper='0';
+	for($k=0;$k<count($dResult);$k++)
+	{
+		$per	= $dResult[$k]['per'];	
+		if( $per != "" )
+		{
+			$count=$count+1;	
+			$totalper=$totalper+$per;
+		}
+	}
+	if($count != '0')
+	{
+		$avg=$totalper/$count;
+	}
+	else
+	{
+		$avg = '0';	
+	}
+	$avg_round=round($avg,2);
+	
+	return $avg_round;
+}
+
+//--------------------------------------------------------------------------
+
+}
+
+?>

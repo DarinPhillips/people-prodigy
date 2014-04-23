@@ -1,0 +1,47 @@
+
+<form action="positions_without_employees.php" method="post">
+<center>
+<h1>
+{{cPositionwithoutEmployees}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/position_without_employees.html');">
+</h1>
+</center>
+<table align=center>
+<tr>
+<td class=code>
+{{cPosition}}
+</td>
+<td class=code>
+{{cAdded_by}}
+</td>
+<td class=code>
+{{cDate_added}}
+</td>
+</tr>
+<{employee_loopstart}>
+<tr>
+<td class=code>
+<!--
+
+<a href="../approve_personal_info.php?emp_id=<{user_id}>&icomefromcore=yes"><{username}></a>
+-->
+<a href="add_employee.php?pos_id=<{pos_id}>&icomefromcore=yes"><{position_name}></a>
+</td>
+<td class=code>
+<{added_by}>
+
+</td>
+<td class=code>
+<{date_added}>
+</td>
+</tr>
+<{employee_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+<!--
+<input type="button" name="fSave" value="{{cSave}}" >
+-->
+</center>
+</form>

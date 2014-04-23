@@ -1,0 +1,161 @@
+<script language="javascript">
+function Check_null(m1,m2)
+{
+flag=0
+with (document.fb)
+	{
+		len = elements.length;
+
+		pattern	= /fRating_/i;
+		pattern1 = /fDelivered_/i;
+		for (i=0;i<len-1;i++)
+		{
+			chk_name	= elements[i].name;
+			chk_val		= elements[i].value;
+
+			
+			if (pattern.test(chk_name))
+			{
+				test	= elements[chk_name];
+				count = test.length;
+				
+				for(j=0;j<count;j++)	
+				{
+					check	= test[j].checked;
+					if (check)
+					{	
+						flag=1;					
+						break;
+					}
+				}			
+			}
+			
+			if(pattern1.test(chk_name))
+			{
+				value = elements[chk_name].value;
+				if(value=="")
+				{
+					alert(m1);
+					return false;	
+				}
+			}
+		}
+	}
+if(flag!=1)
+{
+	alert(m2);
+	return false;
+}
+return true;
+}
+</script>
+<form name="fb" action="performance_feedback.php" method=post onsubmit="return Check_null('{{cEntercommittedval}}','{{cSelectratingval}}');">
+<b><u>{{cPerformancefeed}}</u></b>
+<!--ifnorecord_start-->
+<table align=right class=code>
+<tr>
+	<td>
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_feedback.html');">
+	</td>
+</tr>
+</table>
+<input type=hidden name=uid value='{{uid}}'>
+<table>
+<tr>
+	<td class=code>
+	<input type=text name=fEmpname value='{{empname}}' readonly>
+	<!--not_self_start-->
+	{{cRequested}}
+	<!--not_self_end-->
+
+	<!--deliver_start-->
+	{{cSelfrating}}
+	<!--deliver_end-->
+	
+	</td>
+</tr>
+
+<tr>
+	<td class=code>{{feedback}}</td>
+</tr>
+</table>
+<table >
+<{record_loopstart}>
+<table border=1>
+<tr>
+<td>
+<table>
+<tr>
+	<td class=code><{count}>.<{objective}></td>
+</tr>
+<tr>
+	<td class=code>{{cTotalnocomitted}}<input type=fCommitted value='<{committed}>' readonly>
+<!--deliver_start-->
+	{{cIdelivered}}<input type=text name=fDelivered_<{oid}> value="<{fDelivered}>" >
+<!--deliver_end-->
+</td>
+</tr>
+<tr>
+	<td class=code><{how}></td>
+</tr>
+<{rating_loopstart}>
+<tr>
+	<td class=code><input type=radio name=fRating_<{oid}> value='<{rval}>'<{checked}>><input type=text name=fEmpname value='{{empname}}' readonly><{crating}></td>
+</tr>
+<{rating_loopend}>
+<tr>
+	<td class=code><input type=text name=fEmpname value='{{empname}}' readonly>{{cMoreEffective}}</td>
+</tr>
+<tr>
+	<td class=code><textarea name=fEffective_<{oid}> cols=35><{fEffective}></textarea>
+</tr>
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+<tr>
+	<td class=code>{{cEncourage}}<input type=text name=fEmpname value='{{empname}}' readonly>{{cTolearn}}</td>
+</tr>
+<tr>
+	<td class=code nowrap>
+			<{techtime_loopstart}>
+				<select name=fTech<{index}>_<{oid}>>
+				<option value="">{{cTechnicalSkill}}</option>
+				<{tech_loopstart}>				
+				<option value="<{skillid}>"<{selected1}>><{skillname}></option>
+				<{tech_loopend}>
+				</select>
+			<{techtime_loopend}>
+			
+			<{intertime_loopstart}>
+				<select name=fInter<{inde}>_<{oid}>>
+				<option value="">{{cInterPersonalSkill}}</option>
+				<{inter_loopstart}>
+				<option value="<{iskillid}>" <{interselect}>><{iskillname}></option>
+				<{inter_loopend}>
+				</select>
+			<{intertime_loopend}>
+
+			
+	
+	</td>
+	
+</tr>
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<{record_loopend}>
+<tr>
+	<td></td>
+</tr>
+<tr>
+	<td align=center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type=submit name=save value="{{cSave}}">
+	<input type=submit name=submit value="{{cSubmit}}">
+	</td>
+</tr>
+</table>
+</form>
+<!--ifnorecord_end-->

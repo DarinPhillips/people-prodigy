@@ -1,0 +1,44 @@
+<script language="JavaScript">
+function validate(form)
+{		
+		
+		str1=form.fBoss.value;
+		
+		if(str1=="")
+		{
+			alert("{{cSelectABoss}}");
+			
+			return(false);
+		}
+		return(true);
+}
+</script>
+<center><h1>
+{{cAssignReportPlan}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/assign_succession_plan.html');">
+<h1><center>
+<form action="assign_succession_plan1.php" method=POST name=assign>
+<table align=center border=0>
+<tr>
+		<td class=code>
+					
+				<select name=fBoss>
+					<option class=code name=fBoss value="">{{cBossinMyOrg}}</option>
+
+				<{boss_loopstart}>
+					<option class=code value="<{boss_id}>"><{boss_name}></option>
+				<{boss_loopend}>
+
+				</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			<input type="button"  value={{cBack}} onClick="window.history.back();">&nbsp&nbsp&nbsp&nbsp
+			<input type=submit name=fNext value="{{cNext}}" onclick="return validate(document.assign)">
+			
+		</td>
+	</tr>
+	
+</table>
+</form>

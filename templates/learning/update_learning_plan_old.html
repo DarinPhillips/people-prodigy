@@ -1,0 +1,60 @@
+<script src="../jscripts/calendar2.js"></script>
+<html>
+<center>
+	<h1>
+		{{cLearningPlanProgressUpdate}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/feedback_request_form.html');">
+	</h1>
+</center>
+<form action="update_learning_plan.php" name="learning" method="post">
+
+<table align=center>
+	
+	<{skill_loopstart}>
+	<tr>
+		<td class=code colspan=4><{skill_name}></td>
+	</tr>
+
+	<{activity_loopstart}>
+
+	   <{subact_loopstart}>
+			
+		<{title_loopstart}>
+	
+		
+			<tr>
+				<td class=code><{title}></td>
+				<td class=code><{cdate}></td>
+				<td class=code>{{cCompletedOn}}</td>
+				<td class=code>
+					<input type=text name="fActstart_<{skills}>_<{buildid}>" readonly size=10 value="<{act_date}>" >
+				</td>
+			</tr>
+			
+		<{title_loopend}>
+	
+	  <{subact_loopend}>
+
+      <{activity_loopend}>	
+	<tr>
+		<td class=code><input type=checkbox name="request_<{skills}>" value='1'>
+		<td class=code colspan=3>{{cRequestSkillRating}}</td>
+	</tr>
+	<tr>
+		<td class=code><input type=checkbox name="request_<{skills}>" value='1'>
+		<td class=code colspan=3>{{cDeleteSkill}}</td>
+	</tr>
+		
+	<tr><td colspan=4><bR><br></td></tr>		
+	<{skill_loopend}>
+		<tr>
+			<td class=code align='center'>
+				<input type='submit' name='update' value='{{cUpdateMyplan}}'>
+				<input type='submit' name='return' value='{{cReturntoDashboard}}'>
+				
+			</td>
+		</tr>
+	
+</table>
+</form>

@@ -1,0 +1,115 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.fposition_id.value=='')
+	{
+		alert('{{cJavascriptnamealert}}');
+		document.frm.fposition_id.focus();
+		return false;
+	}
+}
+</script>
+
+<table border=1 align = center>
+<form action ="show_rel_position.php" method=post name='frm' onSubmit="return validate()">
+<input type=hidden name=family_id value="{{family_id}}" >
+<tr>
+<td class=code>
+{{cShowrel_pos_addnewfam}}
+</td>
+
+
+<td class=code>
+<select name=related_pos[] multiple >
+
+<{position_loopstart}>
+<option value='<{key}>'><{value}></option>
+<{position_loopend}>
+
+</select>
+</td>
+<td class=code>
+<input type=submit name=fAdd_pos value="{{cShowrel_pos_addnewfam}}";
+</td>
+</tr>
+</form>
+</table>
+<hr>
+<table  border=1 align = center>
+<tr>
+<td class=code><b>
+{{cShowrelpos_display}}</b>
+</td>
+</tr>
+</table>
+
+	<table border=1 align = center>
+	<tr>
+		<td class=code>
+		{{cShowrelpos_posid}}
+		</td>
+		<td class=code>
+		{{cShowrelpos_famid}}
+		</td>
+		<td class=code>
+		{{cShowrelpos_famname}}
+		</td>
+		<td class=code>
+		{{cShowrelpos_posid}}
+		</td>
+		<td class=code>
+		{{cShowrelpos_posname}}
+		</td>
+		
+		<td class=code>
+		{{cEdit}}
+		</td>
+		<td class=code>
+		{{cDelete}}
+		</td>	
+	</tr>
+
+<{familyposition_loopstart}>
+	<tr>
+		<td class=code>
+		<{fpos_id}>
+		</td>
+		<td class=code>
+		<{family_id}>
+		</td>
+		<td class=code>
+		<{family_name}>
+		</td>
+		<td class=code>
+		<{position_id}>
+		</td>
+		
+		<td class=code>
+		<{position_name}>
+		</td>
+
+		<td class=code>
+		<a href="edit_position.php?position_id=<{position_id}>&family_id=<{family_id}>&action=edit">{{cEdit}}</a>
+		</td>
+		<td class=code>
+		<a href="delete_position.php?position_id=<{position_id}>&action=delete">{{cDelete}}</a>
+		</td>
+		
+	</tr>
+<{familyposition_loopend}>
+
+</table>
+
+<table align=center>
+<tr>
+<td class=code>
+<a href="families.php">{{cShowall}}</a> 
+</td>
+</tr>
+</table>
+</body>

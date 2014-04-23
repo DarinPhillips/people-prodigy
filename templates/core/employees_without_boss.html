@@ -1,0 +1,41 @@
+<form action="employees_without_boss.php" method="post">
+<center>
+<h1>
+{{cEmployeeswithoutBoss}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/employee_without_boss.html');">
+</h1>
+</center>
+<table align=center>
+
+<th class=code>
+{{cEmployeename}}
+</th>
+<th class=code>
+Added Person
+</th>
+<th class=code>
+{{cDate_added}}
+</th>
+
+<{employee_loopstart}>
+<tr>
+<td class=code>
+<a href="add_employee_information.php?fEmployee=<{user_id}>&icomefromcore=yes"><{username}></a>
+</td>
+<td class=code>
+<{added_by}>
+</td>
+<td class=code>
+<{reg_date}>
+</td>
+</tr>
+<{employee_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+<!--
+<input type="button" name="fSave" value="{{cSave}}" >
+-->
+</center>
+</form>

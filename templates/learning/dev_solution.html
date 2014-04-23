@@ -1,0 +1,60 @@
+<script language="javascript">
+
+	function validate(form,alertmess)
+	{
+
+		if(form.ip.value=="" && form.tech.value=="")
+			{
+			alert(alertmess);
+
+			return false;
+			}
+	return true;
+		
+	
+	}
+
+</script>
+
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<center><h1>{{cDevsolution}}<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/dev_solution.html');"></h1></center>
+<form action="dev_solution.php" method=POST name="dev" onSubmit="return validate(dev,'{{cAlertmess}}');">
+<br>
+<{inter_start}>
+{{cInterPersonalSkill}} :
+
+<select name=ip onchange="document.dev.tech.selectedIndex=0">
+<option value=""> {{cSelect}} </option>
+<{ip_loopstart}>
+
+
+<option value="<{skills_id}>"> <{ip_skill}> </option>
+
+<{ip_loopend}>
+</select>
+<{inter_end}>
+<br><br>
+<{technical_start}>
+{{cTechnicalSkill}} :
+
+<select name=tech onchange="document.dev.ip.selectedIndex=0">
+<option value=""> {{cSelect}} </option>
+<{tech_loopstart}>
+
+<option value="<{skills_id}>"> <{tech_skill}> </option>
+<{tech_loopend}>
+</select>
+<{technical_end}>
+
+<align="left">
+<br><input name=back1 type=button value="{{cBack}}" onclick="window.location.replace('front_panel.php'); ">
+
+<input type=hidden name=show value="show" >  
+<input type=submit name=show value="{{cNext}}" >  
+
+
+
+<br><br>
+</form>

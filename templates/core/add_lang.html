@@ -1,0 +1,36 @@
+<script>
+function checkaddlang()
+{
+	with(document.frm2)
+	{
+		if(fLang.value=="")
+		{
+			alert('Enter Valid Language');
+			return false;
+		}
+		
+		
+	}
+	return true;
+}
+</script>
+<center>
+<h1>
+{{cAddLang}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/add_lang.html');">
+</h1>
+<center>
+
+
+<form action="add_lang.php" name=frm2 method=post onSubmit="return checkaddlang();">
+<table name=addlang align=center >
+<tr>
+	<td class=code><b>{{cEnterLanguageName}}</td><td><input type=text name=fLang></td>
+	</tr><tr>	
+	<td class=code><b>{{cEnterLanguageCharset}}</td><td><input type=text name=fLangcharset></td>
+
+</tr>
+
+</table>
+<center><input type=submit name=submit value="{{cSubmit}}"></center>
+</form>

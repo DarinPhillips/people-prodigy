@@ -1,0 +1,11 @@
+<form action="addqualification.php" method=post>
+<table align=center>
+<{qualification_loopstart}>
+<tr>
+	<td>{{cEnterQualification}}(<{langname}>)</td>
+	<td><input type=text name=fQualification_<{lid}>></td>
+</tr>
+<{qualification_loopend}>
+</table>
+<center><input type=submit name=save value='{{cSave}}'></center>
+</form>

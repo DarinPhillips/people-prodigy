@@ -1,0 +1,41 @@
+<form action="employee_without_position.php" method="post">
+<center>
+<h1>
+{{cEmployeewithoutPosition}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/employee_without_position.html');">
+</h1>
+</center>
+<table class=table align=center>
+<th>
+{{cEmployeename}}
+</th>
+<th>
+{{cAdded_by}}
+</th>
+<th>
+{{cDate_added}}
+</th>
+<{employee_loopstart}>
+<tr>
+<td class=code>
+<a href="add_employee_information.php?fEmployee=<{user_id}>"><{username}></a>
+</td>
+<td class=code>
+<{added_by}>
+</td>
+<td class=code>
+<{reg_date}>
+</td>
+</tr>
+<{employee_loopend}>
+
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+<!--
+<input type="button" name="fSave" value="{{cSave}}" >
+-->
+</center>
+
+</form>

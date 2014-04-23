@@ -1,0 +1,62 @@
+<center>
+	<h1>
+		{{cLearningfeedback}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/feedback_request_form.html');">
+	</h1>
+</center>
+<form action="feedback_request_form.php" name="learning" method="post">
+<input type='hidden' name='rated_id' value='{{ratedid}}'>
+
+<table align=center>
+	
+	<{skill_loopstart}>
+	<tr>
+		<td class=code >
+		
+		<{requesttext}>
+	
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code>	
+		
+		 	{{cChooseAnswer}}
+
+		</td>
+	</tr>
+		<{answer_loopstart}>
+			<tr>
+				<td class=code>	
+					<input type='radio' <{checked}> name='ans_<{skill_id}>' value='<{value}>'>
+				 	<{result}>
+				</td>
+			</tr>
+		<{answer_loopend}>
+	<tr>
+		<td class=code>	
+		
+			 <{cEffectiveAt}>
+
+		</td>
+	</tr>
+		
+		<tr>
+			<td class=code>
+		
+				<textarea name="text_<{skill_id}>" rows=3 cols=75 ><{feedback_text}></textarea>
+
+			</td>
+		</tr>
+	<tr><td><bR><br></td></tr>		
+	<{skill_loopend}>
+		<tr>
+			<td class=code align='center'>
+				<input type='submit' name='save' value='{{cSave}}'>
+				<input type='submit' name='submit' value='{{cSubmit}}'>	
+			</td>
+		</tr>
+	
+</table>
+</form>

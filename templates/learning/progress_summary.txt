@@ -1,0 +1,65 @@
+
+
+
+					{{username}}{{cS}}   {{cLearningProgressSummary}}
+					-------------------------------------------------
+
+
+
+	
+	<{skill_loopstart}>
+		
+<{skill_name}>
+<{comment_start}>
+{{cRaterComments}}
+--------------	
+	<{comment_loopstart}>
+<{rater_name}> : <{feedback_text}>
+	<{comment_loopend}>
+<{comment_end}>
+<{nongraph_loopstart}>
+<{result_start}>
+{{cRatersresults}}
+--------------
+{{cAverage}}:<{avg_round}>
+
+
+{{cRaterName}}					{{cDate}}					{{cValue}}
+
+<{ratings_loopstart}>
+<{rater_name}>					<{rated_date}>					<{value}>
+<{ratings_loopend}>
+<{result_end}>
+<{nongraph_loopend}>
+
+<{display_view_rating_start}>
+{{cRatings}}
+-----------
+{{cRaterName}}				{{cDate}}	{{cValue}}
+<{user_loopstart}>
+<{rater_name}>				<{dates}>	<{value}>
+
+<{user_loopend}>
+<{display_view_rating_end}>
+
+<{compare_display_start}>
+{{cRatingsCompare}}
+-------------------
+{{cRaterName}}				{{cDate}}	{{cValue}}
+<{user_loopstart1}>
+<{rater_name1}>				<{dates1}>	<{value1}>
+
+<{user_loopend1}>
+
+					{{cVs}}
+
+{{cRaterName}}				{{cDate}}	{{cValue}}
+<{user_loopstart2}>	
+<{rater_name2}>				<{dates2}>	<{value2}>
+
+<{user_loopend2}>
+<{compare_display_end}>
+
+==============================================================================================
+<{skill_loopend}>
+

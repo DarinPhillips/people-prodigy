@@ -1,0 +1,39 @@
+<body class=B1>
+<form action="unapproved_skill_builder.php" method="post" name='frm'>
+<{replace1_loopbegin}>
+<center>
+<table align=center>
+	<tr>
+	<td>
+{{cPerobj}}{{position_name}}
+<{skill_loopstart}><table class=table width=100%>
+<{obj_loopbegin}>
+<tr>
+<td class=code><!--{{i}}--></td> 
+<td> <input type="text" name="objective_{{obj_id}}" value="<{objective_{{obj_id}}_name}>"></td>
+</tr>
+<{obj_loopexit}>
+	</td></tr></table>
+
+	<table class=table width=100%>
+	<tr><td>
+
+<{chg_loopbegin}>
+<tr>
+<td class=code>
+<!--
+{{i}} -->
+</td><t><td> <input type="text" name="objective_{{obj_id}}" value="<{objective_{{obj_id}}_name}>"></td>
+</tr>
+<{chg_loopexit}>
+</table>
+<{skill_loopend}>
+</td></tr></table>
+</center>
+<center><input type="submit" name="fNext" value="{{cNext}}"></center>
+<input type="hidden" name="fPos_id" value={{pos_id}}>
+<{replace1_loopexit}>
+<input type="hidden" name="emp_id" value={{emp_id}}>
+</form>
+</body>
+</html>

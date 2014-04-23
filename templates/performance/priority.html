@@ -1,0 +1,24 @@
+<center>
+<h1>
+{{cPriority}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/priority.html');">
+</h1>
+<center>
+<center><a href="add_priority.php">{{cAddpriority}}</a></center>
+<br>
+<table align=center border=1>
+<tr>
+	<td class=code><b>{{cPriority}}</b></td>
+	<td class=code><b>{{cPriorityval}}</b></td>
+	<td class=code><b>{{cEdit}}</b></td>
+	<td class=code><b>{{cDelete}}</b></td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td class=code><{priority}></td>
+	<td class=code><{pval}></td>
+	<td class=code><a href="edit_priority.php?pid=<{pid}>">{{cEdit}}</a></td>
+	<td class=code><a href="priority.php?pid=<{pid}>">{{cDelete}}</a></td>
+</tr>
+<{record_loopend}>
+</table>

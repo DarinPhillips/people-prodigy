@@ -1,0 +1,125 @@
+<script language=javascript>
+
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=300,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=500,height=400,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=no,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+
+function validate_email()
+{
+	
+	var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+	var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+	
+	with(document.frm1)
+	{
+	//alert(no_of_persons_rating.value);
+		
+		email_name = 'email_';
+		
+		persons_val = no_of_persons_rating.value;
+		
+		
+		for(i=0;i<persons_val;i++)
+		{
+			email_each = email_name+i;
+		
+			for(j=i+1;j<persons_val;j++)
+			{
+				email_each1 = email_name+j;
+				
+				if(!reg1.test(elements[email_each].value) && reg2.test(elements[email_each].value))
+				{
+					if(elements[email_each].value == elements[email_each1].value)
+					{
+						alert('{{cYouchoosesameperson}}');
+						return false;
+								
+					}
+				}
+				else
+				{
+					test=confirm('{{cConfirmandProceed}}');
+					
+					if(test==false)
+					{
+					return false;
+					}
+					
+		
+				}
+
+
+			}
+		
+		}
+
+	}
+	
+}
+</script>
+<body>
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/multirater_appraisal.html');">
+</td>
+</tr>
+</table>
+<form action = multirater_appraisal.php name=frm1 onSubmit = "return validate_email()";>
+<input type=hidden name=grpname value={{grpname}} >
+<input type=hidden name=no_of_persons_rating value='{{no_of_persons_rating}}' >
+<table align=center border= 0>
+	<tr>
+		<td class=code align=center colspan=4>
+			<b>{{cMultiraterappraisal_inter}}</b><br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code align=center>
+			{{cMultiraterappraisal_teammate}}
+		</td>
+
+		<td align=center class=code >
+			{{cMultiraterappraisal_comdir}}
+		</td>
+		<td align=center class=code >
+			{{cMultiraterappraisal_email}}
+		</td>
+	</tr>
+
+	<{teammates_loopstart}>
+
+	<tr>
+
+		<td><br><br>
+
+			<input type=text name=teammates_<{i}> readonly value="<{username}>">
+		</td>
+		<td><br><br>
+			<input type=button name=fCompanydir value="{{cMultiraterappraisal_companydir}}" onClick="popup('company_employees.php?field1=teammates_<{i}>&field2=email_<{i}>&grpname=<{grpname}>','Appraisal Help');" >
+		</td>
+		<td><br><br>
+			<input type=text name=email_<{i}> readonly value="<{email}>">
+
+		</td>
+	</tr>
+	<{teammates_loopend}>
+
+<tr>
+	<td class=code align=center colspan=3><br>
+			<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+		<input type=submit name=fProceed value="   {{cMultiraterappraisal_proceed}}  ">
+	</td>
+</tr>
+
+</table>
+<br>
+
+</form>
+</body>

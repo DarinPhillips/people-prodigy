@@ -1,0 +1,117 @@
+<form enctype="multipart/form-data" action="external_candidate.php" method="post" >
+{{cMyInformation}}
+
+<table align=center>
+<{namesfield_loopstart}>
+
+<tr>
+<td>
+<{field_name}>
+</td>
+<td>
+<input type="text" name="<{internalname}>" value="<{field_value}>">
+</td>
+</tr>
+
+<{namesfield_loopend}>
+
+<tr>
+<td>
+{{cUsername}}
+</td>
+<td>
+{{username}}
+</td>
+</tr>
+
+<tr>
+<td>
+{{cPassword}}
+</td>
+<td>
+<input type="text" name="fPassword" value="{{password}}">
+</td>
+</tr>
+
+</table>
+{{cMyskills}}
+<table align="center">
+
+<!--
+<tr>
+<td class=code>
+<a href="{{location}}.php?user_id={{user_id}}&test_mode={{test_mode}}&test_type=i"> {{cInterpersonalskillappraisal}}</a>
+</td>
+</tr>
+-->
+<!--<{dyna_replace}>
+<tr>
+<td class=code>
+<a href="{{location}}.php?user_id={{user_id}}&test_mode={{test_mode}}&test_type=t"> {{message}}</a>
+</td>
+</tr>
+<{dyna_replace}>-->
+
+<tr>
+<td class=code>
+<a href="inter_appraisal.php">InterPersonal Skills Appraisal</a>
+</td>
+</tr>
+<tr>
+<td class=code>
+<a href="tech_appraisal.php">Technical Skills Appraisal</a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cUploadResume}}
+</td>
+
+<td class=code>
+<input type=file name="fResume"><a href="download.php?load=Resumes&user_id={{user_id}}">{{viewresume}}</a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cUploadLetter}}
+</td>
+<td class=code>
+<input type=file name="fLetter"><a href="download.php?load=Letters&user_id={{user_id}}">{{viewletter}}</a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cUploadPersonalPhoto}}
+</td>
+<td class=code>
+<input type=file name="fPhoto"><a href="download.php?load=Photos&user_id={{user_id}}">{{viewphoto}}</a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cUploadCertificate}}
+</td>
+<td class=code>
+<input type=file name="fCertificate"><a href="download.php?load=Certificates&user_id={{user_id}}">{{viewcertificate}}</a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cUploadLicense}}
+</td>
+<td class=code>
+<input type=file name="fLicense"><a href="download.php?load=Licenses&user_id={{user_id}}">{{viewlicense}}</a>
+</td>
+</tr>
+
+</table>
+<center>
+<input type=submit name="fSubmit" value="{{cSubmit}}">
+</center>
+
+</form>

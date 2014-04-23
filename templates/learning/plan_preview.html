@@ -1,0 +1,111 @@
+<html>
+
+<center><h1>{{cPlanPreview}}
+
+<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/plan_approval.html');"></h1></center>
+
+
+
+
+<table>
+
+<tr><td class=code>{{username}}<!--{{first_name}}  {{last_name}}-->{{cS}} {{cLearningPlan}}</td></tr>
+
+<{skills_loopstart}>
+<{skill_name}>
+
+
+<tr><td class=code>{{cImprove}} <{skills_name}> {{cIwilllearnvia}}</td></tr>
+
+<br>
+
+			<table border=1>
+			<tr>
+			<td class=code><b>{{cActivitytitle}}</b></td>
+			<td class=code><b>{{cActivitydescription}}</b></td>
+					
+			<td class=code><b>{{cBydate}}</b></td>
+			<td class=code><b>{{cCompletedby}}</b></td>
+			</tr>
+		
+	<{text1_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code> <{cdate}> </td>
+			<td class=code>  <{completed_date}></td>
+
+			</tr>
+		
+		<{text1_loopend}>
+			</table>
+
+
+<br>
+	
+			<table border=1>
+			<tr>
+			<td class=code>{{cActivitytitle}}</td>
+			<td class=code>{{cActivitydescription}}</td>
+			<td class=code>{{cBydate}}</td>	
+			<td class=code>{{cThisActivitybyDate}}</td>
+			<td class=code>{{cCompletedby}}</td>
+		
+			</tr>
+			
+	<{text2_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}> </td>
+			<td class=code> <{completed_date}></td>
+			
+
+			</tr>
+		<{text2_loopend}>		
+			</table>
+
+
+
+
+	<br>
+
+	
+			<table border=1>
+			<tr>
+			<td class=code>{{cFeedsource}}</td>
+			<td class=code>{{cFrequency}}</td>
+			<td class=code>{{cBydate}}</td>	
+			<td class=code>{{cUntill}}</td><!--{{cUntillDate}} -->
+			
+			</tr>
+	<{text3_loopstart}>	
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{frequency}></td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}></td>
+			</tr>
+		
+	<{text3_loopend}>
+			</table>
+
+		</table>
+
+<{skills_loopend}>
+<br>
+<br>
+
+
+
+
+
+
+</html>

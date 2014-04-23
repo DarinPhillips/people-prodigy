@@ -1,0 +1,280 @@
+<script language='javascript'>
+function enable_ipi(num)
+{
+
+
+	var ip_name	= 'rating_label_i_';
+
+	with (document.frm)
+	{
+		tlang	= temp_lang.value;
+
+		tlang	= tlang.split(",");
+
+		
+		for (k=0;k<tlang.length;k++)
+		{
+		
+			tempid = tlang[k];
+			
+			for (i=1;i<=num;i++)
+			{
+				temp	= ip_name+i+'_'+tempid;
+
+				elements[temp].disabled = false;
+			}
+			for (j=i;j<=7;j++)
+			{
+				temp	= ip_name+j+'_'+tempid;
+
+				elements[temp].disabled = true;
+				elements[temp].value = "";
+			}
+		}
+	}
+}
+
+function enable_ipt(num)
+{
+ 	var ip_name	= 'rating_label_t_';
+
+	with (document.frm)
+	{
+		tmp_lang = temp_lang.value;
+	
+		tmp_lang	= tmp_lang.split(",");
+
+
+		for (k=0;k<tmp_lang.length;k++)
+		{
+		
+			tempid = tmp_lang[k];
+			
+	
+			for (i=1;i<=num;i++)
+			{
+				temp	= ip_name+i+'_'+tempid;
+				elements[temp].disabled = false;
+
+			}
+
+			for (j=i;j<=7;j++)
+			{
+				temp	= ip_name+j+'_'+tempid;
+
+				elements[temp].disabled = true;
+				elements[temp].value = "";
+			}
+		}
+	}
+}
+function enalbeDoesntApply(value)
+{
+	var ip_name1	= 'rating_label_i_doesnt_';
+	
+	with (document.frm)
+	{
+
+	tmp_lang = temp_lang.value;
+
+		tmp_lang	= tmp_lang.split(",");
+
+		
+		if(value == 'yes')
+		{
+			for (k=0;k<tmp_lang.length;k++)
+			{
+		
+				tempid = tmp_lang[k];
+
+				name = ip_name1+tempid;
+				
+				elements[name].disabled = false;
+				
+				
+				
+			}
+			
+		}
+		else
+		{
+				for (k=0;k<tmp_lang.length;k++)
+			{
+		
+				tempid = tmp_lang[k];
+
+				name = ip_name1+tempid;
+
+				
+				elements[name].disabled = true;
+				elements[name].value = "";
+				
+				
+			}
+		
+			
+		}
+	
+		
+	}
+
+}
+
+
+</script>
+
+<form action = multirater.php method=post name='frm' >
+<input type=hidden name=temp_lang value='{{temp_lang}}' >
+<table align=center >
+<tr>
+<td class=code align=center>
+<h1><u><b>{{cMultiraterassessment}}
+
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/multirater.html');">
+</b></u></h1>
+</td>
+</tr>
+<tr>
+<td class = code align=center>
+<b>{{cMultirater_inter}}</b>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+{{cMultirater_nooflevels}}
+
+
+		<{ratinglevel_loopstart}>
+			<input type=radio name="rating_level_i" value=<{level}>  <{checked}> onClick="enable_ipi(this.value);"> <{level}>
+		<{ratinglevel_loopend}><br>
+
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+
+{{cMultirater_labels}}
+
+<table>
+<{language_loopstart}>
+<tr>
+		<td class=code>
+		<b>	<{language}> </b>
+		</td>
+</tr>
+<tr>
+<td>
+
+		<{ratinglabel_loopstart}>
+			<input type=text name='rating_label_i_<{labelno}>_<{lid}>' size=3  value = "<{label_val}>" <{dis}> >
+		<{ratinglabel_loopend}>
+&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=text name='rating_label_i_doesnt_<{lid}>' size=3  value = "<{label_notapp}>" <{dis_not}> >
+		<br>
+				
+
+</td>
+</tr>
+<{language_loopend}>
+</table>
+
+
+</td>
+
+</tr>
+<tr>
+<td class=code align=center>
+
+</td>
+</tr>
+		<br> 
+</td>
+</tr>
+<tr>
+<td class = code align=center>
+
+
+
+{{cMultirater_doesntapply_mess}}
+
+<input type=radio name=fDoesntapplyi value='yes' {{yeschecked}} onClick = "enalbeDoesntApply(this.value)";> {{cMultirater_apply_yes}}
+
+<input type=radio name=fDoesntapplyi value='no'  {{nochecked}} onClick = "enalbeDoesntApply(this.value)";> {{cMultirater_apply_no}}
+
+</td>
+</tr>
+<tr>
+<td class = code align=center>
+<b>{{cMultirater_categoryinter}}</b><br>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+	<{ratingcategory_loopstart}>
+		<input type=checkbox name=rating_category_<{key}> value=<{key}> <{checked}> > <{value}>
+	<{ratingcategory_loopend}><br><br>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<b>{{cMultirater_groupinter}}</b><br>
+</td>
+</tr>
+<tr>
+<td class = code align=center>
+	<{ratinggroup_loopstart}>
+		<input type=checkbox name=rating_group_<{key}> value=<{key}> <{checked}> > <{value}>
+	<{ratinggroup_loopend}><br><br>
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td class=code >
+<b> {{cMultirater_tech}}</b><br><br>
+</td>
+</tr>
+
+<td class=code>
+<tr>
+<td class=code>
+{{cMultirater_technoraters}}
+		<{ratingtech_loopstart}>
+			<input type=radio name="rating_level_t" value=<{level}> onClick="enable_ipt(this.value);" <{checked}> > <{level}> 
+		<{ratingtech_loopend}><br><br>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cMultirater_labels}}
+<table>
+<{langtech_loopstart}>
+<tr>
+		<td class=code>
+		<b>	<{language}> </b>
+		</td>
+</tr>
+<tr>
+<td>
+		<{techlabel_loopstart}>
+			<input type=text name=rating_label_t_<{labelno}>_<{lid}> size=3   value='<{labelval}>' <{dis}> >
+		<{techlabel_loopend}>
+		
+		<br>
+			<br>	
+
+</td>
+</tr>
+<{langtech_loopend}>
+</table>
+
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<input type=button name=fBack value='{{cBack}}' onClick="window.location.replace('front_panel.php')";>
+<input type=submit name=fSubmit value="{{cSave}}">
+</td>
+</tr>
+</table>
+</form>

@@ -1,0 +1,113 @@
+<script language="Javascript">
+function validate()
+{
+	with(document.frm1)
+	{
+		spc_reg	= /\S/;
+		
+		if(!spc_reg.test(fModelname.value) || fModelname.value == '')
+		{
+			alert('{{cGivemodelname}}');
+			return false;
+		}
+	}
+}
+</script>
+<form action=position_model4.php method=post name=frm1 onSubmit = "return validate()";>
+
+<input type=hidden name=model_id value='{{model_id}}'>
+<input type=hidden name=lev_cho value='{{lev_cho}}'>
+<input type=hidden name=lev_key value='{{lev_key}}'>
+<input type=hidden name=famids value='{{famids}}'>
+
+<table align=center border=1>
+<tr>
+		<td class=code align=center colspan=4>
+			<h1>{{cBuildamodel}}
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('position_model.html')";>
+			</h1>
+		</td>
+			
+</tr>
+<tr>
+	<td class=code colspan=2>
+		<b>{{cStep4_savemodel}}</b>
+	</td>
+	
+</tr>
+<tr>
+	<td class=code colspan=2>
+		{{cFactors_usedtobuild}}
+	</td>
+</tr>
+<tr>
+	<td class=code colspan=2>
+	<{fam_start}>
+		<b>{{cFamilies}} : </b> {{families}}<br><br>	
+	<{fam_end}>
+
+	<{lev_start}>
+	<b>{{cLevel}} :</b>
+		<{leveldisplay_loopstart}>
+			 <{lev_display}>
+		<{leveldisplay_loopend}>
+		<br><br>
+	<{lev_end}>
+	<{loc_start}>
+	<b>{{cLocation}}:</b>
+	
+		<{locdisplay_loopstart}>
+			<{location_name}> <br>	
+		<{locdisplay_loopend}>
+		<br>
+	<{loc_end}>
+	<{empltype_start}>
+	<b>{{cEmp_type}}:</b>
+			<{employmenttype_loopstart}>
+				<{typename}><br>
+			<{employmenttype_loopend}>
+	<{empltype_end}>
+<!--	
+-->	<br>
+	{{qualification_selected}}
+	</td>
+	
+	
+</tr>
+<tr>
+	<td class=code >
+		{{cGivemodelaname}}
+	</td>
+	<td class=code >
+		<input type=text name=fModelname value="">
+	</td>
+</tr>
+<tr>
+	<td class=code colspan=2>
+		{{cWhatlevelscanview}}
+	</td>
+</tr>
+
+<tr>	
+	<td class=code>
+<{level_loopstart}>
+	<input type=checkbox name='fView_<{vv}>' > <{vv}>
+	<br>
+<{level_loopend}>		
+	</td>
+	<td class=code>
+	<input type=checkbox name='fViewsel_all' > {{cAll}} 	<br>
+	<input type=checkbox name='fViewsel_boss' > {{cBosses}}  	<br>
+	<input type=checkbox name='fViewsel_admins' checked> {{cAdmins}}	<br>
+	<input type=checkbox name='fViewsel_me' checked> {{cJustme}}	<br>
+	</td>
+</tr>
+<tr>
+<td class=code colspan=2 align=center>
+
+<input type=button name='fBack' value='  {{cBack}}  ' onClick="window.history.back()";>
+<input type=submit name='fSave' value='  {{cSave}}  '>  
+</td>
+</tr>
+</table>
+</form>

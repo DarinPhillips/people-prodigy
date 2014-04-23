@@ -1,0 +1,53 @@
+<form action="view_employee_test.php" method="post">
+<center>
+<h1>
+{{cFrequency_of_test}}
+<input type="button" name="fHelp" value={{cHelp}} onClick="window.open('../lang/{{default}}/career/view_employee_test.html');">
+</h1>
+</center>
+<table align=center border=1>
+<tr>
+<td class=code>
+<b>{{cUsername}}</b>
+</td>
+<td class=code>
+<b>{{cDate}}</b>
+</td>
+<td class=code>
+<b>{{cStatus}}</b>
+</td>
+</tr>
+
+
+<{test_loopstart}>
+<tr>
+<td class=code>
+<a href="mailto:<{email}>"><{username}></a>
+</td>
+<td class=code>
+<{test_taken_date}>
+</td>
+<td class=code>
+Completed
+
+<{status}>
+</td>
+</tr>
+<{test_loopend}>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value={{cBack}} onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value={{cPrint}} onClick="window.print();">
+</td>
+<!--
+<td class=code>
+<input type="button" name="fSave" value={{cSave}} >
+</td>
+-->
+</tr>
+</table>
+</form>

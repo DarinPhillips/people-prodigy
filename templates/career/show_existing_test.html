@@ -1,0 +1,106 @@
+<table align=right border=0>
+<tr>
+<td class=code align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/show_existing_test.html');">
+</td>
+</tr>
+</table>
+<br>	
+	<br><br>
+<h4>{{cTestbuilder}}</h4> 
+
+{{cNameoftest}}: {{fTestname}}<br>
+{{cIdoftest}} : {{test_id}}
+
+
+
+
+
+<form name=form2 action="store_test_questions.php" method=post>
+
+<input type=hidden name=test_id value="{{test_id}}" >
+<input type=hidden name=group_id value="{{group_id}}" >
+<{quest_loopstart}>
+
+<table border=1 align = center>
+
+<tr>
+
+	<td align=top>
+		{{cQuestionno}}: <{fNo}>
+	</td>
+	<td align=top>
+		<input type=text name=fQuestion_<{fNo}> value="<{question}>" >
+	</td>
+	<td class=code>
+		{{cMarks}}<input type=text name=fMarks_<{fNo}> value="<{score}>">
+	</td>
+
+</tr>
+
+<tr>
+	<td class=code>
+		{{cAnswers}} {{cMarkcorrect}}: 
+	</td>
+
+	<td class=code>
+	<{ans_loopstart}>
+
+		<input <{check}> type=checkbox name='fCheck_<{fNo}>_<{fNo1}>' value="r">
+
+ 		<input type=text name='fAns_<{fNo}>_<{fNo1}>' value="<{answer}>">
+
+ 		<br>
+
+	<{ans_loopend}>
+
+	</td>
+
+
+
+</tr>
+<tr>
+	<td class=code>
+		{{cWhich_skill_tested}}
+	</td>
+	<td class=code>
+
+		
+
+		<select name=fSkillname_<{fNo}> >
+<{skill_loopstart}>
+			<option value='<{key}>' <{sel}> > <{value}> </option>
+<{skill_loopend}>
+		</select>
+
+	
+
+	</td>
+<tr>
+	<td class=code>
+	</td>
+</tr>
+</table >
+<{quest_loopend}>
+
+
+	<table align=center>
+	
+
+
+	<tr>
+		<td class=code><br><br>
+			<input type=submit name='fSave_later' value="{{cSave_finishlater}}" >
+		</td>
+		<td class=code><br><br>
+			<input type=button name=fBack value="{{cBack}}" onClick="window.history.back()">
+		</td>
+		<td class=code><br><br>
+			<input type=submit name='fGo_next' value="{{cNext}}">
+		</td>
+
+	</tr>
+
+</form>
+
+</table>

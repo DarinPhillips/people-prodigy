@@ -1,0 +1,522 @@
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/appraisal_results.html');">
+</td>
+</tr>
+</table>
+
+<form action='appraisal_results.php' method = post name=frm1 >
+ 
+<table align=center border=1 cellspacing=0 cellpadding=0>
+<tr>
+	<td class=code align=center>
+		<b>{{cApprres_mess1}} {{username}}</b><br><br>
+	</td>
+</tr>
+ 
+<tr>
+	<td class=code>
+		{{cApprres_intro}} {{sys_ownermessage}}
+	</td>
+</tr>
+
+<tr>
+	<td class=code><br>
+		<b> {{cApprres_interskilldef_mess}}</b>
+	</td>
+</tr>
+
+<{skillresult_loopstart}>
+	<tr>
+		<td class=code>
+			{{cApprres_skilltitle}}<b><{skill_name}></b>
+			<br><br>
+			<b>{{cApprres_defsel}}</b>
+			<br><br>
+
+			<{skilldesc_start}>
+				 <{skilledtitle}> <b><{skill_desc}></b> <BR>
+			<{skilldesc_end}>
+
+
+			<{skillundesc_start}>
+				<{unskilledtitle}>  <b><{skill_undesc}></b> <BR>
+			<{skillundesc_end}>
+
+			<{skilloverused_start}>
+				<{skill_overusedtitle}> <b><{skill_overused}></b> <BR>
+			<{skilloverused_end}>
+
+			<{skillcomp_start}>
+				<{skill_comptitle}>  <b><{skill_compensator}></b> <BR>
+			<{skillcomp_end}>
+
+			<{skillckiller_start}>
+				<{skill_killertitle}> <b> <{skill_car_killer}></b> <BR>
+			<{skillckiller_end}>
+
+			<tr>
+				<td class=code align=center>
+					<!--	-->
+					<a href = graphpms.php?skill_id=<{skill_id}>&group_full={{group_full}}&id_of_user={{id_of_user}}>Graph comes here</a> 
+					
+				
+
+					<img src= "graphpms.php?skill_id=<{skill_id}>&group_full={{group_full}}&id_of_user={{id_of_user}}"> 
+	
+				</td>
+			</tr>
+
+
+		</td>
+</tr>
+
+<{skillresult_loopend}>
+</table>
+<hr>
+
+<{showskillaverage_start}>
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2>
+		
+				<A NAME="2"><b><i>{{cApprres_interavg}}</i></b></A>
+				<br><br> 
+
+			</td>
+
+		</tr>
+
+
+		<tr>
+			<td class=code>
+				<b>{{cApprres_skilltitle}}</b>
+			</td>
+			<td class=code>
+				<b>{{cApprres_avg}}</b>
+			</td>
+		</tr>
+		<{skillaverage_loopstart}>
+	
+		<tr>
+			<td class=code>
+				 <{skill_name}>
+			</td>
+			<td class=code>
+				<{avg_rating}>
+			</td>
+		</tr>
+	
+		<{skillaverage_loopend}>
+
+	</table>
+<{showskillaverage_end}>
+
+<hr> 
+
+<{showskillusedoften_start}>
+	<table align=center border=1>
+		<tr>
+			<td class=code align=center>
+				<b><i>{{cApprres_interskilloftenused}}</b></i><br><br>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class=code align=center>
+				<b>COMING SOON!!!</b>
+			</td>
+		</tr>
+	</table>
+<{showskillusedoften_end}>
+
+<hr>
+
+<{showskillkillers_start}>
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2 align=center>
+				<b><i>{{cApprres_skillcareerkiller}}</b></i><br><br>
+			</td>
+		</tr>
+
+		<{killerskilldisplay_loopstart}>
+		<tr>
+			<td class=code align=center>
+
+				<{skill_name}>
+			
+			</td>
+			
+			<td class=code align=center>
+				<{career_killer_def}>
+			</td>
+
+		</tr>
+		<{killerskilldisplay_loopend}>
+	</table>
+<{showskillkillers_end}>
+
+<hr>
+
+
+<{showskilloverrated_start}>
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2 align=center>
+				<b><i>{{cApprres_skilloverrated}}</b></i><br><br>
+			</td>
+		</tr>
+	</table>
+	
+	<table align=center border=1>
+
+		<{skilldisplayoverrated_loopstart}>
+			<tr>
+				<td class=code align=center colspan=2>
+					<b> <{skill_name}></b>
+				</td>
+			</tr>
+			<tr>
+				<td class=code>
+					{{cAppr_rslt_myrating_inter}} <b><{myrating}></b>
+				</td>
+
+				<td class=code>
+					{{cAppr_rslt_everyone_inter}} <b><{allothersrating}></b>
+				</td>
+		<{skilldisplayoverrated_loopend}>
+
+			</tr>
+	</table>
+<{showskilloverrated_end}>
+
+<hr>
+
+<{showskillunderrated_start}>
+
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2 align=center>
+				<b><i>{{cApprres_interunderrated}}</b></i><br><br>
+			</td>
+		</tr>
+	<{skilldisplayunderrated_loopstart}>
+
+		<tr>
+			<td class=code align=center colspan=2>
+				<{skill_name}>
+			</td>
+		</tr>
+		<tr>
+			<td class=code align=center>
+				{{cAppr_rslt_myrating_inter}} <b><{myrating}></b>
+			</td>
+			<td class=code align=center>
+				{{cAppr_rslt_everyone_inter}} <b><{allothersrating}></b>
+			</td>
+	<{skilldisplayunderrated_loopend}>
+		</tr>
+
+	</table>
+<{showskillunderrated_end}>
+
+<hr>
+
+<{showskillimprovefirst_start}>
+
+
+
+
+
+<{jobfamilymodel1_loopstart}>
+
+	<table align=center border = 1>
+		<tr>
+			<td class=code>
+				{{cAppr_rslt_intertoimprove1}} <b><{fam_name1}></b>
+			</td>
+		</tr>
+	</table>
+
+
+
+<table align=center border=1>
+<tr>
+<td class=code>
+Interpersonal Skills : <{fit_inter}> % Fit
+<input type=hidden name=fFit_i_<{model_id}> value=<{fit_inter}> >
+</td>
+</tr>
+</table> 
+
+<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	<tr>
+		<td class=code rowspan=7 >
+			<b><{modelname}></b>
+		</td>
+	</tr>
+		<{trdisplay_start}>
+ 
+		
+		
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname}> </b>
+			</td>
+				<{tddisplay_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>  
+ 						<{showallskills_loopstart}>
+ 						 <{keyid}>  <!-- -->
+ 						   
+							<a href=save_to_learnplan.php?sid=<{skill_id_dis}> >  <font color='<{specific_color}>' ><{skill_display}> </font></a>  <br>
+						<{showallskills_loopend}>
+						
+						
+					</td>
+				<{tddisplay_end}>
+			</tr>
+	 
+		<{trdisplay_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplay_loopstart}>	
+				<td class=code>
+					<b> <{labelname}> </b>	
+				</td>
+		<{labeldisplay_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+<{jobfamilymodel1_loopend}>
+
+ 
+<{showskillimprovefirst_end}>
+
+<hr>
+
+
+<table align=center border=1>
+	<tr>
+		<td class=code>
+			<b>{{cAppr_rslt_techskilldef}} </b><br><br>
+		</td>
+	</tr>
+
+<{skillresulttech_loopstart}>
+	<tr>
+		<td class=code>
+		{{cApprres_skilltitle}}  <b><{skill_name}></b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cApprres_defsel}}	<b><{skill_description}></b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code align=center>
+		 	
+		 	<!--<a href=graphpms_tech.php?skill_id=<{skill_id}>&techgrp_full={{techgrp_full}}&id_of_user={{id_of_user}} >Graph Comes Here</a>-->
+		 	<img src = "graphpms_tech.php?skill_id=<{skill_id}>&techgrp_full={{techgrp_full}}&id_of_user={{id_of_user}}" >
+		 	<br><br>
+		</td>
+	</tr>
+	
+<{skillresulttech_loopend}>
+</table>
+
+
+<{skillaveragetechdisplay_start}>
+<table align=center border=1>
+	<tr>
+		<td class=code colspan=2>
+			<b>{{cAppr_rslt_techavg}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cApprres_skilltitle}}
+		</td>
+		<td class=code>
+			{{cAppr_rslt_skillavg_rating}}
+		</td>
+		
+	</tr>	
+	<{skillavg_loopstart}>
+	<tr>
+			<td class=code>
+			<{skill_name}>
+			</td>
+			<td class=code>
+			<{avg_tech}>
+			</td>
+		
+	</tr>
+	<{skillavg_loopend}>
+</table>
+
+<{skillaveragetechdisplay_end}>
+
+<hr>
+
+<{skilloverrateddisplay_start}>
+
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2 align=center>
+				<b>{{cAppr_rslt_techskilloverrated}} </b><br><br>
+
+			</td>
+		</tr>
+		<{skilloverratedvalues_loopstart}>
+			<tr>
+				<td class=code colspan=2 align=center>
+					<b><{skill_name}></b>	
+				</td>
+			</tr>
+			<tr>
+				<td class=code>
+					{{cAppr_rslt_myrating_inter}}<{my_rating}>
+				</td>
+				<td class=code>
+					{{cAppr_rslt_everyone_inter}} <{avg_rating}>
+				</td>
+			</tr>
+		<{skilloverratedvalues_loopend}>	
+	</table>
+
+
+
+<{skilloverrateddisplay_end}>
+
+<hr>
+
+<{skilltechunderrateddisplay_start}>
+	<table align=center border=1>
+		<tr>
+			<td class=code colspan=2 align=center>
+				<b>{{cAppr_rslt_techunderrated}}</b><br><br>
+			</td>
+			
+		</tr>
+		
+		<{skilltechunderrated_loopstart}>
+		<tr>
+			<td class=code colspan=2 align=center>
+			<b><{skill_name}>
+			
+			</td>
+		<tr>
+				<td class=code>
+					{{cAppr_rslt_myrating_inter}}<{my_rating}>
+				</td>
+				<td class=code>
+					{{cAppr_rslt_everyone_inter}} <{avg_rating}>
+				</td>
+		</tr>	
+		</tr>
+		<{skilltechunderrated_loopend}>
+	</table>
+<{skilltechunderrateddisplay_end}>
+
+
+<{jobfamilymodel1_tech_loopstart}>
+
+	<table align=center border = 1>
+		<tr>
+			<td class=code>
+				{{cAppr_rslt_intertoimprove1}} <b><{fam_name1_tech}></b>
+			</td>
+		</tr>
+	</table>
+
+
+
+<table align=center border=1>
+<tr>
+<td class=code>
+Technical Skills : <{fit_tech}> % Fit
+<input type=hidden name=fFit_t_<{model_id_tech}> value=<{fit_tech}> >
+</td>
+</tr>
+</table> 
+
+<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	<tr>
+		<td class=code rowspan=7 >
+			<b><{modelname_tech}></b>
+		</td>
+	</tr>
+		<{trdisplay_tech_start}>
+ 
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname_tech}> </b>
+			</td>
+				<{tddisplay_tech_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>  
+ 						<{showallskills_tech_loopstart}>
+ 						 <{keyid_tech}>  <!-- -->
+ 						   
+							<a href=save_to_learnplan.php?sid=<{skill_id_dis_tech}> >  <font color='<{specific_color_tech}>' ><{skill_display_tech}> </font></a>  <br>
+						<{showallskills_tech_loopend}>
+						
+						
+					</td>
+				<{tddisplay_tech_end}>
+			</tr>
+	 
+		<{trdisplay_tech_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplay_tech_loopstart}>	
+				<td class=code>
+					<b> <{labelname_tech_myrating}> </b>	
+				</td>
+		<{labeldisplay_tech_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+
+
+<{jobfamilymodel1_tech_loopend}>
+
+
+<table align=center border=1>
+
+<tr>
+	<td class=code align=center>
+
+	<br><br>
+
+		<input type=button name=fPrint value="  {{cPrint}}  " onClick="window.print();">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<input type=submit name=fSave value="  {{cSave}}  ">		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<input type=button name=fBack value="  {{cBack}}  " onClick = "window.history.back()";>		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<input type=button name=fReturn value="{{cApprres_returnback}}" onClick = "window.location.replace('front_panel.php')";>
+	</td>
+</tr>
+
+</table>
+
+</form>

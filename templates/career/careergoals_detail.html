@@ -1,0 +1,36 @@
+<form name=careergoaldetail action=careergoals_detail.php method=post>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+	<tr>
+		<th class=code align=center colspan=2>
+		{{cWhosel}}<i>'{{family_name}}'</i> {{ascareergoal}}
+		<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/careergoals_usage.html');">
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cEmployee}}</b>
+		</td>
+		<td class=code>
+		<b>{{cLevelAssigned}}</b>
+		</td>
+	</tr>
+
+<{careergoaldetails_loopstart}>
+	<tr>
+		<td class=code>
+		<a href=career_goals.php?fEmpl_id=<{userwithfam}> ><{employee}> </a>&nbsp;
+		</td>
+		<td class=code>
+		<{level}>&nbsp;
+		</td>
+	</tr>
+<{careergoaldetails_loopend}>
+<tr>
+	<td class=code colspan=2 align=center>
+		<input type=button name=fBack value=' {{cBack}} ' onClick="window.history.back();">
+		<input type=button name=fPrint value="  {{cPrint}}  " onClick="window.print();">
+	</td>
+</tr>
+	
+</table>
+</form>

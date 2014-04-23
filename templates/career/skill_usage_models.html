@@ -1,0 +1,46 @@
+<form name=frm1 action=skill_usage_model.html method=post>
+
+<table align=center cellspacing=0 cellpadding=4 border=1>
+<tr>
+	<th class=code colspan=3>
+		{{cFreqofskillUsageinModels}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/skill_usage_models.html');">
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		{{cSkill}}
+	</td>	
+	<td class=code>
+		{{cNoOfModelsWithSkill}}
+	</td>
+	<td class=code>
+		{{cPercentOfModelsWithSkill}}
+	</td>
+</tr>
+
+
+<{modeldisplay_loopstart}>
+<tr>
+	<td class=code>
+		<{skill_name}>
+	</td>	
+	<td class=code>
+		<{no_of_models}>
+	</td>
+	<td class=code>
+		<{percent_models}>%
+	</td>
+</tr>
+<{modeldisplay_loopend}>
+
+<tr>
+	<td class=code colspan=3 align=center>
+		<input type=button name=fPrint value={{cPrint}} onClick="window.print();">
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</table>
+
+</form>

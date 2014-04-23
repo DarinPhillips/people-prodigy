@@ -1,0 +1,170 @@
+<script language="javascript">
+function Display()
+{
+	
+	
+	alert("Your solution  have been modified and resubmitted");
+	form1.submit();
+	return true;		
+}
+
+function validateform1(sorry)
+{
+
+	with (document.learning)
+	{
+		len = elements.length;
+//alert(len);
+			var title_reg = /title_/i;
+			var desc_reg  = /description_/i;
+			var url_reg   = /url_/i;
+
+		var i=0
+
+k=1;
+			for (j=1;j<=3;j++)
+			{
+			temp = 'hidenib_'
+				temp += j;
+//alert(temp);
+				inloop = elements[temp].value*3*text_num.value;
+//alert(inloop);
+				chk = 1;
+				for (;k<=inloop;)
+				{
+					
+				ele_nam	= elements[i].name;
+//alert(ele_nam);
+				if ((title_reg.test(ele_nam)) ||(desc_reg.test(ele_nam))||(url_reg.test(ele_nam)))
+				{
+//alert('in');
+					if (elements[ele_nam].value=='')
+					{
+						chk = 0;
+					}
+					k++;
+				}
+				i++;
+				}
+				if (chk == 1)
+				{
+					//alert('Correct');
+					submit_form(window.document.learning);
+//alert(elements.length);
+//submit();
+					return false;
+				}
+
+			}
+			alert(sorry);
+			return false;
+			
+	}
+
+document.learning.submit();
+
+}
+
+function submit_form(form1)
+{
+	
+	form1.action=form1.action+'?submit1=1';
+	//alert(form1.value);
+	form1.submit();
+
+}
+
+
+function check_email(name,mess)
+{
+	var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+	var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+	var reg3 = /[a-zA-Z]/i;//--- should have atleast a single alphabet
+
+		val = name.value;
+		obname = name.name;
+		len = val.length;
+		sp = obname.split('_');
+		chk = sp[2];
+		if((chk==13) || (chk==14))
+		{
+			if(len>0)
+			{			
+				if ((!reg1.test(val)) && reg2.test(val) && (reg3.test(val))) // if syntax is valid
+				{
+				   return true;
+				}
+				else
+				{	
+					alert(mess);
+					name.focus();
+				}	
+			}
+		}
+
+}
+
+
+
+
+</script>
+<html>
+<form action="approval.php" method=POST name="form1" >
+<div align="center">
+
+<input type=button name=help value="{{cHelp}}" onclick="location.href='d:/work/Pms/lang/learing/parent'">
+</div>
+{{cAdd}}
+<br>{{cSelectSolution}}<br>
+<{solution_loopstart}>
+
+<br><{sol_names}> {{cIn}} <{skill_name}>
+
+	<{ways1_loopstart}>
+
+	<br><{types}>
+
+	
+			<table>
+			<tr>
+			<td>{{cTitle}}</td>
+			<td>{{cDescription}}</td>
+
+			<td><{Display}></td>
+
+			</tr>
+
+	<{text_loopstart}>
+
+			<tr>
+			
+			<td><input name="title_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{title}>"></td>
+			<td> <textarea name="description_<{basic_id}>_<{interbasic_id}>_<{text}>" wrap="VIRTUAL" class="dropdown"><{desc}></textarea> </td>
+			<td><input name="url_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{url}>" onblur="check_email(document.form1.url_<{basic_id}>_<{interbasic_id}>_<{text}>,'{{cMailcheck}}')"></td>
+
+			</tr>
+		
+		<{text_loopend}>
+
+		</table>
+	<{ways1_loopend}>
+
+<{solution_loopend}>
+
+<table>
+
+<tr>
+
+<input type=hidden name=skill_id value="{{skill_id}}">
+
+<input type=hidden name=user_id value="{{user_id}}">
+
+<td><input type=submit name="submit" value="{{cApproved}}"></td>
+
+<td><input type=submit name="resubmit" value="{{cresubmit}}"></td>
+
+</tr>
+</table>
+
+</form>
+<html>

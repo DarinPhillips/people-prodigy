@@ -1,0 +1,52 @@
+
+<table align=right border=0>
+<tr>
+	<td align=right>
+	<input type=button name=fHelp value='{{cTechratinghelp}}' onClick="window.open('../lang/{{default}}/career/appraisal.html');">
+	</td>
+</tr>
+</table>
+<br><br>
+
+<table align=center border=0>
+
+<tr>
+
+<td class = code align=center>
+<b>{{cTechratings_heading}}</b><br><br>
+</td>
+</tr>
+<tr>
+
+<td class = code align=center>
+<b>{{username}} </b> {{cTechrating_mess1}} <b> {{username}}'s </b>
+
+{{cTechrating_mess2}}
+
+</td>
+</tr>
+<form action=technical_ratings.php method=post>
+
+<input type=hidden name=user_to_rate value={{user_to_rate}}>
+<tr>
+<td class = code align=center>
+<input type=radio name=fChoose value='show' >{{cTechrating_showskills}}
+
+</td>
+</tr>
+
+<tr>
+<td class = code align=center>
+<input type=radio name=fChoose value='reject'>{{cTechrating_rejectskills}}
+
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<input type=submit name=fChoosetorate value = "{{cTechrating_next}}">
+</td>
+</tr>
+
+
+</table>
+</form>

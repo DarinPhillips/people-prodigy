@@ -1,0 +1,34 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+
+<body class=B1>
+
+
+<br><br>
+<form action="outer.php" method="post">
+<input type=hidden name=fSubmit value="submit">
+<br>
+<br>
+<table class=table align=center >
+	<tr>
+		<td class=code>
+	{{cLoginname}}: 
+		</td>
+		<td>
+	<input type="text" name=fLogin class=input></td>
+	</tr>
+	<tr>
+	<td class=code>{{cPassword}}:
+	</td>
+	<td>
+	<input type="password" name=fPassword>
+	</td></tr>
+	<tr><td align=center colspan=2>&nbsp<input type="submit" name=Submit value="{{cSubmit}}"></td></tr>
+	
+
+</table>
+</form>
+</body>
+</html>

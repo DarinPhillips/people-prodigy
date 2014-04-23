@@ -1,0 +1,29 @@
+<form action="import_employee_details.php" method="post">
+<center>{{cSpreadsheetupload}}<br>
+{{cUUpload}}
+<table class=table align=center>
+<tr>
+<{column_namestart}>
+<td calss=code>
+{{column_name}}
+</td>
+<{column_nameend}>
+</tr>
+<tr>
+<{value_namestart}>
+<td class=code>
+{{value_name}}
+</td>
+<{value_nameend}>
+</tr>
+</table>
+{{cUwill}}{{replc}}{{cOverwrite}}
+<br>
+<input type="submit" name="fYes" value="{{cYes}}">
+<input type="submit" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+<input type="hidden" name="fOverwrite" value="{{ovrwrte}}">
+<input type="hidden" name="fFilename" value={{filename}}></center>
+<{hidden_fieldnamestart}>
+<input type="hidden" name="fFieldname_{{id}}" value="{{fieldname}}"></center>
+<{hidden_fieldnameend}>
+</form>

@@ -1,0 +1,20 @@
+<center>
+<h1>
+{{cPlanwithoutrater}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/find_raters.html');">
+</h1>
+</center>
+<form action="find_raters.php" method=post>
+<table class=code align=center border=1>
+<tr>
+	<td><b>{{cEmpname}}</td><td><b>{{cNoofplansraters}}</td>
+</tr>
+<{ifno_recordsstart}>
+<{emp_loopstart}>
+<tr>
+	<td><{empname}></td><td><{noofplan}></td>
+</tr>
+<{emp_loopend}>
+<{ifno_recordsend}>
+</table>
+</form>

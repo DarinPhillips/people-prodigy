@@ -1,0 +1,133 @@
+
+<font class=code>
+<u><b>{{cTeamIndividual}}</u><br>
+{{cDocumentobjectives}}</b>
+</font>
+<table align=right class=code>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/userplan2_input_static.html');"><br>
+</table>
+<form name=planfrm action="userplan2_input_static.php" method=post>
+<input type=hidden name=emp_id value="{{emp_id}}">
+<table class=code>
+	<tr>
+	<td>{{cTeamandIndividual}}</td><td><input type=text name=fName value="{{user}}" readonly></td>
+	</tr>
+<!--start-->
+	<tr>
+	<td><textarea name=fBoss_comment readonly>{{fComment}}</textarea></td>
+	</tr>
+<!--end-->
+</table>
+<br>
+<center><b>{{Norecords}}</b></center>
+<{category_loopstart}>
+<table border=1 class=code>
+	<tr>
+	<td>
+	<table class=code>	
+	<tr>
+		<td><{count}>.<{cval}></td><td></td>
+	</tr>
+
+	<tr>
+		<td></td><td><{mval}><input type=hidden name=metric_<{allnew}>_<{oid}>_<{c}> value="<{oid}>"></td>
+	</tr>
+
+	<tr>
+	<td>{{cTheObjectibve}}</td>
+	<td><textarea name=fObjective_<{allnew}>_<{c}> readonly><{fObjective}></textarea></td>
+	<td>{{cPriority}}<{priority_loopstart}><{pval}><input type=radio disabled name=fPriority_<{allnew}>_<{c}> value="<{pindex}>" <{priorcheck}> ><{priority_loopend}></td>	
+	</tr>
+	<tr>
+	<td>{{cTotalnocomitted}}</td><td><input type=text readonly name=fCommitted_<{allnew}>_<{c}> value="<{fCommitted}>"size=3></td>
+	<td>{{cThisnois}}<select name=fPercent_<{allnew}>_<{c}> disabled>
+		<{percentage_loopstart}>
+		<option value="<{percentindex}>" <{perselect}> ><{percent}></option>
+		<{percentage_loopend}>
+		</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>{{cHowiget}}</td><td><textarea name=fHow_<{allnew}>_<{c}> readonly><{fGet}></textarea></td>
+	</tr>
+</table>
+
+
+	<table class=code>
+	<tr>
+	<td nowrap>{{cAffectedpeople}}</td>
+	</tr>
+	</table>	
+
+	
+	<{affected_loopstart}>
+	<table class=code>
+		<tr>
+
+		<td>{{cNamee}}<input type=text readonly name=fAff_name_<{allnew}>_<{c}>_<{ct}> value="<{fUsername}>" onfocus ="return check_empty(document.planfrm.fObjective_<{allnew}>_<{c}>,document.planfrm.fCommitted_<{allnew}>_<{c}>,document.planfrm.fHow_<{allnew}>_<{c}>,'{{cAlertmessage}}');"></td>
+		<td>{{cOnlymail}}<input type=text readonly name=fAff_mail_<{allnew}>_<{c}>_<{ct}> value="<{fEmail}>" readonly>
+		<input type=hidden name=fAff_id_<{allnew}>_<{c}>_<{ct}> value="<{userid}>" >
+		</td>
+		</tr>
+
+		<tr>
+		<td>{{cFrom}}
+		
+			<input type=text readonly  name="fFromdate_<{allnew}>_<{c}>_<{ct}>" readonly size=10 value="<{fFrom}>" readonly>
+		</td>
+		<td>{{cTo}}
+	
+			<input type=text readonly name="fTodate_<{allnew}>_<{c}>_<{ct}>" readonly size=10 value="<{fTo}>" readonly>
+
+		</td>
+		<td>
+			{{cFrequency}}<select name=fFrequency_<{allnew}>_<{c}>_<{ct}> disabled>
+					<{frequency_loopstart}>
+					<option value="<{index}>" <{freselect}> ><{frequency}></option>
+					<{frequency_loopend}>
+					</select>
+		</td>
+		</tr>
+
+	</table>
+	<{affected_loopend}>
+
+
+<table class=code>
+	<tr>
+	<td>{{cRelyhelp}}</td>
+	</tr>
+</table>
+	<{help_loopstart}>
+	<table class=code>
+	<tr>		
+		<td>{{cNamee}}<input type=text readonly name=fHelp_name_<{allnew}>_<{c}>_<{cnt}> value="<{fHusername}>"onfocus ="return check_empty(document.planfrm.fObjective_<{allnew}>_<{c}>,document.planfrm.fCommitted_<{allnew}>_<{c}>,document.planfrm.fHow_<{allnew}>_<{c}>,'{{cAlertmessage}}');"></td>
+		<td>{{cOnlymail}}<input type=text name=fHelp_mail_<{allnew}>_<{c}>_<{cnt}> value="<{fHemail}>" readonly>
+		<input type=hidden name=fHelp_id_<{allnew}>_<{c}>_<{cnt}> value="<{huserid}>">
+		</td>
+		</tr>
+	</table>
+	<{help_loopend}>
+	</table>
+</td>
+</tr>
+</table>
+<br>
+<{category_loopend}>
+<table align=center class=code>
+<tr>
+	<td>
+		<input type=submit name=back value="Back">
+	</td>
+	<td></td>
+<!--save_start
+
+	<td></td>
+	<td>
+		<input type=submit name=next value="Next">
+	</td>
+save_end-->
+</tr>	
+</table>
+</form>

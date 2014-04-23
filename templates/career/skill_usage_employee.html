@@ -1,0 +1,44 @@
+<form action=skill_usage_employee.html>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+<tr>
+	<th class=code colspan=3>
+		{{cFreqofSkillUsageinempProf}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/skill_usage_employee.html');">
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		{{cSkill}}
+	</td>	
+	<td class=code>
+		{{cNoofClientswithskill}}
+	</td>
+	<td class=code>
+		{{cPercentofClientswithskill}}
+	</td>
+</tr>
+
+
+<{skilldisplay_loopstart}>
+<tr>
+	<td class=code>
+		<{skill_name}>
+	</td>	
+	<td class=code>
+		<{no_of_clients}>
+	</td>
+	<td class=code>
+		<{percent_clients}>%
+	</td>
+</tr>
+<{skilldisplay_loopend}>
+
+<tr>
+	<td class=code colspan=3 align=center>
+		<input type=button name=fPrint value={{cPrint}} onClick="window.print();">
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</table>
+</form>

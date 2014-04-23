@@ -1,0 +1,95 @@
+<form action="approval.php" method="post" >
+<table class=table>
+<th>
+{{cApprovals}}
+</th>
+<th>
+{{cChoice}}
+</th>
+<th>
+{{cSkillname}}
+</th>
+<th>
+{{cSkilldescription}}
+</th>
+<th>
+{{cSkilltype}}
+</th>
+<th>
+{{cSameas}}
+</th>
+<th>
+{{cChoice}}
+</th>
+<th>
+{{cPrev_skills}}
+</th>
+<th>
+{{cOverused}}
+</th>
+<th>
+{{cCareerkiller}}
+</th>
+<th>
+{{cCompensator}}
+</th>
+<{skill_loop_start}>
+<tr>
+<td class=code>
+{{cApprove}}</td>
+<td class=code>
+<input type="checkbox" name="approve_{{skill_id}}" value="yes">
+</td>
+<td class=code>
+<input type="text" name="fskill_name_{{skill_id}}" value="{{skill_name}}"></td>
+<td class=code>
+<textarea name="fskill_desc_{{skill_id}}">{{skill_desc}}</textarea></td>
+<td class=code>
+{{skill_type}}</td>
+<td class=code>
+{{cThisissameas}}
+</td>
+<td class=code>
+<input type="checkbox" name="sameas_{{skill_id}}" value="yes">
+</td>
+<td>
+<select name="skill_select_{{skill_id}}">
+<option value="">Select</option>
+		<{popup_loopstart}>
+			<option <{selected}> class=code value="<{skill_id}>"><{skill_name}></option>
+		<{popup_loopend}>
+		</select>
+		</td>
+		<!---->
+<td class=code>
+<textarea name="fOverused_{{skill_id}}">{{over_used}}</textarea>
+</td>
+
+<td class=code>
+<textarea name="fCareerkiller_{{skill_id}}">{{career_killer}}</textarea>
+</td>
+
+<td class=code>
+<textarea name="fCompensator_{{skill_id}}">{{compensator}}</textarea>
+</td>
+
+</tr>
+<{skill_loop_end}>
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+<input type="hidden" name="emp_id"  value="{{emp_id}}">
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td>
+<input type="submit" name="fApproval" value="{{cApprovalgranted}}">
+</td>
+</tr>
+</table>
+</form>

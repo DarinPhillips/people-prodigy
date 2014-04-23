@@ -1,0 +1,32 @@
+<form action="alert.php" method="post">
+<center><h1>{{cNewapproval}}<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/alert.html');"></h1></center>
+{{cSkillbuilderapprovals}}
+<{approval_startloop}>
+<table border=1 align = center>
+	<tr>
+		<td class=code><b>{{cDevelopmental}}</b></td>
+	</tr>
+	<tr>
+		<td class=code>
+		<{alert_start}>
+		<a href="approval.php?user_id={{user_id}}&skill_id={{skill_id}}">{{emp_name}}</a>{{cHasadded}}<br>
+		<{alert_end}>
+		</td>
+	</tr>
+</table>
+<{approval_endloop}>
+
+<{updated_plan_start}>
+<br>
+<table border=1 align=center class=code>
+	<tr>
+		<td><b>{{cUpdateLearningrprogress}}</td>
+	</tr>
+	<{update_plan_start}>
+	<tr>
+		<td><a href="updated_plan_progress_approval.php?uid=<{uid}>"><{username}> </a><{prog_mess}></td>
+	</tr>
+	<{update_plan_end}>
+</table>
+<{updated_plan_end}>
+</form>

@@ -1,0 +1,23 @@
+<form action=update_succession_plan method=post name=frm1>
+<input type=hidden name=action value=show>
+<input type=hidden name=fPosition value={{posid}} >
+
+
+<table align=center border=1>
+	<tr>
+		<th class=code>
+		{{cSelectmodelfordepthchart}}
+		</th>
+	</tr>
+	<tr>
+		<td class=code align=center>
+		<select name=model_to_view onChange="if(model_to_view.value!=0)form.submit();">
+		<option value=0>{{cSelectamodel}}</option>
+		<{modelsview_loopstart}>
+		<option value=<{model_id}> ><{model_name}></option>
+		<{modelsview_loopend}>
+		</select>
+		</td>
+	</tr>
+</table>
+</form>

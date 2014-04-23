@@ -1,0 +1,43 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.fFamily_name.value=='')
+	{
+		alert('{{cJavascriptnamealert}}');
+		document.frm.fFamily_name.focus();
+		return false;
+	}
+}
+</script>
+<table border=1 align = center>
+<form action ="delete_families.php" method=post name='frm' onSubmit="return validate()">
+<input type=hidden name=family_id value="<{family_id}>">
+<tr>
+<td class=code>
+{{cDeletemessage}}
+</td>
+
+
+<td class=code>
+<input type=text name=fFamily_name value="<{family_name}>">
+</td>
+<td class=code>
+<input type=submit name=fDelete_family value="{{cDeletemessage}}";
+</td>
+</tr>
+
+</form>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<a href="families.php">{{cShowfamilies}}</a> 
+</td>
+</tr>
+</table>
+</body>

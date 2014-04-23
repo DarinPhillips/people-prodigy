@@ -1,0 +1,49 @@
+<form action=view_models.php method=post>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+	<tr>
+		<th class=code colspan=2>
+			View Models
+			<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/view_models.html');">
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cModelsIBuilt}}	
+		</td>
+	</tr>
+<{selfmodels_loopstart}>
+
+	<tr>
+		<td class=code>
+			
+		<a href=model_detail.php?m_id=<{selfmodel}> ><{models_self}></a>
+
+		</td>
+	</tr>
+	
+<{selfmodels_loopend}>
+	<tr>
+		<td class=code>
+		{{cOtherModelsIhaveAccessto}}
+		</td>
+	</tr>
+<{othermodels_loopstart}>
+
+	<tr>
+		<td class=code>
+			
+		<a href=model_detail.php?m_id=<{modelid_other}> > <{models_others}></a>
+
+		</td>
+	</tr>
+	
+<{othermodels_loopend}>
+<tr>
+	<td class=code colspan=3 align=center>
+		<input type=button name=fPrint value={{cPrint}} onClick="window.print();">
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</table>
+</form>

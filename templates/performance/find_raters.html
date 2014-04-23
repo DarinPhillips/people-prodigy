@@ -1,0 +1,18 @@
+<center>
+<h1>
+{{cObjectivewithoutrater}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/find_raters.html');">
+</h1>
+<center>
+<{if_norecord_start}>
+<table class=code align=center>
+<tr>
+	<td><B>{{cEmpname}}</td><td><b>{{cNoofobjective}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td><a href="userplan1_input_static.php?uid=<{uid}>"><{username}></a></td><td align=center><{noofobj}></td>
+</tr>
+<{record_loopend}>
+</table>
+<{if_norecord_end}>

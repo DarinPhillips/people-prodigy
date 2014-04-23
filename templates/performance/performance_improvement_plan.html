@@ -1,0 +1,94 @@
+<script src="../jscripts/calendar2.js"></script>
+<script language="JavaScript">
+
+function validate(form)
+{
+	
+	date=form.fDate1.value;
+	req=form.fRequirement.value;
+	cons=form.fConsequences.value;
+	
+	if(date=="" && req=="" && cons=="")
+	{
+		alert("{{cEnteratleastoneField}}");
+		
+		return(false);
+	}
+	
+	if(date=="")
+	{
+		alert("{{cEnterdate}}");
+		return(false);
+	}
+	return(true);
+}
+</script>
+<center>
+	<h1>
+	{{cPerformImprovementplan}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_improvement_plan.html');">
+	</h1>
+</center>
+<form action="performance_improvement_plan.php" name='improve'>
+<table width=100% align=center>
+<tr>
+	<td class=code>
+	<input type text=fName value={{name}} readonly>{{cPerformanceImprovementplan}}
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	{{cStep1of3}}
+	</td>
+</tr>
+
+<tr>
+	<td class=code>
+	{{name}}{{cMust}}
+	</td>
+</tr>
+<tr>
+
+	<td class=code>
+	<TEXTAREA WRAP=PHYSICAL NAME="fRequirement" ROWS=2 COLS=30></TEXTAREA>
+	</td>
+			
+</tr>
+<tr>
+	<td class=code> 
+{{cBy}}
+<input type=text name="fDate1" readonly size=10 readonly >
+<a href="javascript:cal1.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>{{cWarning}} </td>
+
+<script language='javascript'>
+
+	var cal1= new calendar2(document.forms['improve'].elements['fDate1']);
+	 cal1.year_scroll	=  true;
+
+</script>
+	
+	
+	
+</tr>
+<tr>
+
+	<td class=code>
+	<TEXTAREA WRAP=PHYSICAL NAME="fConsequences" ROWS=4 COLS=30></TEXTAREA>
+	</td>
+			
+</tr>
+
+<input type=hidden name=fAssigned_by value={{admin}}>
+<input type=hidden name=fAssigned_to value={{user_id}}>
+
+
+
+<tr>
+	<td class=code>
+	<input type=button name=fBack value="back" onclick="window.history.back();">
+	
+	<input type=submit name=Submit value="submit" onclick="return validate(document.improve);">
+	</td>
+</tr>
+</table>
+</form>

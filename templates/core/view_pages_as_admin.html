@@ -1,0 +1,23 @@
+<form action="view_pages_as_admin.php" method="post">
+<center>
+<h1>
+{{cViewasadmin}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/view_pages_as_admin.html');">
+</h1>
+</center>
+<h1>
+{{cListofAdmin}}
+</h1>
+<table align=center>
+<{user_loopstart}>
+<tr>
+<td class=code>
+<a href="change_dashboard_to_admin.php?fuser_id=<{user_id}>"><{username}></a>
+</td>
+</tr>
+<{user_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</center>
+</form>

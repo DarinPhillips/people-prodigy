@@ -1,0 +1,119 @@
+<script language='javascript'>
+function check()
+{
+	
+	with(document.frm1)
+	{
+	
+		if(fGo.value=="Go")
+		{
+				
+				temp	= elements['fSkills[]'];
+				te	= temp.value;
+
+				if(te=="")
+				{
+					alert('Select atleast one Skill');
+					return false;
+				}
+			
+		
+		
+		}
+	}
+	return true;
+}
+function check1()
+{
+	
+	with(document.frm2)
+	{
+		
+		if(fGo.value=="Go")
+		{
+				
+				temp	= elements['fSkills[]'];
+				te	= temp.value;
+
+				if(te=="")
+				{
+					alert('Select atleast one Skill');
+					return false;
+				}
+			
+		
+		
+		}
+	}
+	return true;
+}
+</script>
+<table align=center cellspacing=0 cellpadding=4 border=1 name=form >
+
+<tr>
+	<th class=code colspan=2>
+		{{cSkillUsage}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/lang/skill_usage.html');">
+	</th>
+</tr>
+<tr>
+<form name=frm1 action=skill_usage_employee.php method=post onSubmit="return check();"> 
+	<td class=code>
+		{{cFrequencyof}} 
+
+			<select name=fSkills[] multiple>
+				<option value='0' >Select a Skill</option>
+				<{skill_loopstart}>
+
+				<option value='<{skill_id}>' > <{skill_name}> </option>
+
+				<{skill_loopend}>
+			</select>
+		
+		{{cInempProf}}
+	</td>
+	<td class=code>
+		<input type=submit name=fGo value={{cGo}}> 
+	</td>
+</form>
+</tr>
+<tr>
+<form name=frm2 action=skill_usage_models.php method=post  onSubmit="return check1();">
+	<td class=code>
+		{{cFrequencyof}} 
+			<select name=fSkills[] multiple>
+				<option value='0' >Select a Skill</option>
+				<{skill_loopstart}>
+
+				<option value='<{skill_id}>' > <{skill_name}> </option>
+
+				<{skill_loopend}>
+			</select>
+		{{cInModels}}
+	</td>
+	<td class=code>
+		<input type=submit name=fGo value={{cGo}}> 
+	</td>
+</form>
+</tr>
+<tr>
+	<td class=code colspan=2 align=center>
+		<a href=emp_without_iskill.php><b>{{cEmpwithoutIskills}}</b></a>
+	</td>
+	
+</tr>
+<tr>
+	<td class=code colspan=2 align=center>
+		<a href=emp_without_tskill.php><b>{{cEmplwithoutTskills}}</b></a>
+	</td>
+</tr>
+
+
+<tr>
+	<td class=code colspan=3 align=center>
+	
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+</table>
+

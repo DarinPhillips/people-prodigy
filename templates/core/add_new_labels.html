@@ -1,0 +1,82 @@
+<script>
+function check()
+{
+	reg=/\S/
+	with(document.frm3)
+	{
+		if(fLabel.value=="" && reg.test(fLabel.value))
+		{
+			alert('Enter a Valid Label');
+			return false;
+		}
+		if(fDatatype.value=="")
+		{
+			alert('Select a Valid Data type');
+			return false;
+		}
+		
+			
+	}
+	return true;
+}
+</script>
+
+	<center>
+<h1>
+{{cAddlables}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/add_new_labels.html');">
+</h1>
+
+<form action="add_new_labels.php"  name=frm3  method=post  onSubmit="return check();">
+<table align=center>
+<th class=code>
+{{cLanguage}}
+</th>
+<th class=code>
+{{cNewLabel}}
+</th>
+<{lang_loopstart}>
+
+<tr>
+<td class=code>
+<{langval}>
+</td>
+<td class=code>
+<input type="text" name="fLabelvalue_<{id}>" >
+</td>
+</tr>
+
+<{lang_loopend}>
+</table>
+
+
+<table align=center>
+<tr>
+<td class=code>
+{{cNewLabelname}}
+</td>
+<td class=code>
+{{cDatatype}}
+</td>
+</tr>
+<tr>
+<td class=code>
+<input type="text" name="fLabel" value="">
+</td>
+<td class=code>
+<select name="fDatatype">
+<option class=code value="">{{cSelect}}</option>
+<{datatype_loopstart}>
+<option class=code value="<{key}>"><{value}></option>
+<{datatype_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+<input type="submit" name="fSave" value="{{cSaveLabel}}">
+</td>
+</tr>
+
+</table>
+</form>

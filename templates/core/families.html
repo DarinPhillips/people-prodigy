@@ -1,0 +1,113 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.fFamily_name.value=='')
+	{
+		alert('{{cEntervalidfamname}}');
+		document.frm.fFamily_name.focus();
+		return false;
+	}
+}
+</script>
+	<center>
+		<h1>
+		{{cAddfamilymessage}}
+		<input type=button name=fHelp value="{{cHelp}}" onclick="window.open('../lang/{{default}}/core/families.html');">	
+		</h1>
+	</center>
+
+
+
+<form action ="families.php" method=post name='frm' onSubmit="return validate()">
+<table border=1 align = center>
+<tr>
+<td class=code>
+{{cAddfam_name}}:
+</td>
+
+<td class=code>
+<input type=text name=fFamily_name value="">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cRel_positions}}
+</td>
+
+<td class=code >
+<select name=related_pos[] multiple >
+
+<{position_loopstart}>
+<option value='<{key}>'><{value}></option>
+<{position_loopend}>
+
+</select>
+</td>
+</tr>
+<td class=code colspan=2 align=center>
+<input type=submit name=fAdd_family value="{{cAddfam_name}}">
+</td>
+</tr>
+</form>
+</table>
+<hr>
+
+
+<table  border=0 align = center>
+<tr>
+<td class=code><b>
+{{cDisplayfamily}}</b>
+</td>
+</tr>
+</table>
+
+	<table border=1 align = center>
+	<tr>
+		<td class=code>
+		<b>{{cFamilyid}}</b>
+		</td>
+		<td class=code>
+		<b>{{cFamilyname}}</b>
+		</td>
+		<td class=code>
+		<b>{{cEdit}}</b>
+		</td>
+		<td class=code>
+		<b>{{cDelete}}</b>
+		</td>
+		
+	</tr>
+
+<{families_loopstart}>
+	<tr>
+		<td class=code>
+		<{family_id}>
+		</td>
+		<td class=code>
+		<{family_name}>
+		</td>
+		<td class=code>
+		<a href="edit_families.php?family_id=<{family_id}>">{{cEdit}}</a>
+		</td>
+		<td class=code>
+		<a href="delete_families.php?family_id=<{family_id}>">{{cDelete}}</a>
+		</td>
+<!--
+----------
+		<td class=code>
+		<a href="show_rel_position.php?family_id=<{family_id}>&action=show_related">Show Relatd Position</a>
+		</td>
+
+-----------
+-->		
+		
+	</tr>
+<{families_loopend}>
+
+</table>
+</body>

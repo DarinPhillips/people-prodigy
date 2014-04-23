@@ -1,0 +1,59 @@
+<center>
+	<h1>
+		{{cLearningfeedback}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/view_all_requests.html');">
+	</h1>
+</center>
+
+<table align=center>
+	<tr>
+		<td class=code>
+		
+		{{cFeedbackinternal}}
+		
+
+		</td>
+	</tr>
+	
+	<{people_loopstart}>
+	<tr>
+		<td class=code>	
+			<a href=feedback_request_form.php?ratedid=<{userid}>&mode=<{mode}>><{emp_name}></a>
+		</td>
+	</tr>
+	<{people_loopend}>
+
+	<tr>
+		<td class=code>
+		
+		{{cFeedbackdirect}}	
+
+		</td>
+	</tr>
+	
+	<{reports_loopstart}>
+	<tr>
+		<td class=code>	
+			<a href=feedback_request_form.php?userid=<{userid}>&mode=<{mode}>><{emp_name}></a>
+		</td>
+	</tr>
+	<{reports_loopend}>
+
+	<tr>
+		<td class=code>
+		
+		{{cFeedbackself}}	
+
+		</td>
+	</tr>
+	
+	<{self_loopstart}>
+	<tr>
+		<td class=code>	
+			<a href=feedback_request_form.php?userid=<{userid}>&mode=<{mode}>><{emp_name}></a>
+		</td>
+	</tr>
+	<{self_loopend}>
+	
+</table>

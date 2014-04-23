@@ -1,0 +1,12 @@
+<form action="editqualification.php" method=get>
+<input type=hidden name=qid value="{{qid}}">
+<table align=center>
+<{qualification_loopstart}>
+<tr>
+	<td>{{cEnterQualification}}(<{langname}>)</td>
+	<td><input type=text name=fQualification_<{lid}> value="<{fQualification}>"></td>
+</tr>
+<{qualification_loopend}>
+</table>
+<center><input type=submit name=edit value='{{cEdit}}'></center>
+</form>

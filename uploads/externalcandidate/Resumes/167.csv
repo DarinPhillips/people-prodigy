@@ -1,0 +1,167 @@
+<?php
+
+	/*
+	if (!isset($PHP_AUTH_USER)) {
+		// If empty, send header causing dialog box to appear
+		header('WWW-Authenticate: Basic realm="phpMyAdmin"');
+		header('HTTP/1.0 401 Unauthorized');
+		echo 'Authorization Required.';
+		exit;
+	} else if (isset($PHP_AUTH_USER)) {
+		if (($PHP_AUTH_USER != "admin") || ($PHP_AUTH_PW != "fr33dom")) {
+			header('WWW-Authenticate: Basic realm="My Private Stuff"');
+			header('HTTP/1.0 401 Unauthorized');
+			echo 'Authorization Required.';
+			exit;
+		}
+	}
+
+	*/
+?>
+<head>
+
+<title>
+
+Administration
+</title>
+
+</head>
+
+<body>
+
+<p><img border="0" src="/images/soundlogo.gif" width="705" height="62"></p>
+
+<div align="center">
+
+<h2>Administration</h2>
+
+<table Align="center"border="0" width="50%" cellpadding="2" cellspacing="0" style="border: 6 groove; border-color: #007898">
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='../index.php'"><font color="white">Home</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='batch.php'"><font color="white">Make Batch</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='showbatch.php'"><font color="white">Show Batch</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='adadd.php'"><font color="white">Add and Ad</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='adedit.php'"><font color="white">Edit an Ad</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='addelete.php'"><font color="white">Delete an Ad</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='generator/optin.php'"><font color="white">Opt In Generator</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='gen2/optin.php'"><font color="white">Opt In Generator With Quotas</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='gen2edit/index.php'"><font color="white">Edit Campaigns</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='reps/index.php'"><font color="white">Add/Edit/Delete Sales Reps</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='showusers.php'"><font color="white">Show All Affiliates</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='usersearch.php'"><font color="white">Search for Affiliates</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='leads.php'"><font color="white">Show Leads</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='leadscountbyweek.php'"><font color="white">Show Lead Counts</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='deleteleads.php'"><font color="white">Delete Invalid Leads</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='deleteleadsbyprog.php'"><font color="white">Delete Invalid Leads by Programs</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='deleteleadsbybatch.php'"><font color="white">Delete Invalid Leads by Batch File Upload</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='fancyleads.php'"><font color="white">Show Fancy Leads</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='payouts.php'"><font color="white">Payouts by Month</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='programidtool.php'"><font color="white">Program Manipulation Tool</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='showbyid.php'"><font color="white">Show Affiates And Leads by Program</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='associate.php'"><font color="white">Associate Affiliates to Programs</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='removelist.php'"><font color="white">Show Contents of the Remove List</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='reportinput.php'"><font color="white">Show Opt-In Lead List</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='setdefault.php'"><font color="white">Set Default Values</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='setprogvalues.php'"><font color="white">Set Program Values</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='setafvalues.php'"><font color="white">Set Affiliate Values</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='uploadareacodes.php'"><font color="white">Upload Area Codes</font></td>
+</tr>
+
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='elimadupe/index.php'"><font color="white">Eilmadupe</font></td>
+</tr>
+
+
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='settings.php'"><font color="white">Settings</font></td>
+</tr>
+
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='uploadacv.php'"><font color="white">Upload ACV</font></td>
+</tr>
+
+<!--no need
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='spwhichtable.php'"><font color="white">Select Area Code Table for -Single Program</font></td>
+</tr>
+
+
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='mpwhichtable.php'"><font color="white">Select Area Code Table for -Multiple Program</font></td>
+</tr>
+-->
+
+
+
+<tr>
+
+<td border="0" bgcolor="#007898"><font color="white">&nbsp;</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='associations/index.php?category=afassociations&action=list'"><font color="white">Affiliate Associations</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='associations/index.php?category=programassociations&action=list'"><font color="white">Program Associations</font></td>
+</tr>
+<tr>
+<td border="0" bgcolor="#007898" align="center" onMouseOver="this.style.backgroundColor='blue'; this.style.cursor='hand';" onMouseOut="this.style.backgroundColor='#007898';" onClick="window.location.href='program_folder.php'"><font color="white">Program Folder</font></td>
+</tr>
+
+</table>
+</div>
+</body>
+</head>

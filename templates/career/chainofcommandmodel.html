@@ -1,0 +1,55 @@
+
+<form action="chain_of_command.php" method="post" onSubmit="return check();">
+ 
+<table align=center cellspacing=0>
+<tr>
+<th class=code>
+{{cSuccessionDeploymentPlan}}
+
+
+</th>
+</tr>
+<tr>
+<td class=code>
+{{cStep2designatesuccessor}}
+</td>
+</tr>
+</table>
+<table align=center cellspacing=0 border=1>
+<tr>
+<td class=code align=center>
+{{username}}
+</td>
+</tr>
+<tr>
+	<td class=code>
+ 
+		<{position_loopstart}>
+<!--	{{redcolorstart}} <a href="show_models.php?posid={{pid}}" title='Employee is {{position_name}} Level is {{levelno}}'> <B>{{pos_id}}</B>  </a>	{{redcolorend}}-->
+
+	<!--<{redcolorstart}> <a href="show_models.php?posid=<{pos_id}>" title='Employee is <{pos_name}> Level is <{levelno}>'> <B><{pos_id}></B>  </a>	<{redcolorend}>-->
+
+ <{linkstart}> <{redcolorstart}><B><{pos_name}></B><{redcolorend}>  <{linkend}>
+ 
+			<br>
+		<{position_loopend}>
+	</td>
+</tr>
+</table>
+
+<br><br>	
+
+<table align=center>
+	<tr>
+		<td class=code colspan=10 align=center>
+			<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>
+			
+			<input type=button name=fReturnback value='  {{cApprres_returnback}}  ' onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+</table>
+
+
+</form>
+
+

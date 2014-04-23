@@ -1,0 +1,43 @@
+<center><h1>{{cViewPerformancePlan}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/view_performance_plan.html');">
+<h1><center>
+<table >
+
+<tr>
+<td class=code>
+{{cPIPsAssigned}}
+</td></tr></table>
+<table border=1 align = center>
+
+<tr>
+	<td class=code>
+	{{cNamee}}
+	</td>
+	<td class=code>
+	{{cDate}}
+	</td>
+	<td class=code>
+	{{cComplete}}
+	</td>
+	<td class=code>
+	{{cView}}
+	</td>
+</tr>
+<{plan_loopstart}>
+<tr>
+	<td class=code>
+	<{name}>
+	</td>
+	<td class=code>
+	<{date}>
+	</td>
+	<td class=code>
+	<a href="build_performance_plan.php?fPlan_id=<{plan_id}>">{{cComplete}}</a>
+	</td>
+	<td class=code>
+	<a href="view_performance_plan.php?plan_id=<{plan_id}>&action=show">{{cView}}</a>
+	</td>
+</tr>
+<{plan_loopend}>
+</table>
+

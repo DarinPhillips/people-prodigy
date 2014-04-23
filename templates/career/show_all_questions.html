@@ -1,0 +1,111 @@
+<html>
+<h4>{{cTestbuilder}}</h4> 
+
+{{cNameoftest}}: {{fTestname}} <br>
+{{cIdoftest}} : {{test_id}}
+
+<form name=form2 action="show_all_questions.php" method=post>
+
+<input type=hidden name=fTestname value={{fTestname}} >
+<input type=hidden name=test_id value="{{test_id}}" >
+
+<{skillcontent_loopstart}>
+
+<table border=1 align = center>
+<tr>
+	<td class=code>
+		{{cWhich_skill_tested}}
+	</td>
+	<td class=code>
+	
+		<select name=fSkillname_<{skill_id}> >
+
+	<{skill_loopstart}>
+			<option value='<{key}>'<{sel}> > <{value}> </option>
+	<{skill_loopend}>
+
+		</select>
+
+	</td>
+</tr>
+</table>
+<table align=center>
+
+	<{skilllevel_loopstart}>
+
+	<tr>
+		<td class=code>
+	<center> <input type=text size=2 name=fSkilllevel_<{skill_id}>_<{fName}> value="<{percent}>"></center>
+		</td>
+	<td class=code>
+	<center><{fName_level}></center>
+	</td>
+	</tr>
+
+	<{skilllevel_loopend}>
+
+</table>
+
+<{quest_loopstart}>
+
+<table border=1 align = center>
+
+<tr>
+
+
+	<td align=top>
+		{{cQuestionno}}: <{fNo}>
+	</td>
+	<td align=top>
+		<input type=text name=fQuestion_<{fQid}> value="<{question}>" >
+	</td>
+	<td class=code>
+		{{cMarks}}<input type=text name=fMarks_<{fQid}> value="<{score}>">
+	</td>
+
+</tr>
+
+<tr>
+	<td class=code>
+		{{cAnswers}} {{cMarkcorrect}}: 
+	</td>
+
+	<td class=code>
+	<{ans_loopstart}>
+
+		<input <{check}> type=checkbox name='fCheck_<{fQid}>_<{fNo1}>' value="r">
+
+ 		<input type=text name='fAns_<{fQid}>_<{fNo1}>' value="<{answer}>">
+
+ 		<br>
+
+	<{ans_loopend}>
+
+	</td>
+
+
+</tr>
+</table >
+<{quest_loopend}>
+
+
+<{skillcontent_loopend}>
+<table align=center>
+<tr>
+		<td class=code><br><br>
+			<input type=submit name='later' value="{{cSave_finishlater}}">
+		</td>
+		<td class=code><br><br>
+			<input type=button name=fBack value="{{cBack}}" onClick="window.history.back()">
+		</td>
+		<td class=code><br><br>
+			<input type=submit name='testdrive' value="{{cTaketest}}">
+		</td>
+		<td class=code><br><br>
+			<input type=submit name='approve' value="{{cSubmit_for_approval}}">
+		</td>
+	</tr>
+</table>
+
+</form>
+</html>

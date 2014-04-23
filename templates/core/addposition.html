@@ -1,0 +1,85 @@
+<script>
+
+function check()
+{
+	var spc=/\S/
+	with(document.frm)
+	{
+		if((fPosition.value=="")||!(spc.test(fPosition.value)))
+		{
+		alert('{{cEntervalidposition}}');
+		return false;
+		}
+	}
+	return true;
+}
+
+</script>
+
+<form action="addposition.php" name=frm method="post" onSubmit="return check();">
+<center>
+<h1>
+	{{flag}}
+{{cPositiontext}}
+
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/addposition.html');">
+</h1>
+</center>
+<table align=center>
+<tr>
+<td class=code>
+Edit Position Name
+</td>
+<td>
+<input type="text" name="fPosition" value="{{position_name}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+Select Level
+</td>
+<td>
+<select name="fLevel" onChange="document.frm.submit()">
+<option  class=code value="">{{cSelect}}</option>
+<{level_loopstart}>
+<option <{selected}> class=code value="<{value}>"><{value}></option>
+<{level_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+Select Location
+</td>
+<td>
+<select name="fLocation">
+<option  class=code key="">{{cSelect}}</option>
+<{location_loopstart}>
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+<{location_loopend}>
+</select>
+</td>
+</tr>
+<{bossdisplay_loopstart}>
+<tr>
+<td class=code>
+Choose Boss
+</td>
+<td class=code>
+<select name="fBoss">
+<option class=code key="">{{cSelect}}</option>
+<{boss_loopstart}>
+<option <{selected}> class=code value="<{key}>"> <{value}></option>
+<{boss_loopend}>
+</select>
+</td>
+</tr>
+<{bossdisplay_loopend}>
+</table>
+<input type="hidden" name="prev_position" value="{{position_val}}">
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fSubmit" value="{{cSubmit}}">
+</center>
+
+</form>

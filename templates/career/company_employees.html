@@ -1,0 +1,64 @@
+<script language='javascript'>
+function populate(email,username)
+{
+	with (document.empl)
+	{
+		
+		temp1 = field1.value;
+		temp2 = field2.value;
+
+		if (temp1 != '')
+		{
+			window.opener.document.frm1.elements[temp1].value=username;
+		}
+		
+		
+		window.opener.document.frm1.elements[temp2].value=email;
+		
+		
+		self.close();
+	}
+}
+</script>
+
+<form action=multirater_appraisal.php method=post name=empl>
+<input type='hidden' name='field1' value="{{field1}}">
+<input type='hidden' name='field2' value="{{field2}}">
+<table align=center border=0>
+<tr>
+<td class=code colspan=3 align=center>
+<b>{{cCompanyempl_all}}</b><br><br><br>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td class=code align=center>
+<b>{{cCompanyempl_name}}</b>
+</td>
+<td class=code align=center>
+<b>{{cCompanyempl_email}}</b>
+</td>
+</tr>
+
+<{userdetails_loopstart}>
+<tr>
+<td class=code>
+
+<input type=radio name=users value=<{user_id}> onClick="populate('<{email}>','<{username}>')">
+</td>
+<td class=code>
+<{username}>  
+
+</td>
+<td class=code>
+ <{email}>
+</td>
+</tr>
+<{userdetails_loopend}>
+<tr>
+<td align=center colspan=3>
+</td>
+</tr>
+</table>
+</form>

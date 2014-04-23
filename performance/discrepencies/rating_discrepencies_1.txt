@@ -1,0 +1,46 @@
+									Date:2004-02-04
+
+					Rating Discrepencies					
+					--------------------
+
+	1. karthik firstname  rated how newuser2 newuser2  performed 0 % lower than the recommendation
+
+
+	2. sibi sibi  rated how off off  performed 0 % lower than the recommendation
+
+
+	3. karthik firstname  rated how user1 user1  performed 0 % lower than the recommendation
+
+
+	4. karthik firstname  rated how user3 user3  performed 0 % lower than the recommendation
+
+
+	5. admin firstname  rated how Leader3 Leader3  performed 3.70 % lower than the recommendation
+
+
+	6. sibi firstname  rated how vpas vpas  performed 0 % lower than the recommendation
+
+
+	7. Francisca Phillips  rated how sibi sibi  performed 0 % lower than the recommendation
+
+
+	8.  rated how nifty tofty  performed 0 % lower than the recommendation
+
+
+	9. Francisca Phillips  rated how sibi firstname  performed 0 % lower than the recommendation
+
+
+	10.  rated how Francisca Phillips  performed 0 % lower than the recommendation
+
+
+	11. admin firstname  rated how Leader2 Leader2  performed 0 % lower than the recommendation
+
+
+	12. Francisca Phillips  rated how new   performed 0 % lower than the recommendation
+
+
+	13. Administrator Administrator  rated how Sample1 dafadf  performed 0 % lower than the recommendation
+
+
+
+

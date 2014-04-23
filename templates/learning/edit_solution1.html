@@ -1,0 +1,55 @@
+
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+<table border=0 align = center>
+<form action=edit_solution.php action=POST>
+	<tr>
+		<td class=code>
+		{{cExistingDevelopemntalSolution}}	
+
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+
+		{{cDEVELOPMENTAL}}<br>
+
+		</td>
+	</tr>
+
+
+
+<{language_loopstart}>
+<tr>
+		<td >
+		<b>	<{lang}> </b>
+		</td>
+</tr>
+
+
+
+<{solution_loopstart}>
+
+<tr><td><{solution}><a href="edit_solution.php?action=change&basic_id=<{basic_id}>">{{cEdit}}</a></td></tr>
+
+
+<{solution_loopend}>
+
+
+<{language_loopend}>
+
+</table>
+
+<table align = center>
+<tr>
+<td>
+<input type=hidden name=action value="edit">
+
+<input type=submit name=submit1 value="{{cEditDevelopmentalSolution}}">
+</td>
+</tr>
+</table>
+</form>
+</body>

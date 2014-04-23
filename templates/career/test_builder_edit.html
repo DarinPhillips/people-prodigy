@@ -1,0 +1,97 @@
+<script language='javascript'>
+function check_frm()
+{
+	with (document.form1)
+	{
+		reg = /\S/;
+		if (!reg.test(fTestname.value) || (fTestname.value == ""))
+		{
+			alert('{{cEntervalidtestname}}');
+			return false;
+		}
+		if(!reg.test(fQuestion.value) || (fQuestion.value == ""))
+{
+alert('{{cJavascriptqnoalert}}');
+return false;
+}
+	}
+}
+
+
+function checkmode(nam)
+{
+	//alert(nam);
+	
+	with (document.form1)
+	{
+		if(usr_id.value != '1')
+		{
+			if (!nam)
+			{
+			alert('{{cYouarenotallowed}}'); 
+			return false;
+			}
+		}
+	}
+	return true;
+}
+
+
+
+
+</script>
+ 
+<table align=right border=0>
+<tr>
+<td class=code align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/test_builder_edit.html');">
+</td>
+</tr>
+</table>
+<br>	
+	<br><br>
+ 
+<table class=table align=center >
+<form name=form1 action="{{form_action}}.php" method=post onSubmit="return check_frm()">
+<input type=hidden name=test_id value="{{test_id}}">
+<input type=hidden name=usr_id value="{{user_id}}">
+
+<input type=hidden name=test_mode value="{{test_mode}}" >	
+<input type=hidden name=group_id value="{{group_id}}" >
+<tr>
+<td class=code>
+{{cNameoftest}}: 
+</td>
+<td class=code>
+	<input type=text name=fTestname value="{{fTestname}}"></td>
+</tr>
+<tr>
+<td class=code align=top>
+{{cThistestfor}}
+</td>
+<td class=code>
+<input {{tchecked}} type=radio name="fTesttype" value="t" onFocusin = "if (!checkmode(this.checked)) this.blur();"> {{cTechnicalskills}}
+<br>	<input {{ichecked}} type=radio name="fTesttype" value="i" onFocusin = "if (!checkmode(this.checked)) this.blur();"> {{cInterskills}}
+
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cTot_questions}} 
+</td>
+<td class=code>
+<input type=text name=fQuestion value="{{fQuestion}}">
+</td>
+</tr>
+
+<tr>
+<td align=center class=code><br>
+
+<input type=submit name=fNext value={{cNext}}>
+</td>
+</tr>
+</table>
+</form>
+</body>
+
+</html>

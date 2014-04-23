@@ -1,0 +1,105 @@
+<html>
+<body>
+<center><h1>{{cViewApprovedLearningPlan}}
+
+<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/view_approved_plan.html');"></h1></center>
+
+
+
+
+<table width=90% align=center border=0>
+
+<tr><td class=code><b>{{username}}</b><!--{{first_name}}  {{last_name}}-->{{cS}} {{cLearningPlan}}</td></tr>
+
+<{skills_loopstart}>
+<{skill_name}>
+
+<tr><td class=code>{{cImprove}}<b> <{skills_name}></b> {{cIwilllearnvia}}</td></tr>
+
+<{maintext1_loopstart}>
+
+			<tr><td class=code><table border=1 width=90%>
+			<tr>
+			<td class=code><b>{{cActivitytitle}}</b></td>
+			<td class=code><b>{{cActivitydescription}}</b></td>
+					
+			<td class=code><b>{{cBydate}}</b></td>
+			<td class=code><b>{{cCompletedby}}</b></td>
+			</tr>
+		
+	<{text1_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code> <{cdate}> </td>
+			<td class=code>  <{completed_date}></td>
+
+			</tr>
+		
+		<{text1_loopend}>
+			</table><br></td></tr>
+
+<{maintext1_loopend}>
+<{maintext2_loopstart}>	
+			<tr><td class=code><table border=1 width=90%>
+			<tr>
+			<td class=code><b>{{cActivitytitle}}</b></td>
+			<td class=code><b>{{cActivitydescription}}</b></td>
+			<td class=code><b>{{cBydate}}</b></td>	
+			<td class=code><b>{{cThisActivitybyDate}}</b></td>
+			<td class=code><b>{{cCompletedby}}</b></td>
+		
+			</tr>
+			
+	<{text2_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}> </td>
+			<td class=code> <{completed_date}></td>
+			
+
+			</tr>
+		<{text2_loopend}>		
+			</table><br></td></tr>
+<{maintext2_loopend}>
+
+
+
+
+
+<{maintext3_loopstart}>	
+		<tr><td class=code><table border=1 width=90%>
+			<tr>
+			<td class=code><b>{{cFeedsource}}</b></td>
+			<td class=code><b>{{cFrequency}}</b></td>
+			<td class=code><b>{{cBydate}}</b></td>	
+			<td class=code><b>{{cUntill}}</b></td><!--{{cUntillDate}} -->
+			
+			</tr>
+	<{text3_loopstart}>	
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{frequency}></td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}></td>
+			</tr>
+		
+	<{text3_loopend}>
+			</table><br></td></tr>
+<{maintext3_loopend}>
+
+		
+
+<{skills_loopend}>
+</table>
+</body>
+</html>
+

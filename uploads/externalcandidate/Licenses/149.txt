@@ -1,0 +1,47 @@
+Modification:
+
+Can you change the "Date Picker" so that it only displays mm/dd/yyyy and no "time" information?
+
+
+
+Additional work :
+
+(1 day)
+
+As far as the  "Add Events" page goes, I realize that it is 
+a very long form, therefore have broken the form into
+ two separate pages....
+http://www.whatparty.com/add_events.html
+http://www.whatparty.com/add_events2.html
+ 
+
+The customer will have to hit the "Continue" button to 
+get to the next page.
+
+----------------------------------------------------------------completed
+One thing that is becoming very apparent to me is the requirement to 
+constrain the image proportions.  Users are certainly going to 
+login and because they don't know any better, they will upload
+ images that are extremely large and take up the entire screen.
+We will need a script that will constrain these proportions to 
+fit on the screen. can you do it using GD module ??
+
+(I have done this as 25X25) I can change this in 
+
+admin settings if you need this to be changed.
+
+-------------
+
+
+Yes, each page does contain....
+Name , Organization , Address , Phone , Events.
+and yes I would like the appropriate information displayed here.
+ NOTE: this information really only appears on pages 
+where a customer should already be logged in.  
+It doesn't appear on public "informational pages" 
+(i.e... where a customer is not logged in.
+
+
+
+--------------------------
+

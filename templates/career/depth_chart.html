@@ -1,0 +1,348 @@
+<SCRIPT LANGUAGE=Javascript>
+
+function deselectradios(temp,num)
+{	
+	with(document.frm1)
+	{
+		
+		if(num.checked)
+		{
+			tempval = true;	
+		}		
+		else
+		{
+			tempval = false;
+		}
+		for(i=0;i<temp.length;i++)
+			{
+				
+				temp[i].disabled = tempval;
+				
+			}
+		
+		
+	}
+
+}
+
+function checkmodesifnull()
+{
+	with (document.frm1)
+	{
+		temp1 = fDesignee_1;
+		temp2 = fDesignee_2;
+
+//CHECK IF SAME PERSON SELECTED TWICE...
+		for(i=0;i<temp1.length;i++)
+		{
+			for(j=0;j<temp2.length;j++)
+			{
+				if(i == j)
+				{
+					if(fDesignee_1[i].checked == true && fDesignee_2[i].checked== true)
+					{
+						alert('Cannot choose same person as First and Second Designee');
+						return false;
+					}
+				}
+			}
+		}
+
+//IF NONE SELECTED RETURN BACK TO DASHBOARD...		
+		
+		if(nonefirst.checked == true && nonesecond.checked == true)
+			{
+				window.location.replace('front_panel.php');
+				return false;
+			}
+	
+
+		for(a=0;a<temp1.length;a++)
+		{
+			for(b=0;b<temp2.length;b++)
+			{
+				if(fDesignee_1[a].checked == true)
+				{
+					if(fDesignee_2[b].checked == true)
+					{
+						return true;
+					}
+				}
+			}
+		}
+		alert('{{cSelectdesignee}}');
+		return false;
+
+	
+			
+	}
+}
+function check_designee2()
+{
+	frm = document.frm1;
+	d= frm.fDesignee_1.length;
+	//this check is to find whether fDesignee_1 is array or not
+	if (d)//if array
+	{
+		for(i=0;i<d;i++)
+		{
+			t1 = frm.fDesignee_1[i].checked;
+			t2 = frm.fDesignee_2[i].checked;
+			if((t1==true) && (t2==true))
+			{
+				alert ('{{cOnechoice}}');
+				frm.fDesignee_2[i].checked=false;
+			}		
+		}	
+	}
+	else//if not array
+	{
+			t1 = frm.fDesignee_1.checked;
+			t2 = frm.fDesignee_2.checked;
+			if((t1==true) && (t2==true))
+			{
+				alert ('{{cOnechoice}}');			
+				frm.fDesignee_2.checked=false;
+			}
+			
+	}
+}
+function check_designee1()
+{
+
+	frm = document.frm1;
+
+	d= frm.elements['fDesignee_1'].length;
+	//this check is to find whether fDesignee_1 is array or not
+	if(d)//if array
+	{
+		for(i=0;i<d;i++)
+		{
+			t1 = frm.fDesignee_1[i].checked;
+			t2 = frm.fDesignee_2[i].checked;
+			if((t1==true) && (t2==true))
+			{
+				alert ('{{cOnechoice}}');			
+				frm.fDesignee_1[i].checked=false;
+			}
+		}
+	}
+	else
+	{
+			t1 = frm.fDesignee_1.checked;
+			t2 = frm.fDesignee_2.checked;
+			if((t1==true) && (t2==true))
+			{
+				alert ('{{cOnechoice}}');			
+				frm.fDesignee_1.checked=false;
+			}
+			
+	}	
+}
+</SCRIPT>
+<form action=gaps_at_glance.php method=post name=frm1 onSubmit="return checkmodesifnull();" >
+
+<input type=hidden name=posid value={{posid}} >
+<input type=hidden name=modelid value={{modelid}} >
+
+
+<table align=center border=1 cellspacing=0 cellpadding=4 width=100% >
+	<tr>
+		<th class=code colspan=10>
+			<b>{{posname}}</b> Depth Chart
+				<input type=button name=fHelp value='  {{cHelp}}  ' onClick="window.open('../lang/{{default}}/career/depth_chart.html')";>
+		</th>
+	</tr>
+	<tr>	
+		<td class=code colspan=10>
+		<b>INTERNAL CANDIDATES</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=2 align=center>
+			<b>{{cDesignee}}</b>
+		</td>
+		<td class=code rowspan=2>
+			<b>{{cEmpname}}</b>
+		</td>
+		<td class=code colspan=2 align=center>
+			<b>{{cModelmatch}}</b>
+			
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_start}>
+
+		<td class=code colspan=2 align=center>
+			<b>{{cPer}}</b>
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+
+		<td class=code rowspan=2>
+			<b>{{cLevel}}</b>
+		</td>
+		<td class=code rowspan=2>
+			<b>{{cInterest}}</b>
+		</td>
+		<td class=code rowspan=2>
+			<b>{{cEeotags}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code > 		
+			{{cFirstchoice}}
+		</td>
+		<td class=code >		
+			{{cSecchoice}}
+		</td>
+		<td class=code>
+			{{cInterpersonal}}
+		</td>
+		<td class=code>
+			{{cTech}}
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_start}>
+		<td class=code>
+			{{cWhat}}
+		</td>
+		<td class=code>
+			{{cHow}}
+		</td>
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+	</tr>
+	
+<{depthchartdisplay_loopstart}>
+	<tr>
+		<td class=code>	
+		<input type=radio name=fDesignee_1 value='firstdesignee_<{employeeid}>' onclick="check_designee1();">
+		</td>
+		
+		<td class=code>
+		<input type=radio name=fDesignee_2 value='seconddesignee_<{employeeid}>' onclick="check_designee2();">
+		</td>
+		
+		<td class=code>
+			<{boldstart}><a href=person_position.php?empl=<{employeeid}>&model_sel=<{model_to_view}>&meth=graph ><{username}></a> <{boldend}>
+		</td>
+		<td class=code>	
+		<!--[i model match]--><{modelipercentfit}>&nbsp;
+		</td>
+		<td class=code>	
+		<!--[t model match]--><{modeltpercentfit}>&nbsp;
+		</td>
+
+
+
+
+<{c05f6c233521207f6fe311afef550c3c_start}>
+
+		<td class=code>	
+		<!--[performance what]--> <{what}>
+		</td>
+		<td class=code>	
+		<!--[performance how]--> <{how}>
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+
+
+
+		<td class=code align=center>	
+		<{level_display}>	
+		</td>
+		<td class=code>	
+		<!--[interest]--><{interest}>
+		</td>
+		<td class=code>	
+		&nbsp;<{tags_display}>
+		</td>
+	</tr>
+
+<{depthchartdisplay_loopend}>
+	
+	<tr>
+		<td class=code colspan=10>
+		<b>EXTERNAL CANDIDATES</b>
+		</td>
+	</tr>
+<{externalchartdisplay_loopstart}>
+	<tr>
+		<td class=code>	
+		<input type=radio name=fDesignee_1 value='firstdesignee_<{user_extid}>' onclick="check_designee1();">
+		</td>
+		
+		<td class=code>
+		<input type=radio name=fDesignee_2 value='seconddesignee_<{user_extid}>' onclick="check_designee2();">
+		</td>
+		
+		<td class=code>
+			<a href=person_position.php?empl=<{user_extid}>&model_sel=<{model_to_view}>&meth=graph ><{user_extname}></a>
+		</td>
+		<td class=code>	
+		<!--[i model match]--><{modelipercentfit_ext}>
+		</td>
+		<td class=code>	
+		<!--[t model match]--><{modeltpercentfit_ext}>
+		</td>
+
+
+
+
+<{c05f6c233521207f6fe311afef550c3c_start}>
+
+		<td class=code>	
+		N/A
+		</td>
+		<td class=code>	
+		N/A
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+
+
+
+		<td class=code align=center>	
+		N/A
+		</td>
+		<td class=code>	
+		N/A
+		</td>
+		<td class=code>	
+		N/A
+		</td>
+	</tr>
+<{externalchartdisplay_loopend}>
+
+	
+	<tr>
+		<td class=code colspan=10>
+		<input type=checkbox name=nonefirst value=firstchoice onClick="deselectradios(fDesignee_1,nonefirst);">
+		None of the current internal or external candidates is a good 1st Choice.
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=10>
+		<input type=checkbox name=nonesecond value=secondchoice onClick="deselectradios(fDesignee_2,nonesecond);">
+		None of the current internal or external candidates is a good 2st Choice.
+		</td>
+	</tr>	
+	<tr>
+		<td class=code colspan=10>
+			NOTE: Incumbent is <b>Bold</b>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code colspan=10 align=center>
+			<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>
+			<input type=submit name=fNext value='  {{cNext}}  ' >
+			<input type=button name=fReturnback value='  {{cApprres_returnback}}  ' onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+</table>
+</form>

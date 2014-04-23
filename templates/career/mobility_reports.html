@@ -1,0 +1,155 @@
+<script language=Javascript>
+function validate_form()
+{
+
+	with (document.frm1)
+	{
+		reg = /\d/;
+		
+		if ((fModels_toshow.value == '') || (!reg.test(fModels_toshow.value)))
+		{
+			alert('{{cEnternumberformodels}}');
+			fModels_toshow.focus();
+			return false;
+		}
+	
+		if(fMylevel.checked == false && f1level.checked == false && f2level.checked == false)
+		{
+			alert('{{cSelectlevelstoview}}');
+			fMylevel.focus();
+			return false;
+		}
+		if(fiskills.checked == false || ftskills.checked == false)
+		{
+			alert('{{cSelectskillsreports}}');
+			fiskills.focus();
+			return false;
+		}
+		if ((ipercent.value == '') || (!reg.test(ipercent.value)))
+		{
+			alert('{{cEnterpercentage}}');
+			ipercent.focus();
+			return false;
+		}
+		if ((tpercent.value == '') || (!reg.test(tpercent.value)))
+		{
+			alert('{{cEnterpercentage}}');
+			tpercent.focus();
+			return false;
+		}
+		
+	
+	}
+	
+
+}
+</script>
+<form action=mobility_reports2.php method=post name=frm1 onSubmit="return validate_form()";>
+<input type=hidden name=empl value={{empl}} >
+<table align=center border=0>
+
+	<tr>
+		<td class=code align=center>
+			<b>{{cMobilityreport}}</b>
+			<input type=button name=fHelp value=' {{cHelp}} ' onClick="window.open('../lang/{{default}}/career/mobility_reports.html');";>
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<b>{{cMymobility}}:</b><br><br>
+		</td>
+	</tr>
+	 
+	<tr>
+		<td class=code>
+		{{cMaxnoofmodelstoshow}}
+		<input type=text name=fModels_toshow value='' size=2>
+		<br><br>
+		</td>
+		
+	</tr>
+	<tr>
+		<td class=code>
+		Show <font color=red><b>[High Performer]??</b></font> Models:
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=checkbox name=fMylevel>
+		{{cAt_my_current_level}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=checkbox name=f1level>
+		{{cOne_level_above_my_current_level}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=checkbox name=f2level>
+		{{cTwo_levels_above_my_current_level}}
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code>
+<font color=red>
+		<b>Include:?</b>
+</font>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color=red>
+		<input type=checkbox name=fiskills checked>
+		Interpersonal Skills??
+</font>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color=red>
+		<input type=checkbox name=ftskills checked>
+		Technical Skills???
+</font>
+		</td>
+	</tr>
+
+	<tr>
+
+		<td class=code>
+		<b>{{cMinpercentmatchtomodels}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{{cInterpersonalskills}}
+		<input type=text size=3 maxlength=3 name=ipercent value=''> %
+		</td>
+	</tr>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		{{cTechnicalskills}}
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<input type=text size=3 maxlength=3 name=tpercent value=''> %
+		
+		</td>
+	</tr>
+
+
+	<tr>
+		<td class=code align=center>
+			<input type=button name=fReturn value='{{cApprres_returnback}}' onClick="window.location.replace('front_panel.php')";>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type=submit name=fNext value=' {{cNext}} ' >
+		</td>
+	</tr>
+	
+</table>
+
+</form>

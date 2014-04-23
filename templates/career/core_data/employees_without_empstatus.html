@@ -1,0 +1,47 @@
+<form action="employees_without_empstatus.php" method=post>
+<center>
+<h1>
+{{cEmployeeswithoutanemploymentstatus}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/employees_without_empstatus.html');">
+</h1>
+</center>
+<table align=center>
+<th>
+{{cUsername}}
+</th>
+<th>
+{{cAdded_by}}
+</th>
+<th>
+{{cDate_added}}
+</th>
+<{user_loopstart}>
+<tr>
+<td class=code>
+<a href="add_employee_information.php?fEmployee=<{user_id}>"><{username}></a>
+</td>
+<td class=code>
+<{added_by}>
+</td>
+<td class=code>
+<{reg_date}>
+</td>
+</tr>
+<{user_loopend}>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+</td>
+<td class=code>
+<!--
+<input type="button" name="fSave" value="{{cSave}}">
+-->
+</td>
+</tr>
+</table>
+</form>

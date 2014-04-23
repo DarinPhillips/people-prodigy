@@ -1,0 +1,131 @@
+<script language='javascript'>
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=500,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=800,height=700,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=yes,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+function validate()
+{
+	with (document.emp_frm)
+	{
+		var i=0;
+		var j=0;
+		var checked="";
+		var frm_len = elements.length;
+		var reg	= /fColumn_/i;
+
+		var val	= Array();
+
+		while (i<frm_len)
+		{
+			if (reg.test(elements[i].name))
+			{
+//				alert(elements[i].name);
+				var temp = elements[i].value;
+				var len = val.length;
+//alert(temp);
+				if (temp != '')
+				{
+					for (j=0;j<len;j++)
+					{
+						if (val[j] == temp)
+						{
+							alert('{{cChosedifvals}}');
+							return false;
+						}
+					}
+					val[i] = temp;
+					if(temp=='username')
+					{
+						checked='ok';
+					}
+				}
+				
+			}
+			i++;
+		}
+		
+		if (val.length == 0)
+		{
+			alert('{{cSelsinglecol}}');
+			
+			return false;
+		}
+		if(checked!='ok')
+		{
+			alert('{{cinclusr}}');
+			return false;
+		}	
+		
+		if(fEmp.value=="")
+		{
+			alert('{{cEnterfile}}');
+			return false;
+		}
+		if(!(fReplace[0].checked)&&!(fReplace[1].checked))
+		{
+			alert('{{cselover}}');
+			return false;
+		}
+		return true;
+	}
+}
+</script>
+<form enctype="multipart/form-data" action="import_employee_details.php" method="post" onSubmit="return validate()" name='emp_frm'>
+<table class=table align=center>
+
+<tr>
+<td>
+<h1>
+{{cSpreadsheetupload}}
+</h1>
+</td>
+<td>
+</td>
+<td>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="popup('assign_tech_skill.html','Manual Help');">
+</td>
+</tr><tr>
+<td>
+{{cWhatinfo}}
+</td>
+</tr>
+</table>
+<table class=table align=center>
+<tr>
+<{column_loopstart}>
+<td>
+        <select name=fColumn_<{id}>>
+	<option class=code value="">{{cSelect}}</option>
+	<{inner_loopstart}>
+	<option  <{selected}> class=code value="<{value}>"> <{value}> </option>
+	<{inner_loopend}>
+	</select>
+</td>
+<{column_loopend}>
+</tr>
+</table>
+<table class=table align=center>
+<tr>
+{{cReplace}}
+</tr>
+<tr>
+<td>
+<input type="radio" name="fReplace" value="yes">{{cYes}}
+</td>
+<td>
+<input type="radio" name="fReplace" value="no">{{cNo}}
+</td>
+</tr>
+<tr>
+<td>
+<input type=file name=fEmp>
+</td>
+<td>
+<input type="submit" name="fNext" value="{{cNext}}">
+</tr>
+</table>
+</form>

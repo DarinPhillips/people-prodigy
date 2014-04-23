@@ -1,0 +1,162 @@
+<script src="../jscripts/calendar2.js"></script>
+<html><h1>{{cLearningPlan}}
+<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/learning_plan.html');"></h1>
+<form action="admin_plan_approval.php" method=POST name=learning>
+
+
+<table>
+<tr><td class=code><b>{{cApprovaltext}}</b></td><tr>
+<tr><td class=code>{{ApprovalMessage}}</td><tr>
+</table>
+
+<table align='center'>
+<tr><td class=code><b>{{emp_name}}{{cLearningplan}}</b></td><tr>
+<tr><td></td><tr>
+</table>
+
+<{skills_loopstart}>
+<table>
+	<tr><td class=code colspan=3 align=center><b>{{cLastUpdatedOn}}  <{updated_date}></b></td></tr>
+	<tr>
+		<td class=code colspan=2><b>{{cSkills}}:<{skills_name}></b></td>
+	<tr>
+	<tr>
+		<td class=code colspan=2>{{cImprove}} <{skills_name}> {{cIwilllearnvia}}</td>
+	</tr>
+	<tr>
+		<td class=code><b>{{cLearnactivities}}</b></td>
+		<td class=code><b>{{cBy}}</b></td>
+		<td class=code><b>{{cDatePicker}}</b></td>
+	</tr>
+		
+	
+	<{activities_loopstart}>
+
+			<{subact_loopstart}>
+			
+	<{title_loopstart}>
+	
+		
+	<tr>
+		<td class=code><{title}></td>
+		<td class=code><{act_date}></td>
+	</tr>
+		<td class=code><{cChanges}></td>
+		<td class=code><input type=text name="fActstart_<{skills}>_<{text}>" readonly size=10 value="<{act_date}>" readonly></td>
+		<td class=code><a href="javascript:cal1_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+		<script language='javascript'>
+			var cal1_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fActstart_<{skills}>_<{text}>']);
+			 cal1_<{skills}>_<{text}>.year_scroll	=  true;
+		</script>
+	</tr>
+			
+			<{title_loopend}>
+	
+			<{subact_loopend}>
+
+	<{activities_loopend}>	
+	</td>
+		</select>
+	
+
+		
+
+<tr><b><td class=code><b>{{cApplication}}</td></tr>
+
+<{application_loopstart}>
+			
+		<{apptitle_loopstart}>
+		
+	<tr><td class=code>	<{title}>
+		
+	
+
+</td>		
+</select>
+<td class=code>
+<input type=text name="fActstart_<{skills}>_<{text}>" size=10 readonly value="<{app_sdate}>" ></td>
+		
+<td class=code>
+
+<a href="javascript:cal2_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+	
+<script language='javascript'>
+
+	var cal2_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fActstart_<{skills}>_<{text}>']);
+	cal2_<{skills}>_<{text}>.year_scroll	=  true;
+
+</script>
+
+	</tr> <{apptitle_loopend}> 
+<{application_loopend}>
+<tr>
+<td class=code><a href="feedback.php?skill_id=<{skills}>&user_id={{user}}"target="_blank">{{cBrowsefeedback}}</a></td>
+</tr>	
+<tr>
+<td class=code><b>{{cFeedback}}<b></td></tr>
+<tr>
+<td class=code><b>{{cName}}</b></td>
+<td class= code><b>{{cEmailfield}}</b></td>
+<td class=code><b>{{cUntill}}</b></td>
+<td class=code><b>{{cDatePicker}}</b></td>
+<td class=code><b>{{cFrequency}}</b></td>
+</tr>
+
+
+<{text_loopstart}>
+<tr>
+<td class=code><input type=text readonly name="fName_<{skills}>_<{text}>" value="<{title}>"></td>
+<td class=code><input type=text readonly name="fEmail_<{skills}>_<{text}>" value="<{email}>"></td>
+
+
+<td class=code>
+<input type=text name="fFeedstart_<{skills}>_<{text}>" readonly size=10 value="<{sdate}>" ></td>
+		
+<td class=code>
+<a href="javascript:cal_<{skills}>_<{text}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal_<{skills}>_<{text}>= new calendar2(document.forms['learning'].elements['fFeedstart_<{skills}>_<{text}>']);
+	cal_<{skills}>_<{text}>.year_scroll	=  true;
+
+</script>
+
+</td>
+	
+<td class=code>
+
+<select name=Ffrequency_<{skills}>_<{text}>>
+
+		<!--	<option value=" " selected >{{cSelect}}</option>
+			<option value="{{cMonthly}}"<{selected_monthly}>>{{cMonthly}}</option>
+			<option value="{{cWeekly}}"<{selected_weekly}>>{{cWeekly}}</option>
+			<option value="{{cDaily}}"<{selected_daily}>>{{cDaily}}</option>
+		-->
+		<{freq_loopstart}>
+		<option value="<{index}>" <{freqselected}> ><{freq}></option>
+		<{freq_loopend}>
+	
+</td>		
+</select>
+
+</td>
+<{text_loopend}>
+</tr>
+
+
+
+
+<{skills_loopend}>
+<input type=hidden name=user_id value={{user}}>
+<input type=hidden name=skill_id value={{skill_id}}>
+<tr>
+<!--<td class=code align=center><input type=button  name="back" value="{{cBack}}" onclick="window.location.replace('alert.php');" ></td>-->
+<td class=code align=center><input type=submit  name="submit" value="{{cApproved}}"></td>
+<td class=code align=center><input type=submit  name="resubmit" value="{{cresubmit}}"></td>
+
+</tr>
+</table>
+
+</form>
+<html>

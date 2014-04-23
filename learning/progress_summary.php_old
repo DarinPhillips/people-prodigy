@@ -1,0 +1,316 @@
+<?php
+	include("../session.php");
+	include("header.php");
+
+class summary
+
+{	
+
+	function display($db_object,$common,$user_id,$default,$error_msg,$learning,$post_var)
+	{
+
+		$solution_table	=$common->prefix_table("assign_solution_builder");
+		$result_table 		=$common->prefix_table("learning_result");
+		$skill_table 		=$common->prefix_table("skills");
+		$plan_table		=$common->prefix_table("approved_devbuilder");
+		$feedback_table	=$common->prefix_table("learning_feedback_results");
+		$dev_interbasic	=$common->prefix_table("dev_interbasic");
+		$dev_basic		=$common->prefix_table("dev_basic");
+		$user_table		=$common->prefix_table("user_table");
+		
+		$path		=$common->path;
+		$template		=$path."/templates/learning/progress_summary.html";
+
+		$returncontent	=$common->return_file_content($db_object,$template);
+		
+		preg_match("/<{skill_loopstart}>(.*?)<{skill_loopend}>/s",$returncontent,$match1);
+		$skillcon = $match1[1];
+
+		preg_match("/<{comment_loopstart}>(.*?)<{comment_loopend}>/s",$returncontent,$match2);
+		$commentcon = $match2[1];
+	
+		while(list($kk,$vv)=@each($post_var))
+		{
+			if(ereg("^rating_",$kk))
+			{
+				list($rating,$skill)=split("_",$kk);
+				if($vv != "" )
+				{
+					$commentarr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fSinceRatingdate_",$kk))
+			{
+				list($srating,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$sinceratingarr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fFromRatingdate_",$kk))
+			{
+				list($fromrating,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$fromratingarr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fToRatingdate_",$kk))
+			{
+				list($torating,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$toratingarr[$skill]=$vv;
+				}
+			}
+			if(ereg("^update_",$kk))
+			{
+				list($update,$skill)=split("_",$kk);
+				if($vv != "" )
+				{
+					$resultarr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fSinceUpdatedate_",$kk))
+			{
+				list($supdate,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$sinceupdatearr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fFromUpdatedate_",$kk))
+			{
+				list($fromupdate,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$fromupdatearr[$skill]=$vv;
+				}
+			}
+			if(ereg("^fToUpdatedate_",$kk))
+			{
+				list($toupdate,$skill,$buildid)=split("_",$kk);
+				if($vv != "" )
+				{
+					$toupdatearr[$skill]=$vv;
+				}
+			}
+			if(ereg("^ratingsby_",$kk))
+			{
+				list($ratingsby,$usertype,$skill)=split("_",$kk);
+				if($vv != "" )
+				{
+					$ratingsbyarr[$skill][]=$vv;
+				//	$ratingsbyarr[$vv][]=$skill;
+				}
+			}
+		
+		}
+	
+		
+		$mysql="select skill_name,$feedback_table.skill_id,rated_id,rater_id,skill_description from $feedback_table,
+					$plan_table,$skill_table where $feedback_table.rated_id=$plan_table.user_id 
+					and $feedback_table.skill_id=$skill_table.skill_id and $feedback_table.status='1'
+					and rated_id='$user_id' and $plan_table.pstatus='a' group by $feedback_table.skill_id";
+		$dFeed= $db_object->get_rsltset($mysql);
+
+		for($i=0;$i<count($dFeed);$i++)
+		{
+
+				$skill_name		=$dFeed[$i]["skill_name"];
+				$skills			=$dFeed[$i]["skill_id"];
+				$skill_description	=$dFeed[$i]["skill_description"];
+				$commentrepl = "";
+				
+				$filecontent=str_replace("<{view_mode}>",$view_mode,$filecontent);
+	//------------------ For view rater comments loop-----------------	
+				
+				$Rvalue  			= $commentarr[$skills];
+				$Rfrom_date		= $learning->changedate_database($fromratingarr[$skills]);
+				$Rto_date			= $learning->changedate_database($toratingarr[$skills]);
+				$Rsince_date		= $learning->changedate_database($sinceratingarr[$skills]);
+				
+				$cmmtqry	= $this->extraquery($db_object,$common,$skills,$Rfrom_date,$Rto_date,$Rsince_date,$user_id,$Rvalue);
+				
+				$mysql 	= "select username,rater_id,rated_date,feedback_text from $feedback_table,$user_table where 
+					$user_table.user_id=$feedback_table.rater_id and $feedback_table.status='1' and 
+					$feedback_table.rated_id='$user_id' and $feedback_table.skill_id='$skills' $cmmtqry";
+				$dComment= $db_object->get_rsltset($mysql);
+
+			
+				if((count($commentarr) == "0") || ($dComment[0][0] == "") || (!array_key_exists($skills, $commentarr)) )
+				{
+					$skillcon1 =preg_replace("/<{comment_start}>(.*?)<{comment_end}>/s","",$skillcon); 					
+				}
+				else
+				{
+					for($j=0;$j<count($dComment);$j++)
+					{
+						$rater_name	=$dComment[$j]['username'];
+						$feedback_text =$dComment[$j]['feedback_text'];
+						$rater_id		=$dComment[$j]['rater_id'];
+				
+						if($rater_id==$user_id)
+						{
+							$rater_name=$error_msg['cSelf'];
+						}
+						$commentrepl.=preg_replace("/<{(.*?)}>/e","$$1",$commentcon);
+					}
+
+					$skillcon1 =preg_replace("/<{comment_loopstart}>(.*?)<{comment_loopend}>/s",$commentrepl,$skillcon); 				
+				}
+		//------------------ For view results loop (Timely Completed Activities)-----------------
+				
+				$Uvalue  			= $resultarr[$skills];
+				$Ufrom_date		= $learning->changedate_database($fromupdatearr[$skills]);
+				$Uto_date			= $learning->changedate_database($toupdatearr[$skills]);
+				$Usince_date		= $learning->changedate_database($sinceupdatearr[$skills]);
+				
+				$rsltqry	= $this->extraquery($db_object,$common,$skills,$Ufrom_date,$Uto_date,$Usince_date,$user_id,$Uvalue);
+
+				$mysql 	= "select cdate,completed_date,plan_approved_date,
+								(((to_days(cdate) - to_days(plan_approved_date))/(to_days(completed_date) - to_days(plan_approved_date)))*100) as per
+								from $plan_table,$solution_table,$feedback_table where 
+								$plan_table.user_id=$solution_table.user_id and $plan_table.skill_id=$solution_table.skill_id
+								and $plan_table.user_id=$feedback_table.rated_id and $plan_table.skill_id=$feedback_table.skill_id
+								and $plan_table.pstatus='a' and $plan_table.user_id='$user_id' and $plan_table.skill_id='$skills'
+								and $feedback_table.status='1' $rsltqry";	
+				$dResult  =$db_object->get_rsltset($mysql);
+
+				if((count($resultarr) == "0") || ($dResult[0][0] == "")  || (!array_key_exists($skills, $resultarr)) )
+				{
+					$skillcon2 =preg_replace("/<{result_start}>(.*?)<{result_end}>/s","",$skillcon1); 					
+				}
+				else
+				{
+
+					$mysql 	= "select	max(completed_date) as maxdate,plan_approved_date from $plan_table,$feedback_table,
+									$solution_table where $plan_table.user_id=$feedback_table.rated_id and 
+									$plan_table.skill_id=$feedback_table.skill_id and $plan_table.user_id=$solution_table.user_id 
+									and $plan_table.skill_id=$solution_table.skill_id and $plan_table.pstatus='a' and
+									 $plan_table.user_id='$user_id' and $plan_table.skill_id='$skills'
+									and $feedback_table.status='1' $rsltqry group by $plan_table.skill_id";	
+					$dMax  	=$db_object->get_a_line($mysql);
+										
+					$to_date 	= $dMax['maxdate'];
+					$from_date = $dMax['plan_approved_date'];
+					
+					$count = '0';
+					$totalper='0';
+					$cnt=count($dResult);
+					
+					for($k=0;$k<count($dResult);$k++)
+					{
+						$per	= $dResult[$k]['per'];	
+						if( $per != "" )
+						{
+							$count=$count+1;	
+							$totalper=$totalper+$per;
+						}
+						
+					}
+
+					$avg=$totalper/$count;
+					$avg_round=round($avg,2);;
+					$mysql 	 = "select max(rated_date) as rateddate,plan_approved_date from $plan_table,$feedback_table,
+									$solution_table where $plan_table.user_id=$feedback_table.rated_id and 
+									$plan_table.skill_id=$feedback_table.skill_id and $plan_table.user_id=$solution_table.user_id 
+									and $plan_table.skill_id=$solution_table.skill_id and $plan_table.pstatus='a' and
+									$plan_table.user_id='$user_id' and $plan_table.skill_id='$skills'
+									and $feedback_table.status='1' $rsltqry group by $plan_table.skill_id";	
+					$dRated  	 =$db_object->get_a_line($mysql);
+		
+					$last_date = $dRated['rateddate'];
+					$skillcon2 = preg_replace("/<{result_start}><{(.*?)}><{result_end}>/s","$$1",$skillcon1); 				
+
+				}
+				
+			//------------For ratingsby loop----------------------
+
+				if((count($ratingsbyarr) == "0")  || (!array_key_exists($skills, $ratingsbyarr)) )
+				{
+					$skillcon3 =preg_replace("/<{ratingsby_start}>(.*?)<{ratingsby_end}>/s","",$skillcon2); 					
+				}
+				else
+				{
+						$mysql 	 = "select max(rated_date) as rateddate,plan_approved_date from $plan_table,$feedback_table,
+									$solution_table where $plan_table.user_id=$feedback_table.rated_id and 
+									$plan_table.skill_id=$feedback_table.skill_id and $plan_table.user_id=$solution_table.user_id 
+									and $plan_table.skill_id=$solution_table.skill_id and $plan_table.pstatus='a' and
+									$plan_table.user_id='$user_id' and $plan_table.skill_id='$skills'
+									and $feedback_table.status='1' $rsltqry group by $plan_table.skill_id";	
+						$dRated  	 =$db_object->get_a_line($mysql);
+						$last_date = $dRated['rateddate'];
+						$from_date = $dRated['plan_approved_date'];
+												
+					
+					$ratingby = array("");
+
+					for($k=0;$k<4;$k++)
+					{
+						if($ratingsbyarr[$skills][$k])
+						{
+							$ratingsarr[]=$ratingsbyarr[$skills][$k];
+						}
+					}
+					$raterid=@implode(",",$ratingsarr);
+					
+					$skillcon3 = preg_replace("/<{ratingsby_start}><{(.*?)}><{ratingsby_end}>/s","$$1",$skillcon2); 				
+				}
+				$skillrepl.=preg_replace("/<{(.*?)}>/e","$$1",$skillcon3);
+		
+		}
+
+		$returncontent =preg_replace("/<{skill_loopstart}>(.*?)<{skill_loopend}>/s",$skillrepl,$returncontent); 				
+		
+		$username=$common->name_display($db_object,$user_id);
+		$array['username']=$username;
+		$returncontent=$common->direct_replace($db_object,$returncontent,$array);
+		echo $returncontent;
+	}
+
+//------------------------------------------------
+	
+	function extraquery($db_object,$common,$skill_id,$from_date,$to_date,$since_date,$rated_id,$value)
+	{
+		$feedback_table	=$common->prefix_table("learning_feedback_results");
+		switch($value)
+		{
+			case 1:
+				 {
+				 	$mysql = "select max(rated_date) as maxdate from $feedback_table where
+				 				rated_id='$rated_id' and skill_id='$skill_id'";
+					$dLastdate=$db_object->get_a_line($mysql);
+					$lastdate = $dLastdate['maxdate'];
+					$extraqry = " and rated_date = '$lastdate' ";
+					break;
+				 }
+			case 2:
+				 {
+				 	$extraqry = " and rated_date > '$since_date' ";
+					break;
+				 }
+			case 3:
+				 {
+				 	$extraqry = " and rated_date between '$from_date' and '$to_date' ";
+					break;
+				 }
+			case 4:
+				{
+					$extraqry = "";
+					break;
+				}
+		}
+			
+		return $extraqry;
+		 	 
+	}
+		
+}
+	$obj=new summary;
+
+	$obj->display($db_object,$common,$user_id,$default,$error_msg,$learning,$post_var);
+
+	include("footer.php");
+?>
+

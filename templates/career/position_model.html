@@ -1,0 +1,212 @@
+<script language="Javascript">
+function check_plan()
+{
+	with (document.frm1)
+	{
+		
+		if(fRating_plan[0].checked == false && fRating_plan[1].checked == false)
+		{
+			alert('{{cChooseplanformodel}}');
+			fRating_plan[0].focus();
+		return false;
+		}
+		
+		if(elements['fFamilies[]'].value == '' && elements['fBoss[]'].value == '' && elements['fEmpl[]'].value == '' && elements['fLocations[]'].value == '' && elements['fEmpl_types[]'].value == '' && elements['fLevels[]'].value == '' && elements['fEeo[]'].value == '')
+		{
+			alert('{{cChoosecomponents}}');
+			return false;
+		}
+		if(elements['fInter_skills[]'].value== '')
+		{
+			alert('{{cSelectiskills}}');
+			return false;
+		}
+		if(elements['fTech_skills[]'].value== '')
+		{
+			alert('{{cSelecttskills}}');
+			return false;
+		}
+	}
+}
+</script>
+
+<form name=frm1 action="position_model2.php" method=post onSubmit = "return check_plan()";>
+
+<table align=center border=1>
+	<tr>
+		<td class=code align=center colspan=3>
+			<h1>{{cBuildamodel}}
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('position_model.html')";>
+			</h1>
+		</td>
+			
+	</tr>
+
+
+	<tr>
+		<td class=code colspan=3>
+			<b>{{cSelectmodelcomponents}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cPosition_s}}		
+		</td>
+		<td class=code>
+			{{cEmployee_s}}
+		</td>
+		<td class=code>
+			{{cRating_s}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code rowspan=2>
+		<select name=fFamilies[] multiple size=3>
+			<option value="All" >{{cAllfamilies}}</option>
+			<option value="None">{{cNone}}</option>
+		<{family_loopstart}>
+    			<option value='<{family_id}>'<{selected}>> <{family_name}> </option>
+		<{family_loopend}>	
+					
+		</select>
+		</td>
+		
+		<td class=code>
+		<select name=fBoss[] multiple size=3>
+			<option value="All" >{{cAllbosses}}</option>
+			<option value="None">{{cNone}}</option>
+		<{boss_loopstart}>
+			<option value='<{boss_id}>' > <{boss_name}> </option>
+		<{boss_loopend}>	
+
+			
+		</select>
+		</td>
+
+<{c05f6c233521207f6fe311afef550c3c_start}>		
+		<td class=code>
+		
+		<input type=radio name='fRating_plan' value='per'>{{cPer}}
+		
+		</td>
+<{c05f6c233521207f6fe311afef550c3c_end}>		
+		
+	</tr>
+		
+	<tr>
+<!--		
+------------------------------------------------------------------------
+
+		<td class=code>
+		<select name=fPositions[] multiple size=3>
+			<option value="All" >{{cAllpositions}}</option>
+			<option value="None">{{cNone}}</option>
+		<{position_loopstart}>
+			<option value='<{pos_id}>' > <{position_name}> </option>
+		<{position_loopend}>	
+		</select>
+		
+		</td>
+------------------------------------------------------------------------
+-->
+		
+		<td class=code>
+		<select name=fEmpl[] multiple size=3>
+			<option value="All" >{{cAllemployees}}</option>
+			<option value="None">{{cNone}}</option>
+		<{user_loopstart}>
+			<option value='<{user_id}>'>  <{username}>  </option>
+		<{user_loopend}>
+		</select>
+		</td>
+
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+		
+		<td class=code >
+		
+		<input type=radio name='fRating_plan' value='learn'> {{cLearnplan}}
+		
+		</td>
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>		
+		
+	</tr>
+	<tr>
+		<td class=code>
+		<select name=fLocations[] multiple size=3>
+			<option value="All" >{{cAlllocations}}</option>
+			<option value="None">{{cNone}}</option>
+
+			<{location_loopstart}>
+				<option value='<{key}>'> <{value}> </option>
+			<{location_loopend}>	
+			
+		</select>
+		</td>
+		
+		<td class=code>
+		<select name=fEmpl_types[] multiple size=3>
+			<option value="All" >{{cAllempltypes}}</option>
+			<option value="None">{{cNone}}</option>
+			<{emptype_loopstart}>
+				<option value="<{id}>"> <{type}> </option>
+			<{emptype_loopend}>
+			
+		</select>
+		</td>
+		
+		<td class=code>
+		<select name=fInter_skills[] multiple size=3>
+			<option value="All" selected>{{cAllinterskills}}</option>
+			<{skillinter_loopstart}>
+			<option value='<{skill_id}>' > <{skill_name}> </option>
+			<{skillinter_loopend}>
+		</select>
+		</td>
+		
+	</tr>
+	<tr>
+		<td class=code>
+		<select name=fLevels[] multiple size=3>
+			<option value="All" >{{cAlllevels}}</option>
+			<option value="None">{{cNone}}</option>
+			<{level_loopstart}>
+			<option value="<{kk}>"> <{vv}> </option>
+			<{level_loopend}>
+			
+		</select>
+		</td>
+		
+		<td class=code>
+		<select name=fEeo[] multiple size=3>
+			<option value="All" >{{cAlleeo}}</option>
+			<option value="None">{{cNone}}</option>
+			<{eeomain_loopstart}>
+				<option value="<{eeo_id}>"> <{tag}> </option>
+			<{eeomain_loopend}>
+			
+		</select>
+		</td>
+		
+		<td class=code>
+		<select name=fTech_skills[] multiple size=3>
+			<option value="All" selected>{{cAlltechskills}}</option>
+			<{skilltech_loopstart}>
+
+				<option value='<{skill_id}>'> <{skill_name}> </option>
+			
+			<{skilltech_loopend}>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3 align=center><br><br>
+
+ 
+<input type="button" name="fBack" value="  {{cBack}}  " onClick = "window.history.back()";>
+<input type=submit name=fSubmit  value='   {{cNext}}   ' >
+ 		</td>
+	</tr>
+	
+</table>
+
+</form>

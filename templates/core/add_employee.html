@@ -1,0 +1,108 @@
+<script>
+function check()
+{
+	reg = /\S/
+
+	with(document.frm1)
+	{
+		if(fEmployee.value!="")
+		{
+			return true;
+		}
+		if((fUsername.value=="")||(!reg.test(fUsername.value)))
+		{
+			alert('Please Enter a New Username . Or Select The Old Employee');
+			return false;
+		}
+		
+		
+	}
+	return true;
+}
+function check2()
+{
+	reg = /\S/
+if(frm1.fUsername.value!="" ||!reg.test(frm1.fUsername.value))
+{
+frm1.submit();
+}
+else if(frm1.fEmployee.value=="")
+{
+alert('Please Enter a New Username . Or Select The Old Employee');
+return false;
+}
+else
+{
+frm1.submit();
+}
+
+}
+</script>
+<form action="add_employee_information.php" name=frm1 method=post >
+<!--onSubmit="return check2();"-->
+<center>
+<h1>
+{{cAddEmployee}}
+<input type="button" name="fHelp" value={{cHelp}} onCLick="window.open('../lang/{{default}}/core/add_employee.html');">
+</h1>
+</center>
+<table align=center>
+<th>
+{{cNewEmployee}}
+</th>
+<{dyna_field_loopstart}>
+<tr>
+<td class=code>
+<{field_value}>
+</td>
+<td class=code>
+<input type="text" name="<{field_name}>" value="<{fielduser_value}>">
+</td>
+</tr>
+<{dyna_field_loopend}>
+<tr>
+<td class=code>
+{{cUsername}}
+</td>
+<td class=code>
+<input type="text" name="fUsername" value="{{username}}">
+</td>
+</tr>
+</table>
+<table align=center class=table>
+<th>
+{{cOldEmployee}}
+</th>
+<tr>
+<td class=code>
+{{cEmployeename}}
+</td>
+<td class=code>
+<select name="fEmployee" >
+<!--
+onChange="return check2();"
+onChange="document.frm1.submit();">
+-->
+
+<option class=code value="">{{cSelect}}</option>
+<{employee_loopstart}>
+<option <{selected}> class=code value="<{user_id}>"><{username}></option>
+<{employee_loopend}>
+</select>
+
+</td>
+</tr>
+<tr>
+<td class=code>
+</td>
+</tr>
+</table><center>
+<!--
+</form>
+<form action="add_employee_information.php" method="post">
+-->
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fNext" value="{{cNext}}" onClick="return check();">
+<input type="hidden" name="employee_id" value="{{employee_id}}">
+</center>
+</form>

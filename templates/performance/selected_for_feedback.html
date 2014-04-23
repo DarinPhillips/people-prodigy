@@ -1,0 +1,18 @@
+
+<center>
+<h1>
+{{cFeedback}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/select_for_feedback.html');">
+</h1>
+<center>
+<table align=center border=1 class=code>
+<tr>
+	<td class=code><b>{{cEmpname}}</td><td class=code><b>{{cDate}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td><a href="performance_feedback.php?uid=<{uid}>"><{empname}></a></td>
+	<td><{date}></td>
+</tr>
+<{record_loopend}>
+</table>

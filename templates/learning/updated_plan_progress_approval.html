@@ -1,0 +1,62 @@
+<script src="../jscripts/calendar2.js"></script>
+<html>
+<center>
+	<h1>
+		{{cLearningPlanProgressUpdate}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/feedback_request_form.html');">
+	</h1>
+</center>
+<form action="updated_plan_progress_approval.php" name="learning" method="post">
+<input type=hidden name=uid value='{{uid}}'>
+<table>
+	
+	<{skill_loopstart}>
+	<tr>
+		<td class=code colspan=5><{skill_name}></td>
+	</tr>
+
+	<{activity_loopstart}>
+
+	   <{subact_loopstart}>
+			
+		<{title_loopstart}>
+	
+		
+			<tr>
+				<td class=code><{title}></td>
+				<td class=code><{cdate}></td>
+				<td class=code>{{cWasCompletedOn}}</td>
+				<td class=code>
+					<input type=text name="fActstart_<{skills}>_<{buildid}>" readonly size=10 value="<{completed_date}>" >
+				</td>
+<td class=code>
+<a href="javascript:cal1_<{skills}>_<{buildid}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal1_<{skills}>_<{buildid}>= new calendar2(document.forms['learning'].elements['fActstart_<{skills}>_<{buildid}>']);
+	 cal1_<{skills}>_<{buildid}>.year_scroll	=  true;
+
+</script>
+</td>
+			</tr>
+			
+		<{title_loopend}>
+	
+	  <{subact_loopend}>
+
+      <{activity_loopend}>
+		
+	<tr><td colspan=4><bR><br></td></tr>		
+	<{skill_loopend}>
+		<tr>
+			<td class=code align='center' colspan=5>
+				<input type='submit' name='return' value='{{cReturntoDashboard}}'>
+				<input type='submit' name='update' value='{{cApproved}}'>
+				
+			</td>
+		</tr>
+	
+</table>
+</form>

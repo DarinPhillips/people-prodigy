@@ -1,0 +1,38 @@
+
+karthik firstname 's Approved Appraisal
+
+
+obj1
+
+Committment: 600  Accomplished: 200  Fulfilled: 0.00
+
+Priority :3
+
+Expectation Points: 0  Actual Rating: 1 Expectation Met: 0.00
+
+Comments Made During This Review Period
+----------------------------------------
+Boss's Comments
+----------------
+Administrator:this is my comment for this objective of me
+
+Raters Comments
+----------------
+newuser2 newuser2 :raters shud give their comments instesat of just giving their namesuser1 user1 :user1 feed backFrancisca Phillips :fran feddback
+Boss's Explanation for this Objective
+--------------------
+Out of a possible 0   points for this objective you earned   2.00   because
+Administrator:you have to improve a bit
+
+My Comment
+------------
+this my comment for my objective1
+>
+Boss's Final Summary
+--------------------------
+
+Out of a possible  0  points for this objective you earned  2.00  because
+Administrator:this is my final summary.try try try again
+My Final Summary
+-----------------------
+my final comment for my obj

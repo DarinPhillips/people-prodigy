@@ -1,0 +1,54 @@
+<center>
+		<h1>
+	{{cShowall}}
+	<input type=button name=fHelp value="{{cHelp}}" onclick="window.open('../lang/{{default}}/core/edit_contacts.html');">
+
+		</h1>
+	</center>
+
+<table border=0 align = center>
+<form action=edit_contacts.php action=post>
+	<tr>
+		<td class=code>
+		
+		</td>
+	<tr>
+
+
+	<{contact_loopstart}>
+<tr>
+		<td >
+		<b>	~{language}~ </b>
+		</td>
+</tr>
+
+	
+
+	<{fields_loopstart}>
+<tr>
+		<td class=code>
+			{{cField}} <{key1}> :<input type=text name="contact_display_<{key}>_~{cid}~" value="<{value}>">
+		</td>
+</tr>
+	<{fields_loopend}>
+
+	<{contact_loopend}>
+
+</table>
+<table align = center>
+<tr>
+<td>
+<input type=submit name=fEdit_contact value="Edit Contact Fields">
+</td>
+</tr>
+
+</table>
+<table align=center>
+<td class=code>
+<a href = "contacts.php">Show All Contacts</a>
+</td>
+</table>
+</form>
+
+
+</table>

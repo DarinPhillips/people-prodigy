@@ -1,0 +1,37 @@
+<form action=careergoals_usage.php method=post name=frm1>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+<tr>
+	<th class=code colspan=2>
+		{{cFreqofposassigned}}
+		<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/careergoals_usage.html');">
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		<b>{{cFamily}}</b>
+	</td>
+	<td class=code>
+		<b>{{cNooftimesassigned}}</b>
+	</td>
+</tr>
+
+<{careergoals_loopstart}>
+
+	<tr>
+		<td class=code>
+			<a href=careergoals_detail.php?f_id=<{family_id}> ><{family_name}></a>
+		</td>
+		<td class=code>
+			<{fam_cnt}>
+		</td>
+	</tr>
+
+<{careergoals_loopend}>
+<tr>
+	<td class=code colspan=2 align=center>
+		<input type=button name=fBack value=' {{cBack}} ' onClick="window.history.back();">
+		<input type=button name=fPrint value="  {{cPrint}}  " onClick="window.print();">
+	</td>
+</tr>
+</table>
+</form>

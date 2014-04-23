@@ -1,0 +1,67 @@
+
+
+<table>
+<select name=skills>
+<{skills_oopstart}>
+<tr><td>
+	<option value=ib_id><{skills}></option></td>
+<{skills_loopend}>
+</select>
+
+<select name=activities>
+<{act_loopstart}>
+	<td><option value=ib_id><{basic_acti}></option>
+		<{actin_loopstart}>
+
+			<option value=ib_id>--<{interbasic_acti}></option>
+				
+				<{acttitle_loopstart}>
+					<option value=ib_id>=><{title_basic_interbasic}></option></td>
+				<{acttitle_loopend}>
+
+		<{actin_loopend}>
+<{act_loopend}>
+
+</select>
+
+<select name=application>
+<{app_loopstart}>
+		<option value=ib_id><{app}></option>
+	
+		<{appin_loopstart}>
+		
+			<option value=ib_id><{interbasic_acti}></option>
+
+			<{apptitle_loopstart}>
+
+				<option value=ib_id><{title_basic_interbasic}></option>
+
+
+			<{apptitle_loopend}>
+		
+		<{appin_loopend}>
+<{app_loopend}>
+</select>
+
+<select name=fedback>
+<{feed_loopstart}>
+	
+	<option value=ib_id><{feed}></option>
+		<{feedin_loopstart}>
+
+			<option value=ib_id><{interbasic_acti}></option>
+
+
+			<{feedtitle_loopstart}>
+
+				<option value=ib_id><{title_basic_interbasic}></option>
+
+
+			<{feedtitle_loopend}>
+
+		<{feedin_loopstart}>
+
+
+<{feed_loopend}>
+</select>
+</table>

@@ -1,0 +1,10 @@
+
+<{solution_loopstart}><{sol_names}> {{cIn}} <{skill_name}><{ways1_loopstart}>
+	<{types}>
+	
+	{{cTitle}} {{cDescription}} {{cUrl}}
+	<{text_loopstart}>
+	<{title}> <{desc}> <{url}><{text_loopend}>
+	<{ways1_loopend}><{solution_loopend}>
+	
+

@@ -1,0 +1,111 @@
+<form action="performance_message.php" method=post >
+<center>
+<h1>
+{{cMailsetting}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/performance_message.html');">
+</h1>
+<center>
+	<table align=center class=code>
+	<tr>
+		<td>{{cAppsubmission}}</td><td><input type=text name=fAppsub_subject value="{{appsubject}}" ></td>
+	</tr>
+	<tr>
+		<td>{{cAppsubMessage}}</td><td><textarea name=fAppsub_message rows=3 cols=35>{{appmessage}}</textarea>
+	</tr>
+	<tr>
+		<td>{{cApprovedsubmission}}</td><td><input type=text name=fApproved_subject value="{{apsubject}}" ></td>
+	</tr>
+	<tr>
+		<td>{{cApprovedsubMessage}}</td><td><textarea name=fApproved_message rows=3 cols=35>{{apmessage}}</textarea>
+	</tr>
+	<tr>
+		<td>{{cResubmitsub}}</td><td><input type=text name=fResubmit_subject value="{{resubject}}" ></td>
+	</tr>
+	<tr>
+		<td>{{cResubmitMessage}}</td><td><textarea name=fResubmit_message rows=3 cols=35>{{remessage}}</textarea>
+	</tr>
+	<tr>
+		<td>{{cObjsubject}}</td><td><input type=text name=fObjective_subject value="{{objsub}}" ></td>
+	</tr>
+	<tr>
+		<td>{{cObjmessage}}</td><td><textarea name=fObjective_message rows=3 cols=35>{{objmes}}</textarea>
+	</tr>
+	<tr>
+		<td>{{cObjappsubject}}</td><td><input type=text name=fobjapp_subject value="{{objappsubject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cObjappmessage}}</td><td><textarea name=fobjapp_message rows=3 cols=35>{{objappmessage}}</textarea></td>
+	</tr>
+	<tr>
+		<td>{{cRejectsubject}}</td><td><input type=text name=fReject_subject value="{{reject_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cRejectMessage}}</td><td><textarea name=fReject_message rows=3 cols=35>{{reject_message}}</textarea></td>
+	</tr>
+
+
+	<tr>
+		<td>{{cVerificationsubmitsub}}</td><td><input type=text name=fVsubmit_subject value="{{vsubmit_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cVerificationsubmitmessage}}</td><td><textarea name=fVsubmit_message rows=3 cols=35>{{vsubmit_message}}</textarea></td>
+	</tr>
+<!--
+	<tr>
+		<td>{{cVerrejectsubject}}</td><td><input type=text name=fVReject_subject value="{{vreject_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cVerrejectMessage}}</td><td><textarea name=fVReject_message rows=3 cols=35>{{vreject_message}}</textarea></td>
+	</tr>
+-->
+	<tr>
+		<td>{{cVremindsubject}}</td><td><input type=text name=fRemind_subject value="{{remind_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cVremindmessage}}</td><td><textarea name=fRemind_message rows=3 cols=35>{{remind_message}}</textarea></td>
+	</tr>
+<!--
+	<tr>
+		<td>{{cFeedbackrequestsubject}}</td><td><input type=text name=fFeedback_subject value="{{feedback_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cFeedbackrequestmessage}}</td><td><textarea name=fFeedback_message rows=3 cols=35>{{feedback_message}}</textarea></td>
+	</tr>
+-->
+		<tr>
+		<td>{{cPerformancePlansubject}}</td><td><input type=text name=fPlan_subject value="{{plan_subject}}"></td>
+	</tr>
+
+	<tr>
+		<td>{{cPerformancePlanmessage}}</td><td><textarea name=fPlan_message rows=3 cols=35>{{plan_message}}</textarea></td>
+	</tr>
+	<tr>
+		<td>{{cPerformancePlanApprovalsubject}}</td><td><input type=text name=fPlan_Approved_subject value="{{plan_approved_subject}}"></td>
+	</tr>
+	
+	<tr>
+		<td>{{cPerformancePlanApprovalmessage}}</td><td><textarea name=fPlan_Approved_message rows=3 cols=35>{{plan_approved_message}}</textarea></td>
+	</tr>
+	<tr>
+		<td>{{cPIPExpirySubject}}</td><td><input type=text name=fPIP_Exp_subject value="{{plan_expiry_subject}}"></td>
+	</tr>
+	<tr>
+		<td>{{cPIPExpiryMessage}}</td><td><textarea name=fPIP_Exp_message rows=3 cols=35>{{plan_expiry_message}}</textarea></td>
+	</tr>
+	<tr>
+		<td>{{cPerformanceAppraisalApprovalsubject}}</td><td><input type=text name=fAppraisal_Approved_subject value="{{appraisal_approved_subject}}"></td>
+	</tr>
+	
+	<tr>
+		<td>{{cPerformanceAppraisalApprovalmessage}}</td><td><textarea name=fAppraisal_Approved_message rows=3 cols=35>{{appraisal_approved_message}}</textarea></td>
+	</tr>
+	<tr>
+		<td>{{cPerformanceAppraisalApprovalsubject}}{{cFinal}}</td><td><input type=text name=fAppraisal_Approved_subject_final value="{{appraisal_approved_subject_final}}"></td>
+	</tr>
+	
+	<tr>
+		<td>{{cPerformanceAppraisalApprovalmessage}}{{cFinal}}</td><td><textarea name=fAppraisal_Approved_message_final rows=3 cols=35>{{appraisal_approved_message_final}}</textarea></td>
+	</tr>
+	</table>
+	<center><input type=submit name=submit value={{cSubmit}}></center>
+</form>

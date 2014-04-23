@@ -1,0 +1,203 @@
+<script src="../jscripts/calendar2.js"></script>
+<script language='javascript'>
+function chk_frm(message)
+{
+	with (document.planfrm)
+	{
+		len = elements.length;
+
+		pattern	= /fAff_name_/i;
+
+		for (i=0;i<len-1;i++)
+		{
+			chk_name	= elements[i].name;
+			chk_val		= elements[i].value;
+
+			if (pattern.test(chk_name))
+			{
+				for (k=i+1;k<len;k++)
+				{
+					temp_name	= elements[k].name;
+					temp_val	= elements[k].value;
+					if((temp_val!="")&&(chk_val!=""))
+					{
+						if (pattern.test(temp_name))
+						{
+							if (temp_val == chk_val)
+							{
+								alert(message);
+								elements[temp_name].focus();
+								return false;
+							}
+						}
+					}
+				}
+			}
+		pattern1 = /fHelp_name_/i;
+			if (pattern1.test(chk_name))
+			{
+				for (k=i+1;k<len;k++)
+				{
+					temp_name1	= elements[k].name;
+					temp_val1	= elements[k].value;
+					if((temp_val1!="")&&(chk_val!=""))
+					{
+						if (pattern1.test(temp_name1))
+						{
+							if (temp_val1 == chk_val)
+							{
+								alert(message);
+								elements[temp_name].focus();
+								return false;
+							}
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
+}
+</script>
+<font class=code>
+<u><b>{{cTeamIndividual}}</u><br>
+{{cDocumentobjectives}}</b>
+</font>
+<table align=right class=code>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/userplan2_input.html');"><br>
+</table>
+<form name=planfrm action="userplan2_input.php" method=post onSubmit="return chk_frm('{{cMoreaffected}}')">
+<input type=hidden name=emp_id value="{{emp_id}}">
+<table class=code>
+	<tr>
+	<td>{{cTeamandIndividual}}</td><td><input type=text name=fName value="{{user}}" readonly></td>
+	</tr>
+<!--start-->
+	<tr>
+	<td><textarea name=fBoss_comment readonly>{{fComment}}</textarea></td>
+	</tr>
+<!--end-->
+</table>
+<br>
+<center><b>{{Norecords}}</b></center>
+<{category_loopstart}>
+<table border=1 class=code>
+	<tr>
+	<td>
+	<table class=code>	
+	<tr>
+		<td><{count}>.<{cval}></td><td></td>
+	</tr>
+
+	<tr>
+		<td></td><td><{mval}><input type=hidden name=metric_<{allnew}>_<{oid}>_<{c}> value="<{oid}>"></td>
+	</tr>
+
+	<tr>
+	<td>{{cTheObjectibve}}</td>
+	<td><textarea name=fObjective_<{allnew}>_<{c}> ><{fObjective}></textarea></td>
+	<td>{{cPriority}}<{priority_loopstart}><{pval}><input type=radio name=fPriority_<{allnew}>_<{c}> value="<{pindex}>" <{priorcheck}> ><{priority_loopend}></td>	
+	</tr>
+	<tr>
+	<td>{{cTotalnocomitted}}</td><td><input type=text name=fCommitted_<{allnew}>_<{c}> value="<{fCommitted}>"size=3></td>
+	<td>{{cThisnois}}<select name=fPercent_<{allnew}>_<{c}>>
+		<{percentage_loopstart}>
+		<option value="<{percentindex}>" <{perselect}> ><{percent}></option>
+		<{percentage_loopend}>
+		</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>{{cHowiget}}</td><td><textarea name=fHow_<{allnew}>_<{c}>><{fGet}></textarea></td>
+	</tr>
+</table>
+
+
+	<table class=code>
+	<tr>
+	<td nowrap>{{cAffectedpeople}}</td>
+	</tr>
+	</table>	
+
+	
+	<{affected_loopstart}>
+	<table class=code>
+		<tr>
+		<td><input type=button name=fComdir_<{c}>_<{ct}> value="{{cPhonedirectory}}"  onclick="popup_preview('usermail.php?emp_id={{emp_id}}&name=fAff_name_<{allnew}>_<{c}>_<{ct}>&email=fAff_mail_<{allnew}>_<{c}>_<{ct}>&sid=fAff_id_<{allnew}>_<{c}>_<{ct}>')"></td>
+		<td>{{cNamee}}<input type=text name=fAff_name_<{allnew}>_<{c}>_<{ct}> value="<{fUsername}>" onfocus ="return check_empty(document.planfrm.fObjective_<{allnew}>_<{c}>,document.planfrm.fCommitted_<{allnew}>_<{c}>,document.planfrm.fHow_<{allnew}>_<{c}>,'{{cAlertmessage}}');"></td>
+		<td>{{cOnlymail}}<input type=text name=fAff_mail_<{allnew}>_<{c}>_<{ct}> value="<{fEmail}>" readonly>
+		<input type=hidden name=fAff_id_<{allnew}>_<{c}>_<{ct}> value="<{userid}>" >
+		</td>
+		</tr>
+
+		<tr>
+		<td>{{cFrom}}
+		<a href="javascript:cal_<{c}>_<{ct}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+			<input type=text name="fFromdate_<{allnew}>_<{c}>_<{ct}>" readonly size=10 value="<{fFrom}>" readonly>
+		<script language='javascript'>
+			var cal_<{c}>_<{ct}>= new calendar2(document.forms['planfrm'].elements['fFromdate_<{allnew}>_<{c}>_<{ct}>']);
+			 cal_<{c}>_<{ct}>.year_scroll	=  true;
+		</script>
+		</td>
+		<td>{{cTo}}
+		<a href="javascript:cal1_<{c}>_<{ct}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a>
+			<input type=text name="fTodate_<{allnew}>_<{c}>_<{ct}>" readonly size=10 value="<{fTo}>" readonly>
+		<script language='javascript'>
+			var cal1_<{c}>_<{ct}>= new calendar2(document.forms['planfrm'].elements['fTodate_<{allnew}>_<{c}>_<{ct}>']);
+			 cal1_<{c}>_<{ct}>.year_scroll	=  true;
+		</script>
+		</td>
+		<td>
+			{{cFrequency}}<select name=fFrequency_<{allnew}>_<{c}>_<{ct}>>
+					<{frequency_loopstart}>
+					<option value="<{index}>" <{freselect}> ><{frequency}></option>
+					<{frequency_loopend}>
+					</select>
+		</td>
+		</tr>
+
+	</table>
+	<{affected_loopend}>
+
+
+<table class=code>
+	<tr>
+	<td>{{cRelyhelp}}</td>
+	</tr>
+</table>
+	<{help_loopstart}>
+	<table class=code>
+	<tr>
+		<td><input type=button name=fComdirhelp_<{c}>_<{cnt}> value="{{cPhonedirectory}}"  onclick="popup_preview('usermail.php?emp_id={{emp_id}}&name=fHelp_name_<{allnew}>_<{c}>_<{cnt}>&email=fHelp_mail_<{allnew}>_<{c}>_<{cnt}>&sid=fHelp_id_<{allnew}>_<{c}>_<{cnt}>')"></td>
+		<td>{{cNamee}}<input type=text name=fHelp_name_<{allnew}>_<{c}>_<{cnt}> value="<{fHusername}>"onfocus ="return check_empty(document.planfrm.fObjective_<{allnew}>_<{c}>,document.planfrm.fCommitted_<{allnew}>_<{c}>,document.planfrm.fHow_<{allnew}>_<{c}>,'{{cAlertmessage}}');"></td>
+		<td>{{cOnlymail}}<input type=text name=fHelp_mail_<{allnew}>_<{c}>_<{cnt}> value="<{fHemail}>" readonly>
+		<input type=hidden name=fHelp_id_<{allnew}>_<{c}>_<{cnt}> value="<{huserid}>">
+		</td>
+		</tr>
+	</table>
+	<{help_loopend}>
+	</table>
+</td>
+</tr>
+</table>
+<br>
+<{category_loopend}>
+<table align=center class=code>
+<tr>
+	<td>
+		<input type=submit name=back value="Back">
+	</td>
+	<td></td>
+<!--save_start
+	<td>
+		<input type=submit name=save value="Save">
+	</td>
+	<td></td>
+	<td>
+		<input type=submit name=next value="Next">
+	</td>
+save_end-->
+</tr>	
+</table>
+</form>

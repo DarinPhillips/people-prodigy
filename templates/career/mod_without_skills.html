@@ -1,0 +1,44 @@
+<form name=mod_without_skills_frm action=mod_without_skills.php method=post>
+<table align=center border=1 cellspacing=0 cellpadding=4>
+<tr>
+	<th class=code colspan=2>
+		{{cModwithoutskills}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/mod_without_skills.html');">	
+	</th>
+</tr>
+<tr>
+	<td class=code colspan=2>	
+		<b>{{cModwithoutIskills}}</b>	
+	</td>
+</tr>
+<{iskills_nil_loopstart}>
+<tr>
+	<td class=code>	
+		<{modelname}>
+	</td>
+	<td class=code>	
+		<a href=mod_without_skills.php?mid=<{modeltoshow}> onClick="if(confirm('{{cDoUreallywanttodelete}}')) return true; else return false;">Delete</a>
+	</td>	
+</tr>
+<{iskills_nil_loopend}>
+{{replace}}
+<tr>
+	<td class=code colspan=2>	
+		<b>{{cModwithoutTskills}}</b>
+	</td>
+</tr>
+<{tskills_nil_loopstart}>
+<tr>
+	<td class=code>	
+		<{modelname}>
+	</td>
+	<td class=code>	
+		<a href=mod_without_skills.php?mid=<{modeltoshow}> onClick="if(confirm('{{cDoUreallywanttodelete}}')) return true; else return false;">Delete</a>
+	</td>	
+
+</tr>
+<{tskills_nil_loopend}>
+{{replace1}}
+</table>
+</form>
+

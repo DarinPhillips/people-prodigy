@@ -1,0 +1,105 @@
+<form action="edit_settings.php" method="post">
+
+<center>
+<h1>
+{{cSettings}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/edit_settings.html');">
+</h1>
+<center>
+
+
+
+<table class=table align=center border=0>
+<tr>
+<td class=code>
+{{cNoofobjectives}}</td><td><input type="text" name=fObjectives value="{{objectives}}"></td>
+</tr>
+<tr>
+<td class=code>
+{{cNoofactivities}}</td><td><input type="text" name=fActivities value="{{activities}}"></td>
+</tr>
+<tr>
+<td class=code>
+{{cNoofchallenges}}</td><td><input type="text" name=fChallenges value="{{challenges}}"></td>
+</tr>
+<tr>
+<td class=code>
+{{cNooftheskills}}</td><td><input type="text" name=fSkills value="{{skills}}"></td>
+</tr>
+
+<tr>
+<td class=code>
+{{cDelimiter}}
+</td><td><input type="text" name=fDelimiter value="{{delimiter}}"></td>
+</tr>
+<tr>
+<td class=code>
+{{cNooflevelsofskills}}
+</td><td><input type="text" name=fSkill_levels value="{{skill_levels}}"></td>
+</tr>
+
+<tr>
+<td class=code>
+{{cNoofanswers}}
+</td><td><input type="text" name=fAns_count value="{{answer_count}}"></td>
+</tr>
+<tr>
+<td class=code>
+{{cNooflevels}}
+</td>
+<td class=code ><input type="text" name="fNo" value="{{no_at_level}}">
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cEditsetting_appraisalmessage}}
+</td>
+<td class=code>
+<textarea name='fAppr_txt' >{{appraisal_message}}</textarea>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cEditsetting_careergoalsmessage}}
+</td>
+<td class=code>
+<textarea name='fCareergl_txt' >{{careergoal_message}}</textarea>
+</td>
+</tr>
+
+
+
+
+<tr>
+<td class=code colspan=2 align=center><br>
+<!--<input type=button name=fBack value='  {{cBack}}  ' onClick="window.location.replace('front_panel.php')";>-->
+<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>
+
+<input type=submit name=submit value="{{cUpdatethesettings}}">
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td class=code align=center>
+<a href="mail_options.php"><b>{{cMailoptions}}</b></a>
+</td>
+</tr>
+
+
+<tr>
+<td class=code align=center>
+<a href="graph_options.php"><b>{{cGraphoptions}}</b></a>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<a href="posmodelcolors.php"><b>{{cPosmodelcolors}}</b></a>
+</td>
+</tr>
+
+</table>
+
+</form>

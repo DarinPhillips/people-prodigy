@@ -1,0 +1,29 @@
+<font class=code>
+<b><u>{{cStrategicplan}}</u></b><br>
+{{cStrategicplanreview}}<br>
+</font>
+<table align=right>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/plan2_input.html');"><br>
+</table>
+<form action="plan2_input.php" method=post>
+<table align=center class=code>
+	<{category_loopstart}>
+	
+	<tr valign=top>
+	<td><{count}>.{{cCategory}}(<{language}>)</td><td><input type=text name=fCategory<{new}>_<{lang_id}>_<{c}> value="<{cval}>" size=30 readonly>
+	<table class=code>
+			<{metrics_loopstart}>
+			<tr>
+				<td ><{ct}>.{{cMetrics}}</td><td><input type=text size=30 name=fMetrics<{mnew}>_<{lang_id}>_<{c}>_<{me}> value="<{mval}>" readonly></td>
+			</tr>
+			<{metrics_loopend}>
+	</table>
+		</td>
+	</tr>
+	<{category_loopend}>
+	
+</table>
+<center><input type=submit name=back value="{{cBack}}">
+
+<input type =submit name=approval value="{{cApproval}}"> </center>
+</form>

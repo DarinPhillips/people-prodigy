@@ -1,0 +1,17 @@
+<form action="edit_priority.php" method=get>
+<input type=hidden name=pid value='{{pid}}'>
+<table align=center>
+<{priority_loopstart}>
+<tr>
+	<td>{{cPriority}}(<{langname}>)</td><td><textarea name=fPriority_<{lid}> cols=25><{cpriority}></textarea></td>
+</tr>
+<{priority_loopend}>
+<tr>
+<td>
+{{cPriorityval}}
+</td>
+<td><input type=text name=fPval value='{{pval}}' size=5></td>
+</tr>
+</table>
+<center><input type=submit name=add value='{{cEdit}}'></center>
+</form

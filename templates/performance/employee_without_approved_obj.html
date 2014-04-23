@@ -1,0 +1,46 @@
+<form action="employee_without_approved_obj.php" method="post">
+<center>
+<h1>
+{{cEmpwithoutobj}}
+<input type="button" name="fHelp" value={{cHelp}} onClick="window.open('../lang/{{default}}/performance/skills_without_test.html');">
+</h1>
+</center>
+<table align=center>
+<tr>
+<td class=code>
+<b>
+{{cEmployeename}}
+</b>
+</td>
+<td class=code>
+<b>
+{{cSubonDate}}
+</b>
+</td>
+<td class=code>
+<b>
+{{cSubto}}
+</b>
+</td>
+</tr>
+<{emp_loopstart}>
+<tr>
+<td class=code>
+<{username}>
+</td>
+<td class=code>
+<{date}>
+</td>
+<td class=code>
+<{email_prefix}>
+<a href="mailto:<{email}>">
+<{email_suffix}>
+<{bossname}></a>
+</td>
+</tr>
+<{emp_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value={{cBack}} onClick="window.history.back();">
+</center>
+</form>

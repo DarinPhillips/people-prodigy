@@ -1,0 +1,48 @@
+<center>
+<h1>
+{{cWhoisrating}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/find_ratings.html');">
+</h1>
+</center>
+<form name=ratings action="find_ratings.php">
+<table class=code align=center>
+<tr align=center >
+<td><b>{{cUsername}}</td>
+<{c05f6c233521207f6fe311afef550c3c_start}>
+<td><b>{{cPerformanceonly}}</td>
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+<{8ae1016c4044ea668c4db3f57e3cc7f1_start}>
+<td><b>{{cSkill}}</td>
+<{8ae1016c4044ea668c4db3f57e3cc7f1_end}>
+
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+<td><b>{{cLearningonly}}</td>
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>
+
+<td><b>{{cTotal}}</td>
+</tr>
+
+<{user_loopstart}>
+<tr align=center>
+<td><{username}></td>
+
+
+<{c05f6c233521207f6fe311afef550c3c_start}>
+<td><input type=text name=fPerformance_<{uid}> value='<{performance}>' size=5></td>
+<{c05f6c233521207f6fe311afef550c3c_end}>
+
+
+<{8ae1016c4044ea668c4db3f57e3cc7f1_start}>
+<td><input type=text name=fSkill_<{uid}> value='<{skill}>' size=5></td>
+<{8ae1016c4044ea668c4db3f57e3cc7f1_end}>
+
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+<td><input type=text name=fLearning_<{uid}> value='<{learning}>' size=5></td>
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>
+
+<td><input type=text name=fTotal_<{uid}> value='<{total}>' size=5></td>
+</tr>
+<{user_loopend}>
+</table>
+</form>

@@ -1,0 +1,94 @@
+<script language = "Javascript">
+
+
+</script>
+<form action = confirm_appraisal.php method=post name=frm1 >
+
+<table align=center border=1>
+<tr>
+<td class = code colspan=3 align=center>
+<b>{{cUserappraisalselection}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/confirm_appraisal.html');">
+</b>
+</td>
+
+</tr>
+<tr>
+<td class = code colspan=2>
+{{cAreyousureappraisal}}
+</td>
+<td class=code  align=center>
+<select name=user_id_all[] multiple>
+
+	<{user_loopstart}>
+		<option value=<{userid}> selected> <{username}> </option>
+	<{user_loopend}>
+
+</select>
+</td>
+</tr>
+
+
+<{skill_loopstart}>
+
+ <{check_isnull_start}>
+
+	<input type=hidden name=test_mode_<{kk}> value='<{sel_t}><{sel_n}>'>
+
+<tr>
+	<td class=code >
+
+		<{skill_name}> {{cAppraisal_assess}}  <b><{sel_t}>	<{sel_n}></b>
+		
+	</td>
+	<td class=code>
+
+		{{cFortheskills}}
+	</td>
+	<td class=code>
+		<select name=skills_<{kk}>[] multiple >
+			<{skilldisplay_loopstart}>
+				<option value=<{skill_id}> selected> <{skill_name}> </option>
+			<{skilldisplay_loopend}>
+		
+		</select>
+	
+	</td>
+
+	
+	<input type=hidden name='<{raters}>' value="<{raterval}>" >
+
+  <{check_isnull_end}>	
+
+</tr>
+<!--
+-----------------------------------------------------------
+<{ifskillswithouttest_start}>
+	<tr>
+		<td class=code colspan=2>
+			<b>The following Skills that you selected don't have a test :</b>
+			<br>
+			(Please deselect those skills and proceed)
+		</td>
+		<td class=code >
+				<select name=skill_notest_<{kk}>[] multiple size=3>
+			<{skill_withouttest_loopstart}>
+					<option value='<{skill_id}>' > <{skill_name}> </option>
+			<{skill_withouttest_loopend}>
+		</td>
+	</tr>
+<{ifskillswithouttest_end}>
+-----------------------------------------------------------
+-->
+<{skill_loopend}>
+
+
+<tr>
+	<td align=center colspan=3><br><br>
+		<input type=submit name=fYes {{yesdisable}} value="  {{cYes}}  ">&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=button name=fNo value="  {{cNo}}  " onClick="window.location.replace('appraisal.php')">
+	</td>
+</tr>
+
+</table>
+</form>

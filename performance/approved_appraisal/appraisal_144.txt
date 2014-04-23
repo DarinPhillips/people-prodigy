@@ -1,0 +1,38 @@
+
+Leader1 Leader1 's Approved Appraisal
+
+
+obj1
+
+Committment: 70  Accomplished: 50  Fulfilled: 71.43
+
+Priority :2
+
+Expectation Points: 0  Actual Rating: 1 Expectation Met: 0.00
+
+Comments Made During This Review Period
+----------------------------------------
+Boss's Comments
+----------------
+admin:karthik's commentsAdministrator:
+
+Raters Comments
+----------------
+admin firstname :karthik's comments
+Boss's Explanation for this Objective
+--------------------
+Out of a possible 0   points for this objective you earned   2.00   because
+admin:boss's explanationAdministrator:
+
+My Comment
+------------
+
+>
+Boss's Final Summary
+--------------------------
+
+Out of a possible  0  points for this objective you earned  2.00  because
+Administrator:my final summaryAdministrator:i neen't give any reason
+My Final Summary
+-----------------------
+

@@ -1,0 +1,50 @@
+<script>
+function confirm_delete(text)
+  {
+if(confirm(text))
+{
+return true;
+}
+else 
+ {
+return false;
+ }
+  }
+</script>
+<form action="edit_location.php" method="post">
+<center><a href="add_location.php?id={{id}}&denotes={{denotes}}">{{cAddl}}{{Location}}</a><br><br></center>
+<table class=table align="center" border=1>
+<tr>
+<td class=code>
+<b>{{Location}}</b>
+</td>
+<td class=code>
+<b>{{cEdit}}</b>
+</td>
+<td class =code>
+<b>{{cDelete}}</b>
+</td>
+</tr>
+<{location_loopstart}>
+<tr>
+<td class=code>
+<{name_areastart}>
+<a href="location_settings.php?denotes=<{sub_denotes}>&id=<{id}>"><{name}></a>
+<{name_areaend}>
+</td>
+<td class=code>
+<a href="edit_location.php?id=<{id}>">{{cEdit}}</a>
+</td>
+<td class=code>
+<a href="delete_location.php?id=<{id}>&denotes=<{denotes}>" onClick="return confirm_delete('{{cWanttodel}}');">{{cDelete}}</a>
+</td>
+</tr>
+<{location_loopend}>
+</table>
+<center>
+<{back_loopstart}>
+<a href="location_settings.php?id=0&denotes=1">{{cBacktothecountry}}</a>
+<a href="location_settings.php?id={{id}}&denotes={{denotes}}">{{cBack}}</a>
+<{back_loopend}>
+</center>
+</form>

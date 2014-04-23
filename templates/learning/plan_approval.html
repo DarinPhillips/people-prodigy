@@ -1,0 +1,159 @@
+
+<html>
+<script language="JavaScript">
+
+function replace(plan)
+{
+	with (plan)
+	{
+		plan.action="send_plan_approval.php";
+		plan.method="post";
+		plan.submit();
+	}
+}
+
+
+</script>
+
+<form action="plan_approval.php" method=POST name='learning'>
+<div align="center">
+
+<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/1/learning/plan_approval.html');">
+</div>
+
+
+
+<table>
+<tr>
+	<td class=code>
+		{{cPreviewplan}}
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	{{username}}<!--{{first_name}}  {{last_name}}-->{{cS}} {{cLearningPlan}}
+	</td>
+</tr>
+</table>
+<{skills_loopstart}>
+<{skill_name}>
+<table>
+
+<tr>
+	<td class=code>
+		{{cImprove}} <{skills_name}> {{cIwilllearnvia}}
+	</td>
+</tr>
+<tr>
+	<td>
+
+			<table border=1>
+			<tr>
+			<td class=code><b>{{cActivitytitle}}</b></td>
+			<td class=code><b>{{cActivitydescription}}</b></td>
+					
+			<td class=code><b>{{cBydate}}</b></td>
+			<td class=code><b>{{cCompletedby}}</b></td>
+			</tr>
+		
+	<{text1_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code> <{cdate}><input type='hidden' name='fActstart_<{skills}>_<{id}>' value='<{cdate}>'> </td>
+			<td class=code> <{completed_date}> </td>
+
+			</tr>
+		
+		<{text1_loopend}>
+			</table>
+	</td>
+</tr>
+
+<tr>
+	<td>
+	
+			<table border=1>
+			<tr>
+			<td class=code>{{cActivitytitle}}</td>
+			<td class=code>{{cActivitydescription}}</td>
+			<td class=code>{{cBydate}}</td>	
+			<td class=code>{{cThisActivitybyDate}}</td>
+			<td class=code>{{cCompletedby}}</td>
+		
+			</tr>
+			
+	<{text2_loopstart}>
+
+			<tr>
+			
+			<td class=code><{title}></td>
+			<td class=code> <{desc}> </td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}> <input type='hidden' name='fActstart_<{skills}>_<{id}>' value='<{cdate}>'></td>
+			<td class=code> <{completed_date}></td>
+			
+
+			</tr>
+		<{text2_loopend}>		
+			</table>
+
+	</td>
+</tr>
+
+
+<tr>
+	<td>
+			<table border=1>
+			<tr>
+			<td class=code>{{cFeedsource}}</td>
+			<td class=code>{{cFrequency}}</td>
+			<td class=code>{{cBydate}}</td>	
+			<td class=code>{{cUntill}}</td><!--{{cUntillDate}} -->
+	
+			
+			</tr>
+	<{text3_loopstart}>	
+
+			<tr>
+			<td class=code><{title}></td>
+			
+			<td class=code> <{frequency}></td>
+			<td class=code><{fromdate}></td>
+			<td class=code> <{cdate}></td> <!--{{cEnterby}} -->
+			</tr>
+			<input type='hidden' name='fName_<{skills}>_<{id}>' value='<{title}>'>
+			<input type='hidden' name='fEmail_<{skills}>_<{id}>' value='<{email}>'>
+			<input type='hidden' name='fFeedstart_<{skills}>_<{id}>' value='<{cdate}>'>
+			<input type='hidden' name='Ffrequency_<{skills}>_<{id}>' value='<{index}>'>
+	<{text3_loopend}>
+			</table>
+	</td>
+</tr>
+</table>	
+<bR><BR>
+<{skills_loopend}>
+
+<br>
+<br>
+<table>
+<tr>
+	<td class=code><input type=button name="back" value="{{cBack}}" onclick ="location.href='learning_plan.php'"; ></td>
+	<td class=code><input type=submit name="save" value="{{cSave}}" ></td>
+
+	<td class=code><input type=button name="print" value="{{cPrint}}" onclick="window.print();"></td>
+</tr>
+</table>
+<{approval_loopstart}>
+<table><tr><input type=hidden name=fUser_id value={{user_id}}>
+<td class=code><input type=button name="button" value="{{cSubmitForApproval}}"  onclick ="return replace(document.learning);" ></td>
+<tr></table>
+<{approval_loopend}>
+</form>
+
+
+
+
+</html>

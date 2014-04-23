@@ -1,0 +1,89 @@
+
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/alert_ratings.html');">
+</td>
+</tr>
+</table>
+<br><br>
+<table align=center>
+<tr>
+<td class=code>
+
+<b>{{cAlertrating_following_request}}<br><br>
+</td>
+</tr>
+</table>
+<table border=0 align=center>
+<tr>
+<td>
+<table border = 1 align=center>
+<tr>
+	<td class=code colspan=2>
+
+		<b>{{cAlertrating_interhead}}</b>
+	</td>
+
+</tr>
+
+
+ 	<{alertratings_start}>
+<tr>
+	<td class=code>
+
+		<a href="q_sortratings.php?rater_userid=<{rater_userid}>&rated_user_id=<{cur_userid}>"><b><{name}></b></a> 
+
+		
+
+</td>
+
+
+<td class=code>
+		<{date_of_request}>
+
+</td>
+
+</tr>
+
+	<{alertratings_end}>
+</table>
+</td>
+<td>
+
+
+<table align=center border=1>
+<tr>
+	<td class=code colspan=2>
+		<b>{{cAlert_rating_techhead}}</b>
+	</td>
+</tr>
+	<{alerttechratings_start}>
+	
+<tr>
+	<td class=code align=left>
+			<a href="technical_ratings.php?user_to_rate=<{user_to_rate}>"><b> <{tech_name}></b> </a> 
+	</td>
+	<td class=code>
+	
+		<{date_of_request}>
+
+	</td>
+</tr>
+
+<{alerttechratings_end}>
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table align=center border=0>
+<tr>
+<td class=code align=center>
+<input type=button name=fBack value={{cBack}} onClick = "history.back()";>
+</td>
+</tr>
+</table>
+<br>	

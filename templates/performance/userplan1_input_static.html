@@ -1,0 +1,45 @@
+<font class=code><u><b>{{cTeamIndividual}}</u><br>
+{{cSelectAppropriateCat}}</b>
+</font>
+<table align=right>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/userplan1_input_static.html');"><br>
+</table>
+<form action="userplan1_input_static.php" method=post name=ph_frm>
+<input type=hidden name=uid value="{{uid}}">
+<table align=center class=code>
+	<tr>
+	<td>{{cTeamandIndividual}}</td>	
+	<td><input type=text name=fName value="{{user}}" readonly>
+	</tr>
+</table>
+<table align=center class= code>
+	<{category_loopstart}>
+	
+	<tr valign=top>
+	<td><{count}>.<{cval}><input type=hidden name=fCategory_<{c}> value="<{cval}>">
+	<table class=code>
+			<{metrics_loopstart}>
+			<tr>
+				<td><input type=checkbox disabled name=fMetrics_<{old}>_<{c}>_<{me}><{oidval}> value="<{mval}>" <{checked}> ></td><td ><{ct}>.<{mval}></td> 
+			</tr>
+			<{metrics_loopend}>
+	</table>
+		</td>
+	</tr>
+	<{category_loopend}>	
+</table>
+<font class=code>
+{{cMessage1}}
+</font>
+<table align=center class=code>
+	<{category1_loopstart}>
+	<tr valign=top>
+	<td><input type=checkbox name=fCheck_<{count}> value="<{cid}>" <{catcheck}> disabled></td><td><{count}>.<{cval}></td>
+	<td><input type=text name=fDesc_<{count}> value="<{cat_val}>" readonly></td>
+	</tr>
+	<{category1_loopend}>	
+	<tr>
+	<td></td><td></td><td></td><td><input type=submit name=next value="{{cNext}}"></td>	
+	</tr>
+</table>
+</form>

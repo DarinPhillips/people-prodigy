@@ -1,0 +1,37 @@
+<h1>
+<center>
+{{cViewOutstandingSolutions}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/outstanding_assignments.html');">
+</h1></center>
+<table align=center cellspacing=0 cellpadding=3 border=1>
+<tr>
+	<th class=code>
+	{{cEmployeeNamee}}
+	</th>
+	<th class=code>
+	{{cSkillAssigned}}
+	</th>
+	<th class=code>
+	{{cDateAssigned}}
+	</th>
+	<th class=code>
+	{{cAssignedby}}
+	</th>
+</tr>
+<{row_loopstart}>
+<tr>
+	<td class=code >
+	<a href="mailto:<{email}>" ><{username}></a>
+	</td>
+	<td class=code>
+	<{skill_name}>
+	</td>
+	<td class=code>
+	<{date}>
+	</td>
+	<td class=code>
+	<{assigned_by}>
+	</td>
+</tr>
+<{row_loopend}>
+</table>

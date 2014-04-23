@@ -1,0 +1,143 @@
+<script language="JavaScript">
+function download()
+{
+	
+	frm = window.document.appraisalform;
+	frm.action='download_approved_appraisal.php';
+	frm.submit();
+}
+</script>
+<center>
+	<h1>
+	{{cCPerformanceAppraisal}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/view_approved_appraisal.html');">
+	</h1>
+</center>
+<body>
+<form action=download_approved_appraisal.php" name=appraisalform method=POST >
+<table align=center>
+	<tr>
+		<td class=code>
+		
+		<input type=text name=fName value="{{username}}" readonly>{{cPerformanceAppraisal}}
+		</td>
+		
+	</tr>
+	<{objective_loopstart}>
+	<tr>
+		<td class=code>
+		<input type=hidden name=fRater_count_<{count}> value=<{rater_no}>>
+		<input type=hidden name=fObjective_<{count}> value="<{objective}>">
+		
+		<{count}>. <{objective}>
+		</td>
+	</tr>
+
+	
+	<tr>
+		<td class=code>
+		{{cCommittment}}: <input type=text size=2 name=fCommitted_<{count}>  value="<{committed}>" readonly>%
+		</td>
+		<td class=code>
+		{{cAccomplished}}: <input type=text size=2 name=fAccomplished_<{count}> value="<{accomplish}>" readonly>%
+		</td>
+		<td class=code>
+		{{cFulfilled}}: <input type=text size=2 name=fFulfilled_<{count}> value="<{fulfilled}>" readonly>%
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cPriority}}<input type=text size=2 name=fPriority_<{count}> value="<{priority}>" readonly>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cExpectationPoints}}: <input type=text size=2 name=fExpectation_met_<{count}> value="<{metexpectation}>" readonly>%
+		</td>
+		<td class=code>
+		{{cActualrating}}: <input type=text size=2 name=fActual_<{count}> value="<{actual}>" readonly>%
+		</td>
+		<td class=code>
+		{{cExpectationMet}}: <input type=text size=2 name=fExpected_<{count}> value="<{expected}>" readonly>%
+		</td>
+	</tr>
+	<tr>
+	
+		<td class=code>
+		{{cCommentsMade}}
+		</td>
+	</tr>
+	
+	
+	<{boss_comment}>
+
+	
+	<tr>
+		<td class=code>
+		<b>{{cRatersComments}}</b>
+		</td>
+	</tr>
+	
+	
+	<{rater_loopstart}>
+	
+	<tr>
+		<td class=code colspan=3>
+	
+		{{cBy}}<input type=text name=fRater_name_<{Rcount}>_<{ct}> value="<{ratername}>" readonly>
+		</td>
+	</tr>
+	
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL NAME=fComment_rater_<{Rcount}>_<{ct}> ROWS=3 COLS=75 readonly><{rater_comment}></TEXTAREA>
+		</td>
+	</tr>
+	
+	<{rater_loopend}>
+	<tr>
+		<td class=code>
+		<b>{{cBossExplanation}}</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code colspan=3>
+		{{cOutof}}<input type=text name=fPoints1_<{count}> size=2 value="<{points}>"  readonly>{{cUEarned}}
+		<input type=text size=2 value="<{points1}>" name=fPoint2_<{count}> readonly>{{cBecause}}
+		</td>
+	</tr>
+	<{exp}>
+	<tr>
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL ROWS=3 COLS=75 name=fUser_comment_<{count}>></TEXTAREA>
+		</td>
+	</tr>
+	<{objective_loopend}>
+	<tr>
+		<td class=code>
+		<b>{{cFinalSummary}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=3>
+		{{cOutof}}<input type=text size=2 value="{{total_points}}" name=fTotal_point readonly>{{cUEarned}}
+		<input type=text size=2 name=fFinal_point2 value="{{total_points1}}" readonly>{{cBecause}}
+		</td>
+	</tr>
+	
+	{{final}}
+	
+	<tr>
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL ROWS=3 COLS=75  name=fUser_final></TEXTAREA>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<input type=button name=fSave value={{cSave}} onclick="download();">
+		</td>
+	
+	</tr>
+	<input type=hidden name=fCount value={{count}}>
+</table>
+</form>

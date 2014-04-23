@@ -1,0 +1,15 @@
+<html>
+<form action="skill_builder.php" method="post">
+<table align=center>
+<tr>
+<td>
+Enter the Skill type </td>
+</tr>
+<tr>
+<td><input type="radio" name="skill_type" value="technical"></td>
+<td><input type="radio" name="skill_type" value="interpersonal"</td>
+</tr>
+</table>
+</form>
+</html>
+

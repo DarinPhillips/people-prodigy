@@ -1,0 +1,63 @@
+<form action="alert.php" method="post">
+<center>
+<h3>{{cAlertfor_approvals}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/alert.html');">
+</h3>
+</center>
+<table border=1 align = center>
+	<tr>
+		<td class=code>
+		<b>{{cSkillsaddedmanually}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<{alert_start}>
+		<a href="approval.php?emp_id={{emp_id}}">{{emp_name}}</a>{{cHasaddedsomeskills}}<br>
+		<{alert_end}>
+		</td>
+	</tr>
+</table><br>
+
+<table border=1 align=center>
+	<tr>
+		<td class=code>
+		<b>{{cSkillsbuildthroughskillbuilder}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<{skill_act_start}>
+		<a href="unapproved_intermediate.php?emp_id={{emp_id}}">{{emp_name}}</a>{{cHasaddedsomeskillsthroughskillbuilder}}<br>
+		<{skill_act_end}>
+		</td>
+	</tr>
+</table><br>
+
+<table border=1 align = center>
+	<tr>
+		<td class=code>
+		<b>{{cTestbuilderapprovals}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<{testapprove_loopstart}>
+			<input type=hidden name=test_mode value="{{test_mode}}" >
+			<a href="test_builder_edit.php?test_id={{test_id}}&test_mode={{test_mode}}">{{username}} </a>{{cHasaddedsometest}}<br>
+		<{testapprove_loopend}>
+		</td>
+	</tr>
+</table>
+<br>
+
+<table align=center>
+	<tr>
+		<td class=code>
+		<input type=button name=fBack value="  {{cBack}}  " onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+
+</table>
+
+</form>

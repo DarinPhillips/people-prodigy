@@ -1,0 +1,29 @@
+<form action=activities_panel.php action=get>
+<!--<input type="button" name="fHelp" value="{{cHelp}}">-->
+{{cActforObj}}
+<b>{{Obvs}}</b>
+<center>
+
+<table class=table>
+
+<{active_begin}>
+<{act_st}>
+<tr>
+<td>
+{{cActivity}}
+</td>
+<td class=code>
+ <{index}><input type="text" name=active_<{index}> value="{{active_<{index}>}}"><br>
+</td></tr>
+<{act_en}>
+<{active_exit}>
+
+</table></center>
+
+<input type="hidden" name=fObj_id value={{obj_id}}>
+
+<input type="hidden" name=build_id value={{build_id}}>
+<center><input type="submit" name="fNextact" value="{{cNext}}"></center>
+ 
+
+</form>

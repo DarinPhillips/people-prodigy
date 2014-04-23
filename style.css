@@ -1,0 +1,52 @@
+.code
+{
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:12px
+}
+
+.B1
+{
+
+//background-color: #FFCC99;
+
+background-color: #BBBBBB;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+}
+.TR
+{
+background-color: pink;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+}
+.table
+{
+font-family:Verdana,Arial,Helvetica,sans-serif;
+}
+
+
+.h1,h2,h3,h4,h5,h6,input,select,textarea
+{
+font-family:Verdana,Arial,Helvetica,sans-serif;
+}
+
+
+.highlight
+{
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+	text-transform: capitalize;
+	color: #000066;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	cursor: hand;
+
+
+}
+
+.table1
+{
+BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; 
+BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+PADDING-RIGHT: 4px; PADDING-LEFT: 4px
+}

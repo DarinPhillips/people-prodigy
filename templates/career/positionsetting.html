@@ -1,0 +1,66 @@
+<script>
+function validate()
+{
+	test=confirm('{{cDoUwantdelpos}}');
+	if(test==true)
+	{
+		return true;
+	}
+	else
+	{
+return false;
+	}
+}
+</script>
+<form action="addposition.php" name=frm method="post">
+<center>
+<h1>
+{{cAddPosition}}
+</h1>
+</center>
+<table align=center>
+<tr>
+<td>
+{{cPosition}}
+</td>
+<td>
+{{cLevel}}
+</td>
+<td>
+{{cLocation}}
+</td>
+</tr>
+<{position_loopstart}>
+<tr>
+<td class=code>
+<{position_name}>
+</td>
+<td class=code>
+<{level}>
+</td>
+<td class=code>
+<{location}>
+</td>
+
+<td class=code>
+<!--
+<input type="submit" name="fEdit_<{id}>" value="{{cEdit}}">
+-->
+<a href="addposition.php?fEdit_<{id}>=Edit">{{cEdit}}</a>
+</td>
+
+<td class=code>
+<!--
+<input type="submit" name="fDelete_<{id}>" value="{{cDelete}}">
+-->
+<a href="addposition.php?fDelete_<{id}>=Delete" onClick="return validate();" >{{cDelete}}</a>
+</td>
+
+</tr>
+<{position_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fAddPosition" value="{{cAddPosition}}">
+</center>
+</form>

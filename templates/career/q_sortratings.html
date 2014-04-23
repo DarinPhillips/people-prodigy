@@ -1,0 +1,82 @@
+<script language=javascript>
+function validateForm()
+{
+	with (document.frm1)
+	{
+		<{checkif_admin_start}>
+		
+		if(qsort_method[0].checked == false && qsort_method[1].checked == false && qsort_method[2].checked == false )
+		{
+		
+			alert ('{{cSelectqsort}}');
+			return false;
+
+		}
+		
+		<{checkif_admin_end}>
+		
+		/*if(qsort_method[0].checked == false && qsort_method[1].checked == false)
+		{
+
+			alert ('{{cSelectqsort}}');
+			return false;
+
+		}*/
+	}
+	
+}
+</script>
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/q_sortratings.html');">
+</td>
+</tr>
+</table>
+<form action=q_sortratings.php method=post name=frm1 onSubmit="return validateForm()";>
+<input type=hidden name=rater_userid value={{rater_userid}} >
+<input type=hidden name=rated_user_id value={{rated_user_id}} >
+<table align=center>
+<tr>
+<td class=code align=center>
+<b>{{cQsortexpl}}</b>
+</td>
+
+</tr>
+<tr>
+	<td class=code >
+		<input type=radio name=qsort_method value='graph'>{{cQsort_graph}}
+	</td>
+</tr>
+
+<tr>
+	<td class=code >
+		<input type=radio name=qsort_method value='text'>{{cQsort_text}}
+	</td>
+</tr>
+
+
+
+<{checkif_admin_start}>
+
+<tr>
+	<td class=code >
+<!--		<input type=radio name=qsort_method value='none'>{{cQsort_none}} -->
+		<input type=radio name=qsort_method value='reject'>{{cQsort_none}} 
+	</td>
+</tr>
+<{checkif_admin_end}>
+
+
+
+<tr>
+<td class=code align=center>
+
+<input type="button" name="fBack" value="  {{cBack}}  " onClick = "window.history.back()";>
+
+<input type=submit name=fSubmit value="  {{cNext}}  ">
+</td>
+</tr>
+
+</table>
+</form>

@@ -1,0 +1,38 @@
+<center>
+	<h1>
+{{cAccessrights}}
+	<input type=button name=fHelp value="cHelp" onclick="window.open('../lang/{{default}}/core/access_rights.html');">
+	</h1>
+</center>
+
+<form action="access_rights.php" method="post">
+
+<table class=table border=1 align=center>
+<tr>
+<td class=code>
+{{cEmployeename}}
+</td>
+<td class=code>
+{{cYes}}
+</td>
+<td class=code>
+{{cNo}}
+</td>
+</tr>
+<{emp_loopstart}>
+<tr>
+<td class=code>
+{{employeename}}
+</td>
+<td class=code>
+<input type="radio" {{checkedy}} name="emp_rights_{{id}}" value="yes">
+</td>
+<td class=code>
+<input type="radio" {{checkedn}} name="emp_rights_{{id}}" value="no">
+</td>
+</tr>
+<{emp_loopend}>
+</table>
+<center><input type="submit" name="fSubmit" value="{{cSubmit}}">
+</center>
+</form>

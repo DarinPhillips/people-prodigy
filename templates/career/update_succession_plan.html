@@ -1,0 +1,17 @@
+<center><h1>
+{{cUpdateSuccessionPlan}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/update_succession_plan.html');">
+<h1><center>
+<table align=center border=1>
+<{user_loopstart}>
+<tr>
+	<td class=code>
+	{{cYouAssigned}}<a href="update_succession_plan?action=update&fPosition=<{id}>"><{name}></a>{{cCon}}<{date}>
+	</td>
+</tr>
+
+<{user_loopend}>
+	<td class=code align=center colspan=2>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</table>

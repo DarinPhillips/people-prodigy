@@ -1,0 +1,34 @@
+<script language="javascript">
+function check_id(lid,did,message,message1)
+{
+	if(lid==did)
+	{
+		alert(message);
+		return false;
+	}
+	return confirm(message1);
+}
+
+</script>
+<center>
+<h1>
+{{cLanguages}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/view_lang.html');">
+</h1>
+<center>
+
+<center><a href="add_lang.php">{{cAddLang}}</a></center>
+<form >
+<table align=center border=1>
+	<tr><td class=code><b>{{cLanguageID}}</td><td class=code><b>{{cLanguage}}</td>
+		<td class=code><b>{{cEdit}}</td><td class=code><b>{{cDelete}}</td>
+	</tr>
+	<{record_loopstart}>
+	<tr>
+	<td><{lang_id}></td>
+		<td><{language}></td><td><a href="edit_lang.php?fLang_id=<{lang_id}>">{{cEdit}}</a></td>
+		<td><a href="delete_lang.php?fLang_id=<{lang_id}>" onclick="return check_id('<{lang_id}>',{{did}},'{{cSameid}}','{{cReally}}');">{{cDelete}}</a></td>
+	</tr>
+	<{record_loopend}>
+</table>
+</form>

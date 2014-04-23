@@ -1,0 +1,87 @@
+										Date:2004/05/15
+										User Name:karthik
+			
+				Performance Summary Report 
+				---------------------------
+				
+
+
+
+1. karthik new obj
+
+Committment:675 			Accomplishment:85	% Fulfilled Year-To-Date:15.71
+
+Met Expectations Points:3	Actual Rating:0.71		Expectation Met Year-to-date:23.67
+
+
+
+Raters Comment
+--------------
+
+	admin  [01.05.2004.07:23] - this is admin rating
+
+	karthik  [02.04.2004.09:20] - 
+
+	karthik  [01.05.2004.07:24] - this is self rating
+
+	leader  [01.05.2004.07:25] - this is leader feedback
+
+	leader1  [01.05.2004.07:27] - this id leader1 feedback
+
+
+
+Raters suggested improvements in the following areas:
+-----------------------------------------------------
+
+
+	leader[01.05.2004.07:25]
+					php
+					ANXIETY1
+					DEPRESSION
+					IMMODERATION
+
+	leader1[01.05.2004.07:27]
+					php
+					Escribir a maquina
+					IMMODERATION
+					VULNERABILITY
+	
+
+
+
+Result for this Objective:
+--------------------------
+Committment:75			Accomplishment:75	% Fulfilled Year-To-Date:100.00
+
+Met Expectations Points:3	Actual Rating:0.71428571428571		Expectation Met Year-to-date:23.81
+
+
+Average Ratings From:
+---------------------
+
+	leader1:2
+
+	leader:1
+
+
+
+
+Average Ratings Compared:
+-------------------------
+
+	leader:1
+
+	karthik:1
+
+
+
+
+
+	admin:1
+
+
+
+
+=============================================================================================
+
+

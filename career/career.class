@@ -1,0 +1,486 @@
+<?php
+
+class career
+{
+	function career_killers($db_object,$common,$users,$gbl_grouprater_inter)
+	{
+	
+		
+	$underrated_skill=array();
+	$overrated_skill=array();
+	$kill_skills=array();
+	
+	for($a=0;$a<count($users);$a++)
+	{
+		
+		$highest=array();
+		
+		$user_id=$users[$a];
+
+	$skills = $common->prefix_table('skills');
+	$textqsort_rating = $common->prefix_table('textqsort_rating');
+	$other_raters = $common->prefix_table('other_raters');
+	$mysql = "select skill_id,skill_name from $skills where skill_type = 'i'";
+
+		$skills_arr = $db_object->get_rsltset($mysql);
+		
+	
+		for($i=0;$i<count($skills_arr);$i++)
+		{
+			
+			$skill_id = $skills_arr[$i]['skill_id'];
+			$skill_name = $skills_arr[$i]['skill_name'];
+
+		
+	
+			$self_arr = array("grp_self" => "Self");
+			$grp_arr = @array_diff($gbl_grouprater_inter,$self_arr);  //$group_arr
+		
+			$count_grps = count($grp_arr);
+ 
+
+			
+				
+				
+			while(list($kk,$vv) = @each($grp_arr))
+			{
+				$mysql = "select $textqsort_rating.rater_label_no 
+					from $textqsort_rating,$other_raters
+					where $textqsort_rating.rated_user = $other_raters.cur_userid
+					and $textqsort_rating.rater_id = $other_raters.rater_userid
+					and $textqsort_rating.skill_id = '$skill_id'
+					and other_raters.cur_userid = '$user_id' 
+					and other_raters.group_belonging = '$kk'";  
+
+				
+					$alllabels_arr = $db_object->get_single_column($mysql);
+
+					
+					$ratingcount = count($alllabels_arr);
+					
+					$totalrating = 0;
+		 		
+					$label[$kk] = $alllabels_arr[0];//$kk
+	
+					
+					if($ratingcount >= 1)
+					{
+					
+						for($n=0;$n<count($alllabels_arr);$n++)
+						{
+						  
+							$rating 	= $alllabels_arr[$n];
+							$totalrating 	+= $rating; 
+						
+						}
+						$avg 		= $totalrating / $ratingcount;
+			
+						$label[$kk] = floor($avg); //$kk
+					}
+			}
+			
+			$total_labels = 0;
+		  
+			@reset($label);
+			while(list($kk,$vv) = @each($label))	
+			{
+			
+				$label_id = $label[$kk];  
+				$total_labels += $label_id;
+			
+			
+			
+			}
+	 
+			if($count_grps !=0)
+			{
+			$avg_labels = $total_labels / $count_grps;
+			}
+			$avg_rating = round($avg_labels,2);
+		 
+		
+			$highest[$skill_id] = $avg_rating;
+	 
+	//query for overrated skill display...
+		
+			$mysql = "select rater_label_no from $textqsort_rating where rater_id = '$user_id' and rated_user = '$user_id' and skill_id = '$skill_id'";
+			$self_rating_arr = $db_object->get_a_line($mysql);		
+
+	 
+			$self_rating[$skill_id] = $self_rating_arr['rater_label_no'];
+			$allothers_avg_rating[$skill_id] = $avg_rating;	
+		
+		}
+
+	 
+
+		//Sorting the average to find the highest average of them all...
+		
+		$highest_val = $highest;
+		@rsort($highest_val,SORT_NUMERIC);
+		$highest_avg = $highest_val[0];
+	
+ 
+	
+		$one_third_of_avg = $highest_avg/3;
+	
+	 							
+		$killer_skills=array();				
+		
+		while(list($key,$val) = @each($highest))
+		{
+		
+			if($highest[$key] <= $one_third_of_avg)
+			{
+				$killer_skills[] = $key;
+
+				
+		
+			}
+			
+		$kill_skills[$a][count]=count($killer_skills);
+			
+		$kill_skills[$a][user_id]=$user_id;
+		
+		}
+		
+	
+	}
+
+	return($kill_skills);
+
+	}
+	
+	function over_rate($db_object,$common,$users,$gbl_grouprater_inter)
+	{
+	
+			//print_r($users);
+//$users=array(4);
+	$underrated_skill=array();
+	$overrated_skill=array();
+	$kill_skills=array();
+	for($c=0;$c<count($users);$c++)
+	{
+
+		
+		$allothers_avg_rating=array();
+		
+		$self_ratingg=array();
+			
+		$skill_arr=array();
+		
+		$grp_arr=array();
+		
+		$highest=array();
+		
+		$user_id=$users[$c];
+
+	$skills = $common->prefix_table('skills');
+	$textqsort_rating = $common->prefix_table('textqsort_rating');
+	$other_raters = $common->prefix_table('other_raters');
+	$mysql = "select skill_id,skill_name from $skills where skill_type = 'i'";
+
+		$skills_arr = $db_object->get_rsltset($mysql);
+		
+		
+		for($i=0;$i<count($skills_arr);$i++)
+		{
+
+
+			$skill_id = $skills_arr[$i]['skill_id'];
+			$skill_name = $skills_arr[$i]['skill_name'];
+
+		
+	
+			$self_arr = array("grp_self" => "Self");
+			$grp_arr = @array_diff($gbl_grouprater_inter,$self_arr);  //$group_arr
+			
+			$count_grps = count($grp_arr);
+ 		
+			
+			while(list($kk,$vv) = @each($grp_arr))
+			{
+				$mysql = "select $textqsort_rating.rater_label_no 
+					from $textqsort_rating,$other_raters
+					where $textqsort_rating.rated_user = $other_raters.cur_userid
+					and $textqsort_rating.rater_id = $other_raters.rater_userid
+					and $textqsort_rating.skill_id = '$skill_id'
+					and other_raters.cur_userid = '$user_id' 
+					and other_raters.group_belonging = '$kk'";  
+					
+
+				
+					$alllabels_arr = $db_object->get_single_column($mysql);
+
+					
+					$ratingcount = count($alllabels_arr);
+					
+					$totalrating = 0;
+		 		
+					$label[$kk] = $alllabels_arr[0];//$kk
+	
+					
+					if($ratingcount >= 1)
+					{
+					
+						for($n=0;$n<count($alllabels_arr);$n++)
+						{
+						  
+							$rating 	= $alllabels_arr[$n];
+							$totalrating 	+= $rating; 
+						
+						}
+						$avg 		= $totalrating / $ratingcount;
+			
+						$label[$kk] = floor($avg); //$kk
+					}
+			}
+			
+			$total_labels = 0;
+		  
+			@reset($label);
+			while(list($kk,$vv) = @each($label))	
+			{
+			
+				$label_id = $label[$kk];  
+				$total_labels += $label_id;
+			
+			
+			
+			}
+	 			
+			if($count_grps !=0)
+			{
+			$avg_labels = $total_labels / $count_grps;
+			}
+			
+			$avg_rating = round($avg_labels,2);
+		
+			
+			$highest[$skill_id] = $avg_rating;
+	 
+	//query for overrated skill display...
+		
+			$mysql = "select rater_label_no from $textqsort_rating where rater_id = '$user_id' and rated_user = '$user_id' and skill_id = '$skill_id'";
+			
+			$self_rating_arr = $db_object->get_a_line($mysql);		
+
+	 
+			$self_rating[$skill_id] = $self_rating_arr['rater_label_no'];
+			$allothers_avg_rating[$skill_id] = $avg_rating;	
+		
+		}
+
+	 
+
+		//Sorting the average to find the highest average of them all...
+		
+		$highest_val = $highest;
+		@rsort($highest_val,SORT_NUMERIC);
+		$highest_avg = $highest_val[0];
+	 
+	
+		$one_third_of_avg = $highest_avg/3;
+		
+		$d=0;
+		if($user_id==4)
+		
+	
+	 while(list($kk,$vv) = @each($self_rating))
+		{
+		$self_rated_val 	= $self_rating[$kk];
+		
+		$one_third_self 	= $self_rated_val / 3;
+		
+		$allothers_avg_val= $allothers_avg_rating[$kk];
+		
+		
+		
+		if($allothers_avg_val < $one_third_self)
+		{
+	
+			$overrated_skill[$d] = $kk;
+			
+			$d++;
+			 
+			
+		}
+		
+				
+		}	
+		
+	
+		
+	
+		
+		$overrate_skill[$c][count]=count($overrated_skill);
+	
+		$overrate_skill[$c][user_id]=$user_id;	
+		
+	
+		
+	
+}
+	
+	
+				print_r($over_rated1);
+
+	return($overrate_skill);
+
+}
+
+function under_rate($db_object,$common,$users,$gbl_grouprater_inter)
+	{
+
+	$underrated_skill=array();
+	$overrated_skill=array();
+	$kill_skills=array();
+	for($a=0;$a<count($users);$a++)
+	{
+		$highest=array();
+		
+		$user_id=$users[$a];
+
+	$skills = $common->prefix_table('skills');
+	$textqsort_rating = $common->prefix_table('textqsort_rating');
+	$other_raters = $common->prefix_table('other_raters');
+	$mysql = "select skill_id,skill_name from $skills where skill_type = 'i'";
+
+		$skills_arr = $db_object->get_rsltset($mysql);
+		
+	
+		for($i=0;$i<count($skills_arr);$i++)
+		{
+			
+			$skill_id = $skills_arr[$i]['skill_id'];
+			$skill_name = $skills_arr[$i]['skill_name'];
+
+		
+	
+			$self_arr = array("grp_self" => "Self");
+			$grp_arr = @array_diff($gbl_grouprater_inter,$self_arr);  //$group_arr
+		
+			$count_grps = count($grp_arr);
+ 
+
+			
+				
+				
+			while(list($kk,$vv) = @each($grp_arr))
+			{
+				$mysql = "select $textqsort_rating.rater_label_no 
+					from $textqsort_rating,$other_raters
+					where $textqsort_rating.rated_user = $other_raters.cur_userid
+					and $textqsort_rating.rater_id = $other_raters.rater_userid
+					and $textqsort_rating.skill_id = '$skill_id'
+					and other_raters.cur_userid = '$user_id' 
+					and other_raters.group_belonging = '$kk'";  
+
+				
+					$alllabels_arr = $db_object->get_single_column($mysql);
+
+					
+					$ratingcount = count($alllabels_arr);
+					
+					$totalrating = 0;
+		 		
+					$label[$kk] = $alllabels_arr[0];//$kk
+	
+					
+					if($ratingcount >= 1)
+					{
+					
+						for($n=0;$n<count($alllabels_arr);$n++)
+						{
+						  
+							$rating 	= $alllabels_arr[$n];
+							$totalrating 	+= $rating; 
+						
+						}
+						$avg 		= $totalrating / $ratingcount;
+			
+						$label[$kk] = floor($avg); //$kk
+					}
+			}
+			
+			$total_labels = 0;
+		  
+			@reset($label);
+			while(list($kk,$vv) = @each($label))	
+			{
+			
+				$label_id = $label[$kk];  
+				$total_labels += $label_id;
+			
+			
+			
+			}
+	 
+			if($count_grps !=0)
+			{
+			$avg_labels = $total_labels / $count_grps;
+			}
+			$avg_rating = round($avg_labels,2);
+		 
+		
+			$highest[$skill_id] = $avg_rating;
+	 
+	//query for overrated skill display...
+		
+			$mysql = "select rater_label_no from $textqsort_rating where rater_id = '$user_id' and rated_user = '$user_id' and skill_id = '$skill_id'";
+			$self_rating_arr = $db_object->get_a_line($mysql);		
+
+	 
+			$self_rating[$skill_id] = $self_rating_arr['rater_label_no'];
+			$allothers_avg_rating[$skill_id] = $avg_rating;	
+		
+		}
+
+	 
+
+		//Sorting the average to find the highest average of them all...
+		
+		$highest_val = $highest;
+		@rsort($highest_val,SORT_NUMERIC);
+		$highest_avg = $highest_val[0];
+	
+ 
+	
+		$one_third_of_avg = $highest_avg/3;
+	
+	 	while(list($kk,$vv) = @each($self_rating))
+		{
+		$self_rated_val 		= $self_rating[$kk];
+		
+		$allothers_avg_val 	= $allothers_avg_rating[$kk];
+		
+		$one_third_of_others 	= $allothers_avg_val / 3;
+		
+		
+		if($self_rated_val < $one_third_of_others)
+		{
+			$underrated_skill[] = $kk;
+				
+			
+		}
+		
+		
+		}	
+	
+		
+$underrate_skill[$a][count]=count($overrated_skill);
+		
+		$underrate_skill[$a][user_id]=$user_id;
+
+
+	
+	}
+
+	return($underrate_skill);
+
+}
+
+}
+
+
+?>

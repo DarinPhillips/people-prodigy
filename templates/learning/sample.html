@@ -1,0 +1,80 @@
+<html>
+<head>
+<SCRIPT language=JavaScript>
+
+function changeCategory_all(mainfield,level,subfield) {  
+	
+  categorybox = mainfield;
+   selected = categorybox.options[categorybox.selectedIndex];
+ 
+
+if(level==1)
+     {
+  subids = subcatids[selected.value];
+   subnames = subcatnames[selected.value];
+     }
+ if(level==1)
+     {
+  subids = subcatids[selected.value];
+   subnames = subcatnames[selected.value];
+     }
+  if ((subids != null) && (subnames != null)) {
+    subcategorybox = subfield;
+ 
+    displayed = 0;
+
+    for (i = 0; i < subids.length; i++)
+	if ((subids[i] > -1) && (subnames[i] != ""))
+	subcategorybox.options[displayed++] = new Option(subnames[i], subids[i]);
+ 
+    subcategorybox.options[displayed++] = new Option("---------------------------------------------");
+    subcategorybox.length = displayed;
+    subcategorybox.selectedIndex = 0;
+  }
+}
+
+
+{{replace}}
+  
+
+
+
+/*
+subcatids1[1002]=new Array(10,11,12)
+subcatids2[10]=new Array(100,101);
+subcatnames2[10]=new Array("aa's subcat1","aa's subcat2");
+subcatnames1[1002]=new Array("aa","bb","cc");
+subcatids1[1003]=new Array(13,14,15)
+subcatnames1[1003]=new Array("dd","ee","ff");
+subcatids1[1004]=new Array(16,17,18)
+subcatnames1[1004]=new Array("gg","hh","ii");
+subcatids[1005]=new Array(1007,1041)
+subcatnames[1005]=new Array("All Computers","All Electronics")
+subcatids1[1007]=new Array(19,20)
+subcatnames1[1007]=new Array("jj","kk");
+subcatids1[1041]=new Array(21,22);
+subcatnames1[1041]=new Array("ll","mm");
+subcatids2[19]=new Array(103,104);
+subcatnames2[19]=new Array("jj's subcat1","jj's subcat2");*/
+
+</SCRIPT>
+</head>
+<body>
+
+
+<FORM action="step2.php" method=post name=mainform>
+  
+   <SELECT name=categorybox 
+onchange=changeCategory_all(document.mainform.categorybox,1,document.mainform.subcategorybox1); onclick=changeCategory_all(document.mainform.categorybox,1,document.mainform.subcategorybox1); size=6> 
+<{user_loopstart}><OPTION value=1001><{username}></OPTION><{user_loopend}></SELECT>
+<TD align=middle vAlign=top width="42%"><SELECT 
+name=subcategorybox1  size=6  > 
+<OPTION>---------------------------------------------</OPTION></SELECT></TD>
+
+
+       
+
+
+</form>
+</body>
+</html>

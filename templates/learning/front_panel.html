@@ -1,0 +1,266 @@
+
+<center>
+	<h1>
+	{{cLearningfrontpanel}}
+
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/front_panel.html');">
+
+	</h1>
+	</center>
+<body class=B1>
+
+<table class=table align=center >
+<form action="front_panel.php" method=post>
+	<tr>
+	<td class=code>{{cViewas}}
+	<select name=fGraphchange onchange="form.submit()">
+	<{graphchange_loopstart}>
+	<option value='<{inval}>' <{selected}>><{indisplay}></option>
+	<{graphchange_loopend}>
+	</td>
+	</tr>
+
+</form>
+<tr class=code>
+	<td><br>{{href}}<img src='{{img}}'></a>&nbsp;{{href1}}<img src='{{img1}}'></a></td>
+</tr>
+<{edit_settings_start}>
+<tr>
+<td class=code>
+<br><a href="edit_settings.php"><b>{{cEditSettings}}</a><br>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+<br><a href="edit_solution.php"><b>{{cDevelopmentalLearningSolutionProperties}}</a><br>
+</td>
+</tr>
+<{edit_settings_end}>
+<{if_loopstart}>
+<tr>
+<td class=code>
+<br><a href="alert_performance.php"><b>{{cSolutionBuilderalert}}</b></a><br>
+</td>
+</tr>
+<{if_loopend}>
+
+<{ifplan_loopstart}>
+<tr>
+<td class=code>
+<br><a href="alert_plan_builder.php"><b>{{cPlanBuilderAlert}}</b></a><br>
+</td>
+</tr>
+<{ifplan_loopend}>
+
+<{newalert_start}>
+<tr>
+<td class=code>
+<br><a href="alert.php"><b>{{cAlertfornewapprovals}}</a><br>
+</td>
+</tr>
+<{newalert_end}>
+<{adminarea_loopstart}>
+<!--
+<tr>
+<td class=code>
+<br><a href="alert_learning.php"><b>{{cAlertforlearningplanapprovals}}</b></a><br>
+</td>
+</tr>-->
+<tr>
+<form  action="change_dashboard.php" method=post>
+	<td class=code><br>
+
+		<{view_dashboard_start}>
+				{{cView}}
+				<select name="fEmployee_id" onChange="form.submit();">
+					<option class=code value="">{{cEmployeename}}</option>
+				<{user_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value}></option>
+				<{user_loopend}>
+				</select>
+				{{cDashboard}}<br>
+		<{view_dashboard_end}>
+	</td>
+</form>
+
+</tr>
+<tr>
+<td class=code>
+<br><a href="assign_solution_builder.php?user_id={{user}}"><b>{{cAssignSolutionBuilder}}</b></a>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+<br><a href="assign_plan_builder.php?user_id={{user}}"><b>{{cAssignPlanBuilder}}</b></a>
+</td>
+</tr>
+
+<form  name=index action="view_approved_plan.php" method=POST>
+
+<tr>
+<td class=code><br>
+<b>{{cView}}<select name=fEmployee_id onChange="form.submit();">
+						<option value="1">{{cSelectEmployee}}</option>
+						<{employee_loopstart}>
+						<option value="<{u_id}>"><{user_name}></option>
+						<{employee_loopend}>
+					  </select><b>{{cLearningplan}}</b></td>	
+
+</tr>
+</form>
+
+<tr>
+<td class=code><br>
+<a href="assigned_skills.php?user_id={{user}}"><b>{{cAssigned}}</b></a>
+</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="find_raters.php"><b>{{cHaveraters}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="find_ratings.php"><b>{{cWhoisrating}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="view_learning_solution.php"><b>{{cViewDevSolution}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="outstanding_assignments.php" {{highlight}}><b>{{cViewOutstandingSolutions}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="solution_usage.php"><b>{{cLearningsolutionusage}}</b></a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+	<a href="plan_usage.php"><b>{{cLearningplanusage}}</b></a>
+	<td>
+</tr>
+<form action="learning_status_report.php" method=post>
+<tr>
+<td class=code><br>
+<b>{{cView}}<select name=fStatusreport onChange="form.submit();">
+		<option value="">{{cSelectEmployee}}</option>
+		<{employee_loopstart}>
+		<option value="<{u_id}>"><{user_name}></option>
+		<{employee_loopend}>
+	  </select><b>{{cLearningstatusreport}}</b></td>	
+
+</tr>
+</form>
+<{adminarea_loopend}>
+
+<{ifboss_loopstart}>
+<form  name=index action="learning_progress_summary_reports.php" method=POST>
+
+<tr>
+<td class=code><br>
+<b>{{cView}}
+<select name=fUser_id onChange="form.submit();">
+			<option value="1">{{cSelectEmployee}}</option>
+			<{user1_loopstart}>
+			<option value='<{user}>'><{user_name}></option>
+			<{user1_loopend}>
+		  </select><b>{{cProgressSummary}}</b></td>	
+
+</tr>
+</form>
+<tr>
+	<td class=code><br><b>
+	<a href="learning_status_report.php">{{cLearningstatusreport}}</a>
+	</td>
+</tr>
+
+<{ifboss_loopend}>
+
+<{ifplan_loopstart}>
+<tr>
+	<td class=code><br>
+		<a href="select_learn_improve.php"><b>{{cSelectskilltolearn}}</a>
+	</td>
+</tr>
+<{ifplan_loopend}>
+<tr>
+	<td class=code><br>
+		<a href="add_data_to_assd_skill.php"><b>{{cAdddatatoassdskill}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code><br>
+		<a href="fix_nonapproved_lr.php"><b>{{cFixlearningplan}}</a>
+	</td>
+</tr>
+<form action="dev_solution.php" method="post">
+<tr>
+<td class=code>
+<br><a href="dev_solution.php?action=insert"><b>{{cDevelopmentalLearningSolution}}</b></a><br>
+</td>
+</tr>
+
+
+<{plan_buider_start}>
+<tr>
+<td class=code>
+<br><a href="learning_plan.php"><b>{{cLearningPlan}}</b></a><br>
+</td>
+</tr>
+<{plan_buider_end}>
+<{waitingplan_start}>
+<tr>
+<td class=code>
+<br><a href="plan_approval.php?user_id={{user}}&action={{view}}"><b>{{cPreviewWaitingPlans}}</b></a><br>
+</td>
+</tr>
+<{waitingplan_end}>
+<{preview_start}>
+<tr>
+<td class=code>
+<br><a href="plan_approval.php?action={{action}}"><b>{{cPreviewApprovedPlans}}</b></a><br>
+</td>	
+</tr>
+<{preview_end}>
+<{requests_start}>
+<tr>
+<td class=code>
+<br>
+	<a href="view_all_requests.php">
+	<b>{{cLearningfeedback}}</b>
+	</a>
+<br>
+</td>	
+</tr>
+<{requests_end}>
+<{update_start}>
+<tr>
+<td class=code>
+<br><a href="update_learning_plan.php?user_id={{user}}&action={{action}}"><b>{{cUpdateLearningPlan}}</b></a><br>
+</td>	
+</tr>
+<{update_end}>
+<!--<{summary_start}>-->
+<tr>
+<td class=code>
+<br><a href="learning_progress_summary.php"><b>{{cLearningProgressSummary}}</b></a><br>
+</td>	
+</tr>
+<!--<{summary_end}>-->
+<tr>
+<td class=code>
+{{replace}}
+</td>
+</tr>
+</form>
+
+</table>
+</body>
+</html>

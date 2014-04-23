@@ -1,0 +1,26 @@
+<table align=center border=1>
+
+<!--
+<form action=add_admin.php method=post>
+
+
+<tr>
+<td class=code align=center>
+<input type=submit name=fAdd_admin value="{{cShowalladmin_addnewadmin}}">
+</td>
+</tr>
+<tr>
+</form>-->
+<tr>
+<td class=code>
+<b>{{cShowalladmin_showemail}}</b>
+</td>
+<{admins_loopstart}>
+<tr>
+<td class=code align=center>
+<a href = "set_admins.php?user_id=<{user_id}>"><{email}></a>
+</td>
+</tr>
+<{admins_loopend}>
+</tr>
+</table>

@@ -1,0 +1,65 @@
+<font class = code>
+<u><b>{{cTeamIndividual}}</u><br>
+{{cQualifyobj}}
+</font>
+<table align=right class=code>
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/approve_objective3.html');"><br>
+</table>
+<form name="approve" action="approve_objective3.php" method=post>
+<input type=hidden name=uid value="{{uid}}">
+<table class=code>
+<tr>
+	<td>{{cTeamandIndividual}}</td>
+	<td><input type=text name=fName value="{{fName}}" readonly></td>
+</tr>
+<tr>
+	<td>{{cComment}}</td><td><textarea name=fComment>{{fComment}}</textarea></td>
+</tr>
+<!--approval_start
+<tr>
+	<td></td><td>{{cCheck}}</td>
+</tr>
+approval_end-->
+</table>
+<center><b>{{norecords}}</b></center>		
+<{objective_loopstart}>
+<table class=code>
+<tr>
+<td>
+	<table class=code>
+		<tr>
+			<td><{fObjective}></td>
+		</tr>
+		<tr>
+			<td nowrap>{{cNumber}}<input type=text name=fNumber value="<{fNumber}>" size=3 readonly>
+			{{cPriority}}<input type=text name=fPriority value="<{fPriority}>" size=3 readonly></td>
+		</tr>
+		<tr>
+		<td><{fHow}></td>
+		</tr>
+	</table>
+</td>
+<td>
+	<table class=code>
+	<{tablerow_loopstart}>
+	<tr>
+		<{tablecol_loopstart}>
+		<td><{fQualification}><input type=checkbox name=fCheck_<{edit}>_<{sid}>_<{qid}><{slqid}> value="<{qid}>" <{checked}>></td>
+		<{tablecol_loopstop}>
+	</tr>
+	<{tablerow_loopstop}>
+	</table>
+</td>
+</tr>
+<{objective_loopend}>
+	
+</td>
+</tr>
+</table class=code>
+<center><input type=submit name=back value='{{cBack}}'>
+<!--approval_start
+	<input type=submit name=approval value='{{cApproved}}'>
+	<input type=submit name=reject value='{{cRejected}}' onclick="return comment_check('{{cRejectmessage}}');">
+approval_end-->
+</center>
+</form>

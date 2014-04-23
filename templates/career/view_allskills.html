@@ -1,0 +1,45 @@
+
+<form>
+
+
+<{skill_loopstart}>
+
+
+
+<{obj_loopstart}>
+
+{{cObjective}}<br>
+<input type="text" readonly value="<{objective}>">
+<br>
+<{obj_loopend}>
+
+
+<{act_loopstart}>
+
+&nbsp&nbsp&nbsp&nbsp
+{{cActivity}}<br>
+&nbsp&nbsp&nbsp&nbsp
+<input type="text" readonly value="<{activity}>">
+<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+{{cSkills}}
+<br>
+<{act_loopend}>
+
+
+<{ski_loopstart}>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<input type="text" readonly value="<{skill}>">
+<br>
+
+<{ski_loopend}>
+
+<{skill_loopend}>
+<center>
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+</center>
+
+</form>

@@ -1,0 +1,38 @@
+events project
+
+REGISTRATON:
+1) I don't like the date picker for Birthday.  If someone is over 40 years old, they have to click the "Previous Year" button over 40 times in order to get to their year.  
+
+It is a real pain.  Simply give drop down menus here instead of the date picker.
+ 
+2) The Birthday "Date Picker" puts the date in the Ccard Expiration date field instead of the 
+
+Birthday field.
+ 
+3) When I hit the "Submit button" after registration, it took me back to the home page but the
+
+ top header was duplicated (did you do this site in frames?) and it never said whether my 
+ 
+ information was accepted or not. This is not good. (apparently the account was created because
+ 
+  I could login)
+ 
+ADDING EVENTS:
+1) There needs to be a "frequency" field somewhere.  i.e.... is the event going to be annual, monthly, weekly, daily, etc...?  The start and stop dates are for our billing purposes.. not necessarily for the actual event.  For example, if I am having a party every Thursday at my dance club during the summer (May, June, July, Aug) , then I would sign up for 
+Start Date: May, 1  (The month the billing is supposed to start)
+Stop Date: Aug, 31 (the month the billing is supposed to stop)
+Frequency: Weekly (so the event calendar knows that the event will be recurring event and can be searchable)
+ 
+2) I tried to add an event and I got this error...
+ 
+Warning: move_uploaded_file(/var/www/html/events1/photo/): failed to open stream: Is a directory in /var/www/html/events1/common/common.class on line 330
+
+Warning: move_uploaded_file(): Unable to move '/tmp/phpvA9mmi' to '/var/www/html/events1/photo/' in /var/www/html/events1/common/common.class on line 330
+
+Warning: move_uploaded_file(/var/www/html/events1/photo/): failed to open stream: Is a directory in /var/www/html/events1/common/common.class on line 330
+
+Warning: move_uploaded_file(): Unable to move '/tmp/phpDyXaAZ' to '/var/www/html/events1/photo/' in /var/www/html/events1/common/common.class on line 330
+
+Warning: move_uploaded_file(/var/www/html/events1/photo/): failed to open stream: Is a directory in /var/www/html/events1/common/common.class on line 330
+
+Warning: move_uploaded_file(): Unable to move '/tmp/phprueXAc' to '/var/www/html/events1/photo/' in /var/www/html/events1/common/common.class on line 330

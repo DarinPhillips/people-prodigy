@@ -1,0 +1,153 @@
+<script>
+function validate()
+{
+  with(document.fskill)
+  {	
+	if ((!radiobutton[0].checked) && (!radiobutton[1].checked))
+	{
+		alert("{{cEnterurskillopt}}");
+		radiobutton[0].focus();
+	return false;
+	}
+	if(fskill_name.value=="")
+	{
+		alert("{{cEnterskillset}}");
+				fskill_name.focus();
+	return false;
+	}
+        if(fskill_def.value=="")
+	{
+		alert("{{cEnterskildef}}");
+				fskill_def.focus();
+ 		return false;
+	}
+	if(radiobutton[1].checked)
+	{
+		if(funskill_def.value=="")
+		{
+			alert("{{cEntertechskild}}");
+			funskill_def.focus();
+		return false;
+		}
+	}
+
+}
+
+}
+
+function  disable()
+{
+  with(document.fskill)
+  {
+funskill_def.disabled=true;
+fOverused.disabled=true;
+fCareerkiller.disabled=true;
+fCompensator.disabled=true;
+return true; 
+  }
+}
+function enable()
+{
+with(document.fskill)
+ {
+funskill_def.disabled=false;
+fOverused.disabled=false;
+fCareerkiller.disabled=false;
+fCompensator.disabled=false;
+return true; 
+  }
+}
+</script>
+
+<table align=center border = 1 class=table>
+<form action="manual_skill_entry.php" method=post name="fskill" onSubmit="return validate();">
+<tr>
+<td class=code align=center colspan=2>
+<h3>{{cSkillentrypage}} 
+
+<input type="button" name="fHelp" value="Help" onClick="window.open('../lang/{{default}}/career/manual_skill_entry.html');">
+</h3>	
+</td>
+<br><br>
+</tr>
+<tr>
+
+<td class=code>
+{{cSkilltype}} </td>
+<td class=code>
+
+
+
+	<input type=radio name="radiobutton" value="ftech_skill" onClick="return disable();"> Technical Skills<br>
+	<input type=radio name="radiobutton" value="finter_skill" onClick="return enable();"> Inter - Personal Skills
+</td>
+</tr>
+
+<tr><td class=code>
+{{cSkillname}}:</td><td><input type=text name=fskill_name value="">
+
+</td>
+
+</tr>
+<tr>
+<td class=code>
+{{cDefofskill}}
+
+</td>
+<td class=code>
+		<textarea name=fskill_def rows=2 cols=30></textarea>
+
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cDefofunskill}}
+</td>
+<td>
+		<textarea name=funskill_def rows=2 cols=30 disabled></textarea>
+</td>
+</tr>
+<tr>
+<td class=code>
+
+{{cOverused}}
+</td>
+<td class=code>
+<textarea name=fOverused rows=2 cols=30 disabled></textarea>
+
+</td>
+
+</tr>
+<tr>
+<td class=code>
+
+{{cCareerkiller}}
+</td>
+<td class=code>
+<textarea name=fCareerkiller rows=2 cols=30 disabled></textarea>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+
+{{cCompensator}}
+</td>
+<td class=code>
+<textarea name=fCompensator rows=2 cols=30 disabled></textarea>
+
+</td>
+
+</tr>
+
+<tr><td class=code>
+		<input type=submit name=submit1 value="{{cSaveadd}}">
+
+</td>
+<td class=code>
+		<input type=submit name=submit2 value="{{cSaveexit}}">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+<input type=button name=submit3 value="{{cExit}}" onClick="window.location='front_panel.php';">
+</td></tr>
+</form>	</table>

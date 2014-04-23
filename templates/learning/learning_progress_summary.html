@@ -1,0 +1,416 @@
+
+<script language='javascript'>
+function since_check(p1,p2,arr)
+{
+	frm = document.learning;
+	val = frm.elements[p2].value;
+	chk = frm.elements[p1][arr].checked;
+	if(chk)
+	{
+		today = new Date();
+		sl_date = val.split("/");
+		yy = sl_date[2];
+		dd = sl_date[1];
+		mm = sl_date[0] - 1;
+		selday	= new Date(yy,mm,dd);
+
+		if (selday > today)
+		{
+			alert ('{{cSincedatealert}}');
+			frm.elements[p2].value='';
+		}
+
+	}
+}
+function from_to_check(p1,p2,p3,arr)
+{
+	frm=document.learning;
+	chk = frm.elements[p1][arr].checked;
+	val1 = frm.elements[p2].value;
+	val2 = frm.elements[p3].value;
+	fr_dt = val1.split("/");
+	to_dt = val2.split("/");
+	
+	fyy = fr_dt[2];
+	fdd = fr_dt[1];
+	fmm = fr_dt[0];
+
+	tyy = to_dt[2];
+	tdd = to_dt[1];
+	tmm = to_dt[0];
+
+	fr_sel = new Date(fyy,fmm,fdd);
+	to_sel = new Date(tyy,tmm,tdd);
+	if(chk)
+	{
+		if(to_sel < fr_sel)
+		{
+			alert('{{cTocheck}}');
+			frm.elements[p2].value = '';
+			frm.elements[p3].value = '';
+			frm.elements[p2].focus();		
+		}
+	}
+
+}
+
+function check_checked(ch1,ch2,ch3,ch4)
+{
+	frm = document.learning;
+	chk1	= frm.elements[ch1].checked;	
+	chk2	= frm.elements[ch2].checked;
+	chk3	= frm.elements[ch3].checked;
+
+	if ((chk1)||(chk2)||(chk3))
+	{		
+		frm.elements[ch4].checked=false;
+		alert('{{cSmessage}}');				
+	}	
+}
+
+
+function validate_radio(field,skillval,act)
+{
+	var check="false";
+	form=document.forms['learning'];
+	var field_name=form.elements[field];
+	var i;
+	for (i=0;i<field_name.length;i++)
+ 	{		
+		if(field_name[i].checked)
+  		{
+			var fval=field_name[i].value;
+			check="true";
+			
+		}
+ 	}
+
+	if(check=="true")
+  	{
+		if(fval == '2' )
+		{
+			var sincename='fSince'+act+'date_'+skillval;
+			var sinceval=form.elements[sincename].value;
+		
+			if(sinceval == "")
+			{	
+				since = '{{cPleaseselectsince}}';
+				alert(since);
+				form.elements[sincename].focus();
+				return false;
+			}
+			else
+				return true;
+
+		}
+		else if(fval == '3' )
+		{
+			var fromname	='fFrom'+act+'date_'+skillval;
+			var fromval	=form.elements[fromname].value;
+
+			var toname	='fTo'+act+'date_'+skillval;
+			var toval 	=form.elements[toname].value;
+
+			if(fromval == "")
+			{
+				from = '{{cPleaseselectfrom}}';
+				alert(from);
+				form.elements[fromname].focus();
+				return false;
+			}
+			else if(toval == "")
+			{	
+				to = '{{cPleaseselectto}}';
+				alert(to);
+				form.elements[toname].focus();
+				return false;
+			}
+			else
+				return true;
+
+		}
+		else
+		{
+			return true;
+		}
+	
+	}
+	else
+	{
+		return true;
+	}	
+}
+function validate(plan)
+{
+	plan=document.forms['learning'];
+	with(plan)
+	{
+
+		
+
+
+		var len=elements.length;
+
+		var i;
+		skillarr = new Array(0);
+		for(i=0;i<len;i++)
+		{
+			var ele_name  = elements[i].name;
+			var ele_value = elements[ele_name].value;
+			var skill_reg =/sname_/i;
+	
+			if(skill_reg.test(ele_name))
+			{
+				var index = ele_name.split('_');
+				var skillval=index[1];
+				var temp=skillarr.push(skillval);
+			
+			}
+
+		}
+		var j;
+
+		for(j=0;j<skillarr.length;j++)
+		{
+			var sval = skillarr[j];
+			var rate_name = "rating_"+sval;
+			var updt_name = "update_"+sval;
+			if(!validate_radio(rate_name,sval,'Rating'))
+			{
+				return false;
+			}
+		
+			if(!validate_radio(updt_name,sval,'Update'))
+			{
+				return false;
+			}
+		}
+
+	}
+
+}
+</script>
+<script src="../jscripts/calendar2.js"></script>
+<html>
+<left>
+	<h4>
+		<input align='left' readonly  type='text' name='username' value='{{username}}'>{{cS}}   {{cLearningProgressSummary}}
+		
+		<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/feedback_request_form.html');">
+	</h4>
+</left>
+<form action="progress_summary.php" name="learning" method="post" onSubmit="return validate(document.learning);">
+<input type=hidden name=dr_id value='{{dr_id}}'>
+<{skill_loopstart}>
+<table border=1><tr><td>
+<table>
+	
+	<tr>
+		<td class=code colspan=6>
+		<table>
+			<tr>
+				<td class=code><input type='text' readonly name='sname_<{skills}>' value='<{skill_name}>'</td>
+				<td class=code><input type='text'  readonly  name='sdesc_<{skills}>' value='<{skill_description}>'></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code  valign=top><b>{{cCommitment}}</b></td>
+		<td class=code colspan=5>
+		<table>
+	<{activity_loopstart}>
+
+	   <{subact_loopstart}>
+			
+		<{title_loopstart}>
+	
+		
+			<tr>
+				<td class=code><input type='text' readonly name='title_<{skills}>_<{buildid}>' value='<{title}>'></td>
+				<td class=code>  {{c_By}}  </td>
+				<td class=code><input type='text'  readonly  name='cdate_<{skills}>_<{buildid}>' size=10 value='<{cdate}>'></td>
+				<td class=code>  {{cCompletedOn}}  </td>
+				<td class=code><input type=text name="completeddate_<{skills}>_<{buildid}>" readonly size=10 value="<{completed_date}>" ></td>
+			</tr>
+			
+		<{title_loopend}>
+	
+	  <{subact_loopend}>
+
+      <{activity_loopend}>
+		</table>
+	</td>
+	</tr>
+	
+	<tr >
+		<td class=code colspan=6>
+			<table>
+			<tr>
+				<td class=code><b>{{cProgressRating}}</b></td>
+				<td class=code>{{cNumberofImprovedRating}}</td>
+				<td class=code><input type='text' size=3 name='improvedno_<{skills}>' value='<{improved_no}>'></td>
+				<td class=code>{{cPercentageofImprovedRating}}</td>
+				<td class=code><input type='text' size=3 name='improvedper_<{skills}>' value='<{improved_percentage}>'>%</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code valign='top'><b>{{cOptions}}</b></td>
+		<td class=code colspan=5>
+			<table>
+			<tr>
+				<td class=code colspan=7>{{cViewRaterComment}}</td>
+				<td class=code colspan=7>{{cViewResults}}</td>
+			</tr>
+			<tr><td colspan=14></td></tr>
+			<tr>
+				<td class=code width=5%><input type='radio' <{checked}> name='rating_<{skills}>' value='1'></td>
+				<td class=code colspan=6>{{cSinceLastRating}}</td>
+				<td class=code  width=5%><input type='radio' <{checked}> name='update_<{skills}>' value='1'></td>
+				<td class=code  colspan=6>{{cSinceLastUpdate}}</td>
+			</tr>
+			<tr>
+				<td class=code><input type='radio' <{checked}> name='rating_<{skills}>' value='2'></td>
+				<td class=code width=6%>{{cSince}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fSinceRatingdate_<{skills}>' value='' onblur="since_check('rating_<{skills}>','fSinceRatingdate_<{skills}>',1);"></td>
+				<td class=code  colspan=4  align=left>
+					<a href="javascript:cal1_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0  ></a> </td>
+					<script language='javascript'>
+						var cal1_<{skills}>= new calendar2(document.forms['learning'].elements['fSinceRatingdate_<{skills}>']);
+						 cal1_<{skills}>.year_scroll	=  true;						  
+					</script>
+				</td>
+
+				<td class=code><input type='radio' <{checked}> name='update_<{skills}>' value='2'></td>
+				<td class=code width=6%>{{cSince}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fSinceUpdatedate_<{skills}>' value='' onblur="since_check('update_<{skills}>','fSinceUpdatedate_<{skills}>',1);" ></td>
+				<td class=code  colspan=4 halign=right>
+					<a href="javascript:cal2_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0  ></a> </td>
+					<script language='javascript'>
+						var cal2_<{skills}>= new calendar2(document.forms['learning'].elements['fSinceUpdatedate_<{skills}>']);
+						 cal2_<{skills}>.year_scroll	=  true;
+					</script>
+				</td>
+			
+			</tr>
+			<tr>
+				<td class=code><input type='radio' <{checked}> name='rating_<{skills}>' value='3'></td>
+				<td class=code width=6%>{{cFrom}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fFromRatingdate_<{skills}>' value=''></td>
+				<td class=code align=left>
+					<a href="javascript:cal3_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+					<script language='javascript'>
+						var cal3_<{skills}>= new calendar2(document.forms['learning'].elements['fFromRatingdate_<{skills}>']);
+						 cal3_<{skills}>.year_scroll	=  true;
+					</script>
+				</td>
+				<td class=code width=6%>{{cTo}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fToRatingdate_<{skills}>' value='' onblur="from_to_check('rating_<{skills}>','fFromRatingdate_<{skills}>','fToRatingdate_<{skills}>',2);"></td>
+				<td class=code align=left>
+					<a href="javascript:cal4_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+					<script language='javascript'>
+						var cal4_<{skills}>= new calendar2(document.forms['learning'].elements['fToRatingdate_<{skills}>']);
+						 cal4_<{skills}>.year_scroll	=  true;
+					</script>
+				</td>
+
+				<td class=code><input type='radio' <{checked}> name='update_<{skills}>' value='3'></td>
+				<td class=code width=6%>{{cFrom}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fFromUpdatedate_<{skills}>' value='' ></td>
+				<td class=code align=left>
+					<a href="javascript:cal5_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+					<script language='javascript'>
+						var cal5_<{skills}>= new calendar2(document.forms['learning'].elements['fFromUpdatedate_<{skills}>']);
+						 cal5_<{skills}>.year_scroll	=  true;
+					</script>
+				</td>
+				<td class=code width=6%>{{cTo}}</td>
+				<td class=code width=10%><input type='text' readonly size=10 name='fToUpdatedate_<{skills}>' value='' onblur="from_to_check('update_<{skills}>','fFromUpdatedate_<{skills}>','fToUpdatedate_<{skills}>',2);"></td>
+				<td class=code align=left>
+					<a href="javascript:cal6_<{skills}>.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+					<script language='javascript'>
+						var cal6_<{skills}>= new calendar2(document.forms['learning'].elements['fToUpdatedate_<{skills}>']);
+						 cal6_<{skills}>.year_scroll	=  true;
+					</script>
+				</td>
+			
+			</tr>
+			<tr>
+				<td class=code><input type='radio' <{checked}> name='rating_<{skills}>' value='4'></td>
+				<td class=code colspan=6>{{cAllCommentsSinceInception}}</td>
+				<td class=code><input type='radio'  <{checked}>  name='update_<{skills}>' value='4'></td>
+				<td class=code  colspan=6>{{cSinceInception}}</td>
+			</tr>
+			<tr><td colspan=14>&nbsp;</td></tr>
+			<tr>
+				<td class=code colspan=7>{{cViewRating}}</td>
+				<td class=code colspan=7>{{cCompareRatingsBetween}}</td>
+			</tr>
+			<tr>
+				<td class=code><input type='checkbox' name='ratingsby_boss_<{skills}>' value='1'></td>
+				<td class=code colspan=6>{{cBosss}}</td>
+				<td class=code><input type='checkbox' name='ratingcomp_1_boss_<{skills}>' value='1' onclick="check_checked('ratingcomp_1_others_<{skills}>','ratingcomp_1_self_<{skills}>','ratingcomp_1_avg_<{skills}>','ratingcomp_1_boss_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cBosss}}</td>
+				<td class=code></td>
+				<td class=code><input type='checkbox' name='ratingcomp_2_boss_<{skills}>' value='1' onclick="check_checked('ratingcomp_2_others_<{skills}>','ratingcomp_2_self_<{skills}>','ratingcomp_2_avg_<{skills}>','ratingcomp_2_boss_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cBosss}}</td>
+				
+			</tr>
+			<tr>
+				<td class=code><input type='checkbox' name='ratingsby_others_<{skills}>' value='2'></td>
+				<td class=code colspan=6>{{cOthers}}</td>
+				<td class=code><input type='checkbox' name='ratingcomp_1_others_<{skills}>' value='2' onclick="check_checked('ratingcomp_1_self_<{skills}>','ratingcomp_1_avg_<{skills}>','ratingcomp_1_boss_<{skills}>','ratingcomp_1_others_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cOthers}}</td>
+				<td class=code>{{cAnd}}</td>
+				<td class=code><input type='checkbox' name='ratingcomp_2_others_<{skills}>' value='2' onclick="check_checked('ratingcomp_2_self_<{skills}>','ratingcomp_2_avg_<{skills}>','ratingcomp_2_boss_<{skills}>','ratingcomp_2_others_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cOthers}}</td>
+			</tr>
+			<tr>
+				<td class=code><input type='checkbox' name='ratingsby_self_<{skills}>' value='3'></td>
+				<td class=code colspan=6>{{cSelf}}</td>
+				<td class=code><input type='checkbox' name='ratingcomp_1_self_<{skills}>' value='3' onclick="check_checked('ratingcomp_1_avg_<{skills}>','ratingcomp_1_boss_<{skills}>','ratingcomp_1_others_<{skills}>','ratingcomp_1_self_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cSelf}}</td>
+				<td class=code></td>
+				<td class=code><input type='checkbox' name='ratingcomp_2_self_<{skills}>' value='3' onclick="check_checked('ratingcomp_2_avg_<{skills}>','ratingcomp_2_boss_<{skills}>','ratingcomp_2_others_<{skills}>','ratingcomp_2_self_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cSelf}}</td>
+			</tr>
+			<tr>
+				<td class=code><input type='checkbox' name='ratingsby_avg_<{skills}>' value='4'></td>
+				<td class=code colspan=6>{{cOverallavg}}</td>
+				<td class=code><input type='checkbox' name='ratingcomp_1_avg_<{skills}>' value='4' onclick="check_checked('ratingcomp_1_boss_<{skills}>','ratingcomp_1_others_<{skills}>','ratingcomp_1_self_<{skills}>','ratingcomp_1_avg_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cOverallavg}}</td>
+				<td class=code></td>
+				<td class=code><input type='checkbox' name='ratingcomp_2_avg_<{skills}>' value='4' onclick="check_checked('ratingcomp_2_boss_<{skills}>','ratingcomp_2_others_<{skills}>','ratingcomp_2_self_<{skills}>','ratingcomp_2_avg_<{skills}>');"></td>
+				<td class=code  colspan=2>{{cOverallavg}}</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=6>
+			<input type='checkbox' name='viewgraphical_<{skills}>' value='1'>
+			{{cViewGraphicalVersion}}
+		</td>
+	</tr>
+	
+</table>
+</td></tr></table>
+<br>
+<{skill_loopend}>
+<{no_records_start}>
+<table align='center'>
+	<tr>
+		<td class=code><input type='button' name='print' value='{{cPrint}}' onclick="window.print();"></td>
+		<{others_loopstart}>	
+		<td class=code><input type='button' name='emailthis' value='{{cEmailthis}}'onclick="window.open('mailto:{{mailto}}');"></td>
+		<{others_loopend}>
+		<td class=code><input type='button' name='back' value='{{cBack}}'  onclick="window.location.replace('front_panel.php');"></td>
+		<td class=code><input type='submit' name='next' value='{{cNext}}'></td>
+	</tr>
+</table>
+<{no_records_end}>
+</form>

@@ -1,0 +1,108 @@
+<script>
+function check()
+{	
+	with(document.frm1)
+	{
+		
+		len=elements.length;
+		reg1=/\S/i
+		for (i=0;i<len;i++)
+		{
+			ele_name=elements[i].name;
+			reg = /_level/
+			if(reg.test(ele_name))
+			{
+				if(!reg1.test(elements[i].value))
+				{
+					alert('Enter the valid value for '+i+' level');
+					return false;
+					
+				}
+			}
+		}
+	}
+	return true;
+}
+
+
+
+</script>
+
+<form action="addlocation.php" name=frm1 method="post" onSubmit="return check();">
+<center>
+<h1>
+
+	{{flag}}
+
+{{cLocationtext}}
+
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/addlocation.html');">
+</h1>
+</center>
+<table>
+<tr>
+<td class=code>
+{{cFirstLevel}}
+</td>
+
+<td class=code>
+{{cSecondLevel}}
+</td>
+
+<td class=code>
+{{cThirdLevel}}
+</td>
+
+<td class=code>
+{{cFourthLevel}}
+</td>
+
+<td class=code>
+{{cFifthLevel}}
+</td>
+
+<td class=code>
+{{cSixthLevel}}
+</td>
+
+<td class=code>
+{{cSeventhLevel}}
+</td>
+</tr>
+
+<tr>
+<td class=code>
+<input type="text" name="fFirst_level" value="{{first_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fSecond_level" value="{{second_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fThird_level" value="{{third_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fFourth_level" value="{{fourth_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fFifth_level" value="{{fifth_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fSixth_level" value="{{sixth_level}}">
+</td>
+
+<td class=code>
+<input type="text" name="fSeventh_level" value="{{seventh_level}}">
+</td>
+</tr>
+</table>
+<center>
+<input type="button" name="Back" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fSave" value="{{cSubmit}}">
+<input type="hidden" name="fLocation_id" value={{location_id}}>
+</center>
+</form>

@@ -1,0 +1,21 @@
+<form action="performance_verification.php" method=post class=code>
+<input type=hidden name=uid value='{{uid}}'>
+<b><u>{{cPerverification}}</u></b><br><br>
+<input type=text name=fName value='{{empname}}'>{{cHasreported}}
+<table class=code>
+<{record_loopstart}>
+<tr>
+	<td><{objective}></td><td><input type=text name=fDelivered_<{fdid}>_<{slid}> value="<{Delivered}>"></td>
+	<td>{{cLastrating}}</td><td><input type=text name=fDate_<{fdid}>_<{slid}> value="<{fdate}>" readonly></td>
+</tr>
+<{record_loopend}>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type=submit name=reject value='{{cReject}}'>&nbsp;
+	<input type=submit name=accept value='{{cAccept}}'></td>
+</tr>
+</table>
+
+</form>

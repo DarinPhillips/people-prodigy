@@ -1,0 +1,100 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.fEeo_name.value=='')
+	{
+		alert('{{cJavascriptnamealert}}');
+		document.frm.fEeo_name.focus();
+		return false;
+	}
+}
+</script>
+
+
+<table border=1 align = center>
+<form action ="eeo_status.php" method=post name='frm' onSubmit="return validate()">
+<tr>
+<td class=code>
+{{cAddeeomessage}}
+</td>
+
+
+<td class=code>
+<input type=text name=fEeo_name value="">
+</td>
+<td class=code>
+<input type=submit name=fAdd_eeo value="{{cAddeeomessage}}";
+</td>
+</tr>
+</form>
+</table>
+<hr>
+
+<table  border=1 align = center>
+<tr>
+<td class=code><b>
+{{cDisplayeeo}}</b>
+</td>
+</tr>
+</table>
+
+	<table border=1 align = center>
+	<tr>
+		<td class=code>
+		<b>{{cEeoid}}</b>
+		</td>
+		<td class=code>
+		<b>{{cEeoname}}</b>
+		</td><!--
+		<td class=code>
+		<b>{{cTagname}}
+		</td>-->
+		<td class=code>
+		<b>{{cEdit}}</b>
+		</td>
+		<td class=code>
+		<b>{{cDelete}}</b>
+		</td>
+
+		
+		<td class=code>
+		<b>{{cShowtags}}</b>
+		</td>
+		
+			
+	</tr>
+
+<{eeostatus_loopstart}>
+	<tr>
+		<td class=code>
+		<{eeo_id}>
+		</td>
+		<td class=code>
+		<{eeo_name}>
+		</td><!--
+		<td class=code>
+		<{tag_name}>
+		</td>-->
+		<td class=code>
+		<a href="edit_eeo.php?eeo_id=<{eeo_id}>">{{cEdit}}</a>
+		</td>
+		<td class=code>
+		<a href="delete_eeo.php?eeo_id=<{eeo_id}>">{{cDelete}}</a>
+		</td>
+		
+		<td class=code>
+		<a href="showeeo_tags.php?eeo_id=<{eeo_id}>">{{cShowtags}}</a>
+		</td>
+		
+		
+	</tr>
+<{eeostatus_loopend}>
+
+</table>
+</body>
+</html>

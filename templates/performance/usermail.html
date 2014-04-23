@@ -1,0 +1,30 @@
+<script language='javascript'>
+function populate(uid,uname,email)
+{
+	fname	= document.frm.name_field.value;
+	fmail = document.frm.email_field.value;
+	fid = document.frm.id_field.value;
+	window.opener.document.planfrm.elements[fname].value = uname;
+	window.opener.document.planfrm.elements[fmail].value = email;
+	window.opener.document.planfrm.elements[fid].value = uid;
+	self.close();
+}
+</script>
+<center><b>{{cSelectuser}}</b></center>
+<form name='frm'>
+<input type='hidden' name='name_field' value="{{field_name}}">
+<input type='hidden' name='email_field'  value="{{field_mail}}">
+<input type='hidden' name='id_field' value="{{field_id}}">
+<table align=center border=1>
+<tr>
+<td>{{cUsername}}</td><td>{{cPhonenumber}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+<td>
+<a href="javascript:populate(<{uid}>,'<{uname}>','<{email}>');"><{uname}></a></td><td><{email}>
+</td>
+</tr>
+<{record_loopend}>
+</table>
+</form>

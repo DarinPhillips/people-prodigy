@@ -1,0 +1,47 @@
+<center>
+<h1>
+{{cEditlang}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/edit_lang.html');">
+</h1>
+<center>
+<form action="edit_lang.php" method=post>
+<input type=hidden name=fLang_id value="{{fLang_id}}">
+<table align=center>
+	<tr>
+		<td class=code>
+		{{cselectedLangauge}}
+		</td>
+		<td class=code>
+		{{lang}}
+		</td>
+		
+	</tr>
+
+	<{language_loopstart}>
+	
+	<tr>
+		<td class=code>
+		{{cEnterLanguageName}} (<{bracket}>)
+		</td>
+		<td class=code>
+		<input type=text name="lang_<{lang_id}>" value="<{language}>">
+		</td>
+		
+	</tr>
+	
+	<{language_loopend}>
+	<tr>
+	<td class=code>
+		{{cCharset}}
+		</td>
+	<td class=code>
+		<input type=text name="charset_{{fLang_id}}" value="{{lang_charset}}">
+		</td>
+	</tr>
+
+	<tr align=center>
+		<td colspan=2>
+		<input type=submit name=submit value="{{cEdit}}">
+		</td>
+	</tr>
+</table>

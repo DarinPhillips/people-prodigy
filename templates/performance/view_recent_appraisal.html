@@ -1,0 +1,162 @@
+
+
+</script>
+<center>
+	<h1>
+	{{cCompleteAppraisals}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/view_recent_appraisal.html');">
+	</h1>
+</center>
+<body>
+	
+<form action="employee_appraisal.php" name='improve' method=POST>
+<table align=center border=0>
+	<tr>
+		<td class=code>
+	<!--	<input type=hidden name=user_id value="{{user_id}}">
+		<input type=hidden name=boss_id value="{{boss_id}}">
+		<input type=hidden name=fAppraisal_id value="{{appraisal_id}}">-->
+		<input type=text  value="{{username}}" readonly>{{cPerformanceAppraisal}}
+		</td>
+		<!--<{ifrejected_loopstart}>
+		<td class=code>
+		<input type="button"  value="{{cBossComment}}" onClick="popup_preview('boss_comments.php?fAppraisal_id={{appraisal_id}}');">
+		</td>
+		<{ifrejected_loopend}>-->
+	</tr>
+	<{objective_loopstart}>
+	<tr>
+		<td class=code>
+		<{count}>. <{objective}>
+		</td>
+	</tr>
+<!--	<input type=hidden name=fObjective_<{count}> value=<{o_id}> >-->
+	
+	<tr>
+		<td class=code>
+		{{cCommittment}}: <input type=text size=2   value="<{committed}>" readonly>%
+		</td>
+		<td class=code>
+		{{cAccomplished}}: <input type=text size=2  value="<{accomplish}>" readonly>%
+		</td>
+		<td class=code>
+		{{cFulfilled}}: <input type=text size=2  value="<{fulfilled}>" readonly>%
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cPriority}}<input type=text size=2 value="<{priority}>" readonly>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		{{cExpectationPoints}}: <input type=text size=2  value="<{metexpectation}>" readonly>%
+		</td>
+		<td class=code>
+		{{cActualrating}}: <input type=text size=2  value="<{actual}>" readonly>%
+		</td>
+		<td class=code>
+		{{cExpectationMet}}: <input type=text size=2  value="<{expected}>" readonly>%
+		</td>
+	</tr>
+	<tr>
+	
+		<td class=code>
+		{{cCommentsMade}}
+		</td>
+	</tr>
+	
+	
+	<{boss_comment}>
+	<tr>
+		<td class=code colspan=3>
+		<!--<input type=hidden name=fRater_<{count}>_<{Rcount}> value=<{boss_id}>>-->
+		{{cBy}}<input type=text value="<{boss_name}>" readonly>
+
+		</td>
+	</tr>
+	
+		
+		
+	<tr>
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL NAME=fComment_rater_<{count}>_<{Rcount}> ROWS=3 COLS=75 readonly><{comment_boss}></TEXTAREA>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code>
+		<b>{{cRatersComments}}</b>
+		</td>
+	</tr>
+	
+	
+	<{rater_loopstart}>
+	
+	<tr>
+		<td class=code colspan=3>
+		<!--<input type=hidden name=fRater_<{count}>_<{Rcount}> value="<{rater_id}>">-->
+		{{cBy}}<input type=text value="<{ratername}>" readonly>
+		</td>
+	</tr>
+	
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL NAME=fComment_rater_<{count}>_<{Rcount}> ROWS=3 COLS=75 readonly><{rater_comment}></TEXTAREA>
+		</td>
+	</tr>
+	
+	<{rater_loopend}>
+	<tr>
+		<td class=code>
+		<b>{{cBossExplanation}}</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code colspan=3>
+		{{cOutof}}<input type=text  size=2 value="<{points}>"  readonly>{{cUEarned}}
+		<input type=text name=fPoint2_<{count}>_<{rater}> size=2 value="<{points1}>" readonly>{{cBecause}}
+		</td>
+	</tr>
+	<{exp}>
+	<tr>
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL NAME=fExplanation_<{count}> ROWS=3 COLS=75 readonly><{explanation}></TEXTAREA>
+		</td>
+	</tr>
+	<{objective_loopend}>
+	<tr>
+		<td class=code>
+		<b>{{cFinalSummary}}</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code colspan=3>
+		{{cOutof}}<input type=text size=2 value="{{total_points}}"  readonly>{{cUEarned}}
+		<input type=text size=2 name=fFinal_point2 value="{{total_points1}}" readonly>{{cBecause}}
+		</td>
+	</tr>
+
+	{{final}}
+	
+	<tr>
+		<td class=code colspan=3>
+		<TEXTAREA WRAP=PHYSICAL NAME=fFinal_explanation ROWS=3 COLS=75 readonly>{{final_explanation}}</TEXTAREA>
+		</td>
+	</tr>
+	<!--<tr>
+		<td class=code>
+		<input type=submit name=fSave value={{cSave}}>
+		</td>
+		<td class=code>
+		<input type=submit name=fApprove value="{{cSubmitForApproval}}">
+		</td>
+		<{ifboss_loopstart}>
+		<td class=code>
+		<input type=submit name=fReject value="{{cReject}}" onclick="return validate(document.improve);">
+		</td>
+		<{ifboss_loopend}>
+	</tr>-->
+</table>
+</form>

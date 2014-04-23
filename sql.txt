@@ -1,0 +1,2633 @@
+
+
+--
+-- Table structure for table `access_rights`
+--
+
+DROP TABLE IF EXISTS `access_rights`;
+CREATE TABLE `access_rights` (
+  `id` int(11) NOT NULL auto_increment,
+  `type_1` varchar(255) default NULL,
+  `rights` varchar(255) default NULL,
+  `type_41` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `activities`
+--
+
+DROP TABLE IF EXISTS `activities`;
+CREATE TABLE `activities` (
+  `act_id` int(11) NOT NULL auto_increment,
+  `obj_id` int(11) default NULL,
+  `activity_name` varchar(255) default NULL,
+  PRIMARY KEY  (`act_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `admin_session`
+--
+
+DROP TABLE IF EXISTS `admin_session`;
+CREATE TABLE `admin_session` (
+  `admin_id` int(11) NOT NULL auto_increment,
+  `hash` varchar(255) default NULL,
+  `timestamp` int(11) default NULL,
+  PRIMARY KEY  (`admin_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `administrator`
+--
+
+DROP TABLE IF EXISTS `administrator`;
+CREATE TABLE `administrator` (
+  `admin_id` int(11) NOT NULL auto_increment,
+  `admin_name` varchar(255) default NULL,
+  `password` varchar(255) default NULL,
+  PRIMARY KEY  (`admin_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL auto_increment,
+  `level_id` int(11) default NULL,
+  `fam_id` int(11) default NULL,
+  `location_id` int(11) default NULL,
+  `pos_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  `emp_type_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `answers`
+--
+
+DROP TABLE IF EXISTS `answers`;
+CREATE TABLE `answers` (
+  `ans_id` int(11) NOT NULL auto_increment,
+  `q_id` int(11) NOT NULL default '0',
+  `answer` text NOT NULL,
+  `status` enum('r','w') default 'w',
+  `weightage` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ans_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `appraisal`
+--
+
+DROP TABLE IF EXISTS `appraisal`;
+CREATE TABLE `appraisal` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `test_mode` varchar(255) default NULL,
+  `test_type` enum('t','i') default NULL,
+  `raters` int(11) default NULL,
+  `date_assigned` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `appraisal_results`
+--
+
+DROP TABLE IF EXISTS `appraisal_results`;
+CREATE TABLE `appraisal_results` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `o_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `rater_summary` text,
+  `final_point2` decimal(8,2) default NULL,
+  `final_summary` text,
+  `rater_point` decimal(8,2) default NULL,
+  `appraisal_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_affected`
+--
+
+DROP TABLE IF EXISTS `approved_affected`;
+CREATE TABLE `approved_affected` (
+  `aff_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `from_date` date default NULL,
+  `to_date` date default NULL,
+  `frequency` varchar(255) default NULL,
+  PRIMARY KEY  (`aff_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_appraisal_results`
+--
+
+DROP TABLE IF EXISTS `approved_appraisal_results`;
+CREATE TABLE `approved_appraisal_results` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `o_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `rater_summary` text,
+  `final_point2` decimal(8,2) default NULL,
+  `final_summary` text,
+  `rater_point` decimal(8,2) default NULL,
+  `appraisal_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  `added_on` datetime default NULL,
+  `approved_on` datetime default NULL,
+  `status` char(1) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_category`
+--
+
+DROP TABLE IF EXISTS `approved_category`;
+CREATE TABLE `approved_category` (
+  `cat_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `category_2` text,
+  `approved_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `category_41` text,
+  PRIMARY KEY  (`cat_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_devbuilder`
+--
+
+DROP TABLE IF EXISTS `approved_devbuilder`;
+CREATE TABLE `approved_devbuilder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `title` text,
+  `description` text,
+  `url` text,
+  `skill_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `key_id` int(11) default NULL,
+  `status` varchar(11) default NULL,
+  `cdate` date default NULL,
+  `completed_date` date NOT NULL default '0000-00-00',
+  `frequency` varchar(255) default NULL,
+  `feed_type` varchar(30) default NULL,
+  `pstatus` varchar(5) default NULL,
+  `last_updated_date` date NOT NULL default '0000-00-00',
+  `mailsent_date` date NOT NULL default '0000-00-00',
+  `feedback_date` date default NULL,
+  `update_status` char(1) NOT NULL default '',
+  `title_41` text,
+  `description_41` text,
+  `url_41` text,
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_devsolution`
+--
+
+DROP TABLE IF EXISTS `approved_devsolution`;
+CREATE TABLE `approved_devsolution` (
+  `dev_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `date` datetime default NULL,
+  PRIMARY KEY  (`dev_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_devways`
+--
+
+DROP TABLE IF EXISTS `approved_devways`;
+CREATE TABLE `approved_devways` (
+  `way_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `dev_id` int(11) default NULL,
+  PRIMARY KEY  (`way_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_feedback`
+--
+
+DROP TABLE IF EXISTS `approved_feedback`;
+CREATE TABLE `approved_feedback` (
+  `fd_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  `raters_id` int(11) NOT NULL default '0',
+  `o_id` int(11) default NULL,
+  `r_id` int(11) default NULL,
+  `effective` text,
+  `idelivered` int(11) default NULL,
+  `tech1` varchar(255) default NULL,
+  `tech2` varchar(255) default NULL,
+  `inter1` varchar(255) default NULL,
+  `inter2` varchar(255) default NULL,
+  `approved_date` datetime default NULL,
+  `STATUS` int(11) default '0',
+  `active` char(1) default NULL,
+  `vaccept` char(1) default NULL,
+  `accept_date` datetime default NULL,
+  `reject` char(1) NOT NULL default '',
+  PRIMARY KEY  (`fd_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_help`
+--
+
+DROP TABLE IF EXISTS `approved_help`;
+CREATE TABLE `approved_help` (
+  `h_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`h_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_metrics`
+--
+
+DROP TABLE IF EXISTS `approved_metrics`;
+CREATE TABLE `approved_metrics` (
+  `met_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `metrics_1` text,
+  `metrics_2` text,
+  `metrics_36` text,
+  `metrics_40` text,
+  `metrics_41` text,
+  `metrics_42` text,
+  `metrics_43` text,
+  `metrics_44` text,
+  `metrics_45` text,
+  `metrics_46` text,
+  `metrics_47` text,
+  `metrics_48` text,
+  `metrics_49` text,
+  PRIMARY KEY  (`met_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_performance_appraisal`
+--
+
+DROP TABLE IF EXISTS `approved_performance_appraisal`;
+CREATE TABLE `approved_performance_appraisal` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `o_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `appraisal_id` int(11) default NULL,
+  `rater_id` int(11) default NULL,
+  `rater_comment` text,
+  `who` char(1) default NULL,
+  `boss_id` int(11) default NULL,
+  `added_on` datetime default NULL,
+  `approved_on` datetime default NULL,
+  `status` char(1) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_planbuilder`
+--
+
+DROP TABLE IF EXISTS `approved_planbuilder`;
+CREATE TABLE `approved_planbuilder` (
+  `plan_id` int(11) NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default NULL,
+  `act_ib_id` int(11) unsigned default NULL,
+  `act_sdate` date default NULL,
+  `app_ib_id` int(11) unsigned default NULL,
+  `app_sdate` date default NULL,
+  `frequency1` char(225) default NULL,
+  `frequency2` char(225) default NULL,
+  `frequency3` char(225) default NULL,
+  PRIMARY KEY  (`plan_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_rejected_category`
+--
+
+DROP TABLE IF EXISTS `approved_rejected_category`;
+CREATE TABLE `approved_rejected_category` (
+  `r_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `category_41` text,
+  PRIMARY KEY  (`r_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_selected_objective`
+--
+
+DROP TABLE IF EXISTS `approved_selected_objective`;
+CREATE TABLE `approved_selected_objective` (
+  `sl_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `o_id` int(11) default NULL,
+  `objective_1` text,
+  `priority` int(11) default NULL,
+  `committed_no` int(11) default NULL,
+  `percent` varchar(255) default NULL,
+  `how_to_get_1` text,
+  `changed_user_id` int(11) NOT NULL default '0',
+  `approved_date` datetime default NULL,
+  `status` char(1) NOT NULL default '',
+  `objective_41` text,
+  `how_to_get_41` text,
+  PRIMARY KEY  (`sl_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approved_selected_qualification`
+--
+
+DROP TABLE IF EXISTS `approved_selected_qualification`;
+CREATE TABLE `approved_selected_qualification` (
+  `sl_qid` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `q_id` int(11) default NULL,
+  PRIMARY KEY  (`sl_qid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `approveduser_objective`
+--
+
+DROP TABLE IF EXISTS `approveduser_objective`;
+CREATE TABLE `approveduser_objective` (
+  `o_id` int(11) NOT NULL auto_increment,
+  `met_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `status` char(1) NOT NULL default '',
+  PRIMARY KEY  (`o_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_performance_appraisal`
+--
+
+DROP TABLE IF EXISTS `assign_performance_appraisal`;
+CREATE TABLE `assign_performance_appraisal` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `boss_user_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `date_added` datetime default NULL,
+  `status` char(1) NOT NULL default '',
+  `rejection_date` datetime default NULL,
+  `reject_exp` text NOT NULL,
+  `submitted_on` datetime default NULL,
+  `check_status` char(1) NOT NULL default '',
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_solution_builder`
+--
+
+DROP TABLE IF EXISTS `assign_solution_builder`;
+CREATE TABLE `assign_solution_builder` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `admin_id` int(11) default NULL,
+  `date` datetime default NULL,
+  `status` char(1) default NULL,
+  `type` char(1) default NULL,
+  `pstatus` char(1) default NULL,
+  `plan_updated_date` date NOT NULL default '0000-00-00',
+  `plan_approved_date` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_succession_plan`
+--
+
+DROP TABLE IF EXISTS `assign_succession_plan`;
+CREATE TABLE `assign_succession_plan` (
+  `plan_id` int(11) NOT NULL auto_increment,
+  `assigned_by` int(11) default NULL,
+  `assigned_to` int(11) default NULL,
+  `assigned_on` datetime default NULL,
+  `STATUS` char(1) default NULL,
+  PRIMARY KEY  (`plan_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_succession_plan_sub`
+--
+
+DROP TABLE IF EXISTS `assign_succession_plan_sub`;
+CREATE TABLE `assign_succession_plan_sub` (
+  `plan_id` int(11) default NULL,
+  `assigned_by` int(11) default NULL,
+  `assigned_to` int(11) default NULL,
+  `assigned_on` datetime default NULL,
+  `STATUS` char(1) default NULL,
+  `position` int(11) default NULL,
+  `updated_date` datetime default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_tech_skill_builder`
+--
+
+DROP TABLE IF EXISTS `assign_tech_skill_builder`;
+CREATE TABLE `assign_tech_skill_builder` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `position_id` int(11) default NULL,
+  `admin_id` int(11) default NULL,
+  `date` datetime default NULL,
+  `status` char(1) NOT NULL default '',
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `assign_test_builder`
+--
+
+DROP TABLE IF EXISTS `assign_test_builder`;
+CREATE TABLE `assign_test_builder` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `admin_id` int(11) default NULL,
+  `date` datetime default NULL,
+  `group_id` int(11) default NULL,
+  `STATUS` enum('p','a') default 'p',
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `boss_relate`
+--
+
+DROP TABLE IF EXISTS `boss_relate`;
+CREATE TABLE `boss_relate` (
+  `id` int(11) NOT NULL auto_increment,
+  `boss_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `career_colors`
+--
+
+DROP TABLE IF EXISTS `career_colors`;
+CREATE TABLE `career_colors` (
+  `color_id` int(11) unsigned NOT NULL auto_increment,
+  `career_bgcolor` varchar(6) default '0',
+  `career_border` varchar(6) default '0',
+  `career_grp_self` varchar(6) default '0',
+  `career_grp_boss` varchar(6) default '0',
+  `career_grp_team` varchar(6) default '0',
+  `career_grp_incus` varchar(6) default '0',
+  `career_grp_peer` varchar(6) default '0',
+  `career_grp_excus` varchar(6) default '0',
+  `career_grp_topboss` varchar(6) default '0',
+  `career_grp_dirrep` varchar(6) default '0',
+  `career_grp_other` varchar(6) default '0',
+  PRIMARY KEY  (`color_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Color Specification of Career Graphs';
+
+--
+-- Table structure for table `career_goals`
+--
+
+DROP TABLE IF EXISTS `career_goals`;
+CREATE TABLE `career_goals` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `onelevel_low` int(11) unsigned default NULL,
+  `same_level` int(11) unsigned default NULL,
+  `onelevel_up` int(11) unsigned default NULL,
+  `twolevel_up` int(11) unsigned default NULL,
+  `interest` enum('lot','some') default 'some',
+  `user_id` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `config`
+--
+
+DROP TABLE IF EXISTS `config`;
+CREATE TABLE `config` (
+  `id` int(11) NOT NULL default '0',
+  `objectives` int(11) default NULL,
+  `activities` varchar(255) default NULL,
+  `skills` int(11) default NULL,
+  `delimiter` varchar(255) default NULL,
+  `skill_levels` int(11) default NULL,
+  `answer_count` int(11) default NULL,
+  `isubject` varchar(255) default NULL,
+  `imessage` text,
+  `msubject` varchar(255) default NULL,
+  `mmessage` text,
+  `ssubject` varchar(255) default NULL,
+  `smessage` text,
+  `tbsubject` varchar(255) default NULL,
+  `mamessage` text,
+  `masubject` varchar(255) default NULL,
+  `tbmessage` text,
+  `no_at_level` int(11) default NULL,
+  `challenges` int(11) default NULL,
+  `tasubject` varchar(255) default NULL,
+  `tamessage` text,
+  `count_of_employees` int(11) default NULL,
+  `emp_subject` text,
+  `emp_message` text,
+  `dev_subject` text,
+  `dev_message` text,
+  `admin_subject` text,
+  `admin_message` text,
+  `dev_textbox` int(11) default NULL,
+  `feedback` int(11) unsigned default NULL,
+  `page_limit` int(11) default NULL,
+  `person_affected` int(11) default NULL,
+  `person_help_needed` int(11) default NULL,
+  `test_subject` text,
+  `test_message` text,
+  `i_boss` char(1) default NULL,
+  `b_boss` char(1) default NULL,
+  `no_of_qualification` int(11) default NULL,
+  `min_time` int(11) default NULL,
+  `matechmessage` text,
+  `matechsubject` varchar(255) default NULL,
+  `appraisal_message` varchar(255) default NULL,
+  `lsolution_subject` text,
+  `lsolution_message` text,
+  `skill_subject` text,
+  `skill_message` text,
+  `boss_message` text,
+  `boss_subject` text,
+  `toadmin_message` text,
+  `toadmin_subject` text,
+  `lplan_approved_subject` text,
+  `lplan_approved_message` text,
+  `lplan_resubmitted_subject` text,
+  `lplan_resubmitted_message` text,
+  `lplanassign_subject` text,
+  `lplanassign_message` text,
+  `lplan_feedback_subject` text,
+  `lplan_feedback_message` text,
+  `career_goals_message` varchar(255) default NULL,
+  `commit_color` varchar(255) NOT NULL default '',
+  `accomplish_color` varchar(255) NOT NULL default '',
+  `admin_color` varchar(255) NOT NULL default '',
+  `rater1_color` varchar(255) NOT NULL default '',
+  `rater2_color` varchar(255) NOT NULL default '',
+  `rater3_color` varchar(255) NOT NULL default '',
+  `self_color` varchar(255) NOT NULL default '',
+  `overall_color` varchar(255) NOT NULL default '',
+  `succession_plan_subject` text NOT NULL,
+  `succession_plan_message` text NOT NULL,
+  `succession_skillupdate_subject` text NOT NULL,
+  `succession_skillupdate_message` text NOT NULL,
+  `succession_update_message` text NOT NULL,
+  `succession_update_subject` text NOT NULL,
+  `mail_to_boss_subject` text NOT NULL,
+  `mail_to_boss_message` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts` (
+  `contact_id` int(11) NOT NULL auto_increment,
+  `contact_field` varchar(255) default NULL,
+  `contact_display_1` varchar(255) default NULL,
+  `status` enum('Yes','No') NOT NULL default 'No',
+  `contact_display_41` varchar(255) default NULL,
+  PRIMARY KEY  (`contact_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `deployment_plan`
+--
+
+DROP TABLE IF EXISTS `deployment_plan`;
+CREATE TABLE `deployment_plan` (
+  `plan_id` int(11) unsigned default NULL,
+  `position` int(11) unsigned default NULL,
+  `created_date` datetime default NULL,
+  `created_user` int(11) default NULL,
+  `designee1_text` text,
+  `designee2_text` text,
+  `designee1` enum('employee','external') NOT NULL default 'employee',
+  `designee2` enum('employee','external') NOT NULL default 'employee'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `dev_basic`
+--
+
+DROP TABLE IF EXISTS `dev_basic`;
+CREATE TABLE `dev_basic` (
+  `basic_id` int(11) NOT NULL auto_increment,
+  `coursetype_1` varchar(255) default NULL,
+  `coursetype_22` varchar(255) default NULL,
+  `coursetype_41` varchar(255) default NULL,
+  PRIMARY KEY  (`basic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `dev_interbasic`
+--
+
+DROP TABLE IF EXISTS `dev_interbasic`;
+CREATE TABLE `dev_interbasic` (
+  `interbasic_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `coursename_1` varchar(255) default NULL,
+  `coursename_22` varchar(255) default NULL,
+  `coursename_41` varchar(255) default NULL,
+  PRIMARY KEY  (`interbasic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `eeo_main`
+--
+
+DROP TABLE IF EXISTS `eeo_main`;
+CREATE TABLE `eeo_main` (
+  `eeo_id` int(11) NOT NULL auto_increment,
+  `eeo_name` varchar(255) default NULL,
+  PRIMARY KEY  (`eeo_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `eeo_tags`
+--
+
+DROP TABLE IF EXISTS `eeo_tags`;
+CREATE TABLE `eeo_tags` (
+  `tag_id` int(11) NOT NULL auto_increment,
+  `eeo_id` int(11) NOT NULL default '0',
+  `tag_name` varchar(255) default NULL,
+  PRIMARY KEY  (`tag_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `employment_type`
+--
+
+DROP TABLE IF EXISTS `employment_type`;
+CREATE TABLE `employment_type` (
+  `id` int(11) NOT NULL auto_increment,
+  `type_1` varchar(255) default NULL,
+  `status` enum('Yes','No') default NULL,
+  `date_added` datetime default NULL,
+  `external_candidate` enum('yes','no') NOT NULL default 'yes',
+  `type_41` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `external`
+--
+
+DROP TABLE IF EXISTS `external`;
+CREATE TABLE `external` (
+  `user_id` int(11) default NULL,
+  `Resumes` varchar(255) default NULL,
+  `Letters` varchar(255) default NULL,
+  `Photos` varchar(255) default NULL,
+  `Certificates` varchar(255) default NULL,
+  `Licenses` varchar(255) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `family`
+--
+
+DROP TABLE IF EXISTS `family`;
+CREATE TABLE `family` (
+  `family_id` int(11) NOT NULL auto_increment,
+  `family_name` varchar(255) NOT NULL default '',
+  `date_added` datetime default NULL,
+  `added_by` int(11) NOT NULL default '1',
+  PRIMARY KEY  (`family_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `family_position`
+--
+
+DROP TABLE IF EXISTS `family_position`;
+CREATE TABLE `family_position` (
+  `fpos_id` int(11) NOT NULL auto_increment,
+  `family_id` int(11) NOT NULL default '0',
+  `position_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`fpos_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `feedback`
+--
+
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback` (
+  `f_id` int(11) unsigned NOT NULL auto_increment,
+  `plan_id` int(11) unsigned default NULL,
+  `skill_id` int(11) unsigned default NULL,
+  `user_id` int(11) unsigned default NULL,
+  `name` varchar(225) default NULL,
+  `email` varchar(225) default NULL,
+  `sdate` date default NULL,
+  `f_type` varchar(5) default NULL,
+  `status` varchar(5) default NULL,
+  `key_id` int(11) unsigned default NULL,
+  `frequency` varchar(225) default NULL,
+  PRIMARY KEY  (`f_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `label_for_model`
+--
+
+DROP TABLE IF EXISTS `label_for_model`;
+CREATE TABLE `label_for_model` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `user_id` int(11) unsigned default '0',
+  `skill_id` int(11) unsigned default '0',
+  `label_no` int(11) unsigned default '0',
+  `skill_type` enum('i','t') default 'i',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='labels for position models';
+
+--
+-- Table structure for table `language`
+--
+
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE `language` (
+  `lang_id` int(11) NOT NULL auto_increment,
+  `lang_1` varchar(255) default NULL,
+  `lang_41` varchar(255) default NULL,
+  PRIMARY KEY  (`lang_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `language_charset`
+--
+
+DROP TABLE IF EXISTS `language_charset`;
+CREATE TABLE `language_charset` (
+  `LANGUAGE_ID` int(11) NOT NULL default '0',
+  `charset` text,
+  PRIMARY KEY  (`LANGUAGE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `learning_feedback_results`
+--
+
+DROP TABLE IF EXISTS `learning_feedback_results`;
+CREATE TABLE `learning_feedback_results` (
+  `f_id` int(11) NOT NULL auto_increment,
+  `rater_id` int(11) default NULL,
+  `rated_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `value` int(11) default NULL,
+  `rated_date` datetime default NULL,
+  `feedback_text` text,
+  `status` varchar(255) default NULL,
+  PRIMARY KEY  (`f_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `learning_result`
+--
+
+DROP TABLE IF EXISTS `learning_result`;
+CREATE TABLE `learning_result` (
+  `id` int(11) NOT NULL auto_increment,
+  `value` int(11) default NULL,
+  `result_1` text,
+  `result_41` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `learning_settings`
+--
+
+DROP TABLE IF EXISTS `learning_settings`;
+CREATE TABLE `learning_settings` (
+  `id` int(11) NOT NULL default '0',
+  `requesttext_1` text,
+  `approvaltext_1` text,
+  `requesttext_41` text,
+  `approvaltext_41` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `location`
+--
+
+DROP TABLE IF EXISTS `location`;
+CREATE TABLE `location` (
+  `loc_id` int(11) NOT NULL auto_increment,
+  `loc_name` varchar(255) default NULL,
+  `denotes` int(11) default NULL,
+  PRIMARY KEY  (`loc_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `location_relate`
+--
+
+DROP TABLE IF EXISTS `location_relate`;
+CREATE TABLE `location_relate` (
+  `id` int(11) NOT NULL auto_increment,
+  `loc_id` int(11) default NULL,
+  `sub_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `location_table`
+--
+
+DROP TABLE IF EXISTS `location_table`;
+CREATE TABLE `location_table` (
+  `location_id` int(11) NOT NULL auto_increment,
+  `first_level` varchar(255) default NULL,
+  `second_level` varchar(255) default NULL,
+  `third_level` varchar(255) default NULL,
+  `fourth_level` varchar(255) default NULL,
+  `fifth_level` varchar(255) default NULL,
+  `sixth_level` varchar(255) default NULL,
+  `seventh_level` varchar(255) default NULL,
+  PRIMARY KEY  (`location_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `model_components_1`
+--
+
+DROP TABLE IF EXISTS `model_components_1`;
+CREATE TABLE `model_components_1` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `differentiator_type` enum('Performance','Learning') default NULL,
+  `top_bottom` enum('top','bottom') default NULL,
+  `percent_each` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Qualify Components Pate';
+
+--
+-- Table structure for table `model_components_2`
+--
+
+DROP TABLE IF EXISTS `model_components_2`;
+CREATE TABLE `model_components_2` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `i_rated_as` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Components Selected';
+
+--
+-- Table structure for table `model_components_3`
+--
+
+DROP TABLE IF EXISTS `model_components_3`;
+CREATE TABLE `model_components_3` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `t_rated_as` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='model_components_3';
+
+--
+-- Table structure for table `model_components_4`
+--
+
+DROP TABLE IF EXISTS `model_components_4`;
+CREATE TABLE `model_components_4` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `sel_users` enum('dirrep','all') default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='If DirectReports or All under Boss in chain of cmd selected';
+
+--
+-- Table structure for table `model_factors_1`
+--
+
+DROP TABLE IF EXISTS `model_factors_1`;
+CREATE TABLE `model_factors_1` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `family` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Factors selected in Model ''families''';
+
+--
+-- Table structure for table `model_factors_10`
+--
+
+DROP TABLE IF EXISTS `model_factors_10`;
+CREATE TABLE `model_factors_10` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `tskills` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='model factors T skills';
+
+--
+-- Table structure for table `model_factors_2`
+--
+
+DROP TABLE IF EXISTS `model_factors_2`;
+CREATE TABLE `model_factors_2` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default NULL,
+  `location` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model creation factors ''Location''';
+
+--
+-- Table structure for table `model_factors_3`
+--
+
+DROP TABLE IF EXISTS `model_factors_3`;
+CREATE TABLE `model_factors_3` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `levels` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model factors';
+
+--
+-- Table structure for table `model_factors_4`
+--
+
+DROP TABLE IF EXISTS `model_factors_4`;
+CREATE TABLE `model_factors_4` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `boss_id` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model factorsBosses';
+
+--
+-- Table structure for table `model_factors_5`
+--
+
+DROP TABLE IF EXISTS `model_factors_5`;
+CREATE TABLE `model_factors_5` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `employees` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model Factors Employees';
+
+--
+-- Table structure for table `model_factors_6`
+--
+
+DROP TABLE IF EXISTS `model_factors_6`;
+CREATE TABLE `model_factors_6` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `emp_types` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model Factors Empl Types';
+
+--
+-- Table structure for table `model_factors_7`
+--
+
+DROP TABLE IF EXISTS `model_factors_7`;
+CREATE TABLE `model_factors_7` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `eeo_type` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='model factors for Eeo';
+
+--
+-- Table structure for table `model_factors_8`
+--
+
+DROP TABLE IF EXISTS `model_factors_8`;
+CREATE TABLE `model_factors_8` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `rating` enum('performance','learning') default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Model Factos Per / Learn';
+
+--
+-- Table structure for table `model_factors_9`
+--
+
+DROP TABLE IF EXISTS `model_factors_9`;
+CREATE TABLE `model_factors_9` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `iskills` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='model factors I skills';
+
+--
+-- Table structure for table `model_name_table`
+--
+
+DROP TABLE IF EXISTS `model_name_table`;
+CREATE TABLE `model_name_table` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `model_name` varchar(250) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Name of Model';
+
+--
+-- Table structure for table `model_skills`
+--
+
+DROP TABLE IF EXISTS `model_skills`;
+CREATE TABLE `model_skills` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `skill_id` int(11) unsigned default '0',
+  `level_chosen` int(11) unsigned default '0',
+  `weight` float(4,2) default '0.00',
+  `recommended_level` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Skills of Model';
+
+--
+-- Table structure for table `model_table`
+--
+
+DROP TABLE IF EXISTS `model_table`;
+CREATE TABLE `model_table` (
+  `model_id` int(11) unsigned NOT NULL auto_increment,
+  `user_id` int(11) unsigned default '0',
+  `model_created_on` datetime default NULL,
+  PRIMARY KEY  (`model_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Main table of models';
+
+--
+-- Table structure for table `model_view_1`
+--
+
+DROP TABLE IF EXISTS `model_view_1`;
+CREATE TABLE `model_view_1` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `levels_to_view` int(11) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Viewing the Models';
+
+--
+-- Table structure for table `model_view_2`
+--
+
+DROP TABLE IF EXISTS `model_view_2`;
+CREATE TABLE `model_view_2` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `model_id` int(11) unsigned default '0',
+  `all1` enum('yes','no') default 'no',
+  `boss` enum('yes','no') default 'no',
+  `admins` enum('yes','no') default 'no',
+  `me` enum('yes','no') default 'no',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `models_percent_fit`
+--
+
+DROP TABLE IF EXISTS `models_percent_fit`;
+CREATE TABLE `models_percent_fit` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `user_id` int(11) unsigned NOT NULL default '0',
+  `skill_type` enum('i','t') default 'i',
+  `model_id` int(11) unsigned default '0',
+  `percent_fit` float(4,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `multirater`
+--
+
+DROP TABLE IF EXISTS `multirater`;
+CREATE TABLE `multirater` (
+  `multirater_id` int(11) unsigned NOT NULL auto_increment,
+  `skill_id` enum('t','i') default 'i',
+  `no_of_raters` int(11) unsigned default NULL,
+  PRIMARY KEY  (`multirater_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `name_fields`
+--
+
+DROP TABLE IF EXISTS `name_fields`;
+CREATE TABLE `name_fields` (
+  `name_id` int(11) NOT NULL auto_increment,
+  `field_name` varchar(255) default NULL,
+  `name_1` varchar(255) default NULL,
+  `status` enum('YES','NO') default NULL,
+  `name_22` varchar(255) default NULL,
+  `name_2` varchar(255) default NULL,
+  `name_41` varchar(255) default NULL,
+  PRIMARY KEY  (`name_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `objectives`
+--
+
+DROP TABLE IF EXISTS `objectives`;
+CREATE TABLE `objectives` (
+  `obj_id` int(11) NOT NULL auto_increment,
+  `build_id` int(11) default NULL,
+  `objective_name` varchar(255) default NULL,
+  PRIMARY KEY  (`obj_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `opportunity_status`
+--
+
+DROP TABLE IF EXISTS `opportunity_status`;
+CREATE TABLE `opportunity_status` (
+  `eeo_id` int(11) NOT NULL auto_increment,
+  `category` varchar(255) default NULL,
+  `tag` varchar(255) default NULL,
+  PRIMARY KEY  (`eeo_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `org_chart`
+--
+
+DROP TABLE IF EXISTS `org_chart`;
+CREATE TABLE `org_chart` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `levelno` int(11) default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `org_main`
+--
+
+DROP TABLE IF EXISTS `org_main`;
+CREATE TABLE `org_main` (
+  `dummyid` int(11) NOT NULL auto_increment,
+  `levels` int(11) default NULL,
+  `higher_order` enum('yes','no') default NULL,
+  PRIMARY KEY  (`dummyid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `other_raters`
+--
+
+DROP TABLE IF EXISTS `other_raters`;
+CREATE TABLE `other_raters` (
+  `rater_id` int(11) unsigned NOT NULL auto_increment,
+  `rater_email` varchar(255) default '0',
+  `cur_userid` int(11) default NULL,
+  `rater_userid` int(11) default NULL,
+  `STATUS` enum('r','a') default 'a',
+  `group_belonging` varchar(255) default NULL,
+  `rating_over` enum('y','n') default 'n',
+  `date_rating_requested` datetime default '0000-00-00 00:00:00',
+  `date_rating_over` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`rater_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `other_raters_tech`
+--
+
+DROP TABLE IF EXISTS `other_raters_tech`;
+CREATE TABLE `other_raters_tech` (
+  `ref_id` int(11) unsigned NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default '0',
+  `label_id` tinyint(3) unsigned default '0',
+  `rated_user` int(11) unsigned default '0',
+  `rater_id` int(11) unsigned default '0',
+  `group_name` enum('Boss','Reference') default 'Reference',
+  PRIMARY KEY  (`ref_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Rating done by others in Technical';
+
+--
+-- Table structure for table `owner_defined_text`
+--
+
+DROP TABLE IF EXISTS `owner_defined_text`;
+CREATE TABLE `owner_defined_text` (
+  `on_id` int(11) NOT NULL auto_increment,
+  `text_1` text,
+  `context` varchar(255) default NULL,
+  `text_41` text,
+  PRIMARY KEY  (`on_id`),
+  UNIQUE KEY `context` (`context`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_alert`
+--
+
+DROP TABLE IF EXISTS `performance_alert`;
+CREATE TABLE `performance_alert` (
+  `al_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  `submit_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`al_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_appraisal`
+--
+
+DROP TABLE IF EXISTS `performance_appraisal`;
+CREATE TABLE `performance_appraisal` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `appraisal_id` int(11) default NULL,
+  `o_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `rater_id` int(11) default NULL,
+  `rater_comment` text,
+  `who` char(1) default NULL,
+  `level_no` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_comments`
+--
+
+DROP TABLE IF EXISTS `performance_comments`;
+CREATE TABLE `performance_comments` (
+  `c_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `comment_1` text,
+  `comment_6` text,
+  `p_status` varchar(5) default NULL,
+  PRIMARY KEY  (`c_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_feedback`
+--
+
+DROP TABLE IF EXISTS `performance_feedback`;
+CREATE TABLE `performance_feedback` (
+  `f_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) NOT NULL default '0',
+  `user_id` int(11) default NULL,
+  `request_from` int(11) default NULL,
+  `s_date` datetime default NULL,
+  `status` char(1) default NULL,
+  `latest` char(1) NOT NULL default '',
+  PRIMARY KEY  (`f_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_message`
+--
+
+DROP TABLE IF EXISTS `performance_message`;
+CREATE TABLE `performance_message` (
+  `m_id` int(11) NOT NULL default '0',
+  `appsub_subject_1` text,
+  `appsub_message_1` text,
+  `approved_subject_1` text,
+  `approved_message_1` text,
+  `resubmit_subject_1` text,
+  `resubmit_message_1` text,
+  `reject_subject_1` text NOT NULL,
+  `reject_message_1` text NOT NULL,
+  `obj_subject_1` text NOT NULL,
+  `obj_message_1` text NOT NULL,
+  `obj_app_subject_1` text NOT NULL,
+  `obj_app_message_1` text NOT NULL,
+  `verification_submit_sub_1` text NOT NULL,
+  `verification_submit_message_1` text NOT NULL,
+  `verification_rej_sub_1` text NOT NULL,
+  `verification_rej_message_1` text NOT NULL,
+  `verification_remind_sub_1` text NOT NULL,
+  `verification_remind_message_1` text NOT NULL,
+  `app_feedback_subject_1` text NOT NULL,
+  `app_feedback_message_1` text NOT NULL,
+  `app_feedback_message_40` text NOT NULL,
+  `plan_subject_1` varchar(255) NOT NULL default '',
+  `plan_message_1` varchar(255) NOT NULL default '',
+  `plan_approved_subject_1` varchar(255) NOT NULL default '',
+  `plan_approved_message_1` varchar(255) NOT NULL default '',
+  `appraisal_approved_subject_final_1` text NOT NULL,
+  `appraisal_approved_message_final_1` text NOT NULL,
+  `appraisal_approved_subject_1` text NOT NULL,
+  `appraisal_approved_message_1` text NOT NULL,
+  `plan_expiry_subject_1` text NOT NULL,
+  `plan_expiry_message_1` text NOT NULL,
+  `appsub_subject_41` text,
+  `appsub_message_41` text,
+  `approved_subject_41` text,
+  `approved_message_41` text,
+  `resubmit_subject_41` text,
+  `resubmit_message_41` text,
+  `reject_subject_41` text,
+  `reject_message_41` text,
+  `obj_message_41` text,
+  `obj_subject_41` text,
+  `obj_app_subject_41` text,
+  `obj_app_message_41` text,
+  `verification_submit_sub_41` text,
+  `verification_submit_message_41` text,
+  `verification_rej_sub_41` text,
+  `verification_rej_message_41` text,
+  `verification_remind_sub_41` text,
+  `verification_remind_message_41` text,
+  `app_feedback_subject_41` text,
+  `add_feedback_message` text,
+  `add_feedback_message_48` text,
+  `add_feedback_message_49` text,
+  PRIMARY KEY  (`m_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `performance_setting`
+--
+
+DROP TABLE IF EXISTS `performance_setting`;
+CREATE TABLE `performance_setting` (
+  `ps_id` int(11) NOT NULL default '0',
+  `category` int(11) default NULL,
+  `metrics` int(11) default NULL,
+  `status` char(1) default NULL,
+  `plan_no` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ps_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `plan`
+--
+
+DROP TABLE IF EXISTS `plan`;
+CREATE TABLE `plan` (
+  `requirement` text,
+  `consequences` text,
+  `due_date` date default NULL,
+  `added_by` int(11) default NULL,
+  `added_on` datetime default NULL,
+  `status` char(1) default NULL,
+  `employee_id` int(11) default NULL,
+  `plan_id` int(11) NOT NULL auto_increment,
+  `check_status` char(1) default NULL,
+  PRIMARY KEY  (`plan_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `plan_improvement`
+--
+
+DROP TABLE IF EXISTS `plan_improvement`;
+CREATE TABLE `plan_improvement` (
+  `imp_id` int(11) NOT NULL auto_increment,
+  `plan_id` int(11) default NULL,
+  `plan_text` text,
+  `plan_date` date default NULL,
+  `employee_id` int(11) default NULL,
+  `status` char(1) default NULL,
+  PRIMARY KEY  (`imp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `position`
+--
+
+DROP TABLE IF EXISTS `position`;
+CREATE TABLE `position` (
+  `pos_id` int(11) NOT NULL auto_increment,
+  `position_name` text,
+  `status` char(1) default NULL,
+  `date_added` datetime default NULL,
+  `level_no` int(11) default NULL,
+  `boss_no` int(11) default NULL,
+  `location` int(11) default NULL,
+  `added_by` int(11) NOT NULL default '1',
+  PRIMARY KEY  (`pos_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `position_designee1`
+--
+
+DROP TABLE IF EXISTS `position_designee1`;
+CREATE TABLE `position_designee1` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `plan_id` int(11) unsigned default NULL,
+  `designated_user` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `position_designee2`
+--
+
+DROP TABLE IF EXISTS `position_designee2`;
+CREATE TABLE `position_designee2` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `plan_id` int(11) unsigned default NULL,
+  `designated_user` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `posmodel_colors`
+--
+
+DROP TABLE IF EXISTS `posmodel_colors`;
+CREATE TABLE `posmodel_colors` (
+  `posmodel_id` int(11) NOT NULL auto_increment,
+  `key_1` varchar(11) default NULL,
+  `key_2` varchar(11) default NULL,
+  `key_3` varchar(11) default NULL,
+  `key_4` varchar(11) default NULL,
+  `key_5` varchar(11) default NULL,
+  PRIMARY KEY  (`posmodel_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `priority`
+--
+
+DROP TABLE IF EXISTS `priority`;
+CREATE TABLE `priority` (
+  `p_id` int(11) NOT NULL auto_increment,
+  `priority_1` text,
+  `pval` int(11) default NULL,
+  `priority_41` text,
+  PRIMARY KEY  (`p_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `qualification`
+--
+
+DROP TABLE IF EXISTS `qualification`;
+CREATE TABLE `qualification` (
+  `q_id` int(11) NOT NULL auto_increment,
+  `qualification_1` text,
+  `qualification_41` text,
+  PRIMARY KEY  (`q_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `questions`
+--
+
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE `questions` (
+  `q_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `question` text NOT NULL,
+  `score` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`q_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `rater_category`
+--
+
+DROP TABLE IF EXISTS `rater_category`;
+CREATE TABLE `rater_category` (
+  `rater_category_id` int(11) unsigned NOT NULL auto_increment,
+  `multirater_id` int(11) default '0',
+  `category_name` varchar(255) default NULL,
+  PRIMARY KEY  (`rater_category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `rater_group`
+--
+
+DROP TABLE IF EXISTS `rater_group`;
+CREATE TABLE `rater_group` (
+  `rater_group_id` int(11) unsigned NOT NULL auto_increment,
+  `multirater_id` int(11) unsigned default '0',
+  `rater_group_name` varchar(255) default '0',
+  PRIMARY KEY  (`rater_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `rater_label_relate`
+--
+
+DROP TABLE IF EXISTS `rater_label_relate`;
+CREATE TABLE `rater_label_relate` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `rater_id` int(11) unsigned default '0',
+  `rater_labelno` int(11) unsigned default '0',
+  `rater_type` enum('t','i') default 'i',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='multirater labels are given specific numbers for future need';
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+CREATE TABLE `rating` (
+  `r_id` int(11) NOT NULL auto_increment,
+  `rating_1` text,
+  `rval` int(11) default NULL,
+  `rating_41` text,
+  PRIMARY KEY  (`r_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `reject_rating`
+--
+
+DROP TABLE IF EXISTS `reject_rating`;
+CREATE TABLE `reject_rating` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `date_rejected` datetime default NULL,
+  `rater_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `rejected_category`
+--
+
+DROP TABLE IF EXISTS `rejected_category`;
+CREATE TABLE `rejected_category` (
+  `r_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `category_6` text,
+  `category_` text,
+  `category_41` text,
+  PRIMARY KEY  (`r_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `rejected_objective`
+--
+
+DROP TABLE IF EXISTS `rejected_objective`;
+CREATE TABLE `rejected_objective` (
+  `r_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  PRIMARY KEY  (`r_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skill_builder`
+--
+
+DROP TABLE IF EXISTS `skill_builder`;
+CREATE TABLE `skill_builder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `pos_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `skill_type` enum('i','t') default 'i',
+  `status` char(1) NOT NULL default '',
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skill_percent`
+--
+
+DROP TABLE IF EXISTS `skill_percent`;
+CREATE TABLE `skill_percent` (
+  `sp_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  `level` int(11) NOT NULL default '0',
+  `percent` decimal(6,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`sp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skill_raters`
+--
+
+DROP TABLE IF EXISTS `skill_raters`;
+CREATE TABLE `skill_raters` (
+  `rater_id` int(11) unsigned NOT NULL auto_increment,
+  `multirater_id` int(11) unsigned default NULL,
+  `rater_level_1` varchar(255) default NULL,
+  `type_name` enum('n','d') default 'n',
+  `skill_type` enum('t','i') default 'i',
+  `rater_level_41` varchar(255) default NULL,
+  PRIMARY KEY  (`rater_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skills`
+--
+
+DROP TABLE IF EXISTS `skills`;
+CREATE TABLE `skills` (
+  `skill_id` int(11) NOT NULL auto_increment,
+  `skill_name` varchar(255) default NULL,
+  `skill_description` varchar(255) default NULL,
+  `unskilled_desc` varchar(255) default NULL,
+  `skill_type` enum('i','t') NOT NULL default 'i',
+  `DATE_OF_ADDITION` datetime NOT NULL default '0000-00-00 00:00:00',
+  `over_used` text,
+  `career_killer` text,
+  `compensator` text,
+  `added_by` int(11) default NULL,
+  PRIMARY KEY  (`skill_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skills_designee1`
+--
+
+DROP TABLE IF EXISTS `skills_designee1`;
+CREATE TABLE `skills_designee1` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `plan_id` int(11) unsigned default NULL,
+  `skill_id` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skills_designee2`
+--
+
+DROP TABLE IF EXISTS `skills_designee2`;
+CREATE TABLE `skills_designee2` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `plan_id` int(11) unsigned default NULL,
+  `skill_id` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skills_for_activities`
+--
+
+DROP TABLE IF EXISTS `skills_for_activities`;
+CREATE TABLE `skills_for_activities` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `skill_id` int(11) default NULL,
+  `act_id` int(11) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `skills_for_rating`
+--
+
+DROP TABLE IF EXISTS `skills_for_rating`;
+CREATE TABLE `skills_for_rating` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default '0',
+  `usr_id` int(11) unsigned default '0',
+  `skill_type` enum('i','t') default 'i',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='The skills selected by the admin to rate or take test';
+
+--
+-- Table structure for table `tech_rating`
+--
+
+DROP TABLE IF EXISTS `tech_rating`;
+CREATE TABLE `tech_rating` (
+  `ratingid` int(11) unsigned NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default '0',
+  `selfrating_labelid` int(11) unsigned default '0',
+  `rating_user` int(11) unsigned default NULL,
+  PRIMARY KEY  (`ratingid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='master table of Tech Appraisal';
+
+--
+-- Table structure for table `tech_references`
+--
+
+DROP TABLE IF EXISTS `tech_references`;
+CREATE TABLE `tech_references` (
+  `ref_id` int(11) unsigned NOT NULL auto_increment,
+  `ratingid` tinyint(3) unsigned default '0',
+  `ref_userid` int(11) unsigned default '0',
+  `user_to_rate` int(11) unsigned default '0',
+  `STATUS` enum('a','r') default 'a',
+  `rating_over` enum('y','n') default 'n',
+  `date_rating_requested` datetime default '0000-00-00 00:00:00',
+  `date_rating_over` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`ref_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tech Reference email to rate a person';
+
+--
+-- Table structure for table `temp_activities`
+--
+
+DROP TABLE IF EXISTS `temp_activities`;
+CREATE TABLE `temp_activities` (
+  `act_id` int(11) NOT NULL auto_increment,
+  `obj_id` int(11) default NULL,
+  `activity_name` varchar(255) default NULL,
+  PRIMARY KEY  (`act_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_affected`
+--
+
+DROP TABLE IF EXISTS `temp_affected`;
+CREATE TABLE `temp_affected` (
+  `aff_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `from_date` date default NULL,
+  `to_date` date default NULL,
+  `frequency` varchar(255) default NULL,
+  PRIMARY KEY  (`aff_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_answers`
+--
+
+DROP TABLE IF EXISTS `temp_answers`;
+CREATE TABLE `temp_answers` (
+  `ans_id` int(11) NOT NULL auto_increment,
+  `q_id` int(11) NOT NULL default '0',
+  `answer` text NOT NULL,
+  `status` enum('w','r') NOT NULL default 'w',
+  `weightage` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ans_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_category`
+--
+
+DROP TABLE IF EXISTS `temp_category`;
+CREATE TABLE `temp_category` (
+  `cat_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `category_2` text,
+  `resubmitted_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `category_41` text,
+  PRIMARY KEY  (`cat_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_devbuilder`
+--
+
+DROP TABLE IF EXISTS `temp_devbuilder`;
+CREATE TABLE `temp_devbuilder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `title` text,
+  `description` text,
+  `url` text,
+  `skill_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `key_id` int(11) default NULL,
+  `title_41` text,
+  `description_41` text,
+  `url_41` text,
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_devsolution`
+--
+
+DROP TABLE IF EXISTS `temp_devsolution`;
+CREATE TABLE `temp_devsolution` (
+  `dev_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `date` datetime default NULL,
+  PRIMARY KEY  (`dev_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_devways`
+--
+
+DROP TABLE IF EXISTS `temp_devways`;
+CREATE TABLE `temp_devways` (
+  `way_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `dev_id` int(11) default NULL,
+  PRIMARY KEY  (`way_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_feedback`
+--
+
+DROP TABLE IF EXISTS `temp_feedback`;
+CREATE TABLE `temp_feedback` (
+  `fd_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `boss_id` int(11) default NULL,
+  `o_id` int(11) default NULL,
+  `r_id` int(11) default NULL,
+  `idelivered` int(11) default NULL,
+  `effective` text,
+  `tech1` varchar(255) default NULL,
+  `tech2` varchar(255) default NULL,
+  `inter1` varchar(255) default NULL,
+  `inter2` varchar(255) default NULL,
+  `active` char(1) default NULL,
+  PRIMARY KEY  (`fd_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_help`
+--
+
+DROP TABLE IF EXISTS `temp_help`;
+CREATE TABLE `temp_help` (
+  `h_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`h_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_metrics`
+--
+
+DROP TABLE IF EXISTS `temp_metrics`;
+CREATE TABLE `temp_metrics` (
+  `met_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `metrics_1` text,
+  `metrics_2` text,
+  `metrics_41` text,
+  PRIMARY KEY  (`met_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_objectives`
+--
+
+DROP TABLE IF EXISTS `temp_objectives`;
+CREATE TABLE `temp_objectives` (
+  `obj_id` int(11) NOT NULL auto_increment,
+  `build_id` int(11) default NULL,
+  `objective_name` varchar(255) default NULL,
+  PRIMARY KEY  (`obj_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_plan_improvement`
+--
+
+DROP TABLE IF EXISTS `temp_plan_improvement`;
+CREATE TABLE `temp_plan_improvement` (
+  `imp_id` int(11) NOT NULL auto_increment,
+  `plan_id` int(11) default NULL,
+  `plan_text` text,
+  `plan_date` date NOT NULL default '0000-00-00',
+  `employee_id` int(11) default NULL,
+  PRIMARY KEY  (`imp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_planbuilder`
+--
+
+DROP TABLE IF EXISTS `temp_planbuilder`;
+CREATE TABLE `temp_planbuilder` (
+  `plan_id` int(11) NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default NULL,
+  `act_build_id` int(11) unsigned default NULL,
+  `act_sdate` date default NULL,
+  `app_build_id` int(11) unsigned default NULL,
+  `app_sdate` date default NULL,
+  `user_id` int(11) unsigned default NULL,
+  PRIMARY KEY  (`plan_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_questions`
+--
+
+DROP TABLE IF EXISTS `temp_questions`;
+CREATE TABLE `temp_questions` (
+  `q_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `question` text NOT NULL,
+  `score` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`q_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_selected_objective`
+--
+
+DROP TABLE IF EXISTS `temp_selected_objective`;
+CREATE TABLE `temp_selected_objective` (
+  `sl_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `o_id` int(11) default NULL,
+  `objective_1` text,
+  `priority` int(11) default NULL,
+  `committed_no` int(11) default NULL,
+  `percent` varchar(255) default NULL,
+  `how_to_get_1` text,
+  `changed_user_id` int(11) NOT NULL default '0',
+  `submit_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `objective_41` text,
+  `how_to_get_41` text,
+  PRIMARY KEY  (`sl_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_selected_qualification`
+--
+
+DROP TABLE IF EXISTS `temp_selected_qualification`;
+CREATE TABLE `temp_selected_qualification` (
+  `sl_qid` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `q_id` int(11) default NULL,
+  PRIMARY KEY  (`sl_qid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_skill_builder`
+--
+
+DROP TABLE IF EXISTS `temp_skill_builder`;
+CREATE TABLE `temp_skill_builder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `pos_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `skill_type` enum('i','t') NOT NULL default 'i',
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_skill_percent`
+--
+
+DROP TABLE IF EXISTS `temp_skill_percent`;
+CREATE TABLE `temp_skill_percent` (
+  `sp_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  `level` int(11) NOT NULL default '0',
+  `percent` decimal(6,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`sp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_skills_for_activities`
+--
+
+DROP TABLE IF EXISTS `temp_skills_for_activities`;
+CREATE TABLE `temp_skills_for_activities` (
+  `ski_act_id` int(11) NOT NULL auto_increment,
+  `act_id` int(11) default NULL,
+  `skill_name` varchar(255) default NULL,
+  `skill_description` text,
+  `skill_ref` varchar(255) default NULL,
+  `date_of_addition` datetime default NULL,
+  `added_by` int(11) default NULL,
+  PRIMARY KEY  (`ski_act_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_tech_rating`
+--
+
+DROP TABLE IF EXISTS `temp_tech_rating`;
+CREATE TABLE `temp_tech_rating` (
+  `temp_ratingid` int(11) unsigned NOT NULL auto_increment,
+  `skill_id` int(11) unsigned default '0',
+  `selfrating_labelid` int(11) unsigned default '0',
+  `rating_user` int(11) unsigned default NULL,
+  PRIMARY KEY  (`temp_ratingid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='stores temporarily the technical skills ratings';
+
+--
+-- Table structure for table `temp_tech_references`
+--
+
+DROP TABLE IF EXISTS `temp_tech_references`;
+CREATE TABLE `temp_tech_references` (
+  `ref_id` int(11) unsigned NOT NULL auto_increment,
+  `temp_ratingid` int(11) unsigned default '0',
+  `ref_userid` int(11) unsigned default '0',
+  `user_to_rate` int(11) unsigned default NULL,
+  PRIMARY KEY  (`ref_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_tests`
+--
+
+DROP TABLE IF EXISTS `temp_tests`;
+CREATE TABLE `temp_tests` (
+  `test_id` int(11) NOT NULL auto_increment,
+  `test_name` varchar(255) NOT NULL default '',
+  `test_type` enum('t','i') default 'i',
+  `tot_question` int(11) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '0',
+  `group_id` int(11) default NULL,
+  PRIMARY KEY  (`test_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_textqsort`
+--
+
+DROP TABLE IF EXISTS `temp_textqsort`;
+CREATE TABLE `temp_textqsort` (
+  `sort_id` int(11) unsigned NOT NULL auto_increment,
+  `user_rated` int(11) unsigned default '0',
+  `label_id` int(11) unsigned default '0',
+  `left_out` int(11) unsigned default '0',
+  `rating_user` int(11) default NULL,
+  PRIMARY KEY  (`sort_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_user_eeo`
+--
+
+DROP TABLE IF EXISTS `temp_user_eeo`;
+CREATE TABLE `temp_user_eeo` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `tag_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `temp_user_table`
+--
+
+DROP TABLE IF EXISTS `temp_user_table`;
+CREATE TABLE `temp_user_table` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `password` varchar(255) default NULL,
+  `office_phone` varchar(255) default NULL,
+  `cell_phone` varchar(255) default NULL,
+  `pager` varchar(255) default NULL,
+  `fax` varchar(255) default NULL,
+  `office_mail_address` varchar(255) default NULL,
+  `office_physical_address` varchar(255) default NULL,
+  `location` int(11) default NULL,
+  `position` int(11) default NULL,
+  `employment_type` int(11) default NULL,
+  `first_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `sec_last_name` varchar(255) default NULL,
+  `nick_name` varchar(255) default NULL,
+  `mid_name` varchar(255) default NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `tempuser_objective`
+--
+
+DROP TABLE IF EXISTS `tempuser_objective`;
+CREATE TABLE `tempuser_objective` (
+  `o_id` int(11) NOT NULL auto_increment,
+  `met_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`o_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `tests`
+--
+
+DROP TABLE IF EXISTS `tests`;
+CREATE TABLE `tests` (
+  `test_id` int(11) NOT NULL auto_increment,
+  `test_name` varchar(255) NOT NULL default '',
+  `test_type` enum('t','i') default 'i',
+  `tot_question` int(11) NOT NULL default '0',
+  `date` datetime default NULL,
+  `user_id` int(11) default NULL,
+  `ref_test_id` int(11) default NULL,
+  PRIMARY KEY  (`test_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `textqsort_rating`
+--
+
+DROP TABLE IF EXISTS `textqsort_rating`;
+CREATE TABLE `textqsort_rating` (
+  `user_raterid` int(11) unsigned NOT NULL auto_increment,
+  `rater_label_no` int(11) unsigned default '0',
+  `rater_id` int(11) unsigned default NULL,
+  `rater_type` enum('t','i') default 'i',
+  `rated_user` int(11) unsigned default NULL,
+  `skill_id` int(11) unsigned default NULL,
+  PRIMARY KEY  (`user_raterid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_activities`
+--
+
+DROP TABLE IF EXISTS `unapproved_activities`;
+CREATE TABLE `unapproved_activities` (
+  `act_id` int(11) NOT NULL auto_increment,
+  `obj_id` int(11) default NULL,
+  `activity_name` varchar(255) default NULL,
+  PRIMARY KEY  (`act_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_affected`
+--
+
+DROP TABLE IF EXISTS `unapproved_affected`;
+CREATE TABLE `unapproved_affected` (
+  `aff_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `from_date` date default NULL,
+  `to_date` date default NULL,
+  `frequency` varchar(255) default NULL,
+  PRIMARY KEY  (`aff_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_answers`
+--
+
+DROP TABLE IF EXISTS `unapproved_answers`;
+CREATE TABLE `unapproved_answers` (
+  `ans_id` int(11) NOT NULL auto_increment,
+  `q_id` int(11) NOT NULL default '0',
+  `answer` text NOT NULL,
+  `status` enum('w','r') NOT NULL default 'w',
+  `weightage` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ans_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_category`
+--
+
+DROP TABLE IF EXISTS `unapproved_category`;
+CREATE TABLE `unapproved_category` (
+  `cat_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `status` varchar(5) default NULL,
+  `category_2` text,
+  `boss_id` int(11) default NULL,
+  `submitted_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `approved_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `category_41` text,
+  PRIMARY KEY  (`cat_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_devbuilder`
+--
+
+DROP TABLE IF EXISTS `unapproved_devbuilder`;
+CREATE TABLE `unapproved_devbuilder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `title` text,
+  `description` text,
+  `url` text,
+  `skill_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `key_id` int(11) default NULL,
+  `status` varchar(11) default NULL,
+  `title_41` text,
+  `description_41` text,
+  `url_41` text,
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_devsolution`
+--
+
+DROP TABLE IF EXISTS `unapproved_devsolution`;
+CREATE TABLE `unapproved_devsolution` (
+  `dev_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `skill_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `date` datetime default NULL,
+  PRIMARY KEY  (`dev_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_devways`
+--
+
+DROP TABLE IF EXISTS `unapproved_devways`;
+CREATE TABLE `unapproved_devways` (
+  `way_id` int(11) NOT NULL auto_increment,
+  `basic_id` int(11) default NULL,
+  `interbasic_id` int(11) default NULL,
+  `dev_id` int(11) default NULL,
+  PRIMARY KEY  (`way_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_help`
+--
+
+DROP TABLE IF EXISTS `unapproved_help`;
+CREATE TABLE `unapproved_help` (
+  `h_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`h_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_metrics`
+--
+
+DROP TABLE IF EXISTS `unapproved_metrics`;
+CREATE TABLE `unapproved_metrics` (
+  `met_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `metrics_1` text,
+  `metrics_2` text,
+  `metrics_41` text,
+  PRIMARY KEY  (`met_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_objectives`
+--
+
+DROP TABLE IF EXISTS `unapproved_objectives`;
+CREATE TABLE `unapproved_objectives` (
+  `obj_id` int(11) NOT NULL auto_increment,
+  `build_id` int(11) default NULL,
+  `objective_name` varchar(255) default NULL,
+  PRIMARY KEY  (`obj_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_plan_improvement`
+--
+
+DROP TABLE IF EXISTS `unapproved_plan_improvement`;
+CREATE TABLE `unapproved_plan_improvement` (
+  `status` char(1) default NULL,
+  `plan_text` text,
+  `plan_date` date NOT NULL default '0000-00-00',
+  `employee_id` int(11) default NULL,
+  `plan_id` int(11) default NULL,
+  `imp_id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`imp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_questions`
+--
+
+DROP TABLE IF EXISTS `unapproved_questions`;
+CREATE TABLE `unapproved_questions` (
+  `q_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `question` text NOT NULL,
+  `score` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`q_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_rejected_category`
+--
+
+DROP TABLE IF EXISTS `unapproved_rejected_category`;
+CREATE TABLE `unapproved_rejected_category` (
+  `r_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `category_1` text,
+  `category_22` text,
+  `category_` text,
+  `category_41` text,
+  PRIMARY KEY  (`r_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_selected_objective`
+--
+
+DROP TABLE IF EXISTS `unapproved_selected_objective`;
+CREATE TABLE `unapproved_selected_objective` (
+  `sl_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `o_id` int(11) default NULL,
+  `objective_1` text,
+  `priority` int(11) default NULL,
+  `committed_no` int(11) default NULL,
+  `percent` varchar(255) default '.',
+  `how_to_get_1` text,
+  `changed_user_id` int(11) NOT NULL default '0',
+  `submit_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `objective_41` text,
+  `how_to_get_41` text,
+  PRIMARY KEY  (`sl_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_selected_qualification`
+--
+
+DROP TABLE IF EXISTS `unapproved_selected_qualification`;
+CREATE TABLE `unapproved_selected_qualification` (
+  `sl_qid` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `q_id` int(11) default NULL,
+  PRIMARY KEY  (`sl_qid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_skill_builder`
+--
+
+DROP TABLE IF EXISTS `unapproved_skill_builder`;
+CREATE TABLE `unapproved_skill_builder` (
+  `build_id` int(11) NOT NULL auto_increment,
+  `pos_id` int(11) default NULL,
+  `emp_id` int(11) default NULL,
+  `skill_type` enum('i','t') default 'i',
+  PRIMARY KEY  (`build_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_skill_percent`
+--
+
+DROP TABLE IF EXISTS `unapproved_skill_percent`;
+CREATE TABLE `unapproved_skill_percent` (
+  `sp_id` int(11) NOT NULL auto_increment,
+  `test_id` int(11) NOT NULL default '0',
+  `skill_id` int(11) NOT NULL default '0',
+  `level` int(11) NOT NULL default '0',
+  `percent` decimal(6,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`sp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_skills`
+--
+
+DROP TABLE IF EXISTS `unapproved_skills`;
+CREATE TABLE `unapproved_skills` (
+  `skill_id` int(11) NOT NULL auto_increment,
+  `skill_type` enum('i','t') NOT NULL default 'i',
+  `skill_name` varchar(255) default NULL,
+  `skill_description` text,
+  `unskilled_desc` text,
+  `emp_id` varchar(255) default NULL,
+  `date_posted` date default NULL,
+  `career_killer` text,
+  `over_used` text,
+  `compensator` text,
+  PRIMARY KEY  (`skill_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_skills_for_activities`
+--
+
+DROP TABLE IF EXISTS `unapproved_skills_for_activities`;
+CREATE TABLE `unapproved_skills_for_activities` (
+  `ski_act_id` int(11) NOT NULL auto_increment,
+  `act_id` int(11) default NULL,
+  `skill_name` varchar(255) default NULL,
+  `skill_description` text,
+  `date_of_addition` datetime default NULL,
+  `added_by` int(11) default NULL,
+  PRIMARY KEY  (`ski_act_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproved_tests`
+--
+
+DROP TABLE IF EXISTS `unapproved_tests`;
+CREATE TABLE `unapproved_tests` (
+  `test_id` int(11) NOT NULL auto_increment,
+  `test_name` varchar(255) NOT NULL default '',
+  `test_type` enum('t','i') default 'i',
+  `tot_question` int(11) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '0',
+  `date` datetime default NULL,
+  `STATUS` enum('p','a') default 'p',
+  `group_id` int(11) default NULL,
+  PRIMARY KEY  (`test_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `unapproveduser_objective`
+--
+
+DROP TABLE IF EXISTS `unapproveduser_objective`;
+CREATE TABLE `unapproveduser_objective` (
+  `o_id` int(11) NOT NULL auto_increment,
+  `met_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  PRIMARY KEY  (`o_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `update_plan`
+--
+
+DROP TABLE IF EXISTS `update_plan`;
+CREATE TABLE `update_plan` (
+  `position` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `date` datetime default NULL,
+  `STATUS` char(1) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_eeo`
+--
+
+DROP TABLE IF EXISTS `user_eeo`;
+CREATE TABLE `user_eeo` (
+  `dummy_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `tag_id` int(11) default NULL,
+  PRIMARY KEY  (`dummy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_scores`
+--
+
+DROP TABLE IF EXISTS `user_scores`;
+CREATE TABLE `user_scores` (
+  `user_questid` int(11) NOT NULL auto_increment,
+  `user_testid` int(11) default NULL,
+  `question_id` int(11) default NULL,
+  `answer_id` int(11) default NULL,
+  `mark_scored` int(11) default NULL,
+  `skill_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`user_questid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_session`
+--
+
+DROP TABLE IF EXISTS `user_session`;
+CREATE TABLE `user_session` (
+  `user_id` int(11) NOT NULL default '0',
+  `hash` varchar(255) NOT NULL default '',
+  `timestamp` int(11) default NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_table`
+--
+
+DROP TABLE IF EXISTS `user_table`;
+CREATE TABLE `user_table` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `first_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `username` varchar(255) default NULL,
+  `password` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `status` char(2) default NULL,
+  `reg_date` datetime default NULL,
+  `office_phone` varchar(255) default NULL,
+  `cell_phone` varchar(255) default NULL,
+  `pager` varchar(255) default NULL,
+  `fax` varchar(255) default NULL,
+  `office_mail_address` text,
+  `office_physical_address` text,
+  `nick_name` varchar(255) default NULL,
+  `mid_name` varchar(255) default NULL,
+  `sec_last_name` varchar(255) default NULL,
+  `location` int(11) default NULL,
+  `position` int(11) default NULL,
+  `access_rights` int(11) default NULL,
+  `employment_type` int(11) default NULL,
+  `admin_id` int(11) default NULL,
+  `added_by` int(11) NOT NULL default '1',
+  `user_type` enum('employee','external') NOT NULL default 'employee',
+  `newlabel` text,
+  PRIMARY KEY  (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_test_grade`
+--
+
+DROP TABLE IF EXISTS `user_test_grade`;
+CREATE TABLE `user_test_grade` (
+  `test_grade_id` int(11) NOT NULL auto_increment,
+  `skill_id` int(11) NOT NULL default '0',
+  `grade` int(11) unsigned default '0',
+  `percentage` decimal(5,2) NOT NULL default '0.00',
+  `user_testid` int(11) unsigned default '0',
+  PRIMARY KEY  (`test_grade_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user_tests`
+--
+
+DROP TABLE IF EXISTS `user_tests`;
+CREATE TABLE `user_tests` (
+  `user_testid` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `test_id` int(11) default NULL,
+  `test_type` enum('t','i') default NULL,
+  `test_taken_date` datetime default NULL,
+  `test_completed` enum('y','n') default 'n',
+  PRIMARY KEY  (`user_testid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `verified_user`
+--
+
+DROP TABLE IF EXISTS `verified_user`;
+CREATE TABLE `verified_user` (
+  `v_id` int(11) NOT NULL auto_increment,
+  `sl_id` int(11) NOT NULL default '0',
+  `verified_user_id` int(11) default NULL,
+  `for_user_id` int(11) NOT NULL default '0',
+  `delivered` int(11) default NULL,
+  `verified_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`v_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

@@ -1,0 +1,40 @@
+<script language='javascript'>
+function check_null(message)
+{
+	flag=0;
+	tot = frmname.length;
+	for(i=0;i<tot;i++)
+	{
+		if(frmname.elements[i].value=="")
+		{
+			flag=1;
+		}
+	}
+	if(flag==1)
+	{
+		alert(message);
+		return false;
+	}
+	return true;
+}
+</script>
+<form name=frmname action="editrating.php" method=get onsubmit="return check_null('{{cQualmessage}}');">
+<center>
+<h1>
+{{cEditrating}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/editrating.html');">
+</h1>
+<center>
+<input type=hidden name=rid value='{{rid}}'>
+<table align=center class=code>
+<{rating_loopstart}>
+<tr>
+	<td>{{cRating}}(<{langname}>)</td><td><textarea name=fRating_<{lid}> cols=25><{crating}></textarea></td>
+</tr>
+<{rating_loopend}>
+<tr>
+	<td>{{cRatingval}}</td><td><input type=text name=fRatingval value="{{rating}}"></td>
+</tr>
+</table>
+<center><input type=submit name=add value='{{cEdit}}'></center>
+</form>

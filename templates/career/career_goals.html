@@ -1,0 +1,200 @@
+<script language=Javascript>
+
+function showmodels(val)
+	{
+		with(document.frm1)
+		{
+		
+		//val is the family id 
+			if(val != 0)
+			{	
+				if(confirm('Do you wish to see your comparision with the Models of this Position?'))
+				{
+				frm1.action='careergoals_models.php?fid='+val;
+				frm1.submit();
+				}
+			}
+		
+		}
+	}
+function validateform()
+{
+	with(document.frm1)
+	{
+		
+
+
+		if(low1level_lot.value == low1level_some.value && low1level_lot.value != 0 && low1level_some.value != 0)
+		{
+			alert('You have selected same Job Families');
+			low1level_lot.focus();
+			return false;
+		}
+		if(samelevel_lot.value == samelevel_some.value && samelevel_lot.value != 0 && samelevel_some.value != 0)
+		{
+			alert('You have selected same Job Families');
+			samelevel_lot.focus();
+			return false;
+		}
+		if(above1level_lot.value == above1level_some.value && above1level_lot.value != 0 && above1level_some.value != 0)
+		{
+			alert('You have selected same Job Families');
+			above1level_lot.focus();
+			return false;
+		}
+		if(above2level_lot.value == above2level_some.value && above2level_lot.value != 0 && above2level_some.value != 0)
+		{
+			alert('You have selected same Job Families');
+			above2level_lot.focus();
+			return false;
+		}
+
+
+
+	}
+}
+</script>
+<form action=career_goals.php method=post name=frm1 onSubmit="return validateform()";>
+<table align=center border=1 cellspacing=0 cellpadding=5>
+	<tr>
+		<th class=code>
+			<b>{{cCareergoals}} User: {{username}} </b>
+			<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/career_goals.html')";>
+		</th>
+	</tr>
+	<tr>
+		<td class=code>
+			<b>{{Careergoalmessage}}</b><br><br>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			<b>{{cSampletext1step}}  </b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavelotofinterestin}}
+
+
+			<select name=low1level_lot onChange="showmodels(this.value)">
+			<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_onebelow1_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_onebelow1_loopend}>
+			</select>
+
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavesomeinterestin}}
+			<select name=low1level_some onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_onebelow2_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_onebelow2_loopend}>
+			</select>
+		</td>
+	</tr>
+	
+
+	<tr>
+		<td class=code>
+			<b>{{cSampletextsamestep}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavelotofinterestin}}
+			<select name=samelevel_lot onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{familydisplaysame1_loopstart}>
+					<option value=<{family_id}> <{selected}> > <{family_name}> </option>
+				<{familydisplaysame1_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavesomeinterestin}}
+			<select name=samelevel_some onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{familydisplaysame2_loopstart}>
+					<option value=<{family_id}> <{selected}> > <{family_name}> </option>
+				<{familydisplaysame2_loopend}>
+			</select>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td class=code>
+			<b>{{cSampletext1levelabove}}</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavelotofinterestin}}
+			<select name=above1level_lot onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_oneabove1_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_oneabove1_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavesomeinterestin}}
+			<select name=above1level_some onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_oneabove2_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_oneabove2_loopend}>
+			</select>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td class=code>
+			<b>{{cSampletext2levelabove}}<b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavelotofinterestin}}
+			<select name=above2level_lot onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_twoabove1_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_twoabove1_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cIhavesomeinterestin}}
+			<select name=above2level_some onChange="showmodels(this.value)">
+				<option value=0>{{cNojobfamilies}}</option>
+				<{famdisplay_twoabove2_loopstart}>
+					<option value=<{family_id}> <{selected}> ><{family_name}></option>
+				<{famdisplay_twoabove2_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code align=center>
+	<input type=hidden name=uid value={{uid}}>
+			<input type=button name=fReturn value="{{cApprres_returnback}}" onClick="window.location.replace('front_panel.php')";>
+	<{visiblecheck_start}>
+			<input type=submit name=fSave value={{cSave}}>
+	<{visiblecheck_end}>
+		</td>
+	</tr>	
+
+</table>
+</form>

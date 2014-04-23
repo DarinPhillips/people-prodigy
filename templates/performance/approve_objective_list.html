@@ -1,0 +1,16 @@
+<center>
+<h1>
+{{cApproveobj}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/approve_objective_list.html');">
+</h1>
+<center>
+<table align=center class=code>
+<tr>
+	<td><b>{{cEmpname}}</td><td><b>{{cSubonDate}}</td>
+</tr>
+<{objective_loopstart}>
+<tr>
+	<td><a href="approve_objective.php?uid=<{uid}>"><{username}></a></td><td><{date}></td>
+</tr>
+<{objective_loopend}>
+</table>

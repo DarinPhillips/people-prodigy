@@ -1,0 +1,60 @@
+
+<form action="add_setting.php" method=post>
+<center>
+<h1>
+{{cSettings}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/add_setting.html');">
+</h1>
+<center>
+<table align=center>
+	<tr>
+	<td class=code>{{cNoofcategories}}</td><td><input type=text name=fCategory value="{{category}}"></td>
+	</tr>
+	<tr>
+	<td class=code>{{cNoofMetrics}}</td><td><input type=text name=fMetrics value="{{metrics}}"></td>
+	</tr>
+	<tr>
+	<td class=code>{{cPersonaffected}}</td>
+	<td><input type=text name=fPeraffected value="{{peraff}}"></td>
+	</tr>
+
+	<tr>
+	<td class=code>{{cNeedhelp}}</td>
+	<td><input type=text name=fPerhelp value="{{perhelp}}"></td>
+	</tr>
+
+	<tr>
+	<td class=code>{{cNoofqualification}}</td>
+	<td><input type=text name=fQualification value="{{qualification}}"></td>
+	</tr>
+	<tr>
+	<td class=code>
+	{{cNoofrowsinplanimprovement}}</td>
+	<td class=code>
+	<input type=text name=fPlan value={{plan}}>
+	</td></tr>
+	<tr>
+	<td class=code>{{cSendmail}}</td><td class=code>{{cBoss}}<input type=checkbox name=fBoss value='Y' {{ichecked}}>
+	{{cBboss}}<input type=checkbox name=fBboss value='Y'{{bchecked}}></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+<br>
+<table>
+	<tr>
+		<td class=code><a href="performance_message.php"><b>{{cMailSetting}}</a>&nbsp;&nbsp;&nbsp;
+		<a href="qualification.php"><b>{{cQualification}}</b></a>&nbsp;&nbsp;&nbsp;
+		<a href="rating.php"><b>{{cRating}}</b></a>&nbsp;&nbsp;&nbsp;
+		<a href="priority.php"><b>{{cPriority}}</b></a>&nbsp;&nbsp;&nbsp;
+		<a href="sowner_defined_text.php"><b>{{cOwnertext}}</b></a>&nbsp;&nbsp;&nbsp;
+		<a href="graph_setting.php"><b>{{cGraphsetting}}</b></a>
+			
+		</td>
+	</tr>	
+</table>
+<br>
+	<center><input type=submit name=submit value="{{cSubmit}}"></center>
+</form>
+

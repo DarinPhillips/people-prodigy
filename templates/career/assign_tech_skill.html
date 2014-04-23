@@ -1,0 +1,79 @@
+
+<script language='javascript'>
+function check()
+{
+	with(document.form)
+	{
+		
+		if(fAssign.value=="Assign")
+		{
+			temp1	= elements['fUser_id'];
+				te1	= temp1.value;
+			
+				
+				if(te1=="")
+				{
+					
+					alert('Select an Employee');
+					
+					return(false);
+				}
+		
+				temp	= elements['fPosition[]'];
+				te	= temp.value;
+
+				if(te=="")
+				{
+					alert('Select Position to assign');
+					return false;
+				}
+			
+		
+		
+		}
+	}
+	return true;
+}
+</script>
+
+<form action="assign_tech_skill.php" method="post" name=form onSubmit="return check();">
+<center>
+<h1>
+{{cAssignSkills}}
+
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/assign_tech_skill.html');">
+</h1></center>
+<table class=tabel align=center>
+	<tr>
+	<td>
+	<select name="fUser_id">
+	<option class=code value="">{{cSelect}}</option>
+	<{username_loopstart}>
+	<option  <{selected}> class=code value="<{user_id}>"> <{username}> </option>
+	<{username_loopend}>
+	</select> 
+	</td>
+	<td>
+	{{cSholudbuild}}
+	</td>
+	<td>
+	<select name=fPosition[] multiple>
+	<{position_loopstart}>
+	<option  <{selected}> class=code value="<{pos_id}>"> <{position_name}> </option>
+	<{position_loopend}>
+	</td>
+	</tr>
+	<tr>
+<td>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+</td>
+<td>
+
+</td>
+<td>
+<input type="submit" name="fAssign"  value="{{cAssign}}">
+</td>
+</tr>
+</table>
+
+</form> 

@@ -1,0 +1,75 @@
+										{{cDate}}:{{today}}
+										{{cUsername}}:{{username}}
+			
+				{{cPerformancesummaryreport}} 
+				---------------------------
+				
+
+<{objective_loopstart}>
+
+<{count}>. <{objective}>
+
+{{cCommittment}}:<{committed}> 			{{cAccomplishment}}:<{accomplish}>	{{cFullfilled}}:<{fulfilled}>
+
+{{cMetexpectationpoint}}:<{metexpectation}>	{{cActualrating}}:<{actual}>		{{cExpectationmettodate}}:<{expected}>
+
+
+
+{{cRatercomment}}
+--------------
+<{ratercomment_loopstart}>
+	<{ratersname}>  [<{appdate}>] - <{comments}>
+<{ratercomment_loopend}>
+
+
+{{cRatersuggest}}
+-----------------------------------------------------
+<{25a9ac406aceb47a0c6cade972bc26fa_start}>
+<{skill_loopstart}>
+	<{ratername}>[<{skilldate}>]
+					<{tech1}>
+					<{tech2}>
+					<{inter1}>
+					<{inter2}>
+<{skill_loopend}>	
+<{25a9ac406aceb47a0c6cade972bc26fa_end}>
+
+
+{{cResultforobjective}}
+--------------------------
+{{cCommittment}}:<{Qcommitted}>			{{cAccomplishment}}:<{Qaccomplish}>	{{cFullfilled}}:<{AvgFulfilled}>
+
+{{cMetexpectationpoint}}:<{Qmetexpectation}>	{{cActualrating}}:<{Qactual}>		{{cExpectationmettodate}}:<{AvgExpect}>
+
+
+{{cAvgratings}}
+---------------------
+<{view_rating_loopstart}>
+	<{ratersname}>:<{ratingvalue}>
+<{view_rating_loopend}>
+<!--overall_loopstart-->
+	{{over}}:{{average}}
+<!--overall_loopend-->
+
+
+{{cAvgratingcompared}}
+-------------------------
+<{rateravg_loopstart}>
+	<{ratersname1}>:<{ratingvalue1}>
+<{rateravg_loopend}>
+<!--overall1_loopstart-->
+	{{over1}}:{{average1}}
+<!--overall1_loopend-->
+
+
+<{rateravg1_loopstart}>
+	<{ratersname2}>:<{ratingvalue2}>
+<{rateravg1_loopend}>
+<!--overall2_loopstart-->
+	{{over2}}:{{average2}}
+<!--overall2_loopend-->
+
+
+=============================================================================================
+<{objective_loopend}>
+

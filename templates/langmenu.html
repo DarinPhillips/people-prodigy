@@ -1,0 +1,16 @@
+<form name=lang action="{{http}}/setcookie.php?fd=1{{adt}}" method=post>
+<table>
+<tr>
+<td class=code><b>Select Language</td><td><select name=fLang onchange=document.lang.submit() >
+						<option value="1">Select Language</option>
+						<{lang_loopstart}>
+						<option value="<{lang_id}>" <{selected}>><{language}></option>
+						<{lang_loopend}>
+					  </select></td>	
+	
+
+</tr>
+</table>
+<hr>
+
+</form>

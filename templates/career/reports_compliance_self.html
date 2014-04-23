@@ -1,0 +1,40 @@
+<center><h1>
+{{cReportsComplianceSelf}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/reports_compliance_self.html');">
+<h1><center>
+<table align=center border=1>
+<tr>
+	<td class=code>
+
+		{{cReportsname}}
+	</td>
+	<td class=code>
+		{{cRatingRequested}}
+	</td>
+	<td class=code>
+		{{cAssigneddate}}
+	</td>
+	
+	
+</tr>
+<{user_loopstart}>
+<tr>
+	<td class=code>
+
+		<a href="mailto:<{email}>"><{name}></a>
+	</td>
+	<td class=code>
+		<{rating}>
+	</td>
+	<td class=code>
+		<{date}>
+	</td>
+</tr>
+<{user_loopend}>
+<tr>
+	<td class=code align=center colspan=3>
+	<input type="button"  value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+
+</table>

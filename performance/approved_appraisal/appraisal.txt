@@ -1,0 +1,38 @@
+
+{{username}}{{cApprovedAppraisal}}
+<{objective_loopstart}>
+
+<{objective}>
+
+{{cCommittment}}: <{committed}>  {{cAccomplished}}: <{accomplished}>  {{cFulfilled}}: <{fulfilled}>
+
+{{cPriority}}:<{priority}>
+
+{{cExpectationPoints}}: <{expectation_points}>  {{cActualrating}}: <{actual_rating}> {{cExpectationMet}}: <{expectation_met}>
+
+{{cCommentsMade}}
+----------------------------------------
+{{cBossComments}}
+----------------
+<{comment_boss}>
+
+{{cRaterComments}}
+----------------
+<{comment_rater}>
+{{cBossExplanation}}
+--------------------
+{{cOutof}} <{point1}>   {{cUEarned}}   <{point2}>   {{cBecause}}
+<{exp_rater}>
+
+{{cMyComment}}
+------------
+<{user_comment}>
+<{objective_loopend}>
+{{cBossFinalSummary}}
+--------------------------
+
+{{cOutof}}  {{final_point1}}  {{cUEarned}}  {{final_point2}}  {{cBecause}}
+{{final}}
+{{cMyFinalSummary}}
+-----------------------
+{{user_summary}}

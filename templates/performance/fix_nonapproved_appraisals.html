@@ -1,0 +1,38 @@
+<center><h1>{{cFixNonApproved}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/fix_nonapproved_appraisals.html');">
+<h1><center>
+<table >
+
+<tr>
+<td class=code>
+
+</td></tr></table>
+<table border=1 align = center>
+
+<tr>
+	<td class=code>
+	{{cEmployeeNamee}}
+	</td>
+	<td class=code>
+	{{cSubmitteddate}}
+	</td>
+	<td class=code>
+	{{cRejecteddate}}
+	</td>
+	
+</tr>
+<{appraisal_loopstart}>
+<tr>
+	<td class=code>
+	<a href="complete_employee_appraisal.php?action=show&dummy_id=<{dummy_id}>"><{username}></a>
+	</td><td class=code>&nbsp;
+	<{submit_date}>
+	&nbsp&nbsp&nbsp&nbsp
+	</td><td class=code>&nbsp;
+	<{reject_date}>
+	</td>
+	
+</tr>
+<{appraisal_loopend}>
+</table>
+

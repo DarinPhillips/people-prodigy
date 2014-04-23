@@ -1,0 +1,29 @@
+
+<form action="chain_of_command.php" method="post" onSubmit="return check();">
+<table class=code>
+	<tr>
+		<td class=code>
+			<h1><b>Chain Of Command</b></h1>
+		</td>
+		<td class=code>
+		<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/chain_of_command.html');">
+		</td>
+	</tr>
+<tr>
+<td class=code>
+{{cAdministratorsaredisplayedwithinbraces}}
+</td>
+</tr>
+</table>
+
+<ul>
+<{position_loop}>
+
+ <a href="position={{pos_id}}" onClick="alert('Position is {{pos_id}} \nLevel is {{levelno}} \nUser id is {{user_id}} \nFamily Name is {{family_name}} \nPassword is {{password}}');return false;">{{position_name}} ( {{admin_name}} ) </a>
+
+<br>
+<{position_loop}>
+
+</ul>
+
+</form>

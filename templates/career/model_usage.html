@@ -1,0 +1,61 @@
+<script language=Javascript>
+function modelmatchemployees(modelfit)
+{
+	if(modelfit.value != 0)
+	{
+		document.matchfrm.submit();
+	}
+}
+</script>
+<table align=center border=1 cellspacing=0 cellpadding=4>
+<tr>
+	<th class=code>
+		{{cHowmodelsare_used}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/model_usage.html');">	
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		<a href=fam_without_model.php>{{cFam_withouthighperformmodel}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<a href=mod_without_skills.php>{{cModwithoutskills}}</a>
+	</td>
+</tr>	
+<tr>
+	<td class=code>
+		<a href=models_notin_career_goals.php>{{cModelsnotusedinsettingcareergoals}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<form action=model_match.php method=post name=matchfrm>
+		{{cModelswithoutempmatches_at}}
+		<select name=modelfit onChange="modelmatchemployees(document.matchfrm.modelfit);">
+			<option value=0> 0 % </option>
+		<{percent_loopstart}>
+			<option value=<{percent}> > <{percent}>% </option>
+		<{percent_loopend}>
+		</select>
+		{{cOrBetter}}
+		</form>
+	</td>	
+</tr>
+<tr>
+	<td class=code>
+	<form action=emp_match.php method=post name=empfrm>
+		{{cEmployeesthatdontmatchanymodelsat}}
+		<select name=employeefit onChange="form.submit();">
+			<option value=0> 0 % </option>
+		<{percent_loopstart}>
+			<option value=<{percent}> > <{percent}>% </option>
+		<{percent_loopend}>
+		</select>
+		{{cOrBetter}}
+	</td>
+	</form>
+</tr>
+</table>
+

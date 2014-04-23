@@ -1,0 +1,33 @@
+<form action="alert_multirater.php" method="post">
+
+{{cMultirateralert_heading}}
+<table border=1 align = center>
+<tr>
+<td class=code>
+<b>{{cMultirateralert_alert}}</b>
+</td>
+</tr>
+<tr>
+<td class=code>
+
+<{alertgroups_loopstart}>
+<tr>
+	<td class=code> 
+
+		<a href="multirater_appraisal.php?grpname=<{grpname}>"><{cMultirateralert_enter}></a><{fullmess}><br>
+		
+	</td>
+</tr>
+<{alertgroups_loopend}>
+</td>
+</tr>
+<tr>
+	<td class=code align=center>
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+ 
+
+</table><br>
+
+</form>

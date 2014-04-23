@@ -1,0 +1,68 @@
+<center>
+<h1>
+{{cInterPersonalFit}}
+<input type="button" name="fHelp" value="Help" onClick="window.open('../lang/1/career/employee_report_inter.html');">
+</h1>
+</center>
+
+<table align=center border=1>
+
+<tr>
+<td class=code>
+{{cInterpersonalskills}} : {{fit_inter}} % Fit
+<input type=hidden name=fFit_i_{{model_id}}_{{empl}} value={{fit_inter}} >
+</td>
+</tr>
+ </table> 
+	<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	
+	<tr>
+		<td class=code rowspan=7 >
+			<b>{{modelname}}</b>
+		</td>
+	</tr>
+		<{trdisplay_start}>
+ 
+		
+		
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname}> </b>
+			</td>
+				<{tddisplay_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>  
+ 						<{showallskills_loopstart}>
+ 					 <!--<{keyid}>-->  <!-- -->
+ 						   
+							<!--<a href=save_to_learnplan.php?sid=<{skill_id_dis}> >  <font color='<{specific_color}>' ><{skill_display}> </font></a>  <br>-->
+<font color='<{specific_color}>' ><{skill_display}> </font><br>
+						<{showallskills_loopend}>
+						
+						
+					</td>
+				<{tddisplay_end}>
+			</tr>
+	 
+		<{trdisplay_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplay_loopstart}>	
+				<td class=code>
+					<b> <{labelname}> </b>	
+				</td>
+		<{labeldisplay_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+
+<br><br>
+
+ 

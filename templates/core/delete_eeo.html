@@ -1,0 +1,34 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+
+<table border=1 align = center>
+<form action ="delete_eeo.php" method=post>
+<input type=hidden name=eeo_id value="<{eeo_id}>">
+<tr>
+<td class=code>
+{{cDeleteeeo}}
+</td>
+
+
+<td class=code>
+<input type=text name=fEeo_name value="<{eeo_name}>">
+</td>
+<td class=code>
+<input type=submit name=fDelete_eeo value="{{cDeleteeeo}}">
+</td>
+</tr>
+
+</form>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<a href="eeo_status.php">{{cShowall}}</a> 
+</td>
+</tr>
+</table>
+
+</body>

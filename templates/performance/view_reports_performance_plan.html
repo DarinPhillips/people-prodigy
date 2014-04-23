@@ -1,0 +1,39 @@
+<center><h1>{{cViewReportsPIP}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/view_performance_plan.html');">
+<h1><center>
+<table >
+
+<tr>
+<td class=code>
+
+</td></tr></table>
+<table border=1 align = center>
+
+<tr>
+	<td class=code>
+	{{cEmplyeeNamee}}
+	</td>
+	<td class=code>
+	{{cCompletedDate}}
+	</td>
+	<td class=code>
+	{{cDueDate}}
+	</td>
+	
+</tr>
+<{plan_loopstart}>
+<tr>
+	<td class=code>
+	<a href="view_performance_plan.php?plan_id=<{plan_id}>&action=show"><{name}></a>
+	</td>
+	<td class=code>
+	<{date1}>
+	</td>
+	<td class=code>
+	<{date2}>
+	</td>
+	
+</tr>
+<{plan_loopend}>
+</table>
+

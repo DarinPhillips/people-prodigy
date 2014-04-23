@@ -1,0 +1,45 @@
+
+			{{cSuccessionDeploymentPlan}}
+			{{cStep3DocumentActions}}
+			{{cPosition}} : {{position_name}}
+
+<{firstdesignee_employee_start}>
+
+	{{firstdesignee_username}} {{cIsfirstdesignee}}{{position_name}}. {{cHeNeedstoimprSkills}}
+		{{cLargestGaps}}
+		{{notselected}}
+<{largestgaps_loopstart}><{largestgap_skillname}><{largestgaps_loopend}>
+<{largestgapstech_loopstart}><{largestgaptech_skillname}><{largestgapstech_loopend}>
+		{{cOtherGaps}}
+		{{notselected1}}
+<{othergaps_loopstart}><{othergap_skillname}><{othergaps_loopend}>
+<{othergapstech_loopstart}><{othergaptech_skillname}><{othergapstech_loopend}>	
+<{firstdesignee_employee_end}>
+<{seconddesignee_employee_start}>
+	{{seconddesignee_username}} {{cIsseconddesignee}}{{position_name}}.{{cHeNeedstoimprSkills}}
+		{{cLargestGaps}}
+		{{notselected2}}
+<{largestgaps2_loopstart}><{largestgap2_skillname}><{largestgaps2_loopend}>
+<{largestgapstech2_loopstart}><{largestgaptech2_skillname}><{largestgapstech2_loopend}>
+		{{cOtherGaps}}
+		{{notselected3}}
+<{othergaps2_loopstart}><{othergap2_skillname}><{othergaps2_loopend}>
+<{othergapstech2_loopstart}><{othergaptech2_skillname}><{othergapstech2_loopend}>	
+<{seconddesignee_employee_end}>
+<{firstdesignee_external_start}>
+{{cNoCurrentCandidatewasFirstDes}} {{position_name}}
+{{cTolocate&attractexCandidate}}
+	{{cHighPerformerModelIskills}}
+<{highperformerskills1_loopstart}><{skill_name}><{highperformerskills1_loopend}>
+{{cHighPerformerModelTskills}}
+<{highperformerskills1tech_loopstart}><{skill_name}><{highperformerskills1tech_loopend}>
+<{firstdesignee_external_end}>
+<{seconddesignee_external_start}>
+{{cNoCandidateWasSecondDesignee}} {{position_name}}. {{cTolocateOthercandidates_dothis}}
+{{cHighPerformerModelIskills}}
+<{highperformerskills2_loopstart}><{skill_name}><{highperformerskills2_loopend}>
+{{cHighPerformerModelTskills}}
+<{highperformerskills2tech_loopstart}><{skill_name}><{highperformerskills2tech_loopend}>
+<{seconddesignee_external_end}>
+
+

@@ -1,0 +1,65 @@
+<script language="JavaScript">
+function return_script(skill,buildid,name_val,email_val)
+{
+	var name="fName_"+skill+"_"+buildid;
+	var email="fEmail_"+skill+"_"+buildid;
+
+	for(i=0;i<window.opener.document.learning.length;i++)
+	{
+		var elename=window.opener.document.learning.elements[i].name;
+	
+		if(email==elename)
+		{
+			window.opener.document.learning.elements[i].value=email_val;
+		}
+
+		if(name==elename)
+		{
+			window.opener.document.learning.elements[i].value=name_val;
+		}
+	}
+	window.close();
+}
+</script>
+<form name='frm'>
+<input type=button name=help value="{{cHelp}}" onclick="location.href='d:/work/Pms/lang/learing/parent'">
+</div>
+
+
+
+	<{ways1_loopstart}>
+
+	<br class=code><{types}>:<br>
+
+<br class=code><{coments}><br>
+	
+			<table>
+			<tr class=code>
+			<td class=code>{{cChoose}}</td>
+			<td class=code>{{cTitle}}</td>
+			<td class=code>{{cDescription}}</td>
+
+
+			</tr>
+
+	<{text_loopstart}>
+
+			<tr class=code>
+			<td><input type=radio name='fg_<{interbasic_id}>' onClick="return_script('<{skills}>','<{buildid}>','<{title}>','<{url}>');"></td>
+			<td><input name="title_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" readonly class="dropdown" value="<{title}>"></td>
+			<td> <textarea name="description_<{basic_id}>_<{interbasic_id}>_<{text}>" readonly wrap="VIRTUAL" class="dropdown"><{desc}></textarea> </td>
+</tr>
+<tr class=code>
+<td class=code>
+<{contents}>
+</td>
+		<td colspan=2><a href="url_<{basic_id}>_<{interbasic_id}>_<{text}>" ><{url}></a></td>
+
+			</tr>
+		
+		<{text_loopend}>
+
+		</table>
+	<{ways1_loopend}>
+
+</form>

@@ -1,0 +1,153 @@
+<script language="JavaScript">
+function validate(form)
+{		
+		
+		str1=form.fSkill_t.value;
+		
+		str2=form.fUsername_t.value;
+		
+		str3=form.fSkill.value;
+		
+		str4=form.fUsername.value;
+		
+		if((str3 != "" && str4 !="")||(str1!="" && str2!=""))
+		{
+			return true;exit;
+		}
+		
+		if((str1=="" && str2!="")||(str1!="" && str2=="")||(str1=="" && str2=="")||(str1!="" && str2!=""))
+		{
+		reg_sp	= /\S/i;
+		
+		if ((str1=="") || (!(reg_sp.test(str1))))
+		{
+		alert("select a skill");
+		return false;
+		exit;
+		}
+		
+		
+		reg_sp	= /\S/i;
+		
+		if ((str2=="") || (!(reg_sp.test(str2))))
+		{
+		alert("select a username");
+		return false;
+		exit;
+		}
+		
+		}
+		
+		
+		
+		if((str3=="" && str4!="")||(str3!="" && str4=="")||(str3=="" && str4=="")||(str3!="" && str4!=""))
+		{
+		
+		reg_sp	= /\S/i;
+		
+		if ((str3=="") || (!(reg_sp.test(str3))))
+		{
+		alert("select a skill");
+		return false;
+		exit;
+		}
+		
+		
+		reg_sp	= /\S/i;
+		
+		if ((str4=="") || (!(reg_sp.test(str4))))
+		{
+		alert("select a user name");
+		return false;
+		exit;
+		}
+		
+		}
+	return true;			
+		
+}
+</script>
+<form action="assign_solution_builder.php" name="frm2" method="post">
+<center>
+<h1>
+{{cAssignSolutionBuilder}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/assign_solution_builder.html');">
+</h1>
+</center>
+<table class=table align=center>
+<tr>
+	<td>
+		{{cTechselect}}
+	</td>
+</tr>
+<tr>
+	<td>
+	<Select name="fSkill_t">
+		<option class=code value="">{{cSelect}}</option>
+	<{techskill_loopstart}>	
+		<option <{selected}> class=code value="<{skill_id}>"><{skill_name}></option>
+	<{techskill_loopend}>
+	</Select>
+		</td>
+		
+			<td>
+	<Select name="fUsername_t">
+		<option class=code value="">{{cSelect}}</option>
+	<{user_loopstart}>	
+		<option <{selected}> class=code value="<{user_id}>"><{username}></option>
+	<{user_loopend}>
+	</Select>
+		
+		</td>
+		
+		<td align=center>
+<input type="submit" name="fAssign_t"  value="{{cAssign}}" onclick="return validate(document.frm2);">
+</td>
+		
+	</tr>
+<input type=hidden name=fUser value={{user}}>
+
+<tr>
+<td>
+{{cPersonnelselect}}
+</td>
+</tr>
+<tr>
+		<td>
+	<Select name="fSkill">
+		<option class=code value="">{{cSelect}}</option>
+	<{perskill_loopstart}>	
+		<option <{selected}> class=code value="<{skill_id}>"><{skill_name}></option>
+	<{perskill_loopend}>
+	</Select>
+		</td>
+		
+		<td>
+	<Select name="fUsername">
+		<option class=code value="">{{cSelect}}</option>
+	<{user_loopstart}>	
+		<option <{selected}> class=code value="<{user_id}>"><{username}></option>
+	<{user_loopend}>
+	</Select>
+		
+		</td>
+		
+		<td align=center>
+<input type="submit" name="fAssign"  value="{{cAssign}}" onclick="return validate(document.frm2);">
+</td>
+		<tr>
+
+
+</table>
+<table align=center>
+<tr>
+<td>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+</td>
+<td>
+
+</td>
+
+</tr>
+</table>
+</form> 

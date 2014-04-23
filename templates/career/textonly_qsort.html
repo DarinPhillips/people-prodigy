@@ -1,0 +1,112 @@
+<script language = JavaScript>
+
+function RemoveSkill(value)
+{
+
+	with(document.form1)
+	{
+		rated_id=rated_user_id.value;
+		form_val=temp_val.value;
+			
+		if(value == 0)
+		{
+			alert ('{{cTextqsort_script1}}');
+			return false;
+		}
+
+		window.location.replace('textonly_qsort.php?rated_user_id='+rated_id+'&skill_id='+value+'&deselect=1&'+form_val);
+	}
+}
+
+
+
+</script>
+
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/textonly_qsort.html');">
+</td>
+</tr>
+</table>
+<br><br>
+<form action=textonly_qsort.php name=form1 >
+
+<{remainingskills_loopstart}>
+<input type=hidden name=rem_val_each_<{kk}> value=<{rem_val_each}> >
+
+<{remainingskills_loopend}>
+<input type=hidden name=lab_id value={{lab_id}} >
+<input type='hidden' name='temp_val' value="{{temp_val}}">
+<input type=hidden name=rated_user_id value={{rated_user_id}}>
+<input type=hidden name=rated_username value={{rated_username}}>
+
+<table border=1 align=center>
+<tr>
+
+	<td class=code colspan=3 align=center>
+		{{cTextqsort_name}} <b>{{rated_username}}</b>
+	</td>
+	
+</tr>
+
+
+<{labeldisplay_loopstart}>
+
+
+	<td class=code align=center>
+		<{labelname}>
+	
+	<br>
+	
+	{{cTextqsort_skillsrem}} <{rem_each_skill}> 
+	<br>
+	
+	
+		<select name='skills_<{labelid}>[]' multiple onDblClick="return RemoveSkill(this.value)"; >
+			<option value=0>{{cTextqsort_select}} <{labelname}> {{cTextqsort_ratedskill}}</option>
+			
+			<{skillinlabels_loopstart}>
+			<option value='<{skill_id}>' > <{skill_name}> </option>
+			<{skillinlabels_loopend}>
+		</select><br><br>
+		
+<input type=submit name=fMoveskill_<{labelid}> value="<{labelname}>" <{disable_label_button}> >
+
+	</td>
+	
+
+
+ <{labeldisplay_loopend}>
+	
+ 
+<tr>
+	<td class=code align=center colspan=3>
+		
+{{cTextqsort_choose}}
+</td>
+</tr>
+<tr>
+<td class = code align=center colspan=3>
+
+		<select name=fullskills[] multiple >
+		
+		<{skill_loopstart}>
+			<option value=<{skill_id}> ><{skill_name}> </option>
+		<{skill_loopend}>
+		
+		</select>
+	</td>
+</tr>
+<tr>
+	<td class=code colspan=3 align=center>
+		{{cTextqsort_skillsleft}}{{count_full}}
+	</td>
+</tr>
+<tr>
+	<td class=code align=center colspan=3><br><br>
+		<input type=submit name=fSubmit {{disabled}} value={{cTextqsort_submit}}>
+	</td>
+</tr>
+</table>
+</form>

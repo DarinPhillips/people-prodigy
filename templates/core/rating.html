@@ -1,0 +1,19 @@
+<center class=code><a href="addrating.php">{{cAddrating}}</a></center>
+<br>
+<table align=center border=1>
+<tr>
+	<td class=code><b>{{cRating}}</td>
+	<td class=code><b>{{cRatingval}}</td>
+	<td class=code><b>{{cEdit}}</td>
+	<td class=code><b>{{cDelete}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td class=code><{rating}></td>
+	<td class=code><{rval}></td>
+	<td class=code><a href="editrating.php?rid=<{rid}>">{{cEdit}}</a></td>
+	<td class=code><a href="rating.php?rid=<{rid}>">{{cDelete}}</a></td>
+</tr>
+<{record_loopend}>
+
+</table>

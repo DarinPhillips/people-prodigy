@@ -1,0 +1,20 @@
+<form action="add_lables.php" method=post>
+<center>
+<h1>
+{{cAddlables}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/add_lables.php');">
+</h1>
+
+</center>
+<table align=center border=1>
+<{record_loopstart}>
+	<tr>
+	<td class=code><{name1}></td><td class=code><{cYes}><input type=radio name=check_<{nid}> value="YES" <{yeschecked}>></td><td class=code><{cNo}><input type=radio name=check_<{nid}> value="NO" <{nochecked}>>
+	</tr>
+<{record_loopend}>
+</table>
+<center><input type=submit name=submit value="{{cSave}}">
+<input type="submit" name="fAddnew" value="{{cAddnewLabels}}"></center>
+
+
+</form>

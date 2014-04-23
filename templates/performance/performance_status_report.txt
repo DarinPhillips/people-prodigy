@@ -1,0 +1,25 @@
+									{{cDate}}:{{today}}
+									{{cUsername}}:{{selfname}}
+
+				{{cPerformancestatusreport}}
+				-------------------------
+
+{{selfname}}{{cSobjective}}
+
+<{main_loopstart}>
+<{sno}>.<{objective}>
+
+{{cCommitment}}:<{committed}>
+{{cAccomplished}}:<{accomplish}>
+{{cPercentageyrtodate}}:<{fulfilled}>
+
+{{selfname}}{{cDirectreportsaccom}}
+<{alluser_loopstart}>
+<{username}>	{{cCommitment}}:<{rcommitted}>
+		{{cAccomplished}}:<{raccomplish}>
+		{{cPercentageyrtodate}}:<{rfulfilled}>
+<{alluser_loopend}>
+=================================================================================================				
+<{main_loopend}>
+
+

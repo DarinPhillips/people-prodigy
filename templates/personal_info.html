@@ -1,0 +1,224 @@
+	<center>
+	<h1>
+{{cPersonalinfo}}
+
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('lang/{{default}}/personal_info.html');">
+
+	</h1>
+	</center>
+
+
+
+<form action="personal_info.php" method="post">
+<table class=table align=center>
+<{changeable_textstart}>
+<tr>
+<td class=code>
+{{nametodis}}
+</td>
+<td class=code>
+<input type="text" readonly name="{{field}}" value="{{value}}">
+</td>
+<td class=code>
+<input type="text" name="{{field}}#;#change" value="{{value}}">
+</td>
+</tr>
+<{changeable_textend}>
+<tr>
+<td class=code>
+{{cLevel}}
+</td>
+<td class=code>
+<input type="text" readonly name="fLevel" value="{{level}}">
+</td>
+<td class=code>
+<!--
+<select name=fLevelchange>
+<option class=code value="">{{cSelect}}</option>
+<{level_loopstart}>
+ <option class=code value="<{value}>"><{value}></option>
+ <{level_loopend}>
+</select>
+-->
+
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cLocation}}
+</td>
+<td class=code>
+<input type="fLocation"  readonly value="{{location}}">
+</td>
+<td class=code>
+<select name=fLocationchange>
+	<option class=code value="">{{cSelect}}</option>
+	<{Location_loopstart}>
+	<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+	<{Location_loopend}>
+	</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cPosition}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fPosition" value="{{position}}">
+</td>
+<td class=code>
+<!--
+<input type="text" name="fPositionchange">
+-->
+<select name="fPositionchange">
+<option value="">{{cSelect}}</option>
+<{position_loopstart}>	
+<option <{selected}> value="<{key}>"><{value}></option>
+<{position_loopend}>
+</select>
+
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cSetadmin_boss}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fBoss" value="{{bossname}}">
+</td>
+<td class=code>
+<!--
+<input type="text" name="fBosschange">
+-->
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEmp_type}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fEmployment" value="{{employment}}">
+</td>
+<td class=code>
+<select name="fEmploymentchange">
+<option class=code value="">{{cSelect}}</option>
+<{employement_loopstart}>
+<option <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{employment_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEEOstatus}}
+</td>
+<td class=code>
+<select readonly multiple name="fEEOStatus[]">
+<{eeo_loopstart}>
+<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{eeo_loopend}>
+</select>
+</td>
+<td>
+<select  multiple name="fEEOStatuschange[]">
+<{alleeo_loopstart}>
+<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+<{alleeo_loopend}>
+</select>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cOff_phone}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fOffPhone" value="{{Offphone}}">
+</td>
+<td class=code>
+<input type="text" name="fOffPhonechange" value="{{Offphone}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cCell}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fCellPhone" value="{{cellphone}}">
+</td>
+<td class=code>
+<input type="text" name="fCellPhonechange" value="{{cellphone}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cPager}}
+</td>
+<td>
+<input type="text"  readonly name="fPager" value="{{pager}}">
+</td>
+<td class=code>
+<input type="text" name="fPagerchange" value="{{pager}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cFax}}
+</td>
+<td class=code>
+<input type="text"  readonly name="fFax" value="{{fax}}">
+</td>
+<td class=code>
+<input type="text" name="fFaxchange" value="{{fax}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cOffAddr}}
+</td>
+<td>
+<textarea  readonly name="fMailAddress">{{mailaddress}}</textarea>
+</td>
+<td class=code>
+<textarea name="fMailAddresschange">{{mailaddress}}</textarea>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cOffPhyAddr}}
+</td>
+<td>
+<textarea  readonly name="fPhysicalAddress">{{physicaladdress}}</textarea>
+</td>
+<td>
+<textarea name="fPhisicalAddresschange">{{physicaladdress}}</textarea>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cPassword}}
+</td>
+<td>
+<input type="text"  readonly name="fPassword" value="{{password}}">
+</td>
+<td class=code>
+<input type="text" name="fPasswordchange" value="{{password}}">
+</td>
+</tr>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<input type="checkbox" name="fRequest" value="yes">
+</td>
+<td class=code>
+{{cIamabossbuticannotseemydirectreports}}
+</td>
+</tr>
+</table>
+
+<center>
+
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back()">
+<input type="submit" name="fSubmit" value="{{cSubmitRequest}}">
+</center>
+</form>

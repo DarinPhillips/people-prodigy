@@ -1,0 +1,885 @@
+<script language=Javascript>
+function validatemodels()
+{
+with (document.frm1models)
+	{
+		if(empl.value == 0)
+		{
+			alert('{{cEnteremployeereq}}');
+			empl.focus();
+			return false;
+			
+		}
+		if(model_sel.value == 0)
+		{
+			alert('{{cEntermodelreq}}');
+			model_sel.focus();
+			return false;
+		}
+	}
+}	
+
+function show_cultural_prof(fBoss_id)
+	{
+	
+		if(fBoss_id.value != '') 
+		{
+		document.cult.submit();
+		}
+		
+	}
+function show_boss_expert_prof(fBoss_id)
+	{
+
+		if(fBoss_id.value != '') 
+		{
+		document.boss_expert.submit();
+		}
+	
+	}
+function show_emp_appraisal(fEmpl_id)
+	{
+		if(fEmpl_id.value != 0)
+		{
+		document.frmappr.submit();
+		}
+	}
+function show_mobility(empl)
+	{
+		if(empl.value != 0)
+		{
+		document.mobility.submit();
+		}
+	}
+function show_careergoals(fEmpl_id)	
+	{
+		if(fEmpl_id.value != 0)
+		{
+		document.frm_careergoals.submit();
+		}	
+	}
+</script>
+<center>
+<h1>
+	{{cCareerfrontpanel}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/front_panel.html');">
+</h1>
+</center>
+
+<{ifemp_graphs_loopstart}>
+<table align=center>
+
+<tr>
+	<td class=code>
+	<a href="employee_report_inter.php"><img src="interpersonal_fit.php" border=0></a>
+	</td>
+
+	<td class=code>
+	<a href="employee_report_tech.php"><img src="technical_fit.php" border=0></a>
+	</td>
+
+<!--<tr>
+	<td class=code>
+		<form action="front_panel.php" method=post name=graph>
+		
+				{{cSelect}}
+				<select name="fModel" onChange="form.submit();">
+					<option class=code value="">Select a Model</option>
+				<{model_loopstart}>
+					<option <{selected}> class=code value="<{model_id}>"><{model_name}></option>
+				<{model_loopend}>
+	
+				</select>
+				<input type=hidden name=fAs value={{as}}>
+			</form>
+	</td>
+	<td class=code>
+	<img src="front_panel.php" border=0>
+	</td>
+</tr>-->
+
+	<td clas=code>
+	<img src="samelevel_fit.php" border=0>
+	</td>
+
+	<td class=code>
+	<img src="onelevel_up_fit.php" border=0>
+	</td>
+</tr>
+
+</table>
+<{ifemp_graphs_loopend}>
+<{ifadmin_graphs_loopstart}> 
+<table align=center>
+
+<tr>
+	<td class=code>
+	<a href="employee_report_inter.php"><img src="interpersonal_fit.php" border=0 title="Inter Personal Fit"></a>
+	</td>
+	<td class=code>
+	<a href="employee_report_tech.php"><img src="technical_fit.php" border=0 title="Technical Fit"></a>
+	</td>
+
+	<td class=code>
+	<img src="samelevel_fit.php" border=0 title="Percentage Fit of the employee for the same level position model selected as having lot of interest">
+	</td>
+
+	<td class=code>
+	<img src="onelevel_up_fit.php" border=0 title="Percentage Fit of the employee for the one level higher position model selected as having lot of interest">
+	</td>
+</tr>
+	<tr align=center>
+	<td class=code>
+
+		<a href="reports_compliance_self_admin.php" title="rating self"><img src="rating_self.php" border=0></a>
+			
+		</td>
+	<td class=code>
+		
+		<a href="reports_compliance_others_admin.php" title="rating others"><img src="rating_others.php" border=0></a>
+		
+		</td>
+	</tr>
+</table>
+<{ifadmin_graphs_loopend}>
+<{ifboss_graphs_loopstart}>
+<table align=center>
+
+<tr>
+	<td class=code>
+	<a href="employee_report_inter.php"><img src="interpersonal_fit.php" border=1></a>
+	</td>
+
+	<td class=code>
+	<a href="employee_report_tech.php"><img src="technical_fit.php" border=1></a>
+	</td>
+	<td class=code>
+	<img src="samelevel_fit.php" border=1>
+	</td>
+
+	<td class=code>
+	<img src="onelevel_up_fit.php" border=1>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		Direct Reports
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	<img src="reports_avg_percent_fit_iskill.php" border=0 title="Fit to their Position">
+	</td>
+	<td class=code>
+	<img src="reports_avg_percent_fit_tskill.php" border=0 title="Fit to their Position">
+	</td>
+	<td class=code>
+	<img src="reports_samelevel_fit.php" border=0 title="Fit to their Career Goals">
+	</td>
+	<td class=code>
+	<img src="reports_levelup_fit.php" border=0 title="Fit to their Career Goals">
+	</td>
+</tr>
+<!********************************************************************************-->
+
+<tr>
+	<td class=code>
+	My Organisation
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	<img src="avg_percent_fit_iskill.php" border=0 title="Fit to their Position">
+	</td>
+
+	<td class=code>
+	<img src="avg_percent_fit_tskill.php" border=0 title="Fit to their Position">
+	</td>
+
+	<td class=code>
+	<img src="admin_samelevel_fit.php" border=0 title="Fit to their Career Goals">
+	</td>
+
+	<td class=code>
+	<img src="admin_levelup_fit.php" border=0 title="Fit to their Career Goals">
+	</td>
+</tr>
+
+
+</table>
+<{ifboss_graphs_loopend}>
+<table class=table align=center border=0 >
+<!--<tr>
+	<td class=code>
+	<table>
+	<tr>
+		<td class=code>
+
+		<a href="reports_compliance_self_admin.php" title="rating self"><img src="rating_self.php" border=0></a>
+			
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		
+		<a href="reports_compliance_others_admin.php" title="rating others"><img src="rating_others.php" border=0></a>
+		
+		</td>
+	</tr>
+	
+	</td>
+	</table>
+</tr>-->
+<tr>
+		<td class=code>
+
+
+			<form action="front_panel.php" method=post name=graph>
+				{{cViewGraph}}
+				<select name="fAs" onChange="form.submit();">
+					<option class=code value="">View as..</option>
+				<{posname_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value1}></option>
+				<{posname_loopend}>
+
+				</select>
+			</form>
+			
+		</td>
+	</tr>
+
+<{edit_settings_start}>
+
+	<tr>
+		<td class=code>
+			<b><a href="edit_settings.php">{{cEditsettings}}</a><br><br></b>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=code>
+			<b><a href="multirater.php">{{cMultirater_assessment}}</a><br><br></b>
+		</td>
+	</tr>
+
+<!--	<tr>
+		<td class=code>
+			<b><a href="appraisal.php">{{cCareer_appraisal}}</a><br><br></b>
+		</td>
+	</tr>-->
+ 
+ 
+	<tr>
+		<td class=code>
+			<b><a href="alert.php">{{cAlertfornewapprovals}}</a><br><br></b>
+		</td>
+	</tr>
+
+<{edit_settings_end}>
+
+
+<!------------------------------------------------------->
+<{only_for_admins_area}>
+<tr>
+	<td class=code>
+		<b><a href="assign_tech_skill.php">{{cAssignSkills}}</a><br><br></b>
+	</td>
+</tr>
+
+	<tr>
+		<td class=code>
+			<b><a href="skills_data.php">{{cViewimportskillsdata}}</a><br><br></b>
+		</td>
+	</tr>
+
+
+<{only_for_admins_area}>
+<tr>
+	<td class=code>
+	<b><a href="manual_skill_entry.php">{{cEnterorFixSkill}}</a><br><br></b>
+	</td>
+		
+</tr>
+
+	<tr>
+		<td class=code>
+			<b><a href="skills_builder.php">{{cSkillsbuilder}}</a><br><br></b>
+		</td>
+		
+	</tr>
+<{only_for_admins_area}>
+<tr>
+	<td class=code>
+	<b><a href="view_skills.php">{{cViewSkills}}</a><br><br></b>
+	</td>
+</tr>
+
+
+<tr>
+		<td class=code>
+		
+			<b><a href="appraisal.php">{{cCareer_appraisal}}</a><br><br></b>
+		</td>
+	</tr>
+
+<{only_for_admins_area}>
+
+<{interalert_start}>
+	<tr>
+		<td class=code>
+		
+			<b><a href=write_test.php?test_type=i>{{cAlertfortest_takeinter}}</a><br><br></b>
+			
+		</td>
+		
+	</tr><{interalert_end}>
+		<{techalert_start}><tr>
+		<td class=code>
+			
+			<b><a href=write_test.php?test_type=t>{{cAlertfortest_taketech}}</a><br><br></b>
+			
+		</td>
+	</tr><{techalert_end}>	
+	<{interappraisal_start}>
+	<tr>
+		<td class=code>
+			
+			<b><a href=alert_multirater.php>{{cAlertassessment_inter}}</a><br><br></b>
+			
+		</td>
+		
+	</tr><{interappraisal_end}>	
+	<{techappraisal_start}>
+	<tr>
+		<td class=code>
+			
+			<b><a href=tech_multirater.php>{{cAlertassessment_tech}}</a><br><br></b>
+			
+		</td>
+		
+	</tr>	
+	<{techappraisal_end}>
+	<{alertforrating_start}>
+	<tr>
+		<td class=code>
+			
+			<b><a href="alert_ratings.php">{{cAlertforratingothers}}</a><br><br></b>
+			
+		</td>
+		
+	</tr>
+	<{alertforrating_end}>
+
+
+	<tr>
+		<td class=code>
+			<b><a href="test_builder.php">{{cTestbuilder}}</a><br><br></b>
+		</td>
+		
+	</tr>
+
+
+
+<{only_for_admins_area}>
+ <tr>
+ 	<td class=code>
+ 	<b><a href="have_raters_assigned.php">{{cHaveRatersAssigned}}</a><br><br></b>
+ 	</td>
+ </tr>
+ <tr>
+	<td class=code>
+		<b><a href="find_ratings_admin.php">{{cWhoRatingTheMost}}</a><br><br></b>
+	</td>
+</tr>
+
+
+<{only_for_admins_area}>
+
+
+
+
+
+
+<!--<{ifemployee_loopstart}>-->
+
+
+
+
+	
+<{ifadmin_boss_loopstart}>
+<tr>
+	<td class=code>
+		<b><a href="search_reports_skills.php">{{cSearchReports}}</a><br><br></b>
+	</td>
+</tr>
+<{ifadmin_boss_loopend}>
+
+<{ifboss_loopstart}>
+<tr>
+	<td class=code>
+	<b><a href="cultural_profile.php">{{cViewCulturalProfile}}</a><br><br></b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	<b><a href="expertise_profile.php">{{cViewExpertiseProfile}}</a><br><br></b>
+	</td>
+</tr>
+
+<{ifboss_loopend}>
+
+<{ifanyboss_under_admin}>
+<tr>	
+	<td class=code>
+		<form action="cultural_profile.php" method=POST name=culture>
+		{{cView}}<select name=fBoss_id onChange="form.submit()">
+					<option value=0> Select an Employee... </option>
+					<{boss_loopstart}>
+					<option value=<{boss_id}> > <{bossname}> </option>
+					<{boss_loopend}>	
+				</select>Cultural Profile
+			</form>
+	</td>
+</tr>
+<tr>	
+	<td class=code>
+		<form action="expertise_profile.php" method=POST>
+		{{cView}}<select name=fBoss_id onChange="form.submit()">
+					<option value=0> Select an Employee... </option>
+					<{boss_loopstart}>
+					<option value=<{boss_id}> > <{bossname}> </option>
+					<{boss_loopend}>	
+				</select>Expertise Profile
+			</form>
+	</td>
+</tr>
+<{ifanyboss_under_admin}>
+
+
+
+<{only_for_admins_area}>
+<tr>
+	<td class=code>
+			<b><a href="view_tests.php">{{cViewTests}}</a><br><br></b>
+		</td>
+	</tr>
+<tr>
+	<td class=code>
+	<b><a href="skill_usage.php">Skills Usage</a><br><br></b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<b><a href="test_usage.php">{{cTest_usage}}</a><br><br></b>
+	</td>
+</tr>
+
+	<tr>
+	<td class=code>
+		<b><a href="outstanding_assignments_skill.php" {{highlight2}}>{{cViewOutstanding}}{{cCSkill}}</a><br><br></b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<b><a href="outstanding_assignments_tests.php" {{highlight}}>{{cViewOutstanding}}{{cCTests}}</a><br><br></b>
+	</td>
+</tr>
+
+<{only_for_admins_area}>
+
+<{ifboss_loopstart}>
+<tr>
+	<td class=code>
+	<b><a href="reports_compliance_self.php">{{cReportsComplianceSelf}}</a>
+	<input type=text  size=2 value="{{self}}" readonly>%<br><br></b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	<b><a href="reports_compliance_others.php">{{cReportsComplianceOthers}}</a>
+	<input type=text  size=2 value="{{others}}" readonly>%<br><br></b>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+	<b><a href="find_ratings_boss.php">{{cWhoisrating}}</a><br><br></b>
+	</td>
+</tr>
+
+<{ifboss_loopend}>
+
+
+	<tr>
+		<td class=code>
+			<b><a href="view_appraisal.php">{{cViewAppraisal}}</a><br><br></b>
+		</td>
+		
+	</tr>	
+
+
+<{only_for_admins_area}>
+
+<tr>
+	<td class=code>
+		<b><a href="outstanding_assignments_appraisal.php" {{highlight1}}>{{cViewOutstanding}}{{cCAppraisal}}</a><br><br></b>
+	</td>
+</tr>
+
+	<{ifemp_under_admin}>
+		<tr>
+		<td class=code>
+			<form action="view_appraisal.php" method=POST name=frmappr>
+				{{cView}}<select name=fEmpl_id onChange="show_emp_appraisal(document.frmappr.fEmpl_id);">
+					<option value=0> Select an Employee... </option>
+					<{viewemployeeappraisal_loopstart}>
+					<option value=<{user_under_admin}> > <{username_empls}> </option>
+					<{viewemployeeappraisal_loopend}>	
+				</select>{{cCCAppraisal}}
+			</form>
+
+		</td>
+	</tr>
+<{ifemp_under_admin}>
+	<{only_for_admins_area}>
+	<{ifboss_loopstart}>
+	<tr>
+	<td class=code>
+		
+		<b><a href="report_appraisal_results.php">{{cViewReportsAppraisal}}</a><br><br></b>
+
+		</td>
+	
+		</tr>
+		<{ifboss_loopend}>
+	<{only_for_admins_area}>
+<tr>
+	<td class=code>
+	<b><a href="appraisal_usage.php">Appraisal Usage</a><br><br></b>
+	</td>
+</tr>
+<{only_for_admins_area}>
+
+
+
+
+<{ifadmin_boss_loopstart}>
+	<tr>
+		<td class=code>
+			<b><a href="position_model.php">{{cPosition_model}}</a><br><br></b>
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<b><a href="view_models.php">{{cViewModels}}</a><br><br></b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class=code>
+		<b><a href="person_for_position.php">{{cFindCandidateForPosition}}<a><br><br></b>
+
+		</td>
+	</tr>
+<{ifadmin_boss_loopend}>
+<tr>
+		<td class=code>
+			<b><a href="mobility_reports.php">{{cMobilityreports}}</a><br><br></b>
+		</td>
+		
+</tr>
+<{ifadmin_boss_loopstart}>
+	<{ifemp_under_admin}>
+		<tr>
+		<td class=code>
+		 <br>
+		
+		<form action=person_position.php method=post name=frm1models onSubmit="return validatemodels();">
+{{cCCompare}}<select name=empl>
+					<option value=0> Select an Employee... </option>
+					<{viewemployeeappraisal_loopstart}>
+					<option value=<{user_under_admin}> > <{username_empls}> </option>
+					<{viewemployeeappraisal_loopend}>	
+				</select>
+			TO </td></tr><tr><td class=code>	<select name=model_sel>
+					<option value=0> Select a Model...</option>
+					<{viewmodels_loopstart}>
+					<option value=<{modelid}> > <{modelname}> </option>
+					<{viewmodels_loopend}>
+				</select>
+			<input type=submit name=fGo value={{cGo}} >
+		</form>
+
+		</td>
+	</tr><{ifemp_under_admin}>
+	<{ifboss_loopstart}>
+	<tr>
+		<td class=code>
+		<b><a href="report_mobility.php">View Reports Mobility</a><br><br></b>
+		</td>
+	</tr>
+	<{ifboss_loopend}>
+	<{ifemp_under_admin}>	<tr>
+		<td class=code>
+	
+			<form name=mobility action=mobility_reports.php method=post>
+				{{cView}}<select name=empl onChange="show_mobility(document.mobility.empl);">
+					<option value=0> Select an Employee... </option>
+					<{viewemployeeappraisal_loopstart}>
+					<option value=<{user_under_admin}> > <{username_empls}> </option>
+					<{viewemployeeappraisal_loopend}>	
+				</select>{{cMobility}}
+			</form>
+
+		</td>
+	</tr><{ifemp_under_admin}>
+<{only_for_admins_area}>
+<tr>
+		<td class=code>
+		
+		<b><a href="model_usage.php">{{cModelUsage}}</a><br><br></b>
+
+		</td>
+	</tr>
+<{only_for_admins_area}>
+<!--<ifadmin_boss_loopstart}>-->
+
+<{ifadmin_boss_loopend}>
+
+	<{only_for_admins_area}>
+	
+	<tr>
+		<td class=code>
+			<b><a href="career_goals.php">{{cCareergoals}}</a><br><br></b>
+		</td>
+		
+	</tr>
+	
+
+
+
+	<{only_for_admins_area}>
+<{ifboss_loopstart}>
+
+	<tr>
+		<td class=code>
+		<b><a href="report_career_goals.php">View Reports Career Goals</a><br><br></b>
+		</td>
+	</tr>
+	<{ifboss_loopend}>
+<{ifemp_under_admin}>	<tr>
+		<td class=code>
+		
+			<form name=frm_careergoals action=career_goals.php method=post>
+			{{cView}}	<select name=fEmpl_id onChange="show_careergoals(document.frm_careergoals.fEmpl_id);">
+					<option value=0> Select an Employee... </option>
+					<{viewemployeeappraisal_loopstart}>
+					<option value=<{user_under_admin}> > <{username_empls}> </option>
+					<{viewemployeeappraisal_loopend}>	
+				</select>{{cCCareergoals}}
+			</form>
+		</td>
+	</tr><{ifemp_under_admin}>
+	<{only_for_admins_area}>
+		<tr>
+		<td class=code>
+	
+			<b><a href="careergoals_usage.php">{{cCareerGoalsUsage}}</a><br><br></b>
+
+		</td>
+	</tr>
+	<{only_for_admins_area}>
+<{only_for_admins_area}>
+	
+
+	<{only_for_admins_area}>
+	
+
+<{only_for_admins_area}>
+
+
+<{only_for_admins_area}>
+
+	<{ifadmin_boss_loopstart}>
+<tr>
+		<td class=code>
+		<b><a href="view_succession_plan.php">{{cViewMySuccessionPlan}}</a><br><br></b>
+		</td>
+</tr>
+<{ifadmin_boss_loopend}>
+<{only_for_admins_area}>
+<tr>
+		<td class=code>
+		
+			<b><a href="pos_without_designee.php">{{cPositionWithoutDesigness}}</a><br><br></b>
+
+		</td>
+	</tr>
+<{ifanyboss_under_admin}>
+	<tr>		
+		<td class=code>
+		
+		
+				<form action="assign_succession_plan.php" action=POST>
+			{{cAssign}}	<select name="fBoss_id" onChange="form.submit();">
+					<option class=code value="">{{cSelectBossName}}</option>
+
+				<{boss_loopstart}>
+					<option <{selected}> class=code value="<{userid}>"><{username}></option>
+				<{boss_loopend}>
+
+				</select>
+				{{cToUpdate}}
+				</form>
+				
+				
+		</td>
+	
+</tr>
+<{ifanyboss_under_admin}>
+<{only_for_admins_area}>
+<{ifadmin_boss_loopstart}>
+<tr>
+		<td class=code>
+		<{sucplan_loopstart}>
+			<b><a href="assign_succession_plan.php?action=assign" class=highlight>{{cUpdateSuccessionPlanAlert}}</a><br><br></b>
+		<{sucplan_loopend}>
+		</td>
+	</tr>
+	
+
+
+<{ifadmin_boss_loopend}>
+<{ifboss_loopstart}>
+	<tr>
+		<td class=code>
+			<b><a href="succession_depl_plan.php">{{cSuccessionDeploymentPlan}}</a><br><br></b>
+		</td>
+	</tr>
+<{ifboss_loopend}>
+<{only_for_admins_area}>
+<tr>
+		<td class=code>
+		<b><a href="succession_plan_usage.php">{{cSuccessionPlanUsage}}</a><br><br></b>
+		</td>
+</tr>
+<{only_for_admins_area}>
+<{ifadmin_boss_loopstart}>
+	<tr>
+		<td class=code>
+	
+		<b><a href="outstanding_assignments_plan.php" {{highlight3}}>{{cViewOutstanding}}{{cCSuccessionPlan}}</a><br><br></b>
+
+		</td>
+</tr>
+<{ifadmin_boss_loopend}>
+<{ifadmin_boss_loopstart}>
+<tr>
+		<td class=code>
+
+		
+		<{admindashboard_loopstart}>
+
+			<form action="change_dashboard.php" method=post name=admindash>
+				{{cView}}
+				<select name="fEmployee_id" onChange="form.submit();">
+					<option class=code value="">{{cEmployeename}}</option>
+
+				<{usersdisplay_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value}></option>
+				<{usersdisplay_loopend}>
+
+				</select>
+				{{cDashboard}}
+			</form>
+		<{admindashboard_loopend}>
+
+		
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			
+			<b><a href="compare_data.php">{{cCompare}}</a><br><br></b>
+		</td>
+	</tr>
+<{ifadmin_boss_loopend}>
+<{only_for_admins_area}>
+<tr>
+	<td class=code>
+		<b><a href="core_data.php">{{cClientStatuschanges}}</a><br><br></b>
+	</td>
+</tr>
+<{only_for_admins_area}>
+
+
+
+	
+	<!--==========================over====================================-->
+
+<!--<{ifemployee_loopend}>-->
+<!--
+
+//-------------------admins sensitive area starts here----------------------------
+-->
+<!--<{only_for_admins_area}>
+
+
+<tr>
+		<td class=code>
+			<b><a href="manual_skill_entry.php">{{cEnterorFixSkill}}</a><br><br></b>
+		</td>
+</tr>-->
+
+<!--<{only_for_admins_area}>
+<{ifadmin_boss_loopstart}>
+<tr>
+	<td class=code>
+		<b><a href="search_reports_skills.php">{{cSearchReports}}</a><br><br></b>
+	</td>
+</tr>
+<{ifadmin_boss_loopend}>
+<{only_for_admins_area}>-->
+
+
+
+
+<!--<{only_for_admins_area}>
+	<{ifboss_loopstart}>
+	<tr>
+		<td class=code>
+		<b><a href="view_succession_plan.php">{{cViewMySuccessionPlan}}</a><br><br></b>
+		</td>
+	</tr>
+	<{ifboss_loopend}>
+	
+<{ifadmin_boss_loopend}>
+
+
+
+<{ifboss_loopstart}>
+	<tr>
+		<td class=code>
+			<b><a href="succession_depl_plan.php">{{cSuccessionDeploymentPlan}}</a><br><br></b>
+		</td>
+	</tr>
+<{ifboss_loopend}>
+<{only_for_admins_area}>
+	
+
+	<{only_for_admins_area}>-->
+<!--<{sucplanalert_loopstart}>
+	<tr>
+		<td class=code>
+		<b><a href="update_succession_plan.php" class=highlight>{{cUpdateSuccessionPlan}}</a><br><br></b>
+		</td>
+	</tr>
+<{sucplanalert_loopend}>-->
+
+
+	
+
+
+
+</table>
+
+

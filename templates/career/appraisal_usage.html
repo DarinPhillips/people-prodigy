@@ -1,0 +1,31 @@
+<form name=appr_frm action=appraisal_usage.php method=post>
+<table align=center cellspacing=0 cellpadding=4 border=1>
+<tr>
+	<th class=code>
+		{{cAppraisalUsage}}
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/appraisal_usage.html');">
+	</th>
+</tr>
+<tr>
+	<td class=code>
+		<a href=appraisal_preference.php>{{cAppraisalPreference}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<a href=refused_details.php>{{cRefusedEmpl}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code>
+		<a href=refused_raters.php>{{cRaterswhorefused}}</a>
+	</td>
+</tr>
+<tr>
+	<td class=code align=center>
+		<input type=button name=fBack value={{cBack}} onClick="window.history.back();">
+	</td>
+</tr>
+
+</table>
+</form>

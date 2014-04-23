@@ -1,0 +1,75 @@
+<script language="JavaScript">
+function download()
+{
+	
+	frm = window.document.learn;
+	frm.action='download_learning_solution.php';
+	frm.submit();
+}
+</script>
+
+
+
+<center><h1>
+{{cViewDevSolution}}
+<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/view_learning_solution.html');"></h1></center>
+
+<input type=hidden name=text_num value="{{nooftext}}">
+
+<br>
+<br>
+
+<form action="download_learning_solution.php" method=POST name='learn'>
+<input type=hidden name=fUser_id value={{user_id}}>
+<input type=hidden name=fSkill_id value={{skill_id}}>
+<{solution_loopstart}>
+
+<{sol_names}> {{cIn}} <b><{skill_name}></b>
+
+	<{ways1_loopstart}>
+
+	<br><{types}>
+
+
+	
+			<table>
+			<tr>
+			<td>{{cTitle}}</td>
+			<td>{{cDescription}}</td>
+
+			<td> <{Display}> </td>
+
+			</tr>
+
+	<{text_loopstart}>
+
+			<tr>
+			
+			<td><input name="title_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{title}>" readonly></td>
+			<td> <textarea name="description_<{basic_id}>_<{interbasic_id}>_<{text}>" wrap="VIRTUAL" class="dropdown" readonly><{desc}></textarea> </td>
+			<td><input name="url_<{basic_id}>_<{interbasic_id}>_<{text}>" type="text" class="dropdown" value="<{url}>" readonly></td>
+
+			</tr>
+		
+		<{text_loopend}>
+
+		</table>
+	<{ways1_loopend}>
+
+<input type=hidden  name=hidenib_<{basic_id}> value="<{hidib_id}>" >
+
+<{solution_loopend}>
+
+<table>
+	<tr>
+		<td class=code>
+		<input type=button name=fSave value={{cSave}} onclick="download();">
+		</td>
+		<td class=code>
+		<input type =button name=print value={{cPrint}} onclick="javascript:window.print()">
+		</td>
+	</tr>
+</table>
+</form>
+
+

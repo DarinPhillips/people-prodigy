@@ -1,0 +1,41 @@
+
+</script>
+<form action="families_without_position.php" method=post>
+<center>
+<h1>
+{{cFamilieswithoutPosition}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/families_without_position.html');">
+</h1>
+</center>
+<table align=center>
+<th class=code>
+{{cFamilyname}}
+</th>
+<th class=code>
+{{cAdded_by}}
+</th>
+<th class=code>
+{{cDate_added}}
+</th>
+<{family_loopstart}>
+<tr>
+<td class=code>
+<a href="edit_families.php?family_id=<{family_id}>"><{family_name}></a>
+</td>
+<td class=code>
+<{added_by}>
+</td>
+<td class=code>
+<{date_added}>
+</td>
+</tr>
+<{family_loopend}>
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+<!--
+<input type="button" name="fSave" value="{{cSave}}" >
+-->
+</center>
+</form>

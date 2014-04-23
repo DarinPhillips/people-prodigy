@@ -1,0 +1,87 @@
+<form name=frm1 action=gaps_at_glance.php method=post>
+<input type=hidden name=designee1 value={{designee1}}>
+<input type=hidden name=designee2 value={{designee2}}>
+<input type=hidden name=posid value={{posid}}>
+<input type=hidden name=modelid value={{modelid}}>
+
+<table align=center border=1>
+	<tr>
+	<th class=code>
+	
+	{{posname}} {{cGapsataglance}}
+
+	</th>
+	</tr>
+</table>
+<{gapsataglance_loopstart}>
+
+	<table align=center border=1 width = 50% height=40% cellspacing=0 cellpadding=3>
+		<tr>
+			<td class=code rowspan=2 width=50>
+				<{username}>
+			</td>
+			<td class=code height=20>
+				{{cHas}}	
+			</td>
+			<td class=code height=20>
+				{{cNeeds}}
+			</td>
+			<td class=code height=20>
+				{{cExtras}}
+			</td>
+		</tr>
+
+		<tr>
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillshas_loopstart}>
+				<a href=save_to_learnplan.php?s_id=<{skillid}> ><{skills_has}></a> <br>	
+	<{gapsskillshas_loopend}>
+				{{cTech}}<br>
+	<{gapsskillshastech_loopstart}>	
+				<a href=save_to_learnplan.php?s_id=<{skill_techid}> ><{skills_has_tech}></a> <br>	
+	<{gapsskillshastech_loopend}>	
+				</td>
+
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillsneeds_loopstart}>
+				<a href=save_to_learnplan.php?s_id=<{skillsid}> ><{skills_needs}> </a><br>
+	<{gapsskillsneeds_loopend}>
+				{{cTech}}<br>
+	<{gapsskillsneedstech_loopstart}>	
+				<a href=save_to_learnplan.php?s_id=<{skill_tech_id}> > <{skills_needs_tech}> </a> <br>	
+	<{gapsskillsneedstech_loopend}>
+				</td>
+
+
+				<td class=code>
+				{{cInterpersonal}}<br>
+	<{gapsskillsextras_loopstart}>
+				<a href=save_to_learnplan.php?s_id=<{skillid_e}> ><{skills_extras}> </a><br>
+	<{gapsskillsextras_loopend}>
+				{{cTech}}<br>
+	<{gapsskillstechextras_loopstart}>	
+				<a href=save_to_learnplan.php?s_id=<{skilltechid}> ><{skills_extra_tech}> </a><br>
+	<{gapsskillstechextras_loopend}>	
+				</td>
+
+
+		</tr>
+
+
+	</table><br>
+
+<{gapsataglance_loopend}>
+<table align=center cellspacing=0>
+	<tr>
+		<td class=code>
+			<input type=button name=fBack value=" {{cBack}} " onClick="window.history.back()";>
+			<input type=submit name=fSave value=" {{cSave}} " >
+			<input type=button name=fReturn value="{{cApprres_returnback}}" onClick="window.location.replace('front_panel.php')";>
+		</td>
+	</tr>
+</table>
+</form>

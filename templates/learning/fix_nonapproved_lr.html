@@ -1,0 +1,19 @@
+<center>
+<h1>
+{{cFixlearningplan}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/fix_nonapproved_lr.html');">
+</h1>
+</center>
+
+<{ifnorecord_loopstart}>
+<table class=code align=center border=1>
+<tr>
+	<td><b>{{cNonapprovedplans}}</td>
+</tr>
+<{record_loopstart}>
+<tr>
+	<td><a href="fix_plan.php?user_id=<{user_id}>&skill_id=<{sid}>&action=alert"><{skill}></td>
+</tr>
+<{record_loopend}>
+</table>
+<{ifnorecord_loopend}>

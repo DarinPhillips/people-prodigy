@@ -1,0 +1,64 @@
+<script>
+function check()
+{
+	with(document.frm1)
+	{
+		if(fAssign.value=="Assign")
+		{
+			
+			temp	= elements['fPosition[]'];
+			
+			te	= temp.value;
+
+				if(te=="")
+				{
+					alert('{{cSelectAnEmployee}}');
+					return false;
+				}
+		
+		
+		}
+	
+	}
+	return true;
+}
+	
+</script>
+
+<center><h1>
+{{cAssignReportPlan}}
+<input type="button" name=fHelp value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/assign_succession_plan1.html');">
+<h1><center>
+
+<form action="assign_succession_plan1.php" method=POST name=frm1 onSubmit="return check();">
+<input type=hidden name=fUser value={{fUser}}>
+
+<table align=center border=1 cellspacing=0 cellpadding=4>
+<tr>
+	<td class=code>
+		{{cIwant}}
+		<input type=text value="{{employee}}" readonly>
+		{{cToUpdate}}
+	</td>
+</tr>
+<tr>
+	<td class=code align=center>
+	
+		
+		<select multiple name="fPosition[]">
+
+		<{employee_loopstart}>
+			<option value="<{pos_id}>" <{sel}> ><{position_name}></option>
+		<{employee_loopend}>
+	</td>
+</tr>
+<tr>
+		<td class=code align=center>
+			<input type="button"  value={{cBack}} onClick="window.history.back();">&nbsp&nbsp&nbsp&nbsp
+			<input type=submit name=fAssign value="{{cAssign}}" >
+			
+		</td>
+</tr>
+	
+</table>
+</form>

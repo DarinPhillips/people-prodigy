@@ -1,0 +1,35 @@
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</head>
+<body class=B1>
+
+
+<table border=1 align = center>
+
+
+
+<form action ="addeeo_tags.php" method=post>
+<input type=hidden name=eeo_id value="{{eeo_id}}">
+<tr>
+<td class=code>
+{{cAddeeotags_addtags}} {{eeo_name}} : 
+</td>
+
+
+<td class=code>
+<input type=text name=fTag_name value="">
+</td>
+<td class=code>
+<input type=submit name=fAdd_tag value="{{cAddeeotags_add}}";
+</td>
+</tr>
+
+</form>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<a href="eeo_status.php">{{cAddeeotags_showall}}</a> 
+</td>
+</tr>
+</table>

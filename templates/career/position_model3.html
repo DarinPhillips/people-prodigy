@@ -1,0 +1,145 @@
+<script language=Javascript>
+/*function check_usrs(x)
+{
+	 
+		usr_inc = Array({{usrtoinc}});
+		 
+		usr_cnt = Array({{usrcnt}});
+		none = "{{none}}";
+		some = "{{some}}";
+		if(usr_cnt == '' || none == 'none')
+		{
+			alert('{{cNonehavebeenrated}}');
+			window.location.replace('position_model.php');
+			return false;
+		}
+		if(some == 'some')
+		{
+			
+			resval = confirm("{{cOneormorenotcompleted}}");
+			 
+			if(!resval)
+			{
+				window.location.replace('position_model.php');
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		
+	 
+}
+check_usrs(document.frm1);	*/
+</script>
+<form action=position_model4.php method=post name='frm1' >
+<input type=hidden name=model_id value={{model_id}} >
+
+
+
+<table align=center border=1>
+<tr>
+		<td class=code align=center colspan=4>
+			<h1>{{cBuildamodel}}
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/position_model3.html')";>
+			</h1>
+		</td>
+			
+	</tr>
+<tr>
+<td class=code colspan=4>
+
+<b>{{cStep3_selectskills}}</b>
+</td>
+</tr>
+<tr>
+<td class=code colspan=4>
+
+{{cModel_message}} 
+</td>
+</tr>
+<tr>
+	<td class=code>
+		<b>{{cInterpersonalskills}}</b>
+	</td>
+	<td class=code>
+		<b>{{cWeight}}</b>
+	</td>
+	<td class=code>
+		<b>{{cLevelfactor}}</b>
+	</td>
+	<td class=code>
+		<b>{{cRecommendedlevel}}</b>
+	</td>
+</tr>
+<{skills_loopstart}>
+	<tr>
+		<td class=code>
+			<{skill_name}>
+		</td>
+		<td class=code>
+			# <{weight}> 
+			<input type=hidden name=weight_<{skill_id}> value='<{weight}>'>
+		</td>
+		<td class=code>
+			<input type=text size=2 name='fLevel_<{skill_id}>' value="" >
+		</td>
+		<td class=code>
+			# <{recommended}> 
+			<input type=hidden name=recommended_<{skill_id}> value='<{recommended}>'>
+		</td>
+		
+		
+	
+	</tr>
+		
+<{skills_loopend}>
+<tr>
+	<td class=code>
+	<br><br>	<b>{{cTechnicalskills}}</b>
+	</td>
+	<td class=code>
+	<br><br>	<b>{{cWeight}}</b>
+	</td>
+	<td class=code>
+	<br><br>	<b>{{cLevelfactor}}</b>
+	</td>
+	<td class=code>
+	<br><br>	<b>{{cRecommendedlevel}}</b>
+	</td>
+</tr>
+<{skillstech_loopstart}>
+		<tr>
+		<td class=code>
+			<{skill_name_t}>
+		</td>
+		<td class=code>
+			# <{weight_t}>
+			<input type=hidden name=weight_<{skill_id_t}> value='<{weight_t}>'> 
+		</td>
+		<td class=code>
+			<input type=text size=2 name='fLevel_<{skill_id_t}>' value="" >
+		</td>
+		<td class=code>
+			# <{recommended_t}> 
+			<input type=hidden name=recommended_<{skill_id_t}> value='<{recommended_t}>'>
+		</td>
+		
+		
+	
+	</tr>
+<{skillstech_loopend}>
+
+<tr>
+<td class=code colspan=4 align=center>
+
+<br>
+<br>
+
+<input type="button" name="fBack" value="  {{cBack}}  " onClick = "window.history.back()";>
+<input type="Submit" name="fNext" value="  {{cNext}}  ">
+
+</td>
+</tr>
+</table>

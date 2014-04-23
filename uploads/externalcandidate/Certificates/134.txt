@@ -1,0 +1,4 @@
+full login information of your authorize.net account
+
+UN: quikned
+PW: rufus3

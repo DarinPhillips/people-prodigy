@@ -1,0 +1,96 @@
+<center><h1>{{cMailoptions}}<input type=button name=help value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/mail_option.html');"></h1></center>
+
+<form action="mail_options.php" method="post">
+
+<br>
+<table align=center>
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" name="fSubject" value="{{subject}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea name="fMessage">{{message}}</textarea>
+</td>
+</tr>
+</table>
+<b>{{cSolutionBuilderAssignmentmail}}</b>
+<table align=center>
+
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" name="fSubject1" value="{{subject1}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea name="fMessage1">{{message1}}</textarea>
+</td>
+</tr>
+</table>
+<b>{{cPlanBuilderApprovalmail}}</b>
+<table align=center>
+
+<tr>
+<td class=code>
+{{cEnterthesubject}}
+</td>
+<td class=code>
+<input type="text" name="fSubject2" value="{{subject2}}">
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cEnterthemessage}}
+</td>
+<td class=code>
+<textarea name="fMessage2">{{message2}}</textarea>
+</td>
+</tr>
+</table>
+
+<b>{{cPlanBuilderResubmissionmail}}</b>
+<table align=center>
+	<tr>
+		<td class=code>{{cEnterthesubject}}</td>
+		<td class=code><input type="text" name="fSubject3" value="{{subject3}}"></td>
+	</tr>
+	<tr>
+		<td class=code>{{cEnterthemessage}}</td>
+		<td class=code><textarea name="fMessage3">{{message3}}</textarea></td>
+	</tr>
+</table>
+
+<b>{{cFeedbackmail}}</b>
+<table align=center>
+	<tr>
+		<td class=code>{{cEnterthesubject}}</td>
+		<td class=code><input type="text" name="fSubject4" value="{{subject4}}"></td>
+	</tr>
+	<tr>
+		<td class=code>{{cEnterthemessage}}</td>
+		<td class=code><textarea name="fMessage4">{{message4}}</textarea></td>
+	</tr>
+</table>
+
+<table align=center>
+<tr>
+<td><br>
+<input type="submit" name="fUpdatemail" value="{{cUpdatemailoption}}">
+</td>
+</tr>
+</table>
+</form>

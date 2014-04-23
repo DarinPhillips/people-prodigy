@@ -1,0 +1,93 @@
+<center>
+	<h1>
+	{{cSettings}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/edit_settings.html');">
+
+	</h1>
+	</center>
+
+<form action="edit_settings.php" method="post">
+<input type=hidden name=action value="edit">
+<table align=center>
+
+<form action=edit_settings.php method=post>
+<tr>
+<td class=code>
+{{cAlter}} :
+</td>
+<td class=code>
+<input type="text" name="fdev_text" value="{{dev_text}}">
+</td>
+</tr>
+
+		<{lang_loopstart}>	
+	<tr>
+		<td class=code>
+
+			{{cFeedbackrequesttext}} (<{language}>) : 
+			
+		</td>
+		<td class=code>
+			<textarea name="requesttext_<{lang_id}>" cols=30 rows=5>{{requesttext_<{lang_id}>}}</textarea>
+
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+
+			{{cPlanApprovaltext}} (<{language}>) : 
+			
+		</td>
+		<td class=code>
+			<textarea name="approvaltext_<{lang_id}>" cols=30 rows=5>{{approvaltext_<{lang_id}>}}</textarea>
+
+		</td>
+	</tr>
+		<{lang_loopend}>
+
+
+
+	<{optionlang_loopstart}>
+
+		<tr align=right>
+			<td class=code colspan=2 valign=top>
+
+				<table align=center><tr>
+				
+				{{cLearningoption}} (<{language}>)
+
+				<{option_loopstart}>
+				<td class=code>
+						<textarea name="option_<{value}>_<{lang_id}>" cols=30 rows=5><{data}></textarea> 
+				</td>
+				<{option_loopend}>
+				</tr></table>
+
+			</td>
+
+		</tr>
+
+
+	<{optionlang_loopend}>
+
+
+
+
+<tr align=center>
+	<td class=code>
+		<input type=submit value="{{cSubmit}}" name=submit>
+	</td>
+</tr>
+
+</form>
+
+<tr>
+<td class=code align=center>
+<a href="mail_options.php"><b>{{cMailoptions}}</b></a>
+</td>
+
+</tr>
+
+</table>
+
+</form>

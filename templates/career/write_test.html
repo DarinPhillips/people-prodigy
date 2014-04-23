@@ -1,0 +1,55 @@
+<script langauge=javascript>
+function check_test()
+{
+with(document.fr1)
+{
+if(test_id.value == '')
+{
+alert('{{cSelect_validname}} ');
+return false;
+}
+}
+}
+</script>
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/write_test.html');">
+</td>
+</tr>
+</table>
+<form action=write_test.php method=post name=fr1 onSubmit="return check_test()";>
+<input type=hidden name=test_type value={{test_type}} >
+<table align=center>
+<tr>
+<td class=code>
+{{cWritetesttotake}}
+</td>
+<td class=code>
+<select name=test_id >
+<option value=''>{{cWritetest_select}}</option>
+
+<{testnames_loopstart}>
+
+	<option value=<{test_id}> > <{test_name}> </option>
+
+<{testnames_loopend}>
+
+</select>
+</td>
+</tr>
+<tr >
+<td class=code align=center><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit name=fSubmit value={{cSubmit}}>
+</td>
+</tr>
+</table>
+</form>
+<table align=left>
+<tr>
+<td class=code align=center>
+<input type=button name=fBack value={{cBack}} onClick = "window.history.back()";>
+</td>
+</tr>
+</table>
+<br><br>

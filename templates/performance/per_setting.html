@@ -1,0 +1,312 @@
+<center>
+<h1>
+{{cPerformancedashboard}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/per_setting.html');">
+</h1>
+</center>
+
+<table align=center>
+<form action="per_setting.php" method=post>
+	<tr>
+	<td class=code>{{cViewas}}
+	<select name=fGraphchange onchange="form.submit()">
+	<{graphchange_loopstart}>
+	<option value='<{inval}>' <{selected}>><{indisplay}></option>
+	<{graphchange_loopend}>
+	</td>
+	</tr>
+
+</form>
+	<tr>
+	<td class=code>{{href}}<img src="{{img}}"></a>	
+	{{href1}}<img src="{{img1}}"></a></td>
+	</tr>
+	<{edit_settings_start}>
+	<tr>
+		<td class=code><br><a href="add_setting.php"><b>{{cSetting}}</a><br><br></td>
+	</tr>
+	<tr>
+		<td class=code><a href="runcron.php"><b>{{cRuncron}}</a><br><br></td>
+	</tr>	
+	<{edit_settings_end}>
+
+	<{ifplan_loopstart}>
+	<tr>
+	<td class=code>
+	<a href="performance_improvement_plan.php?action=alert" class=highlight><b>{{cPerformancePlanAlert}}</b></a><br><br>
+	</td>
+	</tr>
+	<{ifplan_loopend}>
+
+
+	<!--alert_start-->
+	<tr>
+	<td class=code><a href="performance_alert.php"><b>{{cAlert}}({{cTotalalert}})</a><br><br></td>
+	</tr>
+	<!--alert_end-->
+
+	<!--setplan_start-->
+	<tr>
+	<td class=code><a href="plan1_input.php"><b>{{cSetplan}}</a><br><br></td>
+	</tr>	
+	<!--setplan_end-->
+	
+	<!--document_objective_start-->
+	<tr>
+	<td class=code><a href="userplan1_input.php"><b>{{cAgainsetplan}}</a><br><br></td>
+	</tr>
+	<!--document_objective_end-->
+
+	<!--update_objective_start-->
+	<tr>
+	<td class=code><a href="userplan2_input.php"><b>{{cUpdateobjective}}</a><br><br></td>
+	</tr>
+	<!--update_objective_end-->
+
+	<tr>
+	<td class=code><a href="selected_for_feedback.php" class={{class3}}><b>{{cFeedbackshow}}</a><br><br></td>
+	</tr>
+	<tr>
+	<td class= ><a href="performance_feedback.php?uid={{userid}}" class = {{class2}}>
+				<b>{{cSelfrating}}</a><br><br></td>
+	</tr>
+<!--
+	<tr>
+	<td class=code><a href="select_raters.php"><b>{{cSelectrater}}</a><br><br></td>
+	</tr>
+-->
+	<tr>
+	<td class=code><a href="performance_summary1.php"><b>{{cperformancesummary}}</a><br><br></td>
+	</tr>
+
+	<!--fix_start-->
+	<tr>
+	<td class=code><a href="userplan2_input.php?emp_id={{emp_id}}"><b>{{cFixnonapprovedobjectives}}</a><br><br></td>
+	</tr>
+	<!--fix_end-->
+	<{ifemp_appraisal_loopstart}>
+	<tr>
+		<td class=code>
+		<a href="view_approved_appraisal.php"><b>{{cCommentOnMyAppraisal}}</a>
+		<br><br></td>
+	</tr>
+	<{ifemp_appraisal_loopend}>
+	<{ifany_appraisal_loopstart}>
+	<tr>
+		<td class=code>
+		<a href="view_recent_appraisal.php?appraisal_id={{dummy_id}}"><b>{{cViewMyAppraisal}}</a>
+		<br><br></td>
+	</tr>
+	<{ifany_appraisal_loopend}>
+
+
+
+<{admins_area_loopstart}>
+<tr>
+	<td class=code><a href="find_raters.php"><b>{{cHaveraters}}</a><br><br></td>
+</tr>
+<tr>
+	<td class=code><a href="find_ratings.php"><b>{{cWhoisrating}}</a><br><br></td>
+</tr>
+<{ifanyemp_under_loopstart}>
+<tr>
+	<td class=code><a href="assign_appraisal.php"><b>{{cAssignAppraisals}}</a><br><br></td>
+</tr>
+<{ifanyemp_under_loopend}>
+<tr>
+	<td class=code>
+	<a href="outstanding_assignments.php" {{highlight}}><b>{{cViewOutstanding}}</a><br><br></td>
+	</td>
+</tr>
+<!---This link Should be displayed only when there is an  unapproved_objective submitted by direct reports-->
+	<tr>
+	<td class=code>
+	<a href="employee_without_approved_obj.php" class={{class}}><b>{{cEmpwithoutobj}}</b></a><br><br>
+	</td>
+	</tr>
+	<tr>
+	<td class=code>
+	<a href="employee_without_veri_update.php" class={{class1}}><b>{{cEmpwithoutupdates}}</b></a><br><br>
+	</td>
+	</tr>
+	<tr>
+	<td class=code>
+	<a href="rating_discrepencies.php" ><b>{{cViewratingdiscre}}</b></a><br><br>
+	</td>
+	</tr>
+<!--
+	<tr>
+	<td class=code>
+	<a href="import_employee_details.php"><b>{{cSpreadsheetupload}}</b></a><br><br>
+	</td>
+	</tr>
+-->
+<tr>
+<td class=code>
+<{view_objective_start}>
+{{cView}}
+<select name=fUsername onChange="window.location.replace('view_objectives.php?fUser_id='+fUsername.value);">
+<option class=code value="">{{cEmployeename}}</option>
+<{user_loopstart}>
+<option <{selected}> class=code value="<{key}>"><{value}></option>
+<{user_loopend}>
+</select>
+{{cObjective}}<br><br>
+<{view_objective_end}>
+</td>
+</tr>
+<tr>
+<form  action="change_dashboard.php" method=post>
+	<td class=code>
+
+		<{view_dashboard_start}>
+				{{cView}}
+				<select name="fEmployee_id" onChange="form.submit();">
+					<option class=code value="">{{cEmployeename}}</option>
+				<{user_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value}></option>
+				<{user_loopend}>
+				</select>
+				{{cDashboard}}<br><br>
+		<{view_dashboard_end}>
+	</td>
+</form>
+
+</tr>
+<tr>
+<form action="admin_appraisal.php" method=POST>
+<td class=code>
+	<{appraise_loopstart}>			
+				{{cAppraise}}
+				<select name="fUser" onChange="form.submit();">
+					<option class=code value="">{{cEmployeename}}</option>
+				<{user_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value}></option>
+				<{user_loopend}>
+				</select>
+				<br><br>
+		<{appraise_loopend}>						
+</td>
+</form>
+</tr>
+
+<tr>
+<form action="view_approved_appraisal_admin.php" method=POST>
+<td class=code>
+<{view_appraisal_loopstart}>				
+				{{cView}}
+				<select name="fUser_app" onChange="form.submit();">
+					<option class=code value="">{{cEmployeename}}</option>
+				<{user_loopstart}>
+					<option <{selected}> class=code value="<{key}>"><{value}></option>
+					
+				<{user_loopend}>
+				
+				</select>
+				{{cAppraisalResults}}<br><br>
+<{view_appraisal_loopend}>
+</td>
+</form>	
+</tr>
+<{admins_area_loopend}>	
+
+
+<{boss_dashboard_start}>
+	<tr>
+	<td class=code><a href="userplan1_input.php"><b>{{cDocmydirrep}}</a><br><br></td>
+	</tr>
+	<tr>
+	<td class=code><a href="dirrep_objective.php"><b>{{cDirrepobjective}}</a><br><br></td>
+	<tr>
+	<td class=code><a href="approve_objective_list.php"><b>{{cApproveobj}}</a><br><br></td>
+	</tr>
+	<tr>
+	<td class=code>
+	<a href="verify_progress.php"><b>{{cVerifyprogress}}</b><br><br>
+	</td>
+	</tr>
+<{ifapp_loopstart}>
+	<tr>	
+	<td class=code>
+	<a href="performance_plan_approval.php?action=alert" class=highlight><b>{{cPerformancePlanApprovalAlert}}</b></a>
+	<br><br></td>
+	</tr>
+<{ifapp_loopend}>
+<{ifappraisal_loopstart}>
+	<tr>
+	<td class=code><a href="complete_employee_appraisal.php" class=highlight><b>{{cCompleteAppraisals}}</a><br><br></td>
+	</tr>		
+	<tr>
+<{ifappraisal_loopend}>
+<{if_app_appraisal_loopstart}>
+<tr>
+	<td class=code>
+	<a href="view_approved_appraisal.php?action=boss"><b>{{cViewEmployeesAppraisal}}</b></a><br><br>
+	</td>
+</tr>
+<{if_app_appraisal_loopend}>
+	<td class=code>	
+	<{view_progress_loopstart}>
+		{{cView}}
+		<select name=fSummary onChange="window.location.replace('performance_summary1.php?uid='+fSummary.value);">
+			<option class=code value="">{{cEmployeename}}</option>
+			<{person_loopstart}>
+			<option <{selected}> class=code value="<{uid}>"><{username}></option>
+			<{person_loopend}>
+		</select>
+		{{cProgress}}	
+	<{view_progress_loopend}>
+	<br><br></td>
+	</tr>
+	<{viewplan_loopstart}>
+	<tr>
+	<td class=code>
+	<a href="view_performance_plan.php?action=boss"><b>{{cViewReportsPIP}}</a>
+	<br><br></td>	
+	</tr>
+	<{viewplan_loopend}>
+	<tr>
+	<td class=code>
+	<a href="performance_status_report.php"><b>{{cPerformancestatusreport}}</a>
+	<br><br></td>
+	</tr>
+	
+	<{ifnonapp_loopstart}>
+	<tr>
+		<td class=code>
+		<a href="fix_nonapproved_appraisals.php"><b>{{cFixNonApproved}}</b></a>
+		</td>
+	</tr>
+	<{ifnonapp_loopend}>
+<{boss_dashboard_end}>	
+
+
+<!--<{ifmain_loopstart}>
+<tr>
+<form  action="build_performance_plan.php" method=post>
+	<td class=code>
+				{{cView}}
+				<select name="fPlan_id" onChange="form.submit();">
+					<option class=code value="">{{cSelect}}</option>
+				<{plan_loopstart}>
+					<option <{selected}> class=code value="<{plan_id}>">{{cPlan}}<{id}></option>
+				<{plan_loopend}>
+				</select>
+				
+	
+	<br><br></td>
+</form>
+</tr>
+<{ifmain_loopend}>-->
+<{ifuserplan_loopstart}>
+<tr>
+	<td class=code>
+	<a href="view_performance_plan.php"><b>{{cViewPerformancePlan}}</b></a>
+<br><br></td>
+</tr>
+
+<{ifuserplan_loopend}>
+
+
+</table>
+

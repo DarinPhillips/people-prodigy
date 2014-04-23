@@ -1,0 +1,142 @@
+<script language=javascript>
+function checkform()
+{
+	with (document.frm1)
+	{
+		ele_name = 'skillstorate_';
+		ele_label = 'skillslabel_';
+		
+		tot_skills = count_skills.value;
+		
+		for(i=0;i<tot_skills;i++)
+		{
+			temp_element = ele_name+i;
+			temp_label	= ele_label+i;
+			
+			if(elements[temp_element].value == 0)
+			{
+				alert('{{cScript_rateothertech_mess1}}');
+				elements[temp_element].focus();
+				return false;
+			}
+			if(elements[temp_label].value == 0)
+			{
+				alert('{{cScript_rateothertech_mess2}}');
+				elements[temp_label].focus();
+				return false;
+			}
+			
+			
+		}
+		
+	}
+	
+}
+function check_recursive(sel_name,sel_val)
+{
+	with (document.frm1)
+	{
+		ele_name	= 'skillstorate_';
+		
+		
+		tot_skills	= count_skills.value;
+		
+		
+		//countval = page_count.value;
+		
+		for (i=0;i<tot_skills;i++)
+		{
+				
+			temp_ele	= ele_name+i;
+
+			if(elements[temp_ele].selectedIndex !=0)
+			{
+				if (temp_ele != sel_name)
+				{
+
+					temp_val	= elements[temp_ele].value;
+		
+					if (temp_val == sel_val)
+					{
+						alert('{{cScript_techmulti_mess2}}');
+						elements[sel_name].selectedIndex=0;
+						elements[sel_name].focus();
+						
+						return false;
+					}
+				}
+			}
+		}
+		
+		
+
+	}
+
+}
+</script>
+
+<form name=frm1 action=rate_others_tech.php method=post onSubmit = "return checkform()";>
+<input type=hidden name=count_skills value={{count_skills}} >
+<input type=hidden name=user_to_rate value={{user_to_rate}} >
+<table align=right>
+<tr>
+
+<td align=right>
+<input type=button name=fHelp value='{{cRateothers_help}}' onClick="window.open('../lang/{{default}}/career/rate_others_tech.html');">
+</td>
+</tr>
+</table>
+<br><br>
+<table align=center border=0>
+<tr>
+<td class=code >
+{{cRateother_rate}}<b>{{username}}'s</b> {{cRateothers_techskills}}
+</td>
+</tr>
+</table>
+<br>
+
+
+<{displayfull_loopstart}>
+	<table align=center border=1>
+	<tr>
+	<td class=code>
+	{{cRateothers_selectskill}}
+	</td>
+		<td class=code>
+			<select name=skillstorate_<{l}> onChange="check_recursive(this.name,this.value)";>
+				<option value=0>{{cRateothers_chooseskill}}</option> 
+				
+			<{skill_loopstart}>
+		
+					<option value=<{key}> <{sel}> ><{value}></option>
+	
+			<{skill_loopend}>
+	</select>
+			
+		</td>
+	
+	
+	<td class=code>
+	{{cRateothers_selectrank}}
+	</td>
+		<td class=code>
+			<select name=skillslabel_<{l}> >
+				<option value=0>{{cRateothers_chooserank}}</option>
+				<{label_loopstart}>
+				<option value=<{key}> <{sel}> > <{value}> </option>
+				<{label_loopend}>
+			</select>
+		</td>	
+	
+	</tr>
+
+
+
+	</table>
+	<br>
+<{displayfull_loopend}>	
+	<table align=center>
+	<input type=submit name=fSubmit value="  {{cRateothers_submit}}  ">
+	</table>
+</form>

@@ -1,0 +1,1459 @@
+<script src="../jscripts/calendar2.js"></script>
+<center><h1>
+{{cFactor}}<input type="button" name="fHelp" value={{cHelp}} onClick="window.open('../lang/{{default}}/career/compare_data.html');">
+</h1></center>
+
+{{cSteps1}}
+{{cSteps2}}<input type="button" name="fShow" value={{cShow}} onClick="window.open('../lang/{{default}}/career/compare_data.html');">
+{{cSteps3}}
+
+<input type="button" name="fCompare" value={{cCompare}} onClick="window.open('../lang/{{default}}/career/compare_data.html');">
+{{cButton}}
+<br>
+<tr><td class=code><font><b>{{cPositionfactor}}</b></font></td></tr>
+<form action="compare_data_results.php" name='compare' method=POST>
+
+<table width=100%>
+<tr>
+<td class=code width=33% >
+{{cJobfamilies}}
+</td>
+<td class=code width=33%>
+<select multiple name="fJob_family[]">
+<{family_loopstart}>
+<option value="<{family_id}>"><{family_name}></option>
+<{family_loopend}>
+</td>
+<td class=code width=33%>
+<select multiple name="fJob_family1[]">
+<{family_loopstart}>
+<option value="<{family_id}>"><{family_name}></option>
+<{family_loopend}>
+</td>
+</tr>
+<tr>
+<td class=code>
+{{cPositionfactor}}
+</td>
+<td class=code >
+<select multiple name=fPosition[]>
+<{position_loopstart}>
+<option value="<{pos_id}>"><{position_name}></option>
+<{position_loopend}>
+</td>
+<td class=code>
+<select multiple name=fPosition1[]>
+<{position_loopstart}>
+<option value="<{pos_id}>"><{position_name}></option>
+<{position_loopend}>
+</td>
+</tr>
+
+
+<tr>
+<td class=code>
+{{cLevelfactor}}
+</td>
+<td class=code>
+<select multiple name=fLevel[]>
+<{level_loopstart}>
+<option value="<{level_no}>"><{level_no}></option>
+<{level_loopend}>
+</td>
+<td class=code>
+<select multiple name=fLevel1[]>
+<{level_loopstart}>
+<option value="<{level_no}>"><{level_no}></option>
+<{level_loopend}>
+</td>
+
+</tr>
+<tr>
+<td class=code>
+{{cLocationfactor}}
+</td>
+<td class=code>
+<select multiple name=fLocation[]>
+<{location_loopstart}>
+<option value="<{loc_id}>"><{location_name}></option>
+<{location_loopend}>
+</td>
+<td class=code>
+<select multiple name=fLocation1[]>
+<{location_loopstart}>
+<option value="<{loc_id}>"><{location_name}></option>
+<{location_loopend}>
+</td>
+</tr>
+<!------------------------------------employee facotr----------------------------------->
+
+<tr><td class=code><font><b>{{cEmployeesfactor}}</b></font></td></tr>
+<tr>
+<td class=code>
+{{cOrganisation}}
+</td>
+<td class=code>
+<select multiple name=fOrganisation[]>
+<{boss_loopstart}>
+<option value="<{user_id}>"><{boss_name}></option>
+<{boss_loopend}>
+</td>
+<td class=code>
+<select multiple name=fOrganisation1[]>
+<{boss_loopstart}><option value=<{user_id}>><{boss_name}></option><{boss_loopend}>
+</td>
+</tr>
+
+
+<tr>
+<td class=code>
+{{cDirectreports}}
+</td>
+<td class=code>
+<select multiple name=fReport[]>
+<{report_loopstart}><option value=<{user_id}>><{boss_name}></option><{report_loopend}>
+</td>
+<td class=code>
+<select multiple name=fReport1[]>
+<{report_loopstart}><option value=<{user_id}>><{boss_name}></option><{report_loopend}>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cIndividualemployees}}
+</td>
+<td class=code>
+<select multiple name=fIndemp[]>
+<{emp_loopstart}><option value=<{user_id}>><{username}></option><{emp_loopend}>
+</td>
+<td class=code>
+<select multiple name=fIndemp1[]>
+<{emp_loopstart}><option value=<{user_id}>><{username}></option><{emp_loopend}>
+</td>
+</tr>
+
+<!--------------------------------global factor comparison-------------------------------->
+
+<tr><td class=code><font><b>{{cGlobalfactor}}</b></font></td></tr>
+
+<tr>
+<td class=code>
+{{cEmployeeswithstatus}}
+</td>
+<td class=code>
+<select multiple name=fEmpstatus[]>
+<{acc_loopstart}><option value=<{id}>><{type}></option><{acc_loopend}>
+</td>
+<td class=code>
+<select multiple name=fEmpstatus1[]>
+<{acc_loopstart}><option value=<{id}>><{type}></option><{acc_loopend}>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cEmployeeswhoare}}
+</td>
+<td class=code>
+<select multiple name=fEEO[]>
+<{eeo_loopstart}><option value=<{eeo_id}>><{tag}></option><{eeo_loopend}>
+</td>
+<td class=code>
+<select multiple name=fEEO1[]>
+<{eeo_loopstart}><option value=<{eeo_id}>><{tag}></option><{eeo_loopend}>
+</td>
+</tr>
+
+<!--------------------------------performance favtor------------------------>
+
+<tr><td class=code><font><b>{{cPerformancefactor}}</b></font></td></tr>
+<tr>
+<td class=code>
+{{work}}{{cWork}}
+</td>
+</tr>
+
+<tr>
+
+<td class=code colspan=2>
+
+	<table>
+	<tr>
+	<td class=code> 
+{{cBetween}}
+<input type=text name="fDate1" readonly size=10 readonly  ></td><td>
+<a href="javascript:cal1.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal1= new calendar2(document.forms['compare'].elements['fDate1']);
+	 cal1.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate2" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal2.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal2= new calendar2(document.forms['compare'].elements['fDate2']);
+	 cal2.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+<td class=code colspan=2>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate1_c" readonly size=10   ></td><td>
+<a href="javascript:cal1_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal1_c= new calendar2(document.forms['compare'].elements['fDate1_c']);
+	 cal1_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate2_c" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal2_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal2_c= new calendar2(document.forms['compare'].elements['fDate2_c']);
+	 cal2_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+
+
+<tr>
+<td class=code colspan=2>
+<table><tr>
+<td class=code>
+{{cBetween}}<input type=text name=fPer1 size=2 value={{value0}}>%
+</td>
+<td class=code>
+{{cAnd}}<input type=text name=fPer1_c size=2 value={{value200}}>%
+</td>
+</tr></table></td><td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fPer2 size=2 value={{value0}}>%
+</td>
+<td class=code>
+{{cAnd}}<input type=text name=fPer2_c size=2 value={{value200}}>%
+</td>
+</tr></table></td></tr>
+
+<tr><td class=code><font><b>{{cHowcompleted}}</b></font></td></tr>
+
+
+
+<tr>
+
+
+<td class=code colspan=2>
+
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate3" readonly size=10 readonly  ></td><td>
+<a href="javascript:cal3.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal3= new calendar2(document.forms['compare'].elements['fDate3']);
+	 cal3.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate4" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal4.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal4= new calendar2(document.forms['compare'].elements['fDate4']);
+	 cal4.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+<td class=code colspan=2>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate3_c" readonly size=10 readonly ></td><td>
+<a href="javascript:cal3_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal3_c= new calendar2(document.forms['compare'].elements['fDate3_c']);
+	 cal3_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate4_c" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal4_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal4_c= new calendar2(document.forms['compare'].elements['fDate4_c']);
+	 cal4_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr><td class=code colspan=2>
+<table>
+<td class=code>
+{{cBetween}}<input type=text name=fWork_Per1 size=2 value={{value0}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fWork_Per2 size=2 value={{value200}}>%
+</td>
+</tr></table></td><td class=code>
+<table>
+<tr>
+<td class=code>
+<input type=text name=fWork_Per1_c size=2 value={{value0}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fWork_Per2_c size=2 value={{value200}}>%
+</td>
+</tr></table></td></tr>
+<!---------------------------ratings---------------------------------------->
+<tr>
+<td class=code>
+{{cAsratedby}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_self1 CHECKED>{{cCself}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_self2 CHECKED>{{cCself}}
+</td>
+<tr>
+<tr>
+<td></td>
+<td class=code>
+<input type=checkbox name=fCheck_boss1 CHECKED>{{cCboss}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_boss2 CHECKED>{{cCboss}}
+</td>
+</tr>
+<tr>
+<td class=code></td>
+<td class=code>
+<input type=checkbox name=fCheck_others1 CHECKED>{{cAllothers}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_others2 CHECKED>{{cAllothers}}
+</td>
+</tr>
+<!-----------------------Performance improvement------------------>
+<tr><td class=code><font><b>{{cEmployeesperformance}}</b></font></td></tr>
+<tr>
+
+<td class=code colspan=2>
+
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate5" readonly size=10 readonly ></td><td>
+<a href="javascript:cal5.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal5= new calendar2(document.forms['compare'].elements['fDate5']);
+	 cal5.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate6" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal6.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal6= new calendar2(document.forms['compare'].elements['fDate6']);
+	 cal6.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+<td class=code>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate5_c" readonly size=10 readonly  ></td><td>
+<a href="javascript:cal5_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal5_c= new calendar2(document.forms['compare'].elements['fDate5_c']);
+	 cal5_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate6_c" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal6_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal6_c= new calendar2(document.forms['compare'].elements['fDate6_c']);
+	 cal6_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+
+</tr>
+</tr>
+<tr><td class=code colspan=2>
+<table ><tr>
+<td class=code>{{cNoofplans}}</td>
+
+<td class=code>
+<input type=text name=fNo1 size=2 value={{value0}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fNo2 size=2 value={{value99}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fNo4 size=fNo1_c value={{value0}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fNo2_c size=2 value={{value99}}>
+</td>
+</tr>
+</table></td></tr>
+
+<!----------------------------------------------------------------------->
+<tr><td class=code><font><b>{{cAppraisalrating}}</b></font></td></tr>
+<tr><td class=code colspan=2>
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate7" readonly size=10 readonly  ></td><td>
+<a href="javascript:cal7.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal7= new calendar2(document.forms['compare'].elements['fDate7']);
+	 cal7.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate8" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal8.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal8= new calendar2(document.forms['compare'].elements['fDate8']);
+	 cal8.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+
+<td class=code>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate7_c" readonly size=10 readonly  ></td><td>
+<a href="javascript:cal7_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal7_c= new calendar2(document.forms['compare'].elements['fDate7_c']);
+	 cal7_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate8_c" readonly size=10 readonly value={{date}} ></td><td class=code>
+<a href="javascript:cal8_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal8_c= new calendar2(document.forms['compare'].elements['fDate8_c']);
+	 cal8_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+
+<tr><td class=code colspan=2>
+<table ><tr>
+<td class=code>
+{{cBetween}}
+<input type=text name=fNo_app1 size=2 value={{value0}}>
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fNo_app2 size=2 value={{value100}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fNo_app1_c size=2 value={{value0}}>
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fNo_app2_c size=2 value={{value100}}>
+</td>
+</tr>
+</table></td></tr>
+<!-------------deployment factors------------------------------------------------>
+
+<tr><td class=code><font><b>{{cDeploymentfactors}}</b></font></td></tr>
+<tr><td class=code>
+<b>{{cTechnicalskills}}</b></td>
+<td class=code>
+<select multiple name="fTech_skills[]">
+<{tech_loopstart}><option value=<{skill_id}>><{skill_name}></option><{tech_loopend}>
+</td><td class=code>
+<select multiple name="fTech_skills_c[]">
+
+<{tech_loopstart}><option value=<{skill_id}>><{skill_name}></option><{tech_loopend}>
+</td></tr>
+
+<tr><td class=code>
+{{cRated}}</td></tr>
+<!--{{cCHigh}}<td class=code>
+<input type=checkbox name=fRate_high_T>
+</td>
+<td class=code>
+<input type=checkbox name=fRate_high_T_c>
+</td>
+</tr>
+<tr><td class=code>{{cCMedium}}</td>
+<td class=code><input type=checkbox name=fRate_medium_T>
+</td><td class=code>
+<input type=checkbox name=fRate_medium_T_c>
+</td>
+</tr>
+<tr><td class=code>{{cCLow}}</td>
+<td class=code><input type=checkbox name=fRate_low_T>
+</td><td class=code>
+  <input type=checkbox name=fRate_low_T_c>
+</td>
+</tr>-->
+
+<{label_loopstart}>
+<tr>
+	<td class=code>
+	<{rater_label}></td><td class=code><input type=checkbox name=fLabel_T[<{a}>] value=<{label_no}>>
+	</td>
+	<td class=code>
+	<input type=checkbox name=fLabel_T_c[<{a}>] value=<{label_no}>>
+	</td>
+</tr>
+<{label_loopend}>
+<!--------------------------------------------------------------------------------->
+<tr><td class=code>
+<b>{{cInterpersonnelskills}}</b></td>
+<td class=code>
+<select multiple name="fPer_skills[]">
+
+<{per_loopstart}><option value=<{skill_id}>><{skill_name}></option><{per_loopend}>
+</td><td class=code>
+<select multiple name="fPer_skills_c[]">
+
+<{per_loopstart}><option value=<{skill_id}>><{skill_name}></option><{per_loopend}>
+</td></tr>
+
+<tr><td class=code>
+{{cRated}}
+
+<!--{{cCHigh}}<td class=code>
+<input type=checkbox name=fRate_high_P>
+</td>
+<td class=code>
+<input type=checkbox name=fRate_high_P_c>
+</td>
+</tr>
+<tr><td class=code>{{cCMedium}}</td>
+<td class=code><input type=checkbox name=fRate_P_medium>
+</td><td class=code>
+<input type=checkbox name=fRate_medium_P_c>
+</td>
+</tr>
+<tr><td class=code>{{cCLow}}</td>
+<td class=code><input type=checkbox name=fRate_P_low>
+</td><td class=code>
+  <input type=checkbox name=fRate_low_P_c>
+</td>
+</tr>-->
+<{label1_loopstart}>
+<tr>
+	<td class=code>
+	<{rater_level}>
+	</td>
+	<td class=code>
+	<input type=checkbox name=fLabel_I[<{a}>] value=<{label_no}>>
+	</td>
+	<td class=code>
+	<input type=checkbox name=fLabel_I_c[<{a}>] value=<{label_no}>>
+	</td>
+</tr>
+<{label1_loopend}>
+<!------------------------------------------------------------------------->
+<!--<tr>
+<td class=code colspan=2>
+<table ><tr>
+<td class=code colspan=2>{{cOverused}}</td>
+
+<td class=code>
+<input type=text name=fOver_used1 size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fOver_used2 size=2 value={{value1}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fOver_used1_c size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fOver_used2_c size=2 value={{value1}}>
+</td>
+</tr>
+</table></td></tr>-->
+
+<tr>
+<td class=code colspan=2>
+<table ><tr>
+<td class=code>{{cCareerkillers}}</td>
+
+<td class=code>
+<input type=text name=fCareer_killer1 size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fCareer_killer2 size=2 value={{value1}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fCareer_killer1_c size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fCareer_killer2_c size=2 value={{value1}}>
+</td>
+</tr>
+</table></td></tr>
+
+<tr>
+<td class=code colspan=2>
+<table ><tr>
+<td class=code>{{cOverrated}}</td>
+
+<td class=code>
+<input type=text name=fOver_rated1 size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fOver_rated2 size=2 value={{value1}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fOver_rated1_c size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fOver_rated2_c size=2 value={{value1}}>
+</td>
+</tr>
+</table></td></tr>
+
+<tr>
+<td class=code colspan=2>
+<table ><tr>
+<td class=code>{{cUnderrated}}</td>
+
+<td class=code>
+<input type=text name=fUnder_rated1 size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fUnder_rated2 size=2 value={{value1}}>
+</td>
+</tr>
+</table></td>
+<td class=code>
+<table><tr>
+<td class=code>
+<input type=text name=fUnder_rated1_c size=2 value={{value}}>
+</td>
+<td class=code>
+{{cTo}}</td><td class=code><input type=text name=fUnder_rated2_c size=2 value={{value1}}>
+</td>
+</tr>
+</table></td></tr>
+<tr><td class=code>
+<b>{{cPositionmodelmatch}}</b>
+</td><td class=code>
+<select multiple name=fPosition_model[]>
+<{model_loopstart}>
+<option value=<{model_id}>><{model_name}></option>
+<{model_loopend}>
+</td>
+<td class=code>
+<select multiple name=fPosition_model_c[]>
+<{model1_loopstart}>
+<option value=<{model_id}>><{model_name}></option>
+<{model1_loopend}>
+</td>
+</tr>
+<tr><td class=code>
+{{cLevelDown}}
+</td></tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_down1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_down2 size=2>%
+</td></tr></table></td>
+<td><table >
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_down1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_down2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_down1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_down2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_down1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_down2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+<tr><td class=code>
+{{cSameLevel}}
+</td></tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_same1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_same2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_same1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_same2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_same1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_same2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_same1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_same2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+
+<tr><td class=code>
+{{c1LevelUp}}
+</td></tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_up1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_up2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_up1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_up2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_up1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_up2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_up1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_up2_c size=2>%
+</td></tr>
+
+</table></td></tr>
+<tr><td class=code>
+{{c2LevelUp}}
+</td></tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_up_2_1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_up_2_2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_up_2_1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_up_2_1_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_up_2_1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_up_2_2 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_up_2_1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_up_2_1_c size=2>%
+</td></tr>
+
+</table></td></tr>
+<!------------------------------------------------------------------------>
+<!--<tr><td class=code><b>{{cOthermodels}}</b></td>
+<td class=code>
+<select multiple name=fOther_position_model>
+<option value=></option>
+</td>
+<td class=code>
+<select multiple name=fOther_position_model_c>
+<option value=></option>
+</td>
+</tr>
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_other1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fIMatch_other1 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cImatch}}
+</td>
+<td class=code>
+<input type=text name=fIMatch_other1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fMatch_other1_c size=2>%
+</td></tr>
+
+</table></td></tr>
+
+<tr><td class=code colspan=2>
+<table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_other1 size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fTMatch_other1 size=2>%
+</td></tr></table></td>
+<td><table>
+<tr>
+<td class=code>
+{{cTmatch}}
+</td>
+<td class=code>
+<input type=text name=fTMatch_other1_c size=2>%
+</td>
+<td class=code>{{cTo}}
+<input type=text name=fMatch_other1_c size=2>%
+</td></tr>
+
+</table></td></tr>-->
+<tr><td class=code>
+<b>{{cCareergoals}}</b></td></tr>
+<tr><td class=code>
+{{neg}}{{cLevelDown}}
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_down>
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_down_c>
+</td>
+</tr>
+<tr><td class=code>
+{{cSameLevel}}
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_same>
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_same_c>
+</td>
+</tr>
+<tr><td class=code>
+{{pos}}{{cLevelUp}}
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_up_1>
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_up_1_c>
+</td>
+</tr>
+<tr><td class=code>
+{{pos2}}{{cLevelUp}}
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_up_2>
+</td>
+<td class=code>
+<input type=checkbox name=fCareer_up_2_c>
+</td>
+</tr>
+<!---------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr><td class=code>
+<b>{{cSuccessionplan}}</b>
+</td>
+</tr>
+<tr>
+<td class=code>
+</td></tr>
+<tr><td class=code>
+{{cDesignee1}}
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_1>
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_1_c>
+</td>
+</tr>
+
+<tr><td class=code>
+{{cDesignee2}}
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_2>
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_2_c>
+</td>
+</tr>
+
+<tr><td class=code>
+{{cHire}}
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_hire>
+</td>
+<td class=code>
+<input type=checkbox name=fSuccession_plan_hire_c>
+</td>
+</tr>
+
+<!---------------------------------------------------------->
+
+<tr>
+<td class=code>
+<font><b>{{cLearningfactors}}</b></font></td></tr>
+<tr><td class=code>
+<b>{{cLearningplanswithskills}}</b>
+</td>
+</tr>
+
+
+<tr>
+<td class=code>
+{{cIskills}}</td>
+<td class=code>
+<select multiple name=fISkills[]>
+<{inter_loopstart}><option value=<{skill_id}>><{skill_name}></option><{inter_loopend}>
+</td><td class=code>
+<select multiple name=fISkills_c[]>
+<{inter_loopstart}><option value=<{skill_id}>><{skill_name}></option><{inter_loopend}>
+</td>
+</tr>
+
+<tr>
+<td class=code>
+{{cTskills}}</td>
+<td class=code>
+<select multiple name=fTSkills[]>
+<{technical_loopstart}><option value=<{skill_id}>><{skill_name}></option><{technical_loopend}>
+</td><td class=code>
+<select multiple name=fTSkills_c[]>
+<{technical_loopstart}><option value=<{skill_id}>><{skill_name}></option><{technical_loopend}>
+</td>
+</tr>
+
+
+
+
+<!---------------------------------------------------->
+<tr><td class=code>
+<b>{{cLearningProgress}}</b>
+</td></tr>
+<tr>
+<td class=code>
+{{cLearningActivityCompleted}}
+</td>
+</tr>
+<tr><td class=code colspan=2>
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate9" readonly size=10 readonly value={{date9}} ></td><td>
+<a href="javascript:cal9.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal9= new calendar2(document.forms['compare'].elements['fDate9']);
+	 cal9.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate10" readonly size=10 readonly value={{date10}} ></td><td class=code>
+<a href="javascript:cal10.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal10= new calendar2(document.forms['compare'].elements['fDate10']);
+	 cal10.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+
+<td class=code>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate9_c" readonly size=10 readonly value={{date9_c}} ></td><td>
+<a href="javascript:cal9_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal9_c= new calendar2(document.forms['compare'].elements['fDate9_c']);
+	 cal9_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate10_c" readonly size=10 readonly value={{date10_c}} ></td><td class=code>
+<a href="javascript:cal10_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal10_c= new calendar2(document.forms['compare'].elements['fDate10_c']);
+	 cal10_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr><td class=code colspan=2>
+<table>
+<td class=code>
+{{cBetween}}<input type=text name=fLearning_activity1 size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fLearning_activity2  size=2 value={{value1}}>%
+</td>
+</tr></table></td><td class=code>
+<table>
+<tr>
+<td class=code>
+<input type=text name=fLearning_activity1_c size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fLearning_activity2_c size=2 value={{value1}}>%
+</td>
+</tr></table></td></tr>
+<!------------------------------------------------------------------------------------------->
+
+
+<td class=code>
+{{cApplicationActivityCompleted}}
+</td>
+</tr>
+<tr><td class=code colspan=2>
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate11" readonly size=10 readonly value={{date11}} ></td><td>
+<a href="javascript:cal11.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal11= new calendar2(document.forms['compare'].elements['fDate11']);
+	 cal11.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate12" readonly size=10 readonly value={{date12}} ></td><td class=code>
+<a href="javascript:cal12.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal12= new calendar2(document.forms['compare'].elements['fDate12']);
+	 cal12.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+
+<td class=code>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate11_c" readonly size=10 readonly value={{date11_c}} ></td><td>
+<a href="javascript:cal11_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal11_c= new calendar2(document.forms['compare'].elements['fDate11_c']);
+	 cal11_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate12_c" readonly size=10 readonly value={{date12_c}} ></td><td class=code>
+<a href="javascript:cal12_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal12_c= new calendar2(document.forms['compare'].elements['fDate12_c']);
+	 cal12_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr><td class=code colspan=2>
+<table>
+<td class=code>
+{{cBetween}}<input type=text name=fApplication_activity1 size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fApplication_activity2  size=2 value={{value1}}>%
+</td>
+</tr></table></td><td class=code>
+<table>
+<tr>
+<td class=code>
+<input type=text name=fApplicaion_activity1_c size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fApplication_activity2_c size=2 value={{value1}}>%
+</td>
+</tr></table></td></tr>
+<!---------------------------------------------------------------------------------------------->
+
+
+<td class=code>
+{{cImprovement}}
+</td>
+</tr>
+<tr><td class=code colspan=2>
+	<table>
+	<tr>
+	<td class=code>
+{{cBetween}}
+<input type=text name="fDate13" readonly size=10 readonly value={{date13}} ></td><td>
+<a href="javascript:cal13.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal13= new calendar2(document.forms['compare'].elements['fDate13']);
+	 cal13.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate14" readonly size=10 readonly value={{date14}} ></td><td class=code>
+<a href="javascript:cal14.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal14= new calendar2(document.forms['compare'].elements['fDate14']);
+	 cal14.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+
+<td class=code>
+
+	<table>
+	<tr>
+	<td class=code>
+
+<input type=text name="fDate13_c" readonly size=10 readonly value={{date13_c}} ></td><td>
+<a href="javascript:cal13_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal13_c= new calendar2(document.forms['compare'].elements['fDate13_c']);
+	 cal13_c.year_scroll	=  true;
+
+</script>
+	</td><td class=code>
+{{cAnd}}<input type=text name="fDate14_c" readonly size=10 readonly value={{date14_c}} ></td><td class=code>
+<a href="javascript:cal14_c.popup();" onMouseOver="window.status='Date Picker';return true;" onMouseOut="window.status='';return true;"><img src="../images/calender.gif" border=0></a> </td>
+
+<script language='javascript'>
+
+	var cal14_c= new calendar2(document.forms['compare'].elements['fDate14_c']);
+	 cal14_c.year_scroll	=  true;
+
+</script>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr><td class=code colspan=2>
+<table>
+<td class=code>
+{{cBetween}}<input type=text name=fImprovement1 size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fImprovement2  size=2 value={{value1}}>%
+</td>
+</tr></table></td><td class=code>
+<table>
+<tr>
+<td class=code>
+<input type=text name=fImprovement1_c size=2 value={{value}}>%
+</td>
+<td class=code>
+{{cAnd}}</td><td class=code><input type=text name=fImprovement2_c size=2 value={{value1}}>%
+</td>
+</tr></table></td></tr>
+<!--------------------------------------------------------------------------------------->
+<tr>
+<td class=code>
+{{cAsratedby}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_self1 >{{cCself}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_self2 >{{cCself}}
+</td>
+<tr>
+<tr>
+<td></td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_boss1 >{{cCboss}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_boss2>{{cCboss}}
+</td>
+</tr>
+<tr>
+<td class=code></td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_others1 >{{cAllothers}}
+</td>
+<td class=code>
+<input type=checkbox name=fCheck_plan_others2 >{{cAllothers}}
+</td>
+</tr>
+<!--------------------------------------------------------------------------------------->
+<tr><td class=code>
+<input type=submit name=fShow1 value="{{cShow_value}}">
+</td>
+<td class=code>
+<input type=submit name=fCompare1 value="{{cCompare_Contrast}}">
+</td>
+</table>
+</form>

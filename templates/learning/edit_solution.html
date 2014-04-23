@@ -1,0 +1,75 @@
+<center>
+	<h1>
+	{{cExistingDevelopemntalSolution}}
+	<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/edit_solution.html');">
+
+	</h1>
+	</center>
+<head>
+<body class=B1>
+<form action=edit_solution.php method=POST>
+<table border=0 align = center>
+
+	
+	<tr>
+		<td class=code>
+
+		<br>
+
+		</td>
+	</tr>
+
+</table>
+<table>
+<{language_loopstart}>
+<tr>
+		<td >
+		<b>{{cDEVELOPMENTAL}}	<{lang}> </b>
+		</td>
+</tr>
+
+
+
+<{solution_loopstart}>
+
+<tr>
+		<td class=code>
+			<input type=hidden name="basic_id"  value="<{basic_id}>">
+					
+			{{cField}}:<input type=text size="55" name="solution_<{lang_id}>_<{basic_id}>" value="<{solution}>">
+		</td>
+
+			
+</tr>
+		<{course_loopstart}>
+<tr>
+	
+		
+		<td>				
+	---------<input type=text name="course_<{lang_id}>_<{basic_id}>_<{ib_id}>" value="<{course}>">
+		
+		</td>
+	
+</tr>
+
+		<{course_loopend}>
+
+
+
+<{solution_loopend}>
+
+
+<{language_loopend}>
+
+</table>
+
+<table align = center>
+<tr>
+<td>
+<input type=hidden name=action value="submit">
+<input type=submit name=submit1 value="{{cSubmit}}">
+</td>
+</tr>
+</table>
+</form>
+</body>

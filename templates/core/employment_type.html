@@ -1,0 +1,67 @@
+	<center>
+		<h1>
+		{{cChoose_emptype}}
+		<input type=button name=fHelp value="{{cHelp}}" onclick="window.open('../lang/{{default}}/core/employment_type.html');">
+		</h1>
+	</center>
+	
+
+<table border=0 align = center>
+<form action=edit_employment_type.php action=post>
+<tr>
+<td>
+<input type=submit name=fEdit_emp value="{{cEmploymenttype_editemp_fields}}">
+</td>
+</tr>
+</form>
+
+
+</table>
+<table border=0 align = center>
+
+<form action=employment_type.php method=post>
+<tr>
+<td class=code>
+<b></b>
+</td>
+</tr>
+</table>
+<table align = center border=0>
+<tr>
+<td class = code>
+<i>{{cEmp_type}}</i>
+</td>
+<td class = code>
+<i>{{cYes}}</i>
+</td>
+<td class = code>
+<i>&nbsp; {{cNo}}</i>
+</td>
+
+</tr>
+
+<{employment_loopstart}>	
+<tr>
+		<td class=code>
+			<{type}>
+		</td>
+		<td>
+			<input type=radio name=type_<{id}> value="Yes" <{yeschecked}> >
+		</td>
+		<td>
+			<input type=radio name=type_<{id}> value="No" <{nochecked}> > 
+		</td>
+</tr>
+<{employment_loopend}>
+
+
+	<tr>
+<td class=code colspan=3 align=center>
+<input type=submit name=fEmp_submit value="{{cUpdate_emp_type}}">
+</td>
+</tr>
+</table>
+</form>
+</table>
+
+</body>

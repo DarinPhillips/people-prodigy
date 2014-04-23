@@ -1,0 +1,46 @@
+
+<script language='javascript'>
+function validate()
+{
+	if (document.frm.position_name.value=='')
+	{
+		alert('{{cJavascriptnamealert}}');
+		document.frm.position_name.focus();
+		return false;
+	}
+}
+</script>
+
+<table border=1 align = center >
+<form action ="edit_position.php" method=post name='frm' onSubmit="return validate()">
+
+<input type=hidden name=family_id value="{{family_id}}">
+<tr>
+<td class=code>
+Edit this Position
+</td>
+
+
+<td class=code>
+<select name=related_pos[] multiple >
+
+<{position_loopstart}>
+<option value='<{key}>'><{value}></option>
+<{position_loopend}>
+
+</td>
+<td class=code>
+<input type=submit name=fEdit_tag value="Edit This Position">;
+</td>
+</tr>
+
+</form>
+</table>
+<table align=center>
+<tr>
+<td class=code>
+<a href="show_rel_position.php?family_id=<{family_id}>">Show All Positions</a> 
+</td>
+</tr>
+</table>
+</body>

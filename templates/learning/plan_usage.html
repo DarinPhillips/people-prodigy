@@ -1,0 +1,28 @@
+<h1>						
+	{{cLearningplanusage}}<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/plan_usage.html');">
+</h1>
+
+<form action="plan_usage.php" method=post>
+<b>{{cSkilllistedinlearning}}:</b>
+<table class=code align=center border=1>
+<tr><td><b>{{cSkills}}</td><td><b>{{cTotalnoofplans}}</td>
+<{skill_loopstart}>
+<tr>
+	<td><{s_name}></td>
+	<td><{total}></td>
+</tr>
+<{skill_loopend}>	
+</table>
+<br>
+<b>{{cNoofskillperlearning}}:</b>
+<table class=code align=center border=1>
+<tr><td><b>{{cEmpname}}</td><td><b>{{cNoofskills}}</td></tr>
+<{emp_loopstart}>
+<tr>
+	<td><{e_name}></td>
+	<td><{skillno}></td>
+</tr>
+<{emp_loopend}>
+</table>
+</form>
+<center><input type=button name=back value='{{cBack}}' onclick="history.back();"></center>

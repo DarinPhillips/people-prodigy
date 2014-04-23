@@ -1,0 +1,53 @@
+<script language="Javascript">
+function validate_all()
+{
+	with(document.frm1)
+	{
+		
+		if(empl.value == 0 )
+		{
+			alert('Enter Username');
+			return false;
+		}
+		 if(model_sel.value == 0 )
+		{
+			alert('Enter Job Family Model');
+			return false;
+		}
+	}
+}
+</script>
+
+<form action=person_position.php method=post name=frm1 onSubmit="return validate_all()";>
+
+<table align=center cellspacing=0 cellpadding=0 border=1>
+	<tr>
+		<td class=code>
+			{{cEmployee}}
+			<select name=empl>
+						
+				<option value='{{user_id}}'> {{username}} </option>
+				
+			</select>
+		</td>
+		<td class=code>
+			{{cJobfamilymodel}}
+			<select name=model_sel>
+				<option value='0'> Select a Job Family Model </option>
+				<{modeldisplay_loopstart}>
+				<option value='<{model_id}>'> <{model_name}> </option>
+				<{modeldisplay_loopend}>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=2 align=center>
+			
+			<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>&nbsp;&nbsp;&nbsp;
+			<input type=submit name=fShowModel value=' {{cSubmit}} '>
+		
+		
+		</td>
+	</tr>
+</table>
+</form>

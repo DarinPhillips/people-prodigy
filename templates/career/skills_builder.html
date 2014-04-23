@@ -1,0 +1,70 @@
+ 
+<center>
+<h3>
+{{cSkillbuilder}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/skill_builder.html');">
+</h3>
+<center>
+
+<form action="skills_builder.php" method="post" name='frm'>
+{{cWhatobj}}
+<table border=1 class=table align=center>
+<tr>
+<td class=code>
+	
+	{{cPosition}}
+	<select name=fPosition onChange="document.frm.submit()">
+	<option class=code value="">{{cSelect}}</option>
+	<{position_loopstart}>
+	<option  <{selected}> class=code value="<{key}>"> <{value}> </option>
+	<{position_loopend}>
+	</select>
+
+</td>
+</tr>
+</table>
+<{replace1_loopbegin}>
+
+<center>
+<table align=center  >
+	<tr>
+	<td class=code>
+	
+		{{cPerobj}} {{position_name}}
+			<{skill_loopstart}><table class=table width=100%>
+		<{obj_loopbegin}>
+	</td></tr>	
+		<tr>
+		
+			<td class=code>
+				&nbsp;&nbsp;
+				<input type="text" name="objective_{{obj_id}}" value="<{objective_{{obj_id}}_name}>">
+			</td>
+		</tr>
+		
+		<{obj_loopexit}>
+		
+	</table>
+{{cWhatchal}} 
+	<table class=table width=100%>
+	<tr><td class=code>
+
+<{chg_loopbegin}>
+<tr>
+<td class=code>
+</td>
+<t>
+<td class=code>
+ <input type="text" name="objective_{{obj_id}}" value="<{objective_{{obj_id}}_name}>"></td>
+</tr>
+<{chg_loopexit}>
+</table>
+<{skill_loopend}>
+
+	</td></tr></table>
+</center>
+<center><input type="submit" name="fNext" value="{{cNext}}"></center>
+<input type="hidden" name="fPos_id" value={{pos_id}}>
+<{replace1_loopexit}>
+</form>
+ 

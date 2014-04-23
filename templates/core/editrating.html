@@ -1,0 +1,14 @@
+<form action="editrating.php" method=get>
+<input type=hidden name=rid value='{{rid}}'>
+<table align=center>
+<{rating_loopstart}>
+<tr>
+	<td>{{cRating}}(<{langname}>)</td><td><textarea name=fRating_<{lid}> cols=25><{crating}></textarea></td>
+</tr>
+<{rating_loopend}>
+<tr>
+	<td>{{cRatingval}}</td><td><input type=text name=fRatingval value="{{rating}}"></td>
+</tr>
+</table>
+<center><input type=submit name=add value='{{cEdit}}'></center>
+</form>

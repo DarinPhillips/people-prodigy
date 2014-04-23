@@ -1,0 +1,16 @@
+<form action="sowner_defined_text.php" method=post>
+<center>
+<h1>
+{{cSystemownerdefined}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/sowner_defined_text.html');">
+</h1>
+<center>
+<table align=center>
+<{text_loopstart}>
+<tr>
+	<td class =code>{{cEntertext}}(<{langname}>)</td><td class=code><textarea name=fFeedbackrequest_<{lid}>><{ctext}></textarea></td>
+</tr>
+<{text_loopend}>
+</table>
+<center><input type=submit name=submit value='{{cSubmit}}'></center>
+</form>

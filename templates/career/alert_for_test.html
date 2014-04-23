@@ -1,0 +1,54 @@
+<table align=right>
+<tr>
+<td align=right>
+<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/alert_for_test.html');">
+</td>
+</tr>
+</table>
+
+<form action="alert_for_test.php" method="post">
+{{cAlerttest_alert}}
+<table border=1 align = center>
+
+
+
+<tr>
+<td class=code>
+<b>{{cAlerttest_new}}</b>
+</td>
+</tr>
+<tr>
+<td class=code>
+
+<{interalert_start}>
+	<a href=write_test.php?test_type=i>{{cAlertfortest_takeinter}}</a>
+<{interalert_end}>
+</td>
+</tr>
+<tr>
+<td class=code>
+<{techalert_start}>
+<a href=write_test.php?test_type=t>{{cAlertfortest_taketech}}</a>
+<{techalert_end}>
+
+</td>
+</tr>
+
+</table><br>
+
+</form>
+
+
+
+<table align=left border=0>
+<tr>
+<td class=code align=center>
+<input type=button name=fBack value={{cAlertfortest_back}} onClick = "window.history.back()";>
+</td>
+</tr>
+</table>
+<br><br>
+</form>
+
+
+

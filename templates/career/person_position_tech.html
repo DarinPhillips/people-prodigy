@@ -1,0 +1,66 @@
+<center>
+<h1>
+{{cTechnicalFit}}
+<input type="button" name="fHelp" value="Help" onClick="window.open('../lang/1/career/employee_report_tech.html');">
+</h1>
+</center>
+<table align=center border=1>
+
+<tr>
+<td class=code>
+{{cTechnicalskills}} : {{fit_tech}} % Fit
+<input type=hidden name=fFit_t_{{model_id}}_{{empl}} value={{fit_tech}} >
+</td>
+</tr>
+  
+	<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	
+	<tr>
+		<td class=code rowspan=7 >
+			<b>{{modelname}}</b>
+		</td>
+	</tr>
+		<{trdisplaytech_start}>
+ 
+		
+		
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname_tech}> </b>
+			</td>
+				<{tddisplaytech_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>
+ 						<{showallskillstech_loopstart}>
+ 						<!-- No for keyid is <{keyid_tech}> <br>-->
+<!-- 							<a href=save_to_learnplan.php?sid=<{skilltech_id_dis}> >  <font color='<{specifictech_color}>' ><{skilltech_display}> </font></a>  <br>-->
+ 						<font color='<{specifictech_color}>' ><{skilltech_display}> </font><br>
+						<{showallskillstech_loopend}>
+						
+						
+					</td>
+				<{tddisplaytech_end}>
+			</tr>
+	 
+		<{trdisplaytech_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplaytech_loopstart}>	
+				<td class=code>
+					<b> <{labelname_tech}> </b>	
+				</td>
+		<{labeldisplaytech_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+
+<br><br>
+
+ 

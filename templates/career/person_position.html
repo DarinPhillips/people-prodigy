@@ -1,0 +1,162 @@
+<form action=person_position.php method=post name=frm1>
+<table align=center cellspacing=0 cellpadding=0 border=0>
+	<tr>
+		<td class=code align=left>
+			<b>{{cPersonvspositionmodel}}</b> 
+			<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/person_position.html');";>
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td class=code align=left>
+			{{cModelcompof}}<b>{{username}}</b> 
+
+			<br>
+
+			{{cModelname}} <b>{{model_name}}</b> 
+<br><br>
+		</td>
+	</tr>
+</table>
+
+
+<table align=center border=1>
+
+<tr>
+<td class=code>
+{{cInterpersonalskills}} : {{fit_inter}} % Fit
+<input type=hidden name=fFit_i_{{model_id}}_{{empl}} value={{fit_inter}} >
+</td>
+</tr>
+ </table> 
+	<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	
+	<tr>
+		<td class=code rowspan=7 >
+			<b>{{modelname}}</b>
+		</td>
+	</tr>
+		<{trdisplay_start}>
+ 
+		
+		
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname}> </b>
+			</td>
+				<{tddisplay_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>  
+ 						<{showallskills_loopstart}>
+ 						 <{keyid}>  <!-- -->
+ 						   
+							<a href=save_to_learnplan.php?sid=<{skill_id_dis}> >  <font color='<{specific_color}>' ><{skill_display}> </font></a>  <br>
+						<{showallskills_loopend}>
+						
+						
+					</td>
+				<{tddisplay_end}>
+			</tr>
+	 
+		<{trdisplay_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplay_loopstart}>	
+				<td class=code>
+					<b> <{labelname}> </b>	
+				</td>
+		<{labeldisplay_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+
+<br><br>
+<hr>
+ 
+
+<table align=center>
+<tr>
+<td class=code>
+{{cTechnicalskills}} : {{fit_tech}} % Fit
+<input type=hidden name=fFit_t_{{model_id}}_{{empl}} value={{fit_tech}} >
+</td>
+</tr>
+  
+	<table align=center border=1 height=70% width = 70%  cellspacing=0 cellpadding=0>
+	
+	<tr>
+		<td class=code rowspan=7 >
+			<b>{{modelname}}</b>
+		</td>
+	</tr>
+		<{trdisplaytech_start}>
+ 
+		
+		
+			<tr>
+			<td class=code align=left width = 100 height = 100>
+				<b> <{labelname_tech}> </b>
+			</td>
+				<{tddisplaytech_start}>
+					<td class=code align=left width = 400 height = 100>
+							<br>
+ 						<{showallskillstech_loopstart}>
+ 						<!-- No for keyid is <{keyid_tech}> <br>-->
+ 							<a href=save_to_learnplan.php?sid=<{skilltech_id_dis}> >  <font color='<{specifictech_color}>' ><{skilltech_display}> </font></a>  <br>
+						<{showallskillstech_loopend}>
+						
+						
+					</td>
+				<{tddisplaytech_end}>
+			</tr>
+	 
+		<{trdisplaytech_end}>
+
+		
+			<tr>
+			<td>
+			&nbsp;
+			</td>
+		<{labeldisplaytech_loopstart}>	
+				<td class=code>
+					<b> <{labelname_tech}> </b>	
+				</td>
+		<{labeldisplaytech_loopend}>			
+			</tr>
+			
+
+	</table>
+	
+
+
+<br><br>
+
+<table border=1 align=center cellspacing=0 cellpadding=0>
+	<tr>
+		<td class=code>&nbsp;&nbsp;&nbsp;
+			<input type=submit name=fSave value='  {{cSave}}  '>&nbsp;&nbsp;&nbsp;
+		</td>
+		<td class=code>&nbsp;&nbsp;&nbsp;
+			<input type=button name=fPrint value='  {{cPrint}}  ' onClick="window.print()";>&nbsp;&nbsp;&nbsp;
+		</td>
+		<td class=code>&nbsp;&nbsp;&nbsp;
+			<input type=button name=fBack value='  {{cBack}}  ' onClick="window.history.back()";>&nbsp;&nbsp;&nbsp;
+		</td>
+		<td class=code>&nbsp;&nbsp;&nbsp;
+			<input type=button name=fBoard value='  {{cApprres_returnback}}  ' onClick="window.location.replace('front_panel.php')";>&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
+</table>
+
+
+
+
+</form>
+ 

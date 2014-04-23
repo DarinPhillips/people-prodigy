@@ -1,0 +1,37 @@
+<script>
+function popup(url,heading)
+{
+//var win=window.open(url,heading,'width=500,height=400,menubar=no,left=125,top=50,scrollbars=yes,0,0,0');
+var win2=window.open(url,'heading','left=1,right=1,top=0,width=800,height=700,toolbar=no,menubar=no,scrollbars=yes,status=no,resizable=yes,location=no');
+
+//window.open(url,'_blank');
+return false;
+}
+
+function check()
+{
+	with(document.form1)
+	{
+		if((!testtype[0].checked) && (!testtype[1].checked))
+		{
+			alert('{{cChoosetesttype}}');
+			return false;
+		}
+	}
+}
+</script>
+
+<form action="assign_test_builder.php" name="form1" method="post" onSubmit="return check();">
+<center>
+<h1>
+{{cAssignTests}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="popup('assign_tech_skill.html','Manual Help');">
+</h1>
+
+Select :
+<input type="radio" name="testtype" value="i">{{cInterPersonalskilltest}}
+<input type="radio" name="testtype" value="t">{{cTechnicalskilltest}}
+<br>
+<input type="submit" name="fNext"  value="{{cNext}}">
+</center>
+</form>

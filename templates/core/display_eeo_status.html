@@ -1,0 +1,84 @@
+<script>
+function display_alert()
+{
+	with(document.frm)
+	{
+		test=confirm('{{cDoyouwanttodel_oppstatus}}');
+		if(test==false)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+		
+	}
+	return true;
+}
+
+</script>
+
+	<center>
+	<h1>
+{{cOpp_status}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/display_eeo_status.html');">
+	</h1>
+	</center>
+
+<form action="addnew_tags.php" name=frm method="post"> 
+
+	<table border=1 align = center>
+	<tr>
+		<td class=code>
+		<b>{{cEeoname}}</b>
+		</td>
+		<td class=code>
+		<b>{{cTagname}}</b>
+		</td>
+		<td class=code>
+		<b>{{cEdit}}</b>
+		</td>
+		<td class=code>
+		<b>{{cDelete}}</b>
+		</td>	<!--
+		<td class=code>
+		<b>{{cShowtags}}</b>
+		</td>
+		-->
+			
+	</tr>
+
+<{eeostatus_loopstart}>
+	<tr>
+		<td class=code>
+		<{category}>
+		</td>
+		<td class=code>
+		<{tag}>
+		</td>
+		<td class=code>
+		<a href="addnew_tags.php?eeo_id=<{eeo_id}>">{{cEdit}}</a>
+		</td>
+		<td class=code>
+		<a href="delete_oppstatus.php?eeo_id=<{eeo_id}>" onClick="return display_alert();">{{cDelete}}</a>
+		</td>
+		<!--
+		<td class=code>
+		<a href="showeeo_tags.php?eeo_id=<{eeo_id}>">{{cShowtags}}</a>
+		</td>
+		-->
+		
+	</tr>
+<{eeostatus_loopend}>
+
+</table>
+<center>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+<input type="submit" name="fEdit"  value="{{cAddOppstatus}}">
+
+</center>
+
+</body>
+</html>
+</form>

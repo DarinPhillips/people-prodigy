@@ -1,0 +1,159 @@
+<form action=graph_options.php name = frm1 method=post>
+
+<table align=center border=0>
+	<tr>
+	<td class=code align=center>
+
+		<h2><b>{{cGraphoptionshead}}</b>
+
+			<input type=button name=fHelp value='{{cHelp}}' onClick="window.open('../lang/{{default}}/career/graph_options.html');">
+		</h2>
+		</td>
+	</tr>
+</table>
+
+
+<table align=center border=0>
+	
+	<tr>
+		<td class=code>
+			{{cGraphoption_bgcolor}}
+		</td>
+		<td class=code>
+			<input type=text name=career_bgcolor maxlength=6 size=6 value='{{career_bgcolor}}' >
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+			{{cGraphoptions_border}}<br><br>
+		</td>
+		<td class=code>
+			<input type=text name=career_border maxlength=6 size=6 value='{{career_border}}' ><br><br>
+		</td>
+	</tr>
+ 
+		
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar1}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_self maxlength=6 size=6 value='{{career_grp_self}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar2}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_team maxlength=6 size=6 value='{{career_grp_team}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar3}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_incus maxlength=6 size=6 value='{{career_grp_incus}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar4}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_boss maxlength=6 size=6 value='{{career_grp_boss}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar5}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_peer maxlength=6 size=6 value='{{career_grp_peer}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar6}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_excus maxlength=6 size=6 value='{{career_grp_excus}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar7}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_topboss maxlength=6 size=6 value='{{career_grp_topboss}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar8}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_dirrep maxlength=6 size=6 value='{{career_grp_dirrep}}' >
+		</td>
+
+	</tr>
+	<tr>
+
+		<td class=code>	
+			{{cGraphoptions_bar9}}
+		</td>
+		
+		
+		<td class=code>
+			<input type=text name=career_grp_other maxlength=6 size=6 value='{{career_grp_other}}' >
+		</td>
+
+	</tr>
+
+
+	<tr>
+		<td class=code align=center colspan=2><br>
+		
+		<!--<input type=button name=fBack value="  {{cBack}}  " onClick="window.location.replace('front_panel.php')";>-->
+		<input type=button name=fBack value="  {{cBack}}  " onClick="window.history.back()";>
+		
+		<input type=submit name=fSubmit value="{{cGraphUpdateoptions}}">
+		
+		
+		</td>
+	</tr>
+	
+</table>
+</form>

@@ -1,0 +1,68 @@
+<script language="javascript">
+
+function download()
+{
+	
+	frm = document.status;
+	frm.action='download_learning_status.php';
+	frm.submit();
+}
+
+</script>
+<h1>						
+	{{cLearningstatusreport}}<input type=button name=help value="{{cHelp}}" onclick="window.open('../lang/{{default}}/learning/learning_status_report.html');">
+</h1>
+
+<form action="learning_status_report.php" method=post name="status">
+<input type=text name=fBossname value='{{username}}'>
+<{main_loopstart}>
+<table class=code border=1>
+<tr><td>
+<table class=code>
+<tr>
+	<td><input type=text name=fSkillname_<{skill}> value='<{skillname}>'></td>
+</tr>
+</table>
+<table class=code>
+<tr>
+	<td><b>{{cOverall}}</b> {{cCommitment}}<input type=text name=fCommit_<{skill}> value='<{committed}>' size=5> %</td>
+	<td>{{cAccomplished}} <input type=text name=fAccom_<{skill}> value='<{accomplished}>' size=5>%</td>
+</tr>
+</table>
+
+<{view_ifgraph_start}>
+<table class=code align=center>
+<tr>
+	<td><img src = "graph_learning_status.php?to_date=<{to_date}>&from_date=<{from_date}>&avg_rater=<{rater_avg}>&ids=<{ids}>"></img></td>
+</tr>
+</table>
+<{view_ifgraph_end}>
+
+<table class=code>
+<{direct_reports_start}>
+<tr>
+	<td><a href="learning_progress_summary.php?dr_id=<{rid}>"><{ratername}></a>&nbsp;&nbsp;{{cCommitment}}<input type=text name=fRCommit_<{skill}> value='<{committed}>' size=5> %</td>
+	<td>{{cAccomplished}} <input type=text name=fRAccom_<{skill}> value='<{r_avg}>' size=5>%</td>
+</tr>
+<{direct_reports_end}>
+<tr>
+	<{view_ifnotgraph_start}>
+	<td><input type=checkbox name=fGraph_<{skill}> onclick="document.status.action='learning_status_report.php?dr_id={{dr_id}}';document.status.submit();" >{{cViewGraphical}}</td>
+	<{view_ifnotgraph_end}>
+
+	<{view_ifgraph_start}>
+	<td><input type=checkbox name=fNGraph_<{skill}> onclick="document.status.action='learning_status_report.php?dr_id={{dr_id}}';document.status.submit();" >{{cViewText}}</td>
+	<{view_ifgraph_end}>
+</tr>
+
+</table>
+
+</td></tr>
+</table>
+<br>
+<{main_loopend}>
+
+<center><input type=button name=fSave value='{{cSave}}' onclick="download();"> &nbsp;&nbsp;
+	<input type=button name=fBack value='{{cBack}}' onclick="history.back();"></center>
+</form>
+

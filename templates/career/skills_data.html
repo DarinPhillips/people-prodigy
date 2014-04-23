@@ -1,0 +1,61 @@
+<script>
+function validate()
+{
+with(document.frm1)
+{
+
+	
+	if ((!fskill_type[0].checked) && (!fskill_type[1].checked))
+	{
+		alert("{{cEnterurskillopt}}");
+		fskill_type[0].focus();
+		return false;
+	}
+	if(fcsv.value=="")
+	{
+		alert('{{cEnterfile}}');
+		fcsv.focus();
+		return false;
+	}
+}
+	return true;
+
+}
+
+</script>
+
+
+<form enctype="multipart/form-data" name="frm1" action="skills_data.php" method=post onSubmit="return validate();">
+<table align=center border=0>
+<tr>
+<td class=code align=center>
+<b>		{{cImportskillsets}}</b>
+	<input type="button" name="fHelp" value ={{cHelp}} onClick="window.open('../lang/{{default}}/career/skill_data.html');">
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<br>
+
+	<input type=radio name="fskill_type" value="t" > {{cTechnicalskills}}
+	<input type=radio name="fskill_type" value="i" > {{cInterpersonalskills}}
+</td>
+</tr>
+
+<tr>
+<td class=code>
+
+{{cBrowse}}: &nbsp;&nbsp;
+
+	<input type=file name=fcsv>
+</td>
+</tr>
+<tr>
+<td class=code align=center>
+<input type="button" name="fBack" value="  {{cBack}}  " onClick = "window.history.back()";>
+<input type=submit name=submit value=" {{cUpload}} ">
+</td>
+</tr>
+</center>
+</table>
+</form>

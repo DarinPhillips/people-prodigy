@@ -1,0 +1,88 @@
+
+<html>
+
+	<title>
+		{{cYouarein}} {{dir1}} {{cModule}} {{cAndthepageis}} {{pagename}}
+	</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={{charset}}">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../style.css">
+
+<script language = "JavaScript">
+function timed_out(min_time)
+{
+
+	num=min_time*60*1000;
+
+	setTimeout("open_new_session();",num);
+	
+}
+function open_new_session()
+{
+	alert('{{cJavaScriptSessionTimeout}}');
+	window.open('{{path}}/index.php');
+	return false;
+}
+
+timed_out({{min_time}});
+
+function popup_preview(href)
+{
+  window.open(href,"PreviewPage", "dependant=yes,hotkeys=no,menubar=no,resizable=yes,scrollbars=yes,status=yes,toolbar=no,width=580,height=450");
+}
+
+function comment_check(comments)
+{
+	frm = document.approve;
+	if(frm.fComment.value=="")
+	{
+		alert(comments);
+		frm.fComment.focus();
+		return false;
+	}
+	return true;
+}
+
+function check_empty(objective,commit,how,message)
+{
+	if((objective.value=="")&&((commit.value=="")||(commit.value=='0'))&&(how.value==""))
+	{
+
+		alert(message);
+		objective.focus();
+		return false;
+	}
+return true;
+}
+
+</script>
+
+
+</head>
+<body class=B1>
+<hr>
+<table class=table>
+<tr>
+<td class=code>
+<b>{{cLoggedinuser}}</b></td><td class=code>:{{user_name}}</td>
+</tr>
+<tr>
+<td class=code><b>{{cDate}}<b></td>
+<td class=code>:{{date}}</td>
+</tr>
+</table>
+
+<table>	
+		<tr>
+		<td class=code>
+	<b>
+	{{cYouarein}}
+	</b>
+ {{dir1}} {{cModule}} 
+<b>
+{{cAndthepageis}}
+</b>
+ {{pagename}}
+		</td>
+		</tr>
+	</table>

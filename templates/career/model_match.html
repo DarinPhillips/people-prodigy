@@ -1,0 +1,17 @@
+<form name=modelmatch_frm action=model_match.php method=post>
+<table align=center border=1 cellspacing=0 cellpadding=4>
+<tr>
+	<th class=code>
+		Models That Don't Match Employees At {{modelfit}}% Or Better
+		<input type=button name=fHelp value={{cHelp}} onClick="window.open('../lang/{{default}}/career/model_match.html');">	
+	</th>
+</tr>
+<{model_loopstart}>
+<tr>
+	<td class=code>
+	<a href="model_detail.php?m_id=<{model_id}>"><{model_name}></a>
+	</td>
+</tr>
+<{model_loopend}>
+</table>
+</form>

@@ -1,0 +1,56 @@
+
+Leader3 Leader3 's Approved Appraisal
+
+
+my i obj
+
+Committment: 900  Accomplished: 0  Fulfilled: 0.00
+
+Priority :3
+
+Expectation Points: 0  Actual Rating: 0.22222222222222 Expectation Met: 0.00
+
+Comments Made During This Review Period
+----------------------------------------
+Boss's Comments
+----------------
+admin:jjkjkAdministrator:
+
+Raters Comments
+----------------
+
+Boss's Explanation for this Objective
+--------------------
+Out of a possible 0   points for this objective you earned   4.00   because
+admin:kl;kl;kl;kAdministrator:
+
+
+jkhjkh
+
+Committment: 360  Accomplished: 0  Fulfilled: 0.00
+
+Priority :3
+
+Expectation Points: 0  Actual Rating: 0 Expectation Met: 0.00
+
+Comments Made During This Review Period
+----------------------------------------
+Boss's Comments
+----------------
+admin:fsdfsdfsdAdministrator:
+
+Raters Comments
+----------------
+
+Boss's Explanation for this Objective
+--------------------
+Out of a possible 0   points for this objective you earned   2.00   because
+admin:kl;kl;kl;kAdministrator:admin:fsdsdfsfsdAdministrator:
+>
+
+Boss's Final Summary
+--------------------------
+
+Out of a possible  0  points for this objective you earned  6.00  because
+Administrator:fsdfsfsdAdministrator:
+

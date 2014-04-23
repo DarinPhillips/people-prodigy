@@ -1,0 +1,117 @@
+<script>
+function validate()
+{
+	test=confirm('{{cWanttodel}}');
+	if(test==true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+}
+</script>
+
+<form action="addlocation.php" name=frm2 method="post">
+<center>
+<h1>
+{{cLocation}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/career/locationsetting.html');">
+</h1>
+</center>
+<table align="center" border=1 >
+
+<th class=code>
+	{{cFirstLevel}}
+</th>
+
+<th class=code>
+	{{cSecondLevel}}
+</th>
+
+<th class=code>
+		{{cThirdLevel}}
+</th>
+
+<th class=code>
+	{{cFourthLevel}}
+</th>
+
+<th class=code>
+	{{cFifthLevel}}
+</th>
+
+<th class=code>
+	{{cSixthLevel}}
+</th>
+<th class=code>
+	{{cSeventhLevel}}
+</th>
+<th class=code>
+	{{cEdit}}
+</th>
+<th class=code>
+	{{cDelete}}
+</th>
+<{location_loopstart}>
+
+<tr>
+	<td class=code>
+	<{first_level}>
+	</td>
+
+	<td class=code>
+	<{second_level}>
+	</td>
+
+	<td class=code>
+	<{third_level}>
+	</td>
+
+
+	<td class=code>
+	<{fourth_level}>
+	</td>
+
+	<td class=code>
+	<{fifth_level}>
+	</td>
+
+	<td class=code>
+	<{sixth_level}>
+	</td>
+
+	<td class=code>
+	<{seventh_level}>
+	</td>
+
+	<td class=code>
+	<!--
+	<input type="submit" name="fEdit_<{id}>" value="{{cEdit}}">
+	-->
+	<a href="addlocation.php?fEdit_<{id}>=Edit">{{cEdit}}</a>
+	</td>
+	<td class=code>
+	<!--
+	<input type="submit" name="fDelete_<{id}>" value="{{cDelete}}">
+	-->
+	<a href="addlocation.php?fDelete_<{id}>=Delete" onClick="return validate();">{{cDelete}}</a>
+	</td>
+	<td>
+	<input type="hidden" name="fLocation_id" value="<{id}>">
+	</td>
+</tr>
+<{location_loopend}>
+</table>
+
+<center>
+<input type="button" name="fBack" value={{cBack}} onClick="window.history.back();">
+
+
+<input type="submit" name="fAddlocation" value="{{cAddLocation}}">
+</center>
+
+
+</form>

@@ -1,0 +1,38 @@
+<h1>
+<center>
+{{cViewOutstanding}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/performance/outstanding_assignments.html');">
+</h1></center>
+<table align=center border=0>
+<tr>
+	<td class=code>
+	<b>{{cCBossName}}<b>
+	</td>
+	<td class=code>
+	<b>{{cEmployeeAssigned}}
+	</td>
+	<td class=code>
+	<b>{{cDateAppraisalAssigned}}
+	
+	</td>
+</tr>
+<{row_loopstart}>
+<tr <{highlight}>>
+	<td class=code >
+	
+		<a href="mailto:<{email}>" >	<{assigned_by}></a>
+	</td>
+	<td class=code >
+		<{username}>
+	</td>
+	<td class=code >
+<{date}>
+	</td>
+</tr>
+<{row_loopend}>
+<!--<tr>
+	<td class=code align=center colspan=3>
+	<input type=button value={{cBack}} onclick="window.history.back()">
+	</td>
+</tr>-->
+</table>

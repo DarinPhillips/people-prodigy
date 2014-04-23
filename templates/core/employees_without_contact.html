@@ -1,0 +1,50 @@
+<form action="employees_without_contact.php" method=post>
+<center>
+<h1>
+{{cEmployeesmissingcontactinformation}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/core/employees_without_contact.html');">
+</h1>
+</center>
+<h2>
+{{cMissingitemsaretickedoffbelow}}
+</h2>
+<table align=center border=1>
+<th>
+{{cUsername}}
+</th>
+<{contact1_loopstart}>
+<th>
+<{contact_display}>
+</th>
+<{contact1_loopend}>
+<{user_loopstart}>
+<tr>
+<td class=code>
+<a href="mailto:<{email}>"><{username}></a>
+</td>
+<{contact_loopstart}>
+<td class=code>
+<{contact_field}>
+</td>
+<{contact_loopend}>
+</tr>
+<{user_loopend}>
+
+</table>
+
+<table align=center>
+<tr>
+<td class=code>
+<input type="button" name="fBack" value="{{cBack}}" onClick="window.history.back();">
+</td>
+<td class=code>
+<input type="button" name="fPrint" value="{{cPrint}}" onClick="window.print();">
+</td>
+<td class=code>
+<!--
+<input type="button" name="fSave" value="{{cSave}}">
+-->
+</td>
+</tr>
+</table>
+</form>

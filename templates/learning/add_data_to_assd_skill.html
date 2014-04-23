@@ -1,0 +1,25 @@
+<center>
+<h1>
+{{cAssignedskill}}
+<input type="button" name="fHelp" value="{{cHelp}}" onClick="window.open('../lang/{{default}}/learning/add_data_to_assd_skill.html');">
+</h1>
+</center>
+<font class=code><b>{{cFollowingpeoples}}</b></font>
+<form action="add_data_to_assd_skill.php">
+<table class=code align=center border=1>
+<tr>
+<td><b>{{cNamee}}</td>
+<td><b>{{cDate}}</td>
+<td><b>{{cSkill}}</td>
+<td><b>{{cNotalreadyinurlearning}}</td></tr>
+<{record_loopstart}>
+<tr>
+	<td><{name}></td>
+	<td><{date}></td>
+	<td><{href}><{s_name}></a></td>
+	<td><{improve}></td>
+</tr>
+<{record_loopend}>
+</table>
+</form>
+

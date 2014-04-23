@@ -1,0 +1,27 @@
+<b><u>{{cStrategicplan}}</u></b><br>
+{{cStrategicplanreview}}<br>
+<form action="approveplan.php" method=post>
+<input type=hidden name=u_id value="{{u_id}}">
+<table align=center>
+	<{category_loopstart}>
+	<tr valign=top>
+	<td><{count}>.{{cCategory}}</td><td>({{cChanges}})(<{language}>)<input type=text name=fCategory_<{lang_id}>_<{c}> value="<{cval}>" size=30 >
+
+	<table>
+			<{metrics_loopstart}>
+			<tr>
+				<td ><{ct}>.{{cMetrics}}</td><td>({{cChanges}})<input type=text size=30 name=fMetrics_<{lang_id}>_<{c}>_<{me}> value="<{mval}>"></td>
+			</tr>
+			<{metrics_loopend}>
+	</table>
+		</td>
+	</tr>
+	<{category_loopend}>
+	
+</table>
+<center><input type=submit name=approved value="{{cApproved}}">
+
+<input type =submit name=resubmit value="{{cResubmit}}">
+<input type =submit name=save value="{{cSave}}">
+<input type =button name=print value="{{cPrint}}" onclick="javascript:window.print()"></center>
+</form>

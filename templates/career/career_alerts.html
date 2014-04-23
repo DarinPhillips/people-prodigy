@@ -1,0 +1,48 @@
+<form action="career_alerts.php" method=post>
+
+<table align=center>
+
+<{usersettings_start}>
+	<{testdisplay_start}>
+		<tr>
+		<td class=code>
+		<a href="alert_for_test.php">{{cAlertfornewtests}}</a><br><br>
+
+		</td>
+		</tr>
+	<{testdisplay_end}>
+
+	<{multirater_start}>
+		<tr>
+		<td class=code>
+			<a href="alert_assessment_type.php">{{cAlertformultirater}}</a><br><br>
+		</td>
+		</tr>
+	<{multirater_end}>
+
+	
+
+
+<{usersettings_end}>
+
+
+<{skill_builderalertstart}>
+<tr>
+<td class=code>
+<a href="alertfortechskillbuild.php">{{cAlertforSkillsbuilder}}</a><br><br>
+</td>
+</tr>
+<{skill_builderalertend}>
+
+<{test_builderalertstart}>
+<tr>
+<td class=code>
+<a href="alertfortestbuild.php">{{cAlertforTestbuilder}}</a><br><br>
+</td>
+</tr>
+<{test_builderalertend}>
+
+
+</table>
+<input type="button" name="fBack" value="  {{cBack}}  " onClick = "window.history.back()";>
+</form>

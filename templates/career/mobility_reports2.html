@@ -1,0 +1,47 @@
+ 
+
+<form action=mobility_reports2.php method=post name=frm1>
+
+<table align=center border=1>
+	<tr>
+		<td class=code>
+			{{cMymobility}} User: {{username_mod}}
+		</td>
+	</tr>
+	<tr>
+		<td class=code colspan=4 align=center>
+		 <img src=mobility_graph.php?xcosame={{xco_mylevel}}&ycosame={{yco_mylevel}}&xco1={{xco_1level}}&yco1={{yco_1level}}&xco_2level={{xco_2level}}&yco_2level={{yco_2level}} usemap="#linktogrph"></img>
+
+
+<map id="linktogrph" name="linktogrph">
+
+	<{maplinks_loopstart}>
+ 		<area shape="rect" coords="<{all_coordinates}>" href="person_position.php?model_sel=<{tmodelid}>&empl=<{user_id}>&meth=graph" title="<{model_name}>" />		
+		<area shape="default" nohref="nohref" alt="" />
+	<{maplinks_loopend}>
+
+</map>
+
+
+
+ 		<br><br>
+			
+		</td>
+	</tr>
+	<tr>
+		<td class=code>
+		<input type=button name=fPrint value='{{cPrint}}' onClick="window.print()";>		
+		</td>
+		
+		<td class=code>
+		<input type=submit name=fSave value='{{cSave}}'>		
+		</td>
+		<td class=code>
+		<input type=button name=fBack value='{{cBack}}' onClick = "window.history.back()";>		
+		</td>
+		<td class=code>
+		<input type=button name=fDashb value='{{cApprres_returnback}}' onClick="window.location.replace('front_panel.php')";>		
+		</td>
+	</tr>
+</table>
+</form>

@@ -1,0 +1,23 @@
+
+<center>
+Performance Objectives for the {{position_name}}<br>
+<table class=table>
+<{obj_loopstart}>
+<tr>
+<td class=code>{{i}}</td> <t><td> <input type="text" name="objectv{{i}}"></td>
+</tr>
+<{obj_loopend}>
+</table>
+Challenges To be Faced by {{position_name}}<br>
+<table class=table>
+<{chg_loopstart}>
+<tr>
+<td class=code>
+{{i}} </td><t><td> <input type="text" name="objectv{{i}}"></td>
+</tr>
+<{chg_loopend}>
+</table>
+</center>
+<input type="button" name="fNext" value="Next" onClick="window.location='activities_panel.php';">
+<input type="hidden" name="fPos_id" value={{pos_id}}>
+
